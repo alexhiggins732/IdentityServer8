@@ -1,0 +1,25 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+
+
+  <ItemGroup>
+    <Content Remove="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="compilerconfig.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Certificate" />
+    
+    <PackageReference Include="Serilog.AspNetCore" />
+
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
+    <!--<PackageReference Include="IdentityServer8.EntityFramework" />-->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="All" />
+    <PackageReference Include="System.Security.Principal.Windows" />
+    
+    <ProjectReference Include="..\src\IdentityServer8.csproj" />
+  </ItemGroup>
+</Project>

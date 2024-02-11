@@ -1,0 +1,33 @@
+@using System.Diagnostics
+@using System.Reflection
+
+@{
+    var version = typeof(IdentityServer8.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+').First();
+}
+
+<div class="welcome-page">
+    <h1>
+        <img src="~/icon.jpg">
+        Welcome to IdentityServer8
+        <small class="text-muted">(version @version)</small>
+    </h1>
+
+    <ul>
+        <li>
+            IdentityServer publishes a
+            <a href="~/.well-known/openid-configuration">discovery document</a>
+            where you can find metadata and links to all the endpoints, key material, etc.
+        </li>
+        <li>
+            Click <a href="~/diagnostics">here</a> to see the claims for your current session.
+        </li>
+        <li>
+            Click <a href="~/grants">here</a> to manage your stored grants.
+        </li>
+        <li>
+            Here are links to the
+            <a href="https://github.com/identityserver/IdentityServer8">source code repository</a>,
+            and <a href="https://github.com/IdentityServer/IdentityServer8/tree/main/samples">ready to use samples</a>.
+        </li>
+    </ul>
+</div>

@@ -1,0 +1,162 @@
+<Project>
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+    <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
+    <AspnetVersion>8.0.0</AspnetVersion>
+    <AspnetMinorVersion>8.0.1</AspnetMinorVersion>
+    <MicrosoftExtensionsVersion>8.0.0</MicrosoftExtensionsVersion>
+    <EfVersion>8.0.0</EfVersion>
+    <RuntimeVersion>8.0.0</RuntimeVersion>
+    <AspireVersion>8.0.0-preview.2.23619.3</AspireVersion>
+    <GrpcVersion>2.59.0</GrpcVersion>
+    <SerilogVersion>8.0.0</SerilogVersion>
+    <NoWarn>$(NoWarn);AD0001;ASP0003;ASP0004;ASP0005;ASP0007;ASP0020;ASP0021;ASP0022;ASP0024</NoWarn>
+    <SignAssembly>true</SignAssembly>
+    <AssemblyOriginatorKeyFile>$(SolutionDir)../key.snk</AssemblyOriginatorKeyFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AspNet.Security.OAuth.GitHub" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.MySql" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.NpgSql" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.OpenIdConnectServer" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.SqlServer" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(AspnetVersion)" />
+    <PackageVersion Include="AutoMapper" Version="13.0.1 " />
+    <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
+    <PackageVersion Include="Azure.Identity" Version="1.10.4" />
+    <PackageVersion Include="Azure.Security.KeyVault.Certificates" Version="4.2.0" />
+    <PackageVersion Include="Bogus" Version="34.0.1" />
+    <PackageVersion Include="coverlet.collector" Version="6.0.0">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
+    <PackageVersion Include="Dapper" Version="2.1.28" />
+    <PackageVersion Include="EntityFramework" Version="6.4.4" />
+    <PackageVersion Include="FluentAssertions" Version="6.11.0" />
+    <PackageVersion Include="FluentValidation" Version="11.9.0" />
+    <PackageVersion Include="FluentValidation.AspNetCore" Version="11.3.0" />
+    <PackageVersion Include="Google.Protobuf" Version="3.23.4" />
+    <PackageVersion Include="Grpc" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.AspNetCore" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.AspNetCore.Server" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Core" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Core.Api" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Net.Client" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)" />
+    <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.40" />
+    <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
+    <PackageVersion Include="IdentityModel" Version="6.2.0" />
+    <PackageVersion Include="IdentityModel.AspNetCore" Version="4.3.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.Certificate" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.UI" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.5" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(AspnetMinorVersion)">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools.DotNet" Version="2.0.3" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Abstractions" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.AzureKeyVault" Version="3.1.22" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Binder" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.EnvironmentVariables" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Http" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="$(MicrosoftExtensionsVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Logging" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.Options" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="$(AspireVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="$(AspireVersion)" />
+    <PackageVersion Include="Microsoft.Identity.Web" Version="1.22.1" />
+    <PackageVersion Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.3.1" />
+    <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
+    <PackageVersion Include="Microsoft.OpenApi" Version="1.6.10" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="1.1.1" />
+    <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
+    <PackageVersion Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Moq" Version="4.20.70" />
+    <PackageVersion Include="MSTest.TestAdapter" Version="3.1.1" />
+    <PackageVersion Include="MSTest.TestFramework" Version="3.1.1" />
+    <PackageVersion Include="Nerdbank.GitVersioning" Version="3.6.133" />
+    <PackageVersion Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageVersion Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="$(AspnetVersion)" />
+    <PackageVersion Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
+    <PackageVersion Include="Persante.Blazor.SharedUI" Version="1.0.11" />
+    <PackageVersion Include="Persante.Common.Api" Version="1.1.4" />
+    <PackageVersion Include="Persante.Common.Infrastructure" Version="1.1.1" />
+    <PackageVersion Include="Persante.Identity.Iam" Version="1.1.30-alpha.5" />
+    <PackageVersion Include="Persante.Identity.Iam.Blazor" Version="1.1.24-alpha.5" />
+    <PackageVersion Include="Persante.Logging" Version="1.0.8" />
+    <PackageVersion Include="Persante.Security.Authentication" Version="1.1.26-alpha.3" />
+    <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql" Version="7.0.0" />
+    <PackageVersion Include="Pomelo.EntityFrameworkCore.MySql.Design" Version="1.1.2" />
+    <PackageVersion Include="protobuf-net" Version="3.2.26" />
+    <PackageVersion Include="protobuf-net.BuildTools" Version="3.2.27" />
+    <PackageVersion Include="protobuf-net.Core" Version="3.2.26" />
+    <PackageVersion Include="protobuf-net.Grpc" Version="1.1.1" />
+    <PackageVersion Include="protobuf-net.Grpc.AspNetCore" Version="1.1.1" />
+    <PackageVersion Include="protobuf-net.Reflection" Version="3.2.12" />
+    <PackageVersion Include="Refit" Version="7.0.0" />
+    <PackageVersion Include="Refit.HttpClientFactory" Version="7.0.0" />
+    <PackageVersion Include="Refit.Newtonsoft.Json" Version="7.0.0" />
+    <PackageVersion Include="Sendgrid" Version="9.25.2" />
+    <PackageVersion Include="Serilog" Version="3.1.1" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Serilog.Enrichers.Environment" Version="2.3.0" />
+    <PackageVersion Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageVersion Include="Serilog.Extensions.Hosting" Version="$(SerilogVersion)" />
+    <PackageVersion Include="Serilog.Settings.Configuration" Version="$(SerilogVersion)" />
+    <PackageVersion Include="Serilog.Sinks.Console" Version="5.0.1" />
+    <PackageVersion Include="Serilog.Sinks.File" Version="5.0.0" />
+    <PackageVersion Include="Serilog.Sinks.MSSqlServer" Version="6.5.0" />
+    <PackageVersion Include="Serilog.Sinks.Seq" Version="6.0.0" />
+    <PackageVersion Include="Skoruba.AuditLogging.EntityFramework" Version="1.0.0" />
+    <PackageVersion Include="Spectre.Console" Version="0.47.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
+    <PackageVersion Include="System.Configuration.ConfigurationManager" Version="$(AspnetVersion)" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
+    <PackageVersion Include="System.Reactive" Version="6.0.0" />
+    <PackageVersion Include="System.Security.Principal.Windows" Version="5.0.0" />
+    <PackageVersion Include="System.ServiceModel.Primitives" Version="$(AspnetVersion)" />
+    <PackageVersion Include="WireMock.Net" Version="1.5.39" />
+    <PackageVersion Include="xunit" Version="2.6.4" />
+    <PackageVersion Include="xunit.runner.visualstudio" Version="2.5.6">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageVersion>
+    <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(AspnetVersion)" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+  </ItemGroup>
+</Project>

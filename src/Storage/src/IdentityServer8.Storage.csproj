@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+
+        <Description>Storage interfaces and models for IdentityServer8</Description>
+        <IsPackable>true</IsPackable>
+        <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    </PropertyGroup>
+
+    <PropertyGroup>
+        <ContinuousIntegrationBuild Condition="'$(TF_BUILD)' == 'true'">True</ContinuousIntegrationBuild>
+        <ContinuousIntegrationBuild Condition="'$(GITHUB_ACTIONS)' == 'true'">True</ContinuousIntegrationBuild>
+
+    </PropertyGroup>
+
+    <ItemGroup>
+      <None Include="..\..\..\icon.jpg">
+        <Pack>True</Pack>
+        <PackagePath>\</PackagePath>
+      </None>
+    </ItemGroup>
+
+
+    <ItemGroup>
+        <PackageReference Include="IdentityModel" />
+        <PackageReference Include="Newtonsoft.Json" />
+    </ItemGroup>
+
+</Project>

@@ -1,0 +1,90 @@
+<Project>
+
+    <PropertyGroup>
+        <TargetFramework>net8.0</TargetFramework>
+        <Version>8.0.1-alpha.2</Version>
+        <PackageId>HigginsSoft.$(MSBuildProjectName)</PackageId>
+        <Title>$(MSBuildProjectName)</Title>
+
+        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <NoWarn>$(NoWarn);CS0618;SYSLIB0023;SYSLIB0020;EF1001</NoWarn>
+
+
+        <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
+        <Copyright>Copyright 2024 HigginsSoft. Alexander Higgins</Copyright>
+        <Authors>HigginsSoft, Alexander Higgins, Brock Allen, Dominick Baier</Authors>
+        <PackageTags>OAuth2 OAuth 2.0 OpenID Connect Security Identity IdentityServer AdminIdentityServer8 OpenIDConnect </PackageTags>
+
+
+        <PackageProjectUrl>https://github.com/alexhiggins732/IdentityServer8</PackageProjectUrl>
+        <RepositoryType>git</RepositoryType>
+        <PackageReleaseNotes>https://github.com/IdentityServer/IdentityServer8/releases</PackageReleaseNotes>
+
+        <!-- Declare that the Repository URL can be published to NuSpec -->
+        <PublishRepositoryUrl>true</PublishRepositoryUrl>
+        <!-- Embed source files that are not tracked by the source control manager to the PDB -->
+        <EmbedUntrackedSources>true</EmbedUntrackedSources>
+        <Deterministic>true</Deterministic>
+
+        <!-- Include PDB in the built .nupkg -->
+        <AllowedOutputExtensionsInPackageBuildOutputFolder>$(AllowedOutputExtensionsInPackageBuildOutputFolder);.pdb</AllowedOutputExtensionsInPackageBuildOutputFolder>
+
+        <PackageIcon>icon.jpg</PackageIcon>
+
+        <Deterministic>true</Deterministic>
+        <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
+
+        <!--<CodeAnalysisRuleset>$(MSBuildThisFileDirectory)IdentityServer8.DotNet.ruleset</CodeAnalysisRuleset>-->
+
+        <IsTrimmable>false</IsTrimmable>
+        <EnableAOTAnalyzer>false</EnableAOTAnalyzer>
+
+
+   
+        <LangVersion>latest</LangVersion>
+        <GenerateDocumentationFile>false</GenerateDocumentationFile>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <PackageOutputPath>$(SolutionDir)../nuget</PackageOutputPath>
+
+
+        <IsPackable>false</IsPackable>
+        <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+        <PackageReadmeFile>README.md</PackageReadmeFile>
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>portable</DebugType>
+        <IncludeSymbols>true</IncludeSymbols>
+        <SymbolPackageFormat>snupkg</SymbolPackageFormat>
+        <IncludeBuildOutput>true</IncludeBuildOutput>
+    </PropertyGroup>
+
+    <ItemGroup>
+ 
+        <PackageReference Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(MicrosoftCodeAnalysisNetAnalyzersPackageVersion)" PrivateAssets="All" />
+        <PackageReference Include="Microsoft.SourceLink.GitHub" Version="$(MicrosoftSourceLinkGitHubPackageVersion)" PrivateAssets="All" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Include="$(SolutionDir)../LICENSE">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="$(SolutionDir)../README.md">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="$(SolutionDir)../icon.jpg">
+            <Pack>True</Pack>
+            <PackagePath>\</PackagePath>
+        </None>
+
+    </ItemGroup>
+
+
+</Project>
