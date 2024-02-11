@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Validation
 {
     /// <summary>
@@ -69,7 +69,7 @@ namespace IdentityServer8.Validation
 
             if (bestSecret != null)
             {
-                _logger.LogDebug("Secret id found: {id}", bestSecret.Id);
+                _logger.LogDebug("Secret id found: {id}", Ioc.Sanitizer.Log.Sanitize(bestSecret.Id));
                 return bestSecret;
             }
 

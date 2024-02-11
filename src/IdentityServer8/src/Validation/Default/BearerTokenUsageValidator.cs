@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Validation
 {
     /// <summary>
@@ -92,7 +92,7 @@ namespace IdentityServer8.Validation
                 }
                 else
                 {
-                    _logger.LogTrace("Unexpected header format: {header}", header);
+                    _logger.LogTrace("Unexpected header format: {header}", Ioc.Sanitizer.Log.Sanitize(header));
                 }
             }
 

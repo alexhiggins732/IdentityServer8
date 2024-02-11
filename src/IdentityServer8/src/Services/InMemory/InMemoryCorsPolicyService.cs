@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Services
 {
     /// <summary>
@@ -64,11 +64,11 @@ namespace IdentityServer8.Services
 
             if (result)
             {
-                Logger.LogDebug("Client list checked and origin: {0} is allowed", origin);
+                Logger.LogDebug("Client list checked and origin: {0} is allowed", Ioc.Sanitizer.Log.Sanitize(origin));
             }
             else
             {
-                Logger.LogDebug("Client list checked and origin: {0} is not allowed", origin);
+                Logger.LogDebug("Client list checked and origin: {0} is not allowed", Ioc.Sanitizer.Log.Sanitize(origin));
             }
 
             return Task.FromResult(result);

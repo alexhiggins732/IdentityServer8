@@ -22,7 +22,8 @@ using IdentityServer8.Models;
 using IdentityServer8.Stores;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
-
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.EntityFramework.Stores
 {
     /// <summary>
@@ -81,7 +82,7 @@ namespace IdentityServer8.EntityFramework.Stores
 
             var model = client.ToModel();
 
-            Logger.LogDebug("{clientId} found in database: {clientIdFound}", clientId, model != null);
+            Logger.LogDebug("{clientId} found in database: {clientIdFound}", Ioc.Sanitizer.Log.Sanitize(clientId), model != null);
 
             return model;
         }

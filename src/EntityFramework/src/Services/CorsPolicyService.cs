@@ -22,6 +22,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.DependencyInjection.Extensions;
 
 namespace IdentityServer8.EntityFramework.Services
 {
@@ -64,7 +65,7 @@ namespace IdentityServer8.EntityFramework.Services
             
             var isAllowed = await query.AnyAsync();
 
-            _logger.LogDebug("Origin {origin} is allowed: {originAllowed}", origin, isAllowed);
+            _logger.LogDebug("Origin {origin} is allowed: {originAllowed}", Ioc.Sanitizer.Log.Sanitize(origin), isAllowed);
 
             return isAllowed;
         }

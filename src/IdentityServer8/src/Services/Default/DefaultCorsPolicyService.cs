@@ -13,12 +13,12 @@
 
 */
 
+using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
 namespace IdentityServer8.Services
 {
     /// <summary>
@@ -67,7 +67,7 @@ namespace IdentityServer8.Services
             {
                 if (AllowAll)
                 {
-                    Logger.LogDebug("AllowAll true, so origin: {0} is allowed", origin);
+                    Logger.LogDebug("AllowAll true, so origin: {0} is allowed", (origin));
                     return Task.FromResult(true);
                 }
 
@@ -75,16 +75,16 @@ namespace IdentityServer8.Services
                 {
                     if (AllowedOrigins.Contains(origin, StringComparer.OrdinalIgnoreCase))
                     {
-                        Logger.LogDebug("AllowedOrigins configured and origin {0} is allowed", origin);
+                        Logger.LogDebug("AllowedOrigins configured and origin {0} is allowed", Ioc.Sanitizer.Log.Sanitize(origin));
                         return Task.FromResult(true);
                     }
                     else
                     {
-                        Logger.LogDebug("AllowedOrigins configured and origin {0} is not allowed", origin);
+                        Logger.LogDebug("AllowedOrigins configured and origin {0} is not allowed", Ioc.Sanitizer.Log.Sanitize(origin));
                     }
                 }
 
-                Logger.LogDebug("Exiting; origin {0} is not allowed", origin);
+                Logger.LogDebug("Exiting; origin {0} is not allowed", Ioc.Sanitizer.Log.Sanitize(origin));
             }
 
             return Task.FromResult(false);

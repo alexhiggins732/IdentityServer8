@@ -23,6 +23,7 @@ using IdentityServer8.Configuration.DependencyInjection;
 using IdentityServer8.Services;
 using Microsoft.Extensions.DependencyInjection;
 using IdentityServer8.Extensions;
+using Microsoft.DependencyInjection.Extensions;
 
 namespace IdentityServer8.Hosting
 {
@@ -56,7 +57,6 @@ namespace IdentityServer8.Hosting
                 return _inner.GetPolicyAsync(context, policyName);
             }
         }
-
         private async Task<CorsPolicy> ProcessAsync(HttpContext context)
         {
             var origin = context.Request.GetCorsOrigin();
@@ -73,17 +73,17 @@ namespace IdentityServer8.Hosting
 
                     if (await corsPolicyService.IsOriginAllowedAsync(origin))
                     {
-                        _logger.LogDebug("CorsPolicyService allowed origin: {origin}", origin);
+                        _logger.LogDebug("CorsPolicyService allowed origin: {origin}", Ioc.Sanitizer.Log.Sanitize(origin));
                         return Allow(origin);
                     }
                     else
                     {
-                        _logger.LogWarning("CorsPolicyService did not allow origin: {origin}", origin);
+                        _logger.LogWarning("CorsPolicyService did not allow origin: {origin}", Ioc.Sanitizer.Log.Sanitize(origin));
                     }
                 }
                 else
                 {
-                    _logger.LogDebug("CORS request made for path: {path} from origin: {origin} but was ignored because path was not for an allowed IdentityServer CORS endpoint", path, origin);
+                    _logger.LogDebug("CORS request made for path: {path} from origin: {origin} but was ignored because path was not for an allowed IdentityServer CORS endpoint", Ioc.Sanitizer.Log.Sanitize(path), Ioc.Sanitizer.Log.Sanitize(origin));
                 }
             }
 
