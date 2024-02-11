@@ -64,7 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		..\IdentityServer8.DotNet.ruleset = ..\IdentityServer8.DotNet.ruleset
 		..\LICENSE = ..\LICENSE
 		..\README.md = ..\README.md
-		C:\Source\Repos\DotMpi\version.json = C:\Source\Repos\DotMpi\version.json
+		..\version.json = ..\version.json
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AspNetIdentity", "AspNetIdentity", "{7849D7DE-FD6A-4A5B-A793-5DCFFCDDC944}"
