@@ -67,7 +67,7 @@ namespace IdentityServer8.Services
             {
                 if (AllowAll)
                 {
-                    Logger.LogDebug("AllowAll true, so origin: {0} is allowed", (origin));
+                    Logger.LogDebug("AllowAll true, so origin: {0} is allowed", Ioc.Sanitizer.Log.Sanitize(origin));
                     return Task.FromResult(true);
                 }
 
