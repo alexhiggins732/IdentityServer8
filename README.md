@@ -1,9 +1,13 @@
 # Build Status
 
 [![Master](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
-[![Develop](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
+[![CodeQL for release branch](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
 [![Release](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
+[![CodeQL for release branch](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
+[![Develop](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
+[![CodeQL for develop branch](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
 [![CI/CD](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
+[![CodeQL for release branch](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
 
 # Important update
 This project is a DotNet 8 revival of the Identity Server 4 which was archived when .NET Core 3.1 reached end of support.
