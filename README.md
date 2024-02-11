@@ -1,7 +1,7 @@
 # Identity Server 8 update
-This project is a DotNet 8 revival of the Identity Server 4 which was archived when .NET Core 3.1 reached end of support.
+This project is a DotNet 8 revival of the Identity Server 4 and Identity Server 4 Admin UI, for Open ID Connect (OIDC) and OAuth, which was archived when .NET Core 3.1 reached end of support.
 
-[HigginsSoft.IdentityServer8 Nuget Packages](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8) are available for use in DotNet 8 projects.
+[HigginsSoft.IdentityServer8 and Admin UI Nuget Packages](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8) are available here for use in DotNet 8.
 
 All new development in the archived repository has moved to a paid commercial version in the [Duende Software](https://github.com/duendesoftware) organization. 
 
@@ -19,7 +19,7 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 
 
 # Build Status And Stats
-
+|Package||
 [![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
 [![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
 [![Release|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
@@ -31,7 +31,7 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 ## Nuget Packages
 
 ### Identity Server 8
-|Package Count||
+|Package||
 | ------------- | ------------- |
 |[HigginsSoft.IdentityServer8](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8)|
 |[HigginsSoft.IdentityServer8.Storage](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Storage)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Storage)|
@@ -41,7 +41,7 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 | | |
 
 ### Identity Server 8 Administration UI
-|Package Count||
+|Package||
 | ------------- | ------------- |
 |[HigginsSoft.IdentityServer8.Shared](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Shared)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Shared)|
 |[HigginsSoft.IdentityServer8.Admin.UI](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.UI)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.UI)|
