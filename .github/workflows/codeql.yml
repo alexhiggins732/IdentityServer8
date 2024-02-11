@@ -77,7 +77,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/IdentityServer8.sln
     - name: Build
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}
+      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
