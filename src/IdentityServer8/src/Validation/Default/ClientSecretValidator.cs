@@ -20,7 +20,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.AspNetCore.Http;
 using IdentityServer8.Stores;
 using IdentityServer8.Models;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Validation
 {
     /// <summary>
@@ -80,7 +80,7 @@ namespace IdentityServer8.Validation
             {
                 await RaiseFailureEventAsync(parsedSecret.Id, "Unknown client");
 
-                _logger.LogError("No client with id '{clientId}' found. aborting", parsedSecret.Id);
+                _logger.LogError("No client with id '{clientId}' found. aborting", Ioc.Sanitizer.Log.Sanitize(parsedSecret.Id));
                 return fail;
             }
 

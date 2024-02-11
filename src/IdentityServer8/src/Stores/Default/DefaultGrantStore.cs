@@ -20,7 +20,7 @@ using IdentityServer8.Stores.Serialization;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Stores
 {
     /// <summary>
@@ -113,7 +113,7 @@ namespace IdentityServer8.Stores
             }
             else
             {
-                Logger.LogDebug("{grantType} grant with value: {key} not found in store.", GrantType, key);
+                Logger.LogDebug("{grantType} grant with value: {key} not found in store.", GrantType, Ioc.Sanitizer.Log.Sanitize(key));
             }
 
             return default;

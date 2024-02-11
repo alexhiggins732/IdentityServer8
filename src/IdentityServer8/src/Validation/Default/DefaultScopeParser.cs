@@ -16,7 +16,7 @@
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Validation
 {
     /// <summary>
@@ -61,7 +61,7 @@ namespace IdentityServer8.Validation
                 }
                 else
                 {
-                    _logger.LogDebug("Scope parsing ignoring scope {scope}", scopeValue);
+                    _logger.LogDebug("Scope parsing ignoring scope {scope}", Ioc.Sanitizer.Log.Sanitize(scopeValue));
                 }
             }
 

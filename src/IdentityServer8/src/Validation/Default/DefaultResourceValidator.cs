@@ -19,7 +19,7 @@ using Microsoft.Extensions.Logging;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.DependencyInjection.Extensions;
 namespace IdentityServer8.Validation
 {
     /// <summary>
@@ -57,7 +57,7 @@ namespace IdentityServer8.Validation
             {
                 foreach (var invalidScope in parsedScopesResult.Errors)
                 {
-                    _logger.LogError("Invalid parsed scope {scope}, message: {error}", invalidScope.RawValue, invalidScope.Error);
+                    _logger.LogError("Invalid parsed scope {scope}, message: {error}", Ioc.Sanitizer.Log.Sanitize(invalidScope.RawValue), Ioc.Sanitizer.Log.Sanitize(invalidScope.Error));
                     result.InvalidScopes.Add(invalidScope.RawValue);
                 }
 

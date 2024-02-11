@@ -18,6 +18,7 @@ using IdentityServer8.Extensions;
 using IdentityServer8.Models;
 using IdentityServer8.Stores;
 using Microsoft.AspNetCore.Http;
+using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
@@ -83,7 +84,7 @@ namespace IdentityServer8.Services
             if (frontChannelUrls.Any())
             {
                 var msg = frontChannelUrls.Aggregate((x, y) => x + ", " + y);
-                _logger.LogDebug("Client front-channel logout URLs: {0}", msg);
+                _logger.LogDebug("Client front-channel logout URLs: {0}", Ioc.Sanitizer.Log.Sanitize(msg));
             }
             else
             {

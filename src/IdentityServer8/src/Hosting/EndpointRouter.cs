@@ -16,6 +16,7 @@
 using IdentityServer8.Configuration;
 using IdentityServer8.Extensions;
 using Microsoft.AspNetCore.Http;
+using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
@@ -45,13 +46,13 @@ namespace IdentityServer8.Hosting
                 if (context.Request.Path.Equals(path, StringComparison.OrdinalIgnoreCase))
                 {
                     var endpointName = endpoint.Name;
-                    _logger.LogDebug("Request path {path} matched to endpoint type {endpoint}", context.Request.Path, endpointName);
+                    _logger.LogDebug("Request path {path} matched to endpoint type {endpoint}", Ioc.Sanitizer.Log.Sanitize(context.Request.Path), endpointName);
 
                     return GetEndpointHandler(endpoint, context);
                 }
             }
 
-            _logger.LogTrace("No endpoint entry found for request path: {path}", context.Request.Path);
+            _logger.LogTrace("No endpoint entry found for request path: {path}", Ioc.Sanitizer.Log.Sanitize(context.Request.Path));
 
             return null;
         }

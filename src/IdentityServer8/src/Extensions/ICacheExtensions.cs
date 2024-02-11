@@ -14,6 +14,7 @@
 */
 
 using IdentityServer8.Services;
+using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Threading.Tasks;
@@ -53,19 +54,19 @@ namespace IdentityServer8.Extensions
 
             if (item == null)
             {
-                logger.LogTrace("Cache miss for {cacheKey}", key);
+                logger.LogTrace("Cache miss for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
 
                 item = await get();
 
                 if (item != null)
                 {
-                    logger.LogTrace("Setting item in cache for {cacheKey}", key);
+                    logger.LogTrace("Setting item in cache for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
                     await cache.SetAsync(key, item, duration);
                 }
             }
             else
             {
-                logger.LogTrace("Cache hit for {cacheKey}", key);
+                logger.LogTrace("Cache hit for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
             }
 
             return item;

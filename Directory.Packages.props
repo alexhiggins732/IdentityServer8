@@ -11,7 +11,7 @@
     <GrpcVersion>2.59.0</GrpcVersion>
     <SerilogVersion>8.0.0</SerilogVersion>
     <NoWarn>$(NoWarn);AD0001;ASP0003;ASP0004;ASP0005;ASP0007;ASP0020;ASP0021;ASP0022;ASP0024</NoWarn>
-		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="AspNet.Security.OAuth.GitHub" Version="$(AspnetVersion)" />
@@ -86,8 +86,8 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(AspnetVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="$(AspnetVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="$(AspnetVersion)" />
@@ -161,6 +161,6 @@
     </PackageVersion>
 
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(AspnetVersion)" PrivateAssets="All" />
-		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="$(AspnetVersion)" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="$(AspnetVersion)" PrivateAssets="All" />
   </ItemGroup>
 </Project>

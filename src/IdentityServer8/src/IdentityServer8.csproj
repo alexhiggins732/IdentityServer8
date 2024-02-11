@@ -17,6 +17,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <ProjectReference Include="..\..\Security\IdentityServer8.Security\IdentityServer8.Security.csproj" />
         <ProjectReference Include="..\..\Storage\src\IdentityServer8.Storage.csproj" />
     </ItemGroup>
 </Project>
