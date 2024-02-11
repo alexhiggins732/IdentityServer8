@@ -32,7 +32,7 @@ jobs:
       id: nbgv
 
     - name: Diplay Package Version
-      run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
+      run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}"
 
 
 
