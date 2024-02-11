@@ -1,0 +1,52 @@
+{
+  "version": "8.0.1",
+  "nugetPackageVersion": {
+    "semVer": 1, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
+    "precision": "build" // optional. Use when you want to use a more or less precise package version than the default major.minor.build.
+  },
+
+  "pathFilters": [
+    // optional list of paths to consider when calculating version height.
+    "!docs",
+    "!.git",
+    "!.vs",
+    "!.config",
+    "!.github",
+    "!.config",
+    "!Directory.Build.props",
+    "!Directory.Build.targets",
+    "!Directory.Build.props",
+    "!global.json",
+    "!IdentityServer8.DotNet.ruleset",
+    "!LICENSCE",
+    "!version.json",
+    "!Nuget.config",
+    "!SECURITY.md",
+    "!SPONSORS.md",
+    "!README.md",
+    "!samples",
+    "!nuget"
+  ],
+  "publicReleaseRefSpec": [
+    "^refs/heads/master$", // we release out of master
+    "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
+    "^refs/heads/develop", // we release alpha out of develop
+    "^refs/heads/release/*" // we release beta out of release
+  ],
+  "cloudBuild": {
+    "setVersionVariables": true,
+    "buildNumber": {
+      "enabled": false,
+      "includeCommitId": {
+        "when": "nonPublicReleaseOnly",
+        "where": "buildMetadata"
+      }
+    }
+  },
+  "release": {
+    "tagName": "v{version}",
+    "branchName": "v{version}",
+    "versionIncrement": "minor",
+    "firstUnstableTag": "alpha"
+  }
+}
