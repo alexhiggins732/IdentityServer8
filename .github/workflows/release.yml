@@ -5,15 +5,27 @@ name: RELEASE
 
 on:
   push:
-    branches: [ "master" ]
+    branches:
+    - develop
+    - release/*
+    - master
+    tags:
+    - '*.*.*'
   pull_request:
-    branches: [ "master" ]
+    branches:
+    - develop
+    - release/**
+    - master
+
 
 jobs:
   build:
-
-    runs-on: ubuntu-latest
-
+    strategy:
+      fail-fast: false
+      matrix:
+        runs-on: [macOS-latest, ubuntu-latest, windows-latest]
+    name: ${{ matrix.runs-on }}
+    runs-on: ${{ matrix.runs-on }}
     steps:
     - uses: actions/checkout@v3
       with:        
@@ -21,12 +33,21 @@ jobs:
     - name: Setup .NET
       uses: actions/setup-dotnet@v3
       with:
-        dotnet-version: 6.0.x
+        dotnet-version: 8.0.x
 
 
     - uses: dotnet/nbgv@master
       id: nbgv
     - name: Set Package Version
+      if: startsWith(github.ref, 'refs/heads/develop')
+      run: |
+          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-alpha.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
+    - name: Set Package Version
+      if: startsWith(github.ref, 'refs/heads/release')
+      run: |
+          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-beta.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
+    - name: Set Package Version
+      if: startsWith(github.ref, 'refs/heads/master')
       run: |
           echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}" >> "$GITHUB_ENV"
     - name: Diplay Package Version
@@ -37,16 +58,12 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.AssemblyFileVersion }}
+      run: dotnet build --configuration Release --no-restore -p:Version=${{ env.NugetPackageVersion }}
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal
 
 
-
-    - name: Pack
-      if: github.event_name == 'push'
-      run: dotnet pack --configuration Release /p:Version=${{ env.NugetPackageVersion }}${{ steps.nbgv.outputs.BuildMetadataFragment }} --output .
     - name: Push
       if: github.event_name == 'push'  
-      run: dotnet nuget push HigginsSoft.DotMpi.${{ env.NugetPackageVersion }}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
+      run: dotnet nuget push .\nuget\*.nupkg  --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 

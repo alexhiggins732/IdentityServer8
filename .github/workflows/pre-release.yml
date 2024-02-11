@@ -1,15 +1,14 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: PRE-RELEASE
+name: CI
 
 on:
   push:
-    branches:
-    - feature/**
-    - hotix/**
-    - bugfix/**
-
+    branches-ignore:
+    - develop
+    - release/*
+    - master
 
 jobs:
   build:
@@ -39,6 +38,10 @@ jobs:
       if: startsWith(github.ref, 'refs/heads/release')
       run: |
           echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-beta.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
+    - name: Set Package Version
+      if: startsWith(github.ref, 'refs/heads/master')
+      run: |
+          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}" >> "$GITHUB_ENV"
     - name: Diplay Package Version
       run: echo "PackageVersion=${{ env.NugetPackageVersion }}"
 
@@ -47,16 +50,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.AssemblyFileVersion }}
+      run: dotnet build --configuration Release --no-restore -p:Version=${{ env.NugetPackageVersion }}
     - name: Test
       run: dotnet test --configuration Release --no-build --verbosity normal
 
 
-
-    - name: Pack
-      if: github.event_name == 'push'  
-      run: dotnet pack --configuration Release /p:Version=${{ env.NugetPackageVersion }}${{ steps.nbgv.outputs.BuildMetadataFragment }} --output .
-    - name: Push
-      if: github.event_name == 'push'  
-      run: dotnet nuget push HigginsSoft.DotMpi.${{ env.NugetPackageVersion }}.nupkg --skip-duplicate --source https://api.nuget.org/v3/index.json --api-key ${{ secrets.NUGET_API_KEY }}
 
