@@ -29,30 +29,13 @@ jobs:
 
     - uses: dotnet/nbgv@master
       id: nbgv
-    - name: Set Package Version
-      run: |
-          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
-    - name: Set Package Version
-      if: startsWith(github.ref, 'refs/heads/develop')
-      run: |
-          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-alpha.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
-    - name: Set Package Version
-      if: startsWith(github.ref, 'refs/heads/release')
-      run: |
-          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-beta.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
-    - name: Set Package Version
-      if: startsWith(github.ref, 'refs/heads/master')
-      run: |
-          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}" >> "$GITHUB_ENV"
     - name: Diplay Package Version
-      run: echo "PackageVersion=${{ env.NugetPackageVersion }}"
-
-
+      run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}"
 
     - name: Restore dependencies
       run: dotnet restore src/IdentityServer8.sln
     - name: Build
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
+      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}
     - name: Test
       run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
 
