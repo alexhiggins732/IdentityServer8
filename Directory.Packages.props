@@ -11,8 +11,7 @@
     <GrpcVersion>2.59.0</GrpcVersion>
     <SerilogVersion>8.0.0</SerilogVersion>
     <NoWarn>$(NoWarn);AD0001;ASP0003;ASP0004;ASP0005;ASP0007;ASP0020;ASP0021;ASP0022;ASP0024</NoWarn>
-    <SignAssembly>true</SignAssembly>
-    <AssemblyOriginatorKeyFile>$(SolutionDir)../key.snk</AssemblyOriginatorKeyFile>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
   </PropertyGroup>
   <ItemGroup>
     <PackageVersion Include="AspNet.Security.OAuth.GitHub" Version="$(AspnetVersion)" />
@@ -62,6 +61,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
+
     <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.1" />
     <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.5" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
@@ -70,6 +70,7 @@
     </PackageVersion>
     <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(AspnetMinorVersion)" />
+
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Tools" Version="$(AspnetMinorVersion)">
@@ -99,6 +100,8 @@
     <PackageVersion Include="Microsoft.Identity.Web" Version="1.22.1" />
     <PackageVersion Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
     <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.3.1" />
+
+
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageVersion Include="Microsoft.OpenApi" Version="1.6.10" />
     <PackageVersion Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.19.6" />
@@ -147,6 +150,7 @@
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="$(AspnetVersion)" />
     <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
     <PackageVersion Include="System.Reactive" Version="6.0.0" />
+
     <PackageVersion Include="System.Security.Principal.Windows" Version="5.0.0" />
     <PackageVersion Include="System.ServiceModel.Primitives" Version="$(AspnetVersion)" />
     <PackageVersion Include="WireMock.Net" Version="1.5.39" />
@@ -155,7 +159,8 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
+
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(AspnetVersion)" PrivateAssets="All" />
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
+		<PackageVersion Include="Microsoft.SourceLink.GitHub" Version="$(AspnetVersion)" PrivateAssets="All" />
   </ItemGroup>
 </Project>

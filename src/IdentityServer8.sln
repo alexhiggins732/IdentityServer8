@@ -85,9 +85,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{A717
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issuetemplate", "issuetemplate", "{0BC5E76A-A280-49C8-8E96-A43FEA357A4B}"
-	ProjectSection(SolutionItems) = preProject
-		..\.github\ISSUE_TEMPLATE\Question.md = ..\.github\ISSUE_TEMPLATE\Question.md
-	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "workflows", "workflows", "{C5474352-0715-41C0-92C2-BABA1A4103A0}"
 	ProjectSection(SolutionItems) = preProject
