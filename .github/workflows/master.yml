@@ -6,7 +6,7 @@ name: Master
 on:
   push:
     branches:
-    - Master/*
+    - master
 
 
 jobs:
