@@ -1,19 +1,11 @@
-# Build Status
+# Identity Server 8 update
+This project is a DotNet 8 revival of the Identity Server 4 and Identity Server 4 Admin UI, for Open ID Connect (OIDC) and OAuth, which was archived when .NET Core 3.1 reached end of support.
 
-[![Master](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
-[![Develop](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
-[![Release](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
-[![CI/CD](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
+[HigginsSoft.IdentityServer8 and Admin UI Nuget Packages](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8) are available here for use in DotNet 8.
 
-# Important update
-This project is a DotNet 8 revival of the Identity Server 4 which was archived when .NET Core 3.1 reached end of support.
+All new development in the archived repository has moved to a paid commercial version in the [Duende Software](https://github.com/duendesoftware) organization. 
 
-[HigginsSoft.IdentityServer8 Nuget Packages](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8) are available for use in DotNet 8 projects.
-
-
-All new development in that repository move a commercial paid version in the [Duende Software](https://github.com/duendesoftware) organization. 
-
-See [here](https://duendesoftware.com/products/identityserver) for more details.
+See [here](https://duendesoftware.com/products/identityserver) for more details on the commerica version.
 
 This repository will be maintained for bug fixes and security updates for the .NET 8 version of Identity Server 4.
 
@@ -24,6 +16,53 @@ Once the source code and unit tests are stabilized, the documentation will be up
 General speaking, the existing documentation for Identity Server 4 will be valid for this repository, but the new features and changes will be documented in the new documentation.
 
 In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet feed](https://www.nuget.org/profiles/IdentityServer8) and the [IdentityServer8 MyGet feed](https://www.myget.org/F/identityserver8/api/v3/index.json).
+
+
+# Build Status And Stats
+
+[![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
+[![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+[![Release|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
+[![Release|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+[![Develop|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
+[![Develop|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+[![CI/CD|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
+
+## Nuget Packages
+
+### Identity Server 8
+|Package||
+| ------------- | ------------- |
+|[HigginsSoft.IdentityServer8](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8)|
+|[HigginsSoft.IdentityServer8.Storage](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Storage)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Storage)|
+|[HigginsSoft.IdentityServer8.EntityFramework](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.EntityFramework)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.EntityFramework)|
+|[HigginsSoft.IdentityServer8.EntityFramework.Storage](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.EntityFramework.Storage)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.EntityFramework.Storage)|
+|[HigginsSoft.IdentityServer8.AspNetIdentity](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.AspNetIdentity)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.AspNetIdentity)|
+| | |
+
+### Identity Server 8 Administration UI
+|Package||
+| ------------- | ------------- |
+|[HigginsSoft.IdentityServer8.Shared](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Shared)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Shared)|
+|[HigginsSoft.IdentityServer8.Admin.UI](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.UI)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.UI)|
+|[HigginsSoft.IdentityServer8.Shared.Configuration](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Shared.Configuration)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Shared.Configuration)|
+|[HigginsSoft.IdentityServer8.Admin.Api](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.Api)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.Api)|
+|[HigginsSoft.IdentityServer8.Admin](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin)|
+|[HigginsSoft.IdentityServer8.Admin.BusinessLogic.Identity](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.BusinessLogic.Identity)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.BusinessLogic.Identity)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.Identity](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.Identity)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.Identity)|
+|[HigginsSoft.IdentityServer8.Admin.BusinessLogic.Shared](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.BusinessLogic.Shared)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.BusinessLogic.Shared)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.Extensions](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.Extensions)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.Extensions)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.PostgreSQL](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.PostgreSQL)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.PostgreSQL)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.MySql](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.MySql)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.MySql)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.SqlServer](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.SqlServer)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.SqlServer)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.Shared](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.Shared)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.Shared)|
+|[HigginsSoft.IdentityServer8.Admin.BusinessLogic](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.BusinessLogic)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.BusinessLogic)|
+|[HigginsSoft.IdentityServer8.Admin.EntityFramework.Configuration](https://www.nuget.org/packages?q=HigginsSoft.IdentityServer8.Admin.EntityFramework.Configuration)|![NuGet Downloads](https://img.shields.io/nuget/dt/HigginsSoft.IdentityServer8.Admin.EntityFramework.Configuration)|
+| | |
+
+
+
 
 ## About IdentityServer8
 [<img align="right" width="100px" src="https://dotnetfoundation.org/img/logo_big.svg" />](https://dotnetfoundation.org/projects?searchquery=IdentityServer&type=project)
@@ -40,10 +79,10 @@ Active development happens on the main branch. This always contains the latest v
 
 ## How to build
 
-* [Install](https://www.microsoft.com/net/download/core#/current) the latest .NET Core 3.1 SDK
+* [Install]([https://www.microsoft.com/net/download/core#/current](https://dotnet.microsoft.com/en-us/download#/current) the latest .NET 8 SDK
 * Install Git
 * Clone this repo
-* Run `build.ps1` or `build.sh` in the root of the cloned repo
+* Run `dotnet build src/identityserver8.slm` or `build.sh` in the root of the cloned repo.
 
 ## Documentation
 For project documentation, please visit [readthedocs](https://IdentityServer8.readthedocs.io).

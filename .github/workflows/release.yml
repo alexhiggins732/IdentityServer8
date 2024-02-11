@@ -1,13 +1,40 @@
 # This workflow will build a .NET project
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-net
 
-name: Master
+name: Release
 
 on:
   push:
     branches:
-    - Master/*
-
+    - release/*
+    paths-ignore:
+    - '**/README.md'
+    - '**/docs'
+    - '.github/**'
+    - "docs/**"
+    - ".git/*"
+    - ".vs/*"
+    - ".config/*"
+    - ".github/*"
+    - "Directory.Build.props"
+    - "Directory.Build.targets"
+    - "Directory.Build.props"
+    - "docker-compose.yml"
+    - "docker-compose.override.yml"
+    - "docker-compose.vs.debug.yml"
+    - "docker-compose.vs.release.yml"
+    - "docker-compose.dcrpoj"
+    - "**/*.sln"
+    - "global.json"
+    - "IdentityServer8.DotNet.ruleset"
+    - "LICENSCE"
+    - "version.json"
+    - "Nuget.config"
+    - "SECURITY.md"
+    - "SPONSORS.md"
+    - "README.md"
+    - "samples"
+    - "nuget"
 
 jobs:
   build:
