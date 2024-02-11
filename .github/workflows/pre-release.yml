@@ -31,6 +31,9 @@ jobs:
     - uses: dotnet/nbgv@master
       id: nbgv
     - name: Set Package Version
+      run: |
+          echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
+    - name: Set Package Version
       if: startsWith(github.ref, 'refs/heads/develop')
       run: |
           echo "NugetPackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-alpha.${{ steps.nbgv.outputs.VersionRevision }}" >> "$GITHUB_ENV"
@@ -50,9 +53,9 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore
     - name: Build
-      run: dotnet build --configuration Release --no-restore -p:Version=${{ env.NugetPackageVersion }}
+      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ env.NugetPackageVersion }}
     - name: Test
-      run: dotnet test --configuration Release --no-build --verbosity normal
+      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
 
 
 
