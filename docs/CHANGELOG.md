@@ -5,16 +5,16 @@ The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning 2](http://semver.org/).
  
 ## [Unreleased] - 2024-02-11
+
+
+## [8.0.1] - 2024-02-10
  
-- Javascript and NPM package updates to address several security vulnerablities.
-- Account Login and View security patch.
+- Security Update: High priority critical security patches addressing issues outline in #9 and #10.
+
  
 ### Added
-- [PROJECTNAME-XXXX](http://tickets.projectname.com/browse/PROJECTNAME-XXXX)
-  MINOR Ticket title goes here.
-- [PROJECTNAME-YYYY](http://tickets.projectname.com/browse/PROJECTNAME-YYYY)
-  PATCH Ticket title goes here.
- 
+- `IdentityServer8.Security` nuget packages with services to sanitize user input including html, json, xml, javascript, scripts, urls, logs, css, and style sheets.
+
 ### Changed
 - [Account Login Controller] (https://github.com/alexhiggins732/IdentityServer8/issues/9) 
 - [Account Login View] (https://github.com/alexhiggins732/IdentityServer8/issues/9)  
@@ -22,7 +22,9 @@ and this project adheres to [Semantic Versioning 2](http://semver.org/).
 ### Fixed
 - [Security: User-controlled bypass of sensitive method]
   Login Controller and view have have explicit methods to handle login and cancel to address User-controlled bypass of sensitive method
- 
+- [Security: Logging of user-controlled data]
+  Unsanitized user input could be used to forge logs and inject arbitrary commands, including server side includes, xss and sql injection into log files.
+  
 ## [8.0.1] - 2024-02-10
   
 Updated build scripts to use Git Flow branching for SemVer2 compatible nuget packages.
