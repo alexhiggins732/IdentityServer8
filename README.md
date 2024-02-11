@@ -79,10 +79,10 @@ Active development happens on the main branch. This always contains the latest v
 
 ## How to build
 
-* [Install](https://www.microsoft.com/net/download/core#/current) the latest .NET Core 3.1 SDK
+* [Install]([https://www.microsoft.com/net/download/core#/current](https://dotnet.microsoft.com/en-us/download#/current) the latest .NET 8 SDK
 * Install Git
 * Clone this repo
-* Run `build.ps1` or `build.sh` in the root of the cloned repo
+* Run `dotnet build src/identityserver8.slm` or `build.sh` in the root of the cloned repo.
 
 ## Documentation
 For project documentation, please visit [readthedocs](https://IdentityServer8.readthedocs.io).
