@@ -16,6 +16,7 @@
 using IdentityModel;
 using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.DependencyInjection.Extensions;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using System;
@@ -78,7 +79,7 @@ namespace IdentityServer8.Hosting.LocalApiAuthentication
                 return AuthenticateResult.Fail("No Access Token is sent.");
             }
 
-            _logger.LogTrace("Token found: {token}", token);
+            _logger.LogTrace("Token found: {token}", Ioc.Sanitizer.Log.Sanitize(token));
 
             TokenValidationResult result = await _tokenValidator.ValidateAccessTokenAsync(token, Options.ExpectedScope);
 

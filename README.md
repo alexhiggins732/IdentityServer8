@@ -62,7 +62,9 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 | | |
 
 
+## What's New
 
+View the [CHANGELOG](docs/CHANGELOG.md) for the latest changes.
 
 ## About IdentityServer8
 [<img align="right" width="100px" src="https://dotnetfoundation.org/img/logo_big.svg" />](https://dotnetfoundation.org/projects?searchquery=IdentityServer&type=project)
