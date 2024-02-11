@@ -1,6 +1,6 @@
 # Build Status
 
-[![Master|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
+[![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
 [![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
 [![Release|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
 [![Release|CodeQL](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8//actions/workflows/codeql.yml)
