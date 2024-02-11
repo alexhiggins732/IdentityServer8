@@ -84,7 +84,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".github", ".github", "{A717
 		..\.github\PULL_REQUEST_TEMPLATE.md = ..\.github\PULL_REQUEST_TEMPLATE.md
 	EndProjectSection
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ISSUE_TEMPLATE", "ISSUE_TEMPLATE", "{0BC5E76A-A280-49C8-8E96-A43FEA357A4B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "issuetemplate", "issuetemplate", "{0BC5E76A-A280-49C8-8E96-A43FEA357A4B}"
 	ProjectSection(SolutionItems) = preProject
 		..\.github\ISSUE_TEMPLATE\Question.md = ..\.github\ISSUE_TEMPLATE\Question.md
 	EndProjectSection

@@ -1,5 +1,23 @@
-**At this point we cannot accept PRs anymore. Thanks!**
+---
+name: Bug report
+about: Create a report to help us improve
+labels: bug report
+---
 
-This organization is not maintained anymore besides critical security bugfixes (if feasible). This organization will be archived when .NET Core 3.1 end of support is reached (3rd Dec 2022). All new development is happening in the new [Duende Software](https://github.com/duendesoftware) organization. 
+**We can only help you if you are on the latest version.**
 
-The new [Duende IdentityServer](https://duendesoftware.com/products/identityserver) comes with a commercial license but is [free](https://blog.duendesoftware.com/posts/20220111_fair_trade/) for dev/testing/personal projects and companies or individuals making less than 1M USD gross annnual revenue. Please [get in touch with us](https://duendesoftware.com/contact) if you have any question.
+Please only use the issue tracker for bug reports and/or feature requests. For general security questions, or free or commercial support options do __not__ use the issue tracker and instead see [here](http://docs.identityserver.io/en/latest/intro/support.html) for more details.
+
+For bug reports,  include the relevant log files related to your issue. See here how to enable [logging](https://identityserver4.readthedocs.io/en/release/topics/logging.html). Delete this line once you have.
+
+Finally, please keep the issue concise and to the point. If you paste in more code than the text for the issue you are reporting then we will most likely not read it. 
+
+### Issue / Steps to reproduce the problem
+
+
+
+### Relevant parts of the log file
+
+```
+<log goes here>
+```
