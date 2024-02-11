@@ -53,7 +53,7 @@ jobs:
     - name: Restore dependencies
       run: dotnet restore src/IdentityServer8.sln
     - name: Build
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ env.NugetPackageVersion }}
+      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
     - name: Test
       run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
 
