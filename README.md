@@ -29,8 +29,9 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 [![CI/CD|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
 
 ## Documentation
-[Read the docs - identityserver8.readthedocs.io ](http://identityserver8.readthedocs.io/)
 [![Documentation Status](https://readthedocs.org/projects/identityserver8/badge/?version=latest)](https://identityserver8.readthedocs.io/en/latest/?badge=latest)
+[Read the docs - identityserver8.readthedocs.io ](http://identityserver8.readthedocs.io/)
+
 ## Nuget Packages
 
 ### Identity Server 8
