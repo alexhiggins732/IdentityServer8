@@ -14,6 +14,7 @@
 */
 
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
 
 Console.Title = "API";
 
@@ -59,4 +60,6 @@ using (var app = builder.Build())
         ).RequireAuthorization("ApiScope");
 
     await app.RunAsync();
+    if (Debugger.IsAttached)
+        Debugger.Break();
 }

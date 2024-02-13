@@ -1,3 +1,18 @@
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
 public static class Config
 {
     public static IEnumerable<IdentityResource> IdentityResources =>
@@ -18,7 +33,7 @@ public static class Config
         new List<Client>
         {
             // machine to machine client
-            new ()
+            new Client
             {
                 ClientId = "client",
                 ClientSecrets = { new Secret("secret".Sha256()) },
@@ -29,7 +44,7 @@ public static class Config
             },
             
             // interactive ASP.NET Core MVC client
-            new ()
+            new Client
             {
                 ClientId = "mvc",
                 ClientSecrets = { new Secret("secret".Sha256()) },
@@ -45,27 +60,9 @@ public static class Config
                 AllowedScopes = new List<string>
                 {
                     IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile
-                }
-            },
-            // JavaScript Client
-            new ()
-            {
-                ClientId = "js",
-                ClientName = "JavaScript Client",
-                AllowedGrantTypes = GrantTypes.Code,
-                RequireClientSecret = false,
-
-                RedirectUris =           { "https://localhost:5003/callback.html" },
-                PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
-                AllowedCorsOrigins =     { "https://localhost:5003" },
-
-                AllowedScopes =
-                {
-                    IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     "api1"
-                } 
+                }
             }
         };
 }
