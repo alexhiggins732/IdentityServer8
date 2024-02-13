@@ -6,12 +6,20 @@ and this project adheres to [Semantic Versioning 2](http://semver.org/).
  
 ## [Unreleased] - 2024-02-13
 
+Current templates and quickstarts will be added to seperate template and quickstart repositories to continue previous version functionality.
+
+DotNet tool to install template currently under development.
+
+
+## [8.0.3] - 2024-02-12
+
+- Documentation Website: identityserver8.readthedocs.io has been created and is now the official documentation website for IdentityServer8
+- Gitter: A Gitter chat room has been created for IdentityServer8. You can join the chat at https://app.gitter.im/#/room/#identityserver8:gitter.im
 - Framework Upgrade: Upgrade Samples, including Clients, Quickstarts, and Key Management, to use DotNet 8 sdk style.
 - [Quickstarts] (https://github.com/alexhiggins732/IdentityServer8/tree/master/samples/Quickstarts) - Updated Quickstart samples to use Dotnet 8 startup with implicit usings and minimal Api.
 - [Clients] (https://github.com/alexhiggins732/IdentityServer8/tree/master/samples/Clients) - Updated client samples to use Dotnet 8 startup with implicit usings and minimal Api.
-
 - [Key Management] (https://github.com/alexhiggins732/IdentityServer8/tree/master/samples/KeyManagement) - Updated Key management samples to use Dotnet 8 startup with implicit usings and minimal Api. Changed default Entity Framework storage to file system storage as original Key Management is a paid solution. Roadmap: Add DbContext implementation fof key management.
-
+- Client Side Packages: Client Side packages have now been ignored in source and are now installed using LibMan during the build process. This will allow for easier updates and management of client side packages.
 
 ## [8.0.2] - 2024-02-12
 
