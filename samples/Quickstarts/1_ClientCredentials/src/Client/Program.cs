@@ -1,61 +1,53 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
+// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
 // Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
 
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Diagnostics;
+using System.Text.Json;
 
-namespace Client
-{
-    public class Program
+// discover endpoints from metadata
+using HttpClient client = new();
+
+var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
+if (disco.IsError)
+    Exit(disco.Error);
+
+// request token
+var tokenResponse = await client.RequestClientCredentialsTokenAsync(
+    new()
     {
-        private static async Task Main()
-        {
-            // discover endpoints from metadata
-            var client = new HttpClient();
+        Address = disco.TokenEndpoint,
+        ClientId = "client",
+        ClientSecret = "secret",
 
-            var disco = await client.GetDiscoveryDocumentAsync("https://localhost:5001");
-            if (disco.IsError)
-            {
-                Console.WriteLine(disco.Error);
-                return;
-            }
+        Scope = "api1"
+    });
 
-            // request token
-            var tokenResponse = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-                ClientId = "client",
-                ClientSecret = "secret",
+if (tokenResponse.IsError)
+    Exit(tokenResponse.Error);
 
-                Scope = "api1"
-            });
-            
-            if (tokenResponse.IsError)
-            {
-                Console.WriteLine(tokenResponse.Error);
-                return;
-            }
+Console.WriteLine(tokenResponse.Json);
+Console.WriteLine("\n\n");
 
-            Console.WriteLine(tokenResponse.Json);
-            Console.WriteLine("\n\n");
+// call api
+client.SetBearerToken(tokenResponse.AccessToken);
 
-            // call api
-            var apiClient = new HttpClient();
-            apiClient.SetBearerToken(tokenResponse.AccessToken);
+var response = await client.GetAsync("https://localhost:6001/identity");
+if (!response.IsSuccessStatusCode)
+    Console.WriteLine(response.StatusCode);
+else
+{
+    var responseJson = await response.Content.ReadAsStringAsync();
+    var obj = JsonSerializer.Deserialize<JsonElement>(responseJson);
+    Console.WriteLine(obj);
+}
 
-            var response = await apiClient.GetAsync("https://localhost:6001/identity");
-            if (!response.IsSuccessStatusCode)
-            {
-                Console.WriteLine(response.StatusCode);
-            }
-            else
-            {
-                var content = await response.Content.ReadAsStringAsync();
-                Console.WriteLine(JArray.Parse(content));
-            }
-        }
-    }
+Exit("Done!", 0);
+
+void Exit(string message, int exitCode = 1)
+{
+    Console.WriteLine(message);
+    if (Debugger.IsAttached)
+        Debugger.Break();
+    Environment.Exit(exitCode);
 }

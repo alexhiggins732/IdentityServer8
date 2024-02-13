@@ -1,5 +1,4 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+
 
 
 using Microsoft.AspNetCore.Hosting;
@@ -12,70 +11,118 @@ using Serilog.Sinks.SystemConsole.Themes;
 using System;
 using System.Linq;
 
-namespace IdentityServerAspNetIdentity
+ConfigureLogger();
+
+try
 {
-    public class Program
-    {
-        public static int Main(string[] args)
+    var builder = WebApplication.CreateBuilder(args.Where(x => x != "/seed").ToArray());
+
+    var services = builder.Services;
+
+    services.AddControllersWithViews();
+
+    services.AddDbContext<ApplicationDbContext>(options =>
+        options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+    services.AddIdentity<ApplicationUser, IdentityRole>()
+        .AddEntityFrameworkStores<ApplicationDbContext>()
+        .AddDefaultTokenProviders();
+
+    services.AddIdentityServer(options =>
+         {
+             options.Events.RaiseErrorEvents = true;
+             options.Events.RaiseInformationEvents = true;
+             options.Events.RaiseFailureEvents = true;
+             options.Events.RaiseSuccessEvents = true;
+
+             // see https://IdentityServer8.readthedocs.io/en/latest/topics/resources.html
+             options.EmitStaticAudienceClaim = true;
+         })
+         .AddInMemoryIdentityResources(Config.IdentityResources)
+         .AddInMemoryApiScopes(Config.ApiScopes)
+         .AddInMemoryClients(Config.Clients)
+         .AddAspNetIdentity<ApplicationUser>()
+         // not recommended for production - you need to store your key material somewhere secure
+         .AddDeveloperSigningCredential();
+
+
+    services.AddAuthentication()
+        .AddGoogle(options =>
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-                .MinimumLevel.Override("System", LogEventLevel.Warning)
-                .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
-                .Enrich.FromLogContext()
-                // uncomment to write to Azure diagnostics stream
-                //.WriteTo.File(
-                //    @"D:\home\LogFiles\Application\identityserver.txt",
-                //    fileSizeLimitBytes: 1_000_000,
-                //    rollOnFileSizeLimit: true,
-                //    shared: true,
-                //    flushToDiskInterval: TimeSpan.FromSeconds(1))
-                .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
-                .CreateLogger();
+            options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
 
-            try
-            {
-                var seed = args.Contains("/seed");
-                if (seed)
-                {
-                    args = args.Except(new[] { "/seed" }).ToArray();
-                }
+            // register your IdentityServer with Google at https://console.developers.google.com
+            // enable the Google+ API
+            // set the redirect URI to https://localhost:5001/signin-google
+            options.ClientId = "copy client ID from Google here";
+            options.ClientSecret = "copy client secret from Google here";
+        });
 
-                var host = CreateHostBuilder(args).Build();
 
-                if (seed)
-                {
-                    Log.Information("Seeding database...");
-                    var config = host.Services.GetRequiredService<IConfiguration>();
-                    var connectionString = config.GetConnectionString("DefaultConnection");
-                    SeedData.EnsureSeedData(connectionString);
-                    Log.Information("Done seeding database.");
-                    return 0;
-                }
+    using (var app = builder.Build())
+    {
 
-                Log.Information("Starting host...");
-                host.Run();
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                Log.Fatal(ex, "Host terminated unexpectedly.");
-                return 1;
-            }
-            finally
-            {
-                Log.CloseAndFlush();
-            }
+
+        if (args.Contains("/seed"))
+        {
+            Log.Information("Seeding database...");
+            var config = app.Services.GetRequiredService<IConfiguration>();
+            var connectionString = config.GetConnectionString("DefaultConnection");
+            SeedData.EnsureSeedData(connectionString);
+            Log.Information("Done seeding database.");
+            return 0;
         }
 
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .UseSerilog()
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
+        if (app.Environment.IsDevelopment())
+        {
+            app.UseDeveloperExceptionPage();
+            app.UseMigrationsEndPoint();
+            app.UseDatabaseErrorPage();
+        }
+        else
+        {
+            app.UseExceptionHandler("/Home/Error");
+            app.UseHsts();
+        }
+
+
+        app.UseStaticFiles();
+
+        app.UseRouting();
+        app.UseIdentityServer();
+        app.UseAuthorization();
+        app.MapDefaultControllerRoute();
+
+
+        Log.Information("Starting host...");
+
+        await app.RunAsync();
     }
+    return 0;
 }
+catch (Exception ex)
+{
+    Log.Fatal(ex, "Host terminated unexpectedly.");
+    return 1;
+}
+finally
+{
+    Log.CloseAndFlush();
+}
+
+void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
+    .MinimumLevel.Debug()
+    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+    .MinimumLevel.Override("System", LogEventLevel.Warning)
+    .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+    .Enrich.FromLogContext()
+    // uncomment to write to Azure diagnostics stream
+    //.WriteTo.File(
+    //    @"D:\home\LogFiles\Application\identityserver.txt",
+    //    fileSizeLimitBytes: 1_000_000,
+    //    rollOnFileSizeLimit: true,
+    //    shared: true,
+    //    flushToDiskInterval: TimeSpan.FromSeconds(1))
+    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
+    .CreateLogger();
