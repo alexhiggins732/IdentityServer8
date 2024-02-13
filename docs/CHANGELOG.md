@@ -13,6 +13,12 @@ DotNet tool to install template currently under development.
 
 ## [8.0.3] - 2024-02-12
 
+- Security Updates: Addtional priority critical security patches addressing issues outline in #9 and #10.
+ - [Security: User-controlled bypass of sensitive method] - Login Controller and view have have explicit methods to handle login and cancel to address User-controlled bypass of sensitive method
+ - [Security: Logging of user-controlled data] - Unsanitized user input could be used to forge logs and inject arbitrary commands, including server side includes, xss and sql injection into log files.
+- [Maitenance]: Removed over half a million lines of code from the orginal Identity Server 4 code base using packages and libaries.
+ - This will allow for easier maintenance and updates to the code base.
+ - Developrs can now focus on the core functionality of Identity Server 8 and use LibMan to manage client side packages and keep packages up to date.
 - Documentation Website: identityserver8.readthedocs.io has been created and is now the official documentation website for IdentityServer8
 - Gitter: A Gitter chat room has been created for IdentityServer8. You can join the chat at https://app.gitter.im/#/room/#identityserver8:gitter.im
 - Framework Upgrade: Upgrade Samples, including Clients, Quickstarts, and Key Management, to use DotNet 8 sdk style.

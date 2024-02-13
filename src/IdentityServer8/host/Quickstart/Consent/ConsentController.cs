@@ -25,6 +25,7 @@ using System.Threading.Tasks;
 using IdentityServer8.Validation;
 using System.Collections.Generic;
 using System;
+using Microsoft.DependencyInjection.Extensions;
 
 namespace IdentityServerHost.Quickstart.UI
 {
@@ -181,7 +182,7 @@ namespace IdentityServerHost.Quickstart.UI
             }
             else
             {
-                _logger.LogError("No consent request matching request: {0}", returnUrl);
+                _logger.LogError("No consent request matching request: {0}", returnUrl.SanitizeForLog());
             }
 
             return null;

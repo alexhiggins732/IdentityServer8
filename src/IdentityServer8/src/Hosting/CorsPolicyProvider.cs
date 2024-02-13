@@ -65,7 +65,8 @@ namespace IdentityServer8.Hosting
                 var path = context.Request.Path;
                 if (IsPathAllowed(path))
                 {
-                    _logger.LogDebug("CORS request made for path: {path} from origin: {origin}", path, origin);
+                    var sanitizedOrigin = origin.SanitizeForLog();
+                    _logger.LogDebug("CORS request made for path: {path} from origin: {origin}", path.SanitizeForLog(), sanitizedOrigin);
 
                     // manually resolving this from DI because this: 
                     // https://github.com/aspnet/CORS/issues/105
@@ -73,12 +74,12 @@ namespace IdentityServer8.Hosting
 
                     if (await corsPolicyService.IsOriginAllowedAsync(origin))
                     {
-                        _logger.LogDebug("CorsPolicyService allowed origin: {origin}", Ioc.Sanitizer.Log.Sanitize(origin));
+                        _logger.LogDebug("CorsPolicyService allowed origin: {origin}", sanitizedOrigin);
                         return Allow(origin);
                     }
                     else
                     {
-                        _logger.LogWarning("CorsPolicyService did not allow origin: {origin}", Ioc.Sanitizer.Log.Sanitize(origin));
+                        _logger.LogWarning("CorsPolicyService did not allow origin: {origin}", sanitizedOrigin);
                     }
                 }
                 else
