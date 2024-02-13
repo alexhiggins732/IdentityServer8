@@ -2,4 +2,18 @@
   <ImportGroup>
 	 <Import Project="../Directory.Build.props" />
   </ImportGroup>
+  <ItemGroup>  
+	<None Remove="$(SolutionDir)../icon.jpg"/>
+	<None Remove="$(SolutionDir)../LICENSE" />
+	<None Remove="$(SolutionDir)../README.md" />
+  </ItemGroup>
+  <PropertyGroup>
+	<SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="HigginsSoft.IdentityServer8" Version="$(IdentityServerVersion)" />
+	<PackageVersion Include="HigginsSoft.IdentityServer8.AspNetIdentity" Version="$(IdentityServerVersion)" />
+    <PackageVersion Include="HigginsSoft.IdentityServer8.EntityFramework" Version="$(IdentityServerVersion)" />
+  </ItemGroup>
+  
 </Project>

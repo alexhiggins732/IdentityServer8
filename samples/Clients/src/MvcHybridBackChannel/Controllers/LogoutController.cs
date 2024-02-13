@@ -1,17 +1,12 @@
-﻿using Clients;
+using Clients;
 using IdentityModel;
 using IdentityModel.Client;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json.Linq;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Net.Http;
 using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace MvcHybrid.Controllers
 {
@@ -28,8 +23,8 @@ namespace MvcHybrid.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Index(string logout_token)
         {
-            Response.Headers.Add("Cache-Control", "no-cache, no-store");
-            Response.Headers.Add("Pragma", "no-cache");
+            Response.Headers.Append("Cache-Control", "no-cache, no-store");
+            Response.Headers.Append("Pragma", "no-cache");
 
             try
             {
@@ -60,9 +55,9 @@ namespace MvcHybrid.Controllers
             var eventsJson = claims.FindFirst("events")?.Value;
             if (String.IsNullOrWhiteSpace(eventsJson)) throw new Exception("Invalid logout token");
 
-            var events = JObject.Parse(eventsJson);
+            var events =JsonSerializer.Deserialize<JsonElement>(eventsJson);
             var logoutEvent = events.TryGetValue("http://schemas.openid.net/event/backchannel-logout");
-            if (logoutEvent == null) throw new Exception("Invalid logout token");
+            if (logoutEvent.ValueKind == JsonValueKind.Null) throw new Exception("Invalid logout token");
 
             return claims;
         }

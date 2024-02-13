@@ -1,4 +1,4 @@
-﻿using Clients;
+using Clients;
 using IdentityModel;
 using IdentityModel.Client;
 using Microsoft.IdentityModel.Tokens;
@@ -8,7 +8,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System.Threading.Tasks;
 
 namespace ConsolePrivateKeyJwtClient
@@ -78,7 +78,8 @@ namespace ConsolePrivateKeyJwtClient
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            var json = JsonSerializer.Deserialize<JsonElement>(response);
+            Console.WriteLine(json);
         }
 
         private static string CreateClientToken(SigningCredentials credential, string clientId, string audience)

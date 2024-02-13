@@ -1,6 +1,6 @@
-﻿using Clients;
+using Clients;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
@@ -61,7 +61,8 @@ namespace ConsoleResourceOwnerFlowPublic
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            var json = JsonSerializer.Deserialize<JsonElement>(response);
+            Console.WriteLine(json);
         }
     }
 }

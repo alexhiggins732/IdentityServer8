@@ -1,11 +1,7 @@
 using Clients;
 using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using System;
 using System.IdentityModel.Tokens.Jwt;
-
 namespace MvcCode
 {
     public class Startup
@@ -80,7 +76,7 @@ namespace MvcCode
             services.AddAccessTokenManagement();
 
             // add HTTP client to call protected API
-            services.AddUserAccessTokenClient("client", client =>
+            services.AddUserAccessTokenHttpClient("client", configureClient:  client =>
             {
                 client.BaseAddress = new Uri(Constants.SampleApi);
             });

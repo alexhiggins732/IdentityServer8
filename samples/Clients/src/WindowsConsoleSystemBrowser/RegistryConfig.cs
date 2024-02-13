@@ -1,9 +1,11 @@
-﻿using System;
+using System;
 using System.Reflection;
+using System.Runtime.Versioning;
 using Microsoft.Win32;
 
 namespace WindowsConsoleSystemBrowser
 {
+   
     class RegistryConfig
     {
         public RegistryConfig(string uriScheme)
@@ -37,6 +39,7 @@ namespace WindowsConsoleSystemBrowser
         const string UrlProtocolValueName = "URL Protocol";
         const string UrlProtocolValueValue = "";
 
+        [SupportedOSPlatform("windows")]
         bool NeedToAddKeys()
         {
             var addKeys = false;
@@ -59,6 +62,7 @@ namespace WindowsConsoleSystemBrowser
             return addKeys;
         }
 
+        [SupportedOSPlatform("windows")]
         void AddRegKeys()
         {
             using (var classesKey = Registry.CurrentUser.OpenSubKey(RootKeyPath, true))
