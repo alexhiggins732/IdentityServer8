@@ -26,7 +26,7 @@
 
         <PackageProjectUrl>https://github.com/alexhiggins732/IdentityServer8</PackageProjectUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageReleaseNotes>https://github.com/IdentityServer/IdentityServer8/releases</PackageReleaseNotes>
+        <PackageReleaseNotes>https://github.com/alexhiggins732/IdentityServer8/releases</PackageReleaseNotes>
 
         <!-- Declare that the Repository URL can be published to NuSpec -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>

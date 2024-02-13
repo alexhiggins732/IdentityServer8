@@ -77,7 +77,7 @@ It is part of the [.NET Foundation](https://www.dotnetfoundation.org/), and oper
 For project documentation, please visit [readthedocs](https://IdentityServer8.readthedocs.io).
 
 ## Branch structure
-Active development happens on the main branch. This always contains the latest version. Each (pre-) release is tagged with the corresponding version. The [aspnetcore1](https://github.com/IdentityServer/IdentityServer8/tree/aspnetcore1) and [aspnetcore2](https://github.com/IdentityServer/IdentityServer8/tree/aspnetcore2) branches contain the latest versions of the older ASP.NET Core based versions.
+Active development happens on the main branch. This always contains the latest version. Each (pre-) release is tagged with the corresponding version. The [aspnetcore1](https://github.com/alexhiggins732/IdentityServer8/tree/aspnetcore1) and [aspnetcore2](https://github.com/alexhiggins732/IdentityServer8/tree/aspnetcore2) branches contain the latest versions of the older ASP.NET Core based versions.
 
 ## How to build
 
@@ -89,10 +89,10 @@ Active development happens on the main branch. This always contains the latest v
 ## Documentation
 For project documentation, please visit [readthedocs](https://IdentityServer8.readthedocs.io).
 
-See [here](http://docs.identityserver.io/en/aspnetcore1/) for the 1.x docs, and [here](http://docs.identityserver.io/en/aspnetcore2/) for the 2.x docs.
+See [here](http://docs.identityserver8.io/en/aspnetcore1/) for the 1.x docs, and [here](http://docs.identityserver8.io/en/aspnetcore2/) for the 2.x docs.
 
 ## Bug reports and feature requests
-Please use the [issue tracker](https://github.com/IdentityServer/IdentityServer8/issues) for that. We only support the latest version for free. For older versions, you can get a commercial support agreement with us.
+Please use the [issue tracker](https://github.com/alexhiggins732/IdentityServer8/issues) for that. We only support the latest version for free. For older versions, you can get a commercial support agreement with us.
 
 ## Commercial and Community Support
 If you need help with implementing IdentityServer8 or your security architecture in general, there are both free and commercial support options.
@@ -112,7 +112,7 @@ This will help us devote more time to answering questions and doing feature deve
 [ExtraNetUserManager](https://www.extranetusermanager.com/)  
 [Knab](https://www.knab.nl/)
 
-You can see a list of our current sponsors [here](https://github.com/IdentityServer/IdentityServer8/blob/main/SPONSORS.md) - and for companies we have some nice advertisement options as well.
+You can see a list of our current sponsors [here](https://github.com/alexhiggins732/IdentityServer8/blob/main/SPONSORS.md) - and for companies we have some nice advertisement options as well.
 
 ## Acknowledgements
 IdentityServer8 is built using the following great open source projects and free services:
@@ -126,4 +126,4 @@ IdentityServer8 is built using the following great open source projects and free
 * [Fluent Assertions](http://www.fluentassertions.com/)
 * [GitReleaseManager](https://github.com/GitTools/GitReleaseManager)
 
-..and last but not least a big thanks to all our [contributors](https://github.com/IdentityServer/IdentityServer8/graphs/contributors)!
+..and last but not least a big thanks to all our [contributors](https://github.com/alexhiggins732/IdentityServer8/graphs/contributors)!

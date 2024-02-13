@@ -39,7 +39,7 @@ In a nutshell, a rollover typically works like this:
 This requires that clients and APIs use the discovery document, and also have a feature to periodically refresh their configuration.
 
 Brock wrote a more detailed `blog post <https://brockallen.com/2019/08/09/identityserver-and-signing-key-rotation/>`_ about key rotation, and also
-created a `commercial component <https://www.identityserver.com/products/keymanagement>`_, that can automatically take care of all those details.
+created a `commercial component <https://www.identityserver8.com/products/keymanagement>`_, that can automatically take care of all those details.
 
 Data protection
 ^^^^^^^^^^^^^^^

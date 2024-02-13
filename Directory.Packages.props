@@ -51,6 +51,7 @@
     <PackageVersion Include="IdentityModel.AspNetCore" Version="4.3.0" />
     <PackageVersion Include="IdentityModel.AspNetCore.AccessTokenValidation" Version="1.0.0-preview.3" />
     <PackageVersion Include="IdentityModel.AspNetCore.OAuth2Introspection" Version="4.0.1" />
+	<PackageVersion Include="IdentityServer4.KeyManagement" Version="2.1.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Certificate" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspnetVersion)" />

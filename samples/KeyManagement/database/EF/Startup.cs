@@ -1,11 +1,22 @@
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
 
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
 
 using System;
 using System.Linq;
 using IdentityModel;
-using IdentityServer8.KeyManagement.EntityFramework;
+using IdentityServer4.KeyManagement;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.DataProtection;
 using Microsoft.AspNetCore.Hosting;
@@ -38,11 +49,12 @@ namespace sample
             var cn = Configuration.GetConnectionString("db");
 
             services.AddDataProtection()
-                .PersistKeysToDatabase(new DatabaseKeyManagementOptions
-                {
-                    ConfigureDbContext = b => b.UseSqlServer(cn),
-                    LoggerFactory = LoggerFactory,
-                });
+                .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Environment.ContentRootPath, "dataprotectionkeys")));
+                //.PersistKeysToDatabase(new DatabaseKeyManagementOptions
+                //{
+                //    ConfigureDbContext = b => b.UseSqlServer(cn),
+                //    LoggerFactory = LoggerFactory,
+                //});
                 //.ProtectKeysWithCertificate(cert);
 
             var builder = services.AddIdentityServer()
@@ -53,7 +65,7 @@ namespace sample
                     options => // configuring options is optional :)
                     {
                         options.DeleteRetiredKeys = true;
-                        options.KeyType = IdentityServer8.KeyManagement.KeyType.RSA;
+                        options.KeyType = IdentityServer4.KeyManagement.KeyType.RSA;
 
                         // all of these values in here are changed for local testing
                         options.InitializationDuration = TimeSpan.FromSeconds(5);
@@ -64,13 +76,14 @@ namespace sample
                         options.KeyRetirement = options.KeyActivationDelay * 3;
 
                         // You can get your own license from:
-                        // https://www.identityserver.com/products/KeyManagement
+                        // https://www.identityserver8.com/products/KeyManagement
                         options.Licensee = "your licensee";
                         options.License = "your license key";
                     })
-                    .PersistKeysToDatabase(new DatabaseKeyManagementOptions {
-                        ConfigureDbContext = b => b.UseSqlServer(cn),
-                    })
+                    .PersistKeysToFileSystem(new DirectoryInfo(Path.Combine(Environment.ContentRootPath, "signingkeys")).FullName)
+                        //.PersistKeysToDatabase(new DatabaseKeyManagementOptions {
+                        //    ConfigureDbContext = b => b.UseSqlServer(cn),
+                        //})
                     .ProtectKeysWithDataProtection()
                     //.EnableInMemoryCaching() // caching disabled unless explicitly enabled
                 ;

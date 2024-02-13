@@ -19,7 +19,7 @@ In other words - owning your federation gateway gives you a lot of control over 
 
 Implementation
 ^^^^^^^^^^^^^^
-Our `quick start UI <https://github.com/IdentityServer/IdentityServer8.Quickstart.UI>`_ utilizes some of the below features. Also check out the :ref:`external authentication quickstart <refExternalAuthenticationQuickstart>` and the 
+Our `quick start UI <https://github.com/alexhiggins732/IdentityServer8.Quickstart.UI>`_ utilizes some of the below features. Also check out the :ref:`external authentication quickstart <refExternalAuthenticationQuickstart>` and the 
 docs about :ref:`external providers <refExternalIdentityProviders>`.
 
 * You can add support for external identity providers by adding authentication handlers to your IdentityServer application.

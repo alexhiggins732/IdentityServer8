@@ -67,10 +67,10 @@ IdentityServer setup
 Next step is to enable MTLS in IdentityServer. For that you need to specify the name of the certificate authentication handler you set-up in the last step (defaults to ``Certificate``),
 and the MTLS hosting strategy.
 
-In IdentityServer, the mutual TLS endpoints, can be configured in three ways (assuming IdentityServer is running on ``https://identityserver.io``:
+In IdentityServer, the mutual TLS endpoints, can be configured in three ways (assuming IdentityServer is running on ``https://identityserver8.io``:
 
-* path-based - endpoints located beneath the path ``~/connect/mtls``, e.g. ``https://identityserver.io/connect/mtls/token``.
-* sub-domain based - endpoints are on a sub-domain of the main server, e.g. ``https://mtls.identityserver.io/connect/token``.
+* path-based - endpoints located beneath the path ``~/connect/mtls``, e.g. ``https://identityserver8.io/connect/mtls/token``.
+* sub-domain based - endpoints are on a sub-domain of the main server, e.g. ``https://mtls.identityserver8.io/connect/token``.
 * domain-based - endpoints are on a different domain, e.g. ``https://identityserver-mtls.io``.  
 
 For example::
@@ -188,7 +188,7 @@ Below is an example how an API in ASP.NET Core might be configured for both acce
     services.AddAuthentication("token")
         .AddIdentityServerAuthentication("token", options =>
         {
-            options.Authority = "https://identityserver.io";
+            options.Authority = "https://identityserver8.io";
             options.ApiName = "api1";
 
         })

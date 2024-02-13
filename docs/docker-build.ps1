@@ -1,0 +1,1 @@
+docker build -t sphinx-doc/sphinx_rtd_theme .

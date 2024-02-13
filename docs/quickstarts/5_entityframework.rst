@@ -45,7 +45,7 @@ As you use ``IdentityServer8.EntityFramework.Storage`` and upgrade over time, yo
 One approach for managing those changes is to use `EF migrations <https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/index>`_, which is what we’ll use in this quickstart.
 If migrations are not your preference, then you can manage the schema changes in any way you see fit.
 
-.. Note:: You can find the `latest SQL scripts <https://github.com/IdentityServer/IdentityServer8/tree/main/src/EntityFramework.Storage/migrations/SqlServer/Migrations>`_ for SqlServer in the IdentityServer8.EntityFramework.Storage repository.
+.. Note:: You can find the `latest SQL scripts <https://github.com/alexhiggins732/IdentityServer8/tree/main/src/EntityFramework.Storage/migrations/SqlServer/Migrations>`_ for SqlServer in the IdentityServer8.EntityFramework.Storage repository.
 
 Configuring the Stores
 ^^^^^^^^^^^^^^^^^^^^^^

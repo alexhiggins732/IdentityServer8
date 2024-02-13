@@ -69,7 +69,7 @@ Once the resource is defined, you can give access to it to a client via the ``Al
 
 The client can then request the resource using the scope parameter (other parameters omitted)::
 
-    https://demo.identityserver.io/connect/authorize?client_id=client&scope=openid profile
+    https://demo.identityserver8.io/connect/authorize?client_id=client&scope=openid profile
 
 IdentityServer will then use the scope names to create a list of requested claim types, 
 and present that to your implementation of the :ref:`profile service <refProfileService>`.

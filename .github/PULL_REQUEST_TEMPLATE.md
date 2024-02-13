@@ -6,7 +6,7 @@ labels: bug report
 
 **We can only help you if you are on the latest version.**
 
-Please only use the issue tracker for bug reports and/or feature requests. For general security questions, or free or commercial support options do __not__ use the issue tracker and instead see [here](http://docs.identityserver.io/en/latest/intro/support.html) for more details.
+Please only use the issue tracker for bug reports and/or feature requests. For general security questions, or free or commercial support options do __not__ use the issue tracker and instead see [here](http://docs.identityserver8.io/en/latest/intro/support.html) for more details.
 
 For bug reports,  include the relevant log files related to your issue. See here how to enable [logging](https://identityserver4.readthedocs.io/en/release/topics/logging.html). Delete this line once you have.
 

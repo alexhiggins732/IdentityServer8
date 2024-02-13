@@ -5,7 +5,7 @@ Entity Framework Support
 An EntityFramework-based implementation is provided for the configuration and operational data extensibility points in IdentityServer.
 The use of EntityFramework allows any EF-supported database to be used with this library.
 
-The code for this library is located `here <https://github.com/IdentityServer/IdentityServer8/tree/main/src/EntityFramework>`_ (with the underlying storage code `here <https://github.com/IdentityServer/IdentityServer8/tree/main/src/EntityFramework.Storage>`_) and the NuGet package is `here <https://www.nuget.org/packages/IdentityServer8.EntityFramework>`_.
+The code for this library is located `here <https://github.com/alexhiggins732/IdentityServer8/tree/main/src/EntityFramework>`_ (with the underlying storage code `here <https://github.com/alexhiggins732/IdentityServer8/tree/main/src/EntityFramework.Storage>`_) and the NuGet package is `here <https://www.nuget.org/packages/HigginsSoft.IdentityServer8.EntityFramework>`_.
 
 The features provided by this library are broken down into two main areas: configuration store and operational store support.
 These two different areas can be used independently or together, based upon the needs of the hosting application.
@@ -112,4 +112,4 @@ You are expected to manage the database creation, schema changes, and data migra
 Using EF migrations is one possible approach to this. 
 If you do wish to use migrations, then see the :ref:`EF quickstart <refEntityFrameworkQuickstart>` for samples on how to get started, or consult the Microsoft `documentation on EF migrations <https://docs.microsoft.com/en-us/ef/core/managing-schemas/migrations/index>`_.
 
-We also publish `sample SQL scripts <https://github.com/IdentityServer/IdentityServer8/tree/main/src/EntityFramework.Storage/migrations/SqlServer/Migrations>`_ for the current version of the database schema.
+We also publish `sample SQL scripts <https://github.com/alexhiggins732/IdentityServer8/tree/main/src/EntityFramework.Storage/migrations/SqlServer/Migrations>`_ for the current version of the database schema.
