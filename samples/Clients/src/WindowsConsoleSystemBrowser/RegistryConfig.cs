@@ -28,6 +28,8 @@ namespace WindowsConsoleSystemBrowser
             CustomUriScheme = uriScheme;
         }
 
+
+        [SupportedOSPlatform("windows")]
         public void Configure()
         {
             if (NeedToAddKeys()) AddRegKeys();
