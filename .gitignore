@@ -296,10 +296,4 @@ __pycache__/
 
 /shared/nginx/certs/
 lib/
-wwwroot/lib
-wwwroot\lib
-lib\*
-lib/*
-wwwroot/lib/*
-/src/AspNetIdentity/host/wwwroot/lib
-/src/AspNetIdentity/host/wwwroot/lib/bootstrap/dist/css/bootstrap-grid.css
+
