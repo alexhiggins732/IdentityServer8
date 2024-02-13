@@ -28,7 +28,7 @@ In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet 
 [![Develop|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
 [![CI/CD|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
 
-#Documentation
+## Documentation
 [Read the docs - identityserver8.readthedocs.io ](http://identityserver8.readthedocs.io/)
 [![Documentation Status](https://readthedocs.org/projects/identityserver8/badge/?version=latest)](https://identityserver8.readthedocs.io/en/latest/?badge=latest)
 ## Nuget Packages
