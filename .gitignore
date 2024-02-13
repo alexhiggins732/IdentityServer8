@@ -295,4 +295,4 @@ __pycache__/
 
 
 /shared/nginx/certs/
-wwwroot/lib/
+lib/
