@@ -55,7 +55,7 @@ using (var app = builder.Build())
         .UseAuthorization();
 
     app.MapGet("/identity", (HttpContext context) =>
-            new JsonResult(context?.User?.Claims.Select(c=> new { c.Type, c.Value }))
+            new JsonResult(context?.User?.Claims.Select(c => new { c.Type, c.Value }))
         ).RequireAuthorization("ApiScope");
 
     await app.RunAsync();

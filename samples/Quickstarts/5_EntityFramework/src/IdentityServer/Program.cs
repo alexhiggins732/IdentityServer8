@@ -24,7 +24,6 @@ try
 
     var services = builder.Services;
 
-
     services.AddControllersWithViews();
 
     var migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name;
@@ -63,12 +62,13 @@ try
             options.ClientSecret = "secret";
             options.ResponseType = "code";
 
-            options.TokenValidationParameters = new TokenValidationParameters
+            options.TokenValidationParameters = new()
             {
                 NameClaimType = "name",
                 RoleClaimType = "role"
             };
         });
+
 
     using (var app = builder.Build())
     {

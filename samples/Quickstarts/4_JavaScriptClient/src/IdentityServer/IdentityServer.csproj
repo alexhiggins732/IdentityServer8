@@ -1,7 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk.Web">
   <ItemGroup>
-    <PackageReference Include="jQuery" />
-    <PackageReference Include="jQuery.validation" />
     <PackageReference Include="HigginsSoft.IdentityServer8" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
     <PackageReference Include="Serilog.AspNetCore" />  
