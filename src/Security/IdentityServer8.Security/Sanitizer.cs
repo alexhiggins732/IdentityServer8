@@ -327,7 +327,7 @@ namespace IdentityServer8.Security
             Log = sanitizerFactory.Create<ILogSanitizer>();
         }
 
-        
+
         public IHtmlSanitizer Html { get; }
         public IXmlSanitizer Xml { get; }
         public IJsonSanitizer Json { get; }
@@ -371,46 +371,53 @@ namespace Microsoft.DependencyInjection.Extensions
             return Ioc.Sanitizer.Log.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForHtml(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForHtml(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Html.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForXml(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForXml(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Xml.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForJson(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForJson(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Json.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForUrl(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForUrl(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Url.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForCss(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForCss(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Css.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForScript(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForScript(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Script.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForStyle(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForStyle(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Style.Sanitize(input?.ToString(), mode);
         }
 
-        public static string? SanitizeForSql(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        public static string? SanitizeForSql(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Sql.Sanitize(input?.ToString(), mode);
         }
 
+        public static string? SantizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            var decoded = Uri.UnescapeDataString(input?.ToString() ?? "");
+            decoded.SanitizeForHtml();
+            var escaped = Uri.EscapeDataString(decoded);
+            return escaped;
+        }
 
     }
 
