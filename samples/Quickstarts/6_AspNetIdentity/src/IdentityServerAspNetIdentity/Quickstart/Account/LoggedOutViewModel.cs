@@ -1,19 +1,29 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
 
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
-namespace IdentityServerHost.Quickstart.UI
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+namespace IdentityServerHost.Quickstart.UI;
+
+public class LoggedOutViewModel
 {
-    public class LoggedOutViewModel
-    {
-        public string PostLogoutRedirectUri { get; set; }
-        public string ClientName { get; set; }
-        public string SignOutIframeUrl { get; set; }
+    public string PostLogoutRedirectUri { get; set; }
+    public string ClientName { get; set; }
+    public string SignOutIframeUrl { get; set; }
 
-        public bool AutomaticRedirectAfterSignOut { get; set; }
+    public bool AutomaticRedirectAfterSignOut { get; set; }
 
-        public string LogoutId { get; set; }
-        public bool TriggerExternalSignout => ExternalAuthenticationScheme != null;
-        public string ExternalAuthenticationScheme { get; set; }
-    }
+    public string LogoutId { get; set; }
+    public bool TriggerExternalSignout => ExternalAuthenticationScheme != null;
+    public string ExternalAuthenticationScheme { get; set; }
 }

@@ -1,8 +1,22 @@
-﻿using IdentityModel;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using IdentityModel;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
-using System;
 using System.Text;
+using System.Text.Json;
 
 namespace Clients
 {
@@ -23,8 +37,10 @@ namespace Clients
                     var header = parts[0];
                     var claims = parts[1];
 
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(header))));
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(claims))));
+                    var headerJson = Encoding.UTF8.GetString(Base64Url.Decode(header));
+                    var claimsJson = Encoding.UTF8.GetString(Base64Url.Decode(claims));
+                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(headerJson));
+                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(claimsJson));
                 }
             }
             else

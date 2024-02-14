@@ -1,9 +1,20 @@
-using IdentityServer8.KeyManagement.EntityFramework;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
+using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
 namespace migrations
 {
@@ -20,10 +31,10 @@ namespace migrations
         {
             var cn = Configuration.GetConnectionString("db");
 
-            services.AddKeyManagementDbContext(new DatabaseKeyManagementOptions {
-                ConfigureDbContext = b =>
-                     b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName))
-            });
+            //services.AddKeyManagementDbContext(new DatabaseKeyManagementOptions {
+            //    ConfigureDbContext = b =>
+            //         b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName))
+            //});
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

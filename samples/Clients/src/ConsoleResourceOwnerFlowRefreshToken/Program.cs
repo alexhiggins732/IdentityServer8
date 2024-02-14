@@ -1,7 +1,22 @@
-﻿using Clients;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using Clients;
 using IdentityModel;
 using IdentityModel.Client;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
 using System;
 using System.Net.Http;
 using System.Text;
@@ -92,7 +107,8 @@ namespace ConsoleResourceOwnerFlowRefreshToken
             var response = await client.GetStringAsync("identity");
 
             "\n\nService claims:".ConsoleGreen();
-            Console.WriteLine(JArray.Parse(response));
+            var json = JsonSerializer.Deserialize<JsonElement>(response);
+            Console.WriteLine(json);
         }
 
         private static void ShowResponse(TokenResponse response)
@@ -110,8 +126,10 @@ namespace ConsoleResourceOwnerFlowRefreshToken
                     var header = parts[0];
                     var claims = parts[1];
 
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(header))));
-                    Console.WriteLine(JObject.Parse(Encoding.UTF8.GetString(Base64Url.Decode(claims))));
+                    var headerJson = Encoding.UTF8.GetString(Base64Url.Decode(header));
+                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(header));
+                    var claimsJson = Encoding.UTF8.GetString(Base64Url.Decode(claims));
+                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(claims));
                 }
             }
             else

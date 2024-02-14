@@ -1,11 +1,23 @@
-﻿using Clients;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using Clients;
 using IdentityModel.Client;
 using IdentityModel.OidcClient;
-using Newtonsoft.Json.Linq;
 using Serilog;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
+using System.Text.Json;
 
 namespace ConsoleClientWithBrowser
 {
@@ -123,7 +135,7 @@ namespace ConsoleClientWithBrowser
 
             if (response.IsSuccessStatusCode)
             {
-                var json = JArray.Parse(await response.Content.ReadAsStringAsync());
+                var json = JsonSerializer.Deserialize<JsonElement>(await response.Content.ReadAsStringAsync());
                 Console.WriteLine("\n\n");
                 Console.WriteLine(json);
             }

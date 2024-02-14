@@ -8,7 +8,7 @@ You can add those additional protocol endpoints either as middleware or using e.
 In both cases you have access to the ASP.NET Core DI system which allows re-using our
 internal services like access to client definitions or key material.
 
-A sample for adding WS-Federation support can be found `here <https://github.com/IdentityServer/IdentityServer8.WsFederation>`_.
+A sample for adding WS-Federation support can be found `here <https://github.com/alexhiggins732/IdentityServer8.WsFederation>`_.
 
 Typical authentication workflow
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

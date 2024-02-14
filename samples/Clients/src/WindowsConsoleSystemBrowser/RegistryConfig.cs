@@ -1,9 +1,26 @@
-﻿using System;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using System;
 using System.Reflection;
+using System.Runtime.Versioning;
 using Microsoft.Win32;
 
 namespace WindowsConsoleSystemBrowser
 {
+   
     class RegistryConfig
     {
         public RegistryConfig(string uriScheme)
@@ -11,6 +28,8 @@ namespace WindowsConsoleSystemBrowser
             CustomUriScheme = uriScheme;
         }
 
+
+        [SupportedOSPlatform("windows")]
         public void Configure()
         {
             if (NeedToAddKeys()) AddRegKeys();
@@ -37,6 +56,7 @@ namespace WindowsConsoleSystemBrowser
         const string UrlProtocolValueName = "URL Protocol";
         const string UrlProtocolValueValue = "";
 
+        [SupportedOSPlatform("windows")]
         bool NeedToAddKeys()
         {
             var addKeys = false;
@@ -59,6 +79,7 @@ namespace WindowsConsoleSystemBrowser
             return addKeys;
         }
 
+        [SupportedOSPlatform("windows")]
         void AddRegKeys()
         {
             using (var classesKey = Registry.CurrentUser.OpenSubKey(RootKeyPath, true))

@@ -26,7 +26,7 @@ namespace IdentityServer8.Security
     }
     public interface IInputSanitizer
     {
-        public string Sanitize(string input, SanitizerMode mode = SanitizerMode.Clean);
+        public string? Sanitize(string? input, SanitizerMode mode = SanitizerMode.Clean);
     }
     public interface ISanitizerFactory
     {
@@ -65,12 +65,12 @@ namespace IdentityServer8.Security
 
     public interface ISanitizerService
     {
-        string Sanitize(string input, SanitizerType type, SanitizerMode mode);
+        string? Sanitize(string? input, SanitizerType type, SanitizerMode mode);
     }
 
     public abstract class SanitizerServiceBase : ISanitizerService
     {
-        public abstract string Sanitize(string input, SanitizerType type, SanitizerMode mode);
+        public abstract string? Sanitize(string? input, SanitizerType type, SanitizerMode mode);
     }
     public class SanitizerService : SanitizerServiceBase
     {
@@ -80,7 +80,7 @@ namespace IdentityServer8.Security
         {
             _sanitizerFactory = sanitizerFactory;
         }
-        public override string Sanitize(string input, SanitizerType type, SanitizerMode mode)
+        public override string? Sanitize(string? input, SanitizerType type, SanitizerMode mode)
         {
             var sanitizer = _sanitizerFactory.Create(type);
             return sanitizer.Sanitize(input, mode);
@@ -102,7 +102,7 @@ namespace IdentityServer8.Security
             _sanitize = sanitizer;
         }
 
-        public virtual string Sanitize(string input, SanitizerMode mode = SanitizerMode.Debug)
+        public virtual string? Sanitize(string? input, SanitizerMode mode = SanitizerMode.Debug)
         {
             switch (mode)
             {
@@ -128,8 +128,10 @@ namespace IdentityServer8.Security
         }
 
 
-        public string Mask(string input, int unmaskedChars = 4, bool unmaskFirst = false)
+        public string? Mask(string? input, int unmaskedChars = 4, bool unmaskFirst = false)
         {
+            if (string.IsNullOrEmpty(input))
+                return input;
             if (unmaskedChars == 0)
             {
                 return "********";
@@ -150,7 +152,7 @@ namespace IdentityServer8.Security
             }
         }
 
-        public string Clean(string input)
+        public string Clean(string? input)
         {
             input = input ?? string.Empty;
             input = input.Replace("\r", " ").Replace("\n", " ");
@@ -240,8 +242,10 @@ namespace IdentityServer8.Security
         {
 
         }
-        public override string Sanitize(string input, SanitizerMode mode)
+        public override string? Sanitize(string? input, SanitizerMode mode)
         {
+            if (input is null)
+                return input;
 
             switch (mode)
             {
@@ -361,6 +365,53 @@ namespace Microsoft.DependencyInjection.Extensions
 
             return services;
         }
+
+        public static string? SanitizeForLog(this object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Log.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForHtml(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Html.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForXml(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Xml.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForJson(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Json.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForUrl(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Url.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForCss(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Css.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForScript(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Script.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForStyle(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Style.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string? SanitizeForSql(object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            return Ioc.Sanitizer.Sql.Sanitize(input?.ToString(), mode);
+        }
+
+
     }
 
 }

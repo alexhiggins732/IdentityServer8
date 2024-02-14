@@ -42,7 +42,7 @@ namespace IdentityServerHost.Configuration
                 {
                     ClientId = "js_oidc",
                     ClientName = "JavaScript OIDC Client",
-                    ClientUri = "http://identityserver.io",
+                    ClientUri = "http://identityserver8.io",
                     
                     AllowedGrantTypes = GrantTypes.Code,
                     RequireClientSecret = false,
@@ -94,7 +94,7 @@ namespace IdentityServerHost.Configuration
                 {
                     ClientId = "mvc.code",
                     ClientName = "MVC Code Flow",
-                    ClientUri = "http://identityserver.io",
+                    ClientUri = "http://identityserver8.io",
 
                     ClientSecrets =
                     {
@@ -120,7 +120,7 @@ namespace IdentityServerHost.Configuration
                 {
                     ClientId = "mvc.hybrid.backchannel",
                     ClientName = "MVC Hybrid (with BackChannel logout)",
-                    ClientUri = "http://identityserver.io",
+                    ClientUri = "http://identityserver8.io",
 
                     ClientSecrets =
                     {

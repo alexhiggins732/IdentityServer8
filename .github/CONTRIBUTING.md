@@ -6,17 +6,17 @@ Then we can decide if and how a feature or a change could be implemented and if 
 Also read this first: [Being a good open source citizen](https://hackernoon.com/being-a-good-open-source-citizen-9060d0ab9732#.x3hocgw85)
 
 ## Found an issue or a bug?
-Please start a discussion on the [core repo issue tracker](https://github.com/IdentityServer/IdentityServer4/issues).
+Please start a discussion on the [core repo issue tracker](https://github.com/alexhiggins732/IdentityServer4/issues).
 
 ## Filing issues
 The best way to get your bug fixed is to be as detailed as you can be about the problem.
 Providing a minimal project with steps to reproduce the problem is ideal.
 Here are questions you can answer before you file a bug to make sure you're not missing any important information.
 
-1. Did you read the [documentation](https://identityserver4.readthedocs.io/en/release/)?
+1. Did you read the [documentation](https://identityserver8.readthedocs.io/en/latest/)?
 2. Did you include the snippet of broken code in the issue?
 3. What are the *EXACT* steps to reproduce this problem?
-4. Did you enable [logging](https://identityserver4.readthedocs.io/en/release/topics/logging.html)?
+4. Did you enable [logging](https://identityserver8.readthedocs.io/en/latest/topics/logging.html)?
 
 GitHub supports [markdown](http://github.github.com/github-flavored-markdown/), so when filing bugs make sure you check the formatting before clicking submit.
 

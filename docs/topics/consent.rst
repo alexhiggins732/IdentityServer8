@@ -10,7 +10,7 @@ This is typically only necessary for third-party clients, and can be enabled/dis
 Consent Page
 ^^^^^^^^^^^^
 In order for the user to grant consent, a consent page must be provided by the hosting application.
-The `quickstart UI <https://github.com/IdentityServer/IdentityServer8.Quickstart.UI>`_ has a basic implementation of a consent page.
+The `quickstart UI <https://github.com/alexhiggins732/IdentityServer8.Quickstart.UI>`_ has a basic implementation of a consent page.
 
 A consent page normally renders the display name of the current user, 
 the display name of the client requesting access, 
