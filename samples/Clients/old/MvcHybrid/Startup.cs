@@ -1,4 +1,19 @@
-﻿using System;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using System;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using System.IdentityModel.Tokens.Jwt;
@@ -56,7 +71,7 @@ namespace MvcHybrid
                     options.Scope.Add("email");
                     options.Scope.Add("api1");
                     options.Scope.Add("offline_access");
-
+                   
                     options.ClaimActions.MapAllExcept("iss", "nbf", "exp", "aud", "nonce", "iat", "c_hash");
 
                     options.GetClaimsFromUserInfoEndpoint = true;
