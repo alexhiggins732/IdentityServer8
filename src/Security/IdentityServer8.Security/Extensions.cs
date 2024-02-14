@@ -15,6 +15,7 @@ namespace Microsoft.DependencyInjection.Extensions
         static Ioc()
         {
             var services = new ServiceCollection();
+            services.AddLogging();
             services.AddSanitizers();
             services.AddAllowAnyRedirectService();
             services.AddSingleton<IRedirectService, AllowAnyRedirectService>();

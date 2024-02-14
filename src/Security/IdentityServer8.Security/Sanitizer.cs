@@ -421,15 +421,22 @@ namespace Microsoft.DependencyInjection.Extensions
 
         public static string SanitizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
-            var urlString = input?.ToString() ?? "";
-            if (string.IsNullOrEmpty(urlString))
-                return urlString;
+            var rawUrl = input?.ToString() ?? "";
+            if (string.IsNullOrEmpty(rawUrl))
+                return rawUrl;
             else
             {
-                if (Uri.TryCreate(urlString, UriKind.Absolute, out var uri))
+                if (Uri.TryCreate(rawUrl, UriKind.RelativeOrAbsolute, out var uri))
                 {
-                    return uri.ToString().SanitizeForLog() ?? "";
-                }
+                    var parsedUrl = uri.ToString();
+                    if (parsedUrl == rawUrl.ToString())
+                        return parsedUrl;
+                    else
+                    {
+                        return uri.ToString().SanitizeForLog() ?? "";
+                    }
+                
+                }         
                 else
                 {
                     throw new ArgumentException("Invalid URL", nameof(input));
