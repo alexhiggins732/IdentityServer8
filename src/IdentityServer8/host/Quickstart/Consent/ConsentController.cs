@@ -85,8 +85,7 @@ namespace IdentityServerHost.Quickstart.UI
                     // return the response is for better UX for the end user.
                     return this.LoadingPage("Redirect", result.RedirectUri);
                 }
-
-                return Redirect(result.RedirectUri);
+                return result.RedirectUri.IsAllowedRedirect() ? Redirect(result.RedirectUri) : Forbid();
             }
 
             if (result.HasValidationError)

@@ -16,6 +16,7 @@
 using IdentityServer8.Configuration;
 using IdentityServer8.Models;
 using Microsoft.AspNetCore.Http;
+using Microsoft.DependencyInjection.Extensions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -96,7 +97,7 @@ namespace IdentityServer8.Extensions
                 if (url.StartsWith("~/")) url = url.Substring(1);
                 url = response.HttpContext.GetIdentityServerBaseUrl().EnsureTrailingSlash() + url.RemoveLeadingSlash();
             }
-            response.Redirect(url);
+            response.RedirectIfAllowed(url);
         }
 
         public static void AddScriptCspHeaders(this HttpResponse response, CspOptions options, string hash)

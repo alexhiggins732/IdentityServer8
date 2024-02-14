@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DependencyInjection.Extensions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -70,7 +71,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (vm.IsExternalLoginOnly)
             {
                 // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl });
+                return returnUrl.IsAllowedRedirect() ? RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl }) : Forbid();
             }
 
             return View(vm);
@@ -153,10 +154,10 @@ namespace IdentityServerHost.Quickstart.UI
                 {
                     // The client is native, so this change in how to
                     // return the response is for better UX for the end user.
-                    return this.LoadingPage("Redirect", model.ReturnUrl);
+                    return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl) : Forbid();
                 }
 
-                return Redirect(model.ReturnUrl);
+                return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl) : Forbid();
             }
             else
             {

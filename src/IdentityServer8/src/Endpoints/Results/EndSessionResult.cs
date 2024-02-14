@@ -24,6 +24,7 @@ using IdentityServer8.Stores;
 using IdentityServer8.Extensions;
 using System;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.DependencyInjection.Extensions;
 
 namespace IdentityServer8.Endpoints.Results
 {
@@ -103,7 +104,7 @@ namespace IdentityServer8.Endpoints.Results
                 redirect = redirect.AddQueryString(_options.UserInteraction.LogoutIdParameter, id);
             }
 
-            context.Response.Redirect(redirect);
+            context.Response.RedirectIfAllowed(redirect);
         }
     }
 }

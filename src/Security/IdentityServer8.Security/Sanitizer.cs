@@ -1,5 +1,7 @@
 using IdentityServer8.Security;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
+using System.Net;
 using System.Web;
 
 namespace IdentityServer8.Security
@@ -344,6 +346,35 @@ namespace IdentityServer8.Security
 
 namespace Microsoft.DependencyInjection.Extensions
 {
+    public static class RedirectUrlServiceExtensions
+    {
+        public static bool IsAllowedRedirect(this string redirectUrl)
+        {
+            return Ioc.RedirectService.IsRedirectAllowed(redirectUrl);
+        }
+        public static bool IsAllowedRedirect(this Uri uri)
+        {
+            return Ioc.RedirectService.IsRedirectAllowed(uri.ToString());
+        }
+
+        public static void RedirectIfAllowed(this HttpResponse response, string url)
+        {
+            if (IsAllowedRedirect(url))
+                response.Redirect(url);
+            else
+                SetRedirectNotAllowed(response);
+        }
+
+        public static void SetRedirectNotAllowed(this HttpResponse response)
+        {
+            response.StatusCode = (int) HttpStatusCode.Forbidden;
+        }
+
+        public static void SetRedirectNotAllowed(this HttpContext ctx)
+        {
+            ctx.Response.SetRedirectNotAllowed();
+        }
+    }
     public static class SanitizerServiceExtensions
     {
         public static IServiceCollection AddSanitizers(this IServiceCollection services)

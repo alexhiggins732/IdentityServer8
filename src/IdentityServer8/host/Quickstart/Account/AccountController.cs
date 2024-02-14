@@ -25,6 +25,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.DependencyInjection.Extensions;
 using System;
 using System.Linq;
 using System.Threading.Tasks;
@@ -75,7 +76,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (vm.IsExternalLoginOnly)
             {
                 // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl });
+                return returnUrl.IsAllowedRedirect() ? RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl }) : Forbid();
             }
 
             return View(vm);
@@ -125,7 +126,7 @@ namespace IdentityServerHost.Quickstart.UI
                         {
                             // The client is native, so this change in how to
                             // return the response is for better UX for the end user.
-                            return this.LoadingPage("Redirect", model.ReturnUrl);
+                            return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl) : Forbid();
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
@@ -135,11 +136,11 @@ namespace IdentityServerHost.Quickstart.UI
                     // request for a local page
                     if (Url.IsLocalUrl(model.ReturnUrl))
                     {
-                        return Redirect(model.ReturnUrl);
+                        return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl) : Forbid();
                     }
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
                     {
-                        return Redirect("~/");
+                        return model.ReturnUrl.IsAllowedRedirect() ? Redirect("~/") : Forbid();
                     }
                     else
                     {
@@ -179,15 +180,15 @@ namespace IdentityServerHost.Quickstart.UI
                 {
                     // The client is native, so this change in how to
                     // return the response is for better UX for the end user.
-                    return this.LoadingPage("Redirect", model.ReturnUrl);
+                    return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl) : Forbid();
                 }
 
-                return Redirect(model.ReturnUrl);
+                return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl) : Forbid();
             }
             else
             {
                 // since we don't have a valid context, then we just go back to the home page
-                return Redirect("~/");
+                return model.ReturnUrl.IsAllowedRedirect() ? Redirect("~/") : Forbid();
             }
 
         }
