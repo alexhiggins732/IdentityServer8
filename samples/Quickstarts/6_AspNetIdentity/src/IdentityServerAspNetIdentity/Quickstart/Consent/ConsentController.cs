@@ -71,8 +71,7 @@ public class ConsentController : Controller
                 // return the response is for better UX for the end user.
                 return this.LoadingPage("Redirect", result.RedirectUri);
             }
-
-            return Redirect(result.RedirectUri);
+            return result.RedirectUri.IsAllowedRedirect() ? Redirect(result.RedirectUri.SanitizeForRedirect()) : Forbid();
         }
 
         if (result.HasValidationError)
@@ -168,7 +167,7 @@ public class ConsentController : Controller
         }
         else
         {
-            _logger.LogError("No consent request matching request: {0}", returnUrl);
+            _logger.LogError("No consent request matching request: {0}", returnUrl.SanitizeForLog());
         }
 
         return null;
