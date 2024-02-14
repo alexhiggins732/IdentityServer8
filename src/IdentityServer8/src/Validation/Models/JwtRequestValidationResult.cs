@@ -15,16 +15,15 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServer8.Validation
+namespace IdentityServer8.Validation;
+
+/// <summary>
+/// Models the result of JWT request validation.
+/// </summary>
+public class JwtRequestValidationResult : ValidationResult
 {
     /// <summary>
-    /// Models the result of JWT request validation.
+    /// The key/value pairs from the JWT payload of a successfuly validated request.
     /// </summary>
-    public class JwtRequestValidationResult : ValidationResult
-    {
-        /// <summary>
-        /// The key/value pairs from the JWT payload of a successfuly validated request.
-        /// </summary>
-        public Dictionary<string, string> Payload { get; set; }
-    }
+    public Dictionary<string, string> Payload { get; set; }
 }

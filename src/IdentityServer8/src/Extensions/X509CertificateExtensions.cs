@@ -19,28 +19,27 @@ using System.Security.Cryptography.X509Certificates;
 using System.Text.Json;
 using IdentityModel;
 
-namespace IdentityServer8.Extensions
+namespace IdentityServer8.Extensions;
+
+/// <summary>
+/// Extensions methods for X509Certificate2
+/// </summary>
+public static class X509CertificateExtensions
 {
     /// <summary>
-    /// Extensions methods for X509Certificate2
+    /// Create the value of a thumbprint-based cnf claim
     /// </summary>
-    public static class X509CertificateExtensions
+    /// <param name="certificate"></param>
+    /// <returns></returns>
+    public static string CreateThumbprintCnf(this X509Certificate2 certificate)
     {
-        /// <summary>
-        /// Create the value of a thumbprint-based cnf claim
-        /// </summary>
-        /// <param name="certificate"></param>
-        /// <returns></returns>
-        public static string CreateThumbprintCnf(this X509Certificate2 certificate)
+        var hash = certificate.GetCertHash(HashAlgorithmName.SHA256);
+                        
+        var values = new Dictionary<string, string>
         {
-            var hash = certificate.GetCertHash(HashAlgorithmName.SHA256);
-                            
-            var values = new Dictionary<string, string>
-            {
-                { "x5t#S256", Base64Url.Encode(hash) }
-            };
+            { "x5t#S256", Base64Url.Encode(hash) }
+        };
 
-            return JsonSerializer.Serialize(values);
-        }
+        return JsonSerializer.Serialize(values);
     }
 }

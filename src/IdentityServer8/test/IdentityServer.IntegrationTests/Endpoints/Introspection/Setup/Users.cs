@@ -16,21 +16,20 @@
 using System.Collections.Generic;
 using IdentityServer8.Test;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup
+namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
+
+public static class Users
 {
-    public static class Users
+    public static List<TestUser> Get()
     {
-        public static List<TestUser> Get()
+        return new List<TestUser>
         {
-            return new List<TestUser>
+            new TestUser
             {
-                new TestUser
-                {
-                    SubjectId = "1",
-                    Username = "bob",
-                    Password = "bob"
-                }
-            };
-        }
+                SubjectId = "1",
+                Username = "bob",
+                Password = "bob"
+            }
+        };
     }
 }

@@ -16,32 +16,31 @@
 using IdentityServer8.Models;
 using System.Threading.Tasks;
 
-namespace IdentityServer8.Stores
+namespace IdentityServer8.Stores;
+
+internal class ConsentMessageStore : IConsentMessageStore
 {
-    internal class ConsentMessageStore : IConsentMessageStore
+    protected readonly MessageCookie<ConsentResponse> Cookie;
+
+    public ConsentMessageStore(MessageCookie<ConsentResponse> cookie)
     {
-        protected readonly MessageCookie<ConsentResponse> Cookie;
+        Cookie = cookie;
+    }
 
-        public ConsentMessageStore(MessageCookie<ConsentResponse> cookie)
-        {
-            Cookie = cookie;
-        }
+    public virtual Task DeleteAsync(string id)
+    {
+        Cookie.Clear(id);
+        return Task.CompletedTask;
+    }
 
-        public virtual Task DeleteAsync(string id)
-        {
-            Cookie.Clear(id);
-            return Task.CompletedTask;
-        }
+    public virtual Task<Message<ConsentResponse>> ReadAsync(string id)
+    {
+        return Task.FromResult(Cookie.Read(id));
+    }
 
-        public virtual Task<Message<ConsentResponse>> ReadAsync(string id)
-        {
-            return Task.FromResult(Cookie.Read(id));
-        }
-
-        public virtual Task WriteAsync(string id, Message<ConsentResponse> message)
-        {
-            Cookie.Write(id, message);
-            return Task.CompletedTask;
-        }
+    public virtual Task WriteAsync(string id, Message<ConsentResponse> message)
+    {
+        Cookie.Write(id, message);
+        return Task.CompletedTask;
     }
 }

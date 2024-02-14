@@ -16,28 +16,27 @@
 using IdentityServer8.Stores;
 using System;
 
-namespace IdentityServer8.Extensions
+namespace IdentityServer8.Extensions;
+
+/// <summary>
+/// Extensions for PersistedGrantFilter.
+/// </summary>
+public static class PersistedGrantFilterExtensions
 {
     /// <summary>
-    /// Extensions for PersistedGrantFilter.
+    /// Validates the PersistedGrantFilter and throws if invalid.
     /// </summary>
-    public static class PersistedGrantFilterExtensions
+    /// <param name="filter"></param>
+    public static void Validate(this PersistedGrantFilter filter)
     {
-        /// <summary>
-        /// Validates the PersistedGrantFilter and throws if invalid.
-        /// </summary>
-        /// <param name="filter"></param>
-        public static void Validate(this PersistedGrantFilter filter)
-        {
-            if (filter == null) throw new ArgumentNullException(nameof(filter));
+        if (filter == null) throw new ArgumentNullException(nameof(filter));
 
-            if (String.IsNullOrWhiteSpace(filter.ClientId) &&
-                String.IsNullOrWhiteSpace(filter.SessionId) &&
-                String.IsNullOrWhiteSpace(filter.SubjectId) &&
-                String.IsNullOrWhiteSpace(filter.Type))
-            {
-                throw new ArgumentException("No filter values set.", nameof(filter));
-            }
+        if (String.IsNullOrWhiteSpace(filter.ClientId) &&
+            String.IsNullOrWhiteSpace(filter.SessionId) &&
+            String.IsNullOrWhiteSpace(filter.SubjectId) &&
+            String.IsNullOrWhiteSpace(filter.Type))
+        {
+            throw new ArgumentException("No filter values set.", nameof(filter));
         }
     }
 }

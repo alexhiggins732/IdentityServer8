@@ -16,22 +16,21 @@
 using IdentityServer8.Events;
 using System.Threading.Tasks;
 
-namespace IdentityServer8.Services
+namespace IdentityServer8.Services;
+
+/// <summary>
+/// Interface for the event service
+/// </summary>
+public interface IEventService
 {
     /// <summary>
-    /// Interface for the event service
+    /// Raises the specified event.
     /// </summary>
-    public interface IEventService
-    {
-        /// <summary>
-        /// Raises the specified event.
-        /// </summary>
-        /// <param name="evt">The event.</param>
-        Task RaiseAsync(Event evt);
+    /// <param name="evt">The event.</param>
+    Task RaiseAsync(Event evt);
 
-        /// <summary>
-        /// Indicates if the type of event will be persisted.
-        /// </summary>
-        bool CanRaiseEventType(EventTypes evtType);
-    }
+    /// <summary>
+    /// Indicates if the type of event will be persisted.
+    /// </summary>
+    bool CanRaiseEventType(EventTypes evtType);
 }

@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -13,11 +13,10 @@
 
 */
 
-namespace IdentityServerHost.Quickstart.UI
+namespace IdentityServerHost.Quickstart.UI;
+
+public class ExternalProvider
 {
-    public class ExternalProvider
-    {
-        public string DisplayName { get; set; }
-        public string AuthenticationScheme { get; set; }
-    }
+    public string DisplayName { get; set; }
+    public string AuthenticationScheme { get; set; }
 }

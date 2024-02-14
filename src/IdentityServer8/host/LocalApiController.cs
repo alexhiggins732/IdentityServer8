@@ -18,16 +18,15 @@ using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using static IdentityServer8.IdentityServerConstants;
 
-namespace IdentityServerHost
+namespace IdentityServerHost;
+
+[Route("localApi")]
+[Authorize(LocalApi.PolicyName)]
+public class LocalApiController : ControllerBase
 {
-    [Route("localApi")]
-    [Authorize(LocalApi.PolicyName)]
-    public class LocalApiController : ControllerBase
+    public IActionResult Get()
     {
-        public IActionResult Get()
-        {
-            var claims = from c in User.Claims select new { c.Type, c.Value };
-            return new JsonResult(claims);
-        }
+        var claims = from c in User.Claims select new { c.Type, c.Value };
+        return new JsonResult(claims);
     }
 }

@@ -18,36 +18,35 @@ using System.Threading.Tasks;
 using IdentityServer8.Models;
 using IdentityServer8.Validation;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup
+namespace IdentityServer.IntegrationTests.Clients.Setup;
+
+public class CustomResponseExtensionGrantValidator : IExtensionGrantValidator
 {
-    public class CustomResponseExtensionGrantValidator : IExtensionGrantValidator
+    public Task ValidateAsync(ExtensionGrantValidationContext context)
     {
-        public Task ValidateAsync(ExtensionGrantValidationContext context)
+        var response = new Dictionary<string, object>
         {
-            var response = new Dictionary<string, object>
-            {
-                { "string_value", "some_string" },
-                { "int_value", 42 },
-                { "dto",  CustomResponseDto.Create }
-            };
+            { "string_value", "some_string" },
+            { "int_value", 42 },
+            { "dto",  CustomResponseDto.Create }
+        };
 
-            var credential = context.Request.Raw.Get("outcome");
+        var credential = context.Request.Raw.Get("outcome");
 
-            if (credential == "succeed")
-            {
-                context.Result = new GrantValidationResult("bob", "custom", customResponse: response);
-            }
-            else
-            {
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_credential", response);
-            }
-
-            return Task.CompletedTask;
+        if (credential == "succeed")
+        {
+            context.Result = new GrantValidationResult("bob", "custom", customResponse: response);
+        }
+        else
+        {
+            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_credential", response);
         }
 
-        public string GrantType
-        {
-            get { return "custom"; }
-        }
+        return Task.CompletedTask;
+    }
+
+    public string GrantType
+    {
+        get { return "custom"; }
     }
 }

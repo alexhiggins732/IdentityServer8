@@ -17,25 +17,24 @@ using IdentityServer8.EntityFramework.Mappers;
 using IdentityServer8.Models;
 using Xunit;
 
-namespace IdentityServer8.EntityFramework.UnitTests.Mappers
+namespace IdentityServer8.EntityFramework.UnitTests.Mappers;
+
+public class IdentityResourcesMappersTests
 {
-    public class IdentityResourcesMappersTests
+    [Fact]
+    public void IdentityResourceAutomapperConfigurationIsValid()
     {
-        [Fact]
-        public void IdentityResourceAutomapperConfigurationIsValid()
-        {
-            IdentityResourceMappers.Mapper.ConfigurationProvider.AssertConfigurationIsValid();
-        }
+        IdentityResourceMappers.Mapper.ConfigurationProvider.AssertConfigurationIsValid();
+    }
 
-        [Fact]
-        public void CanMapIdentityResources()
-        {
-            var model = new IdentityResource();
-            var mappedEntity = model.ToEntity();
-            var mappedModel = mappedEntity.ToModel();
+    [Fact]
+    public void CanMapIdentityResources()
+    {
+        var model = new IdentityResource();
+        var mappedEntity = model.ToEntity();
+        var mappedModel = mappedEntity.ToModel();
 
-            Assert.NotNull(mappedModel);
-            Assert.NotNull(mappedEntity);
-        }
+        Assert.NotNull(mappedModel);
+        Assert.NotNull(mappedEntity);
     }
 }

@@ -21,14 +21,13 @@ using System.Linq;
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Stores.Serialization
+namespace IdentityServer8.Stores.Serialization;
+
+public class CustomContractResolver: DefaultContractResolver
 {
-    public class CustomContractResolver: DefaultContractResolver
+    protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
     {
-        protected override IList<JsonProperty> CreateProperties(Type type, MemberSerialization memberSerialization)
-        {
-            var props = base.CreateProperties(type, memberSerialization);
-            return props.Where(p => p.Writable).ToList();
-        }
+        var props = base.CreateProperties(type, memberSerialization);
+        return props.Where(p => p.Writable).ToList();
     }
 }

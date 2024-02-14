@@ -20,26 +20,25 @@ using IdentityServer8.Configuration;
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Hosting
+namespace IdentityServer8.Hosting;
+
+public class BaseUrlMiddleware
 {
-    public class BaseUrlMiddleware
+    private readonly RequestDelegate _next;
+    private readonly IdentityServerOptions _options;
+
+    public BaseUrlMiddleware(RequestDelegate next, IdentityServerOptions options)
     {
-        private readonly RequestDelegate _next;
-        private readonly IdentityServerOptions _options;
+        _next = next;
+        _options = options;
+    }
 
-        public BaseUrlMiddleware(RequestDelegate next, IdentityServerOptions options)
-        {
-            _next = next;
-            _options = options;
-        }
+    public async Task Invoke(HttpContext context)
+    {
+        var request = context.Request;
+        
+        context.SetIdentityServerBasePath(request.PathBase.Value.RemoveTrailingSlash());
 
-        public async Task Invoke(HttpContext context)
-        {
-            var request = context.Request;
-            
-            context.SetIdentityServerBasePath(request.PathBase.Value.RemoveTrailingSlash());
-
-            await _next(context);
-        }
+        await _next(context);
     }
 }

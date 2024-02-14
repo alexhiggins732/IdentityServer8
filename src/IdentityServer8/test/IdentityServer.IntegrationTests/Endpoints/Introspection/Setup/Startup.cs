@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -17,28 +17,27 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup
+namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
+
+public class Startup
 {
-    public class Startup
+    public void ConfigureServices(IServiceCollection services)
     {
-        public void ConfigureServices(IServiceCollection services)
+        var builder = services.AddIdentityServer(options =>
         {
-            var builder = services.AddIdentityServer(options =>
-            {
-                options.IssuerUri = "https://idsvr8";
-                options.Endpoints.EnableAuthorizeEndpoint = false;
-            });
+            options.IssuerUri = "https://idsvr8";
+            options.Endpoints.EnableAuthorizeEndpoint = false;
+        });
 
-            builder.AddInMemoryClients(Clients.Get());
-            builder.AddInMemoryApiResources(Scopes.GetApis());
-            builder.AddInMemoryApiScopes(Scopes.GetScopes());
-            builder.AddTestUsers(Users.Get());
-            builder.AddDeveloperSigningCredential(persistKey: false);
-        }
+        builder.AddInMemoryClients(Clients.Get());
+        builder.AddInMemoryApiResources(Scopes.GetApis());
+        builder.AddInMemoryApiScopes(Scopes.GetScopes());
+        builder.AddTestUsers(Users.Get());
+        builder.AddDeveloperSigningCredential(persistKey: false);
+    }
 
-        public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
-        {
-            app.UseIdentityServer();
-        }
+    public void Configure(IApplicationBuilder app, ILoggerFactory loggerFactory)
+    {
+        app.UseIdentityServer();
     }
 }

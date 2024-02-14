@@ -16,18 +16,17 @@
 using IdentityServer8.Models;
 using System.Threading.Tasks;
 
-namespace IdentityServer8.Stores
+namespace IdentityServer8.Stores;
+
+/// <summary>
+/// Retrieval of client configuration
+/// </summary>
+public interface IClientStore
 {
     /// <summary>
-    /// Retrieval of client configuration
+    /// Finds a client by id
     /// </summary>
-    public interface IClientStore
-    {
-        /// <summary>
-        /// Finds a client by id
-        /// </summary>
-        /// <param name="clientId">The client id</param>
-        /// <returns>The client</returns>
-        Task<Client> FindClientByIdAsync(string clientId);
-    }
+    /// <param name="clientId">The client id</param>
+    /// <returns>The client</returns>
+    Task<Client> FindClientByIdAsync(string clientId);
 }

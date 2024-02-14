@@ -19,34 +19,33 @@ using Microsoft.Extensions.Configuration;
 using IdentityServer8.EntityFramework.Storage;
 using Microsoft.EntityFrameworkCore;
 
-namespace SqlServer
+namespace SqlServer;
+
+public class Startup
 {
-    public class Startup
+    public IConfiguration Configuration { get; }
+
+    public Startup(IConfiguration config)
     {
-        public IConfiguration Configuration { get; }
+        Configuration = config;
+    }
 
-        public Startup(IConfiguration config)
-        {
-            Configuration = config;
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var cn = Configuration.GetConnectionString("db");
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var cn = Configuration.GetConnectionString("db");
+        services.AddOperationalDbContext(options => {
+            options.ConfigureDbContext = b =>
+                b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName));
+        });
 
-            services.AddOperationalDbContext(options => {
-                options.ConfigureDbContext = b =>
-                    b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName));
-            });
+        services.AddConfigurationDbContext(options => {
+            options.ConfigureDbContext = b =>
+                b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName));
+        });
+    }
 
-            services.AddConfigurationDbContext(options => {
-                options.ConfigureDbContext = b =>
-                    b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName));
-            });
-        }
-
-        public void Configure(IApplicationBuilder app)
-        {
-        }
+    public void Configure(IApplicationBuilder app)
+    {
     }
 }

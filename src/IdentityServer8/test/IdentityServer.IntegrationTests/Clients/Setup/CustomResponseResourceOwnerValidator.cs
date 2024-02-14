@@ -18,29 +18,28 @@ using System.Threading.Tasks;
 using IdentityServer8.Models;
 using IdentityServer8.Validation;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup
+namespace IdentityServer.IntegrationTests.Clients.Setup;
+
+public class CustomResponseResourceOwnerValidator : IResourceOwnerPasswordValidator
 {
-    public class CustomResponseResourceOwnerValidator : IResourceOwnerPasswordValidator
+    public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
     {
-        public Task ValidateAsync(ResourceOwnerPasswordValidationContext context)
+        var response = new Dictionary<string, object>
         {
-            var response = new Dictionary<string, object>
-            {
-                { "string_value", "some_string" },
-                { "int_value", 42 },
-                { "dto",  CustomResponseDto.Create }
-            };
+            { "string_value", "some_string" },
+            { "int_value", 42 },
+            { "dto",  CustomResponseDto.Create }
+        };
 
-            if (context.UserName == context.Password)
-            {
-                context.Result = new GrantValidationResult(context.UserName, "password", customResponse: response);
-            }
-            else
-            {
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_credential", response);
-            }
-
-            return Task.CompletedTask;
+        if (context.UserName == context.Password)
+        {
+            context.Result = new GrantValidationResult(context.UserName, "password", customResponse: response);
         }
+        else
+        {
+            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid_credential", response);
+        }
+
+        return Task.CompletedTask;
     }
 }

@@ -18,50 +18,49 @@ using IdentityServer8.Stores;
 using Microsoft.Extensions.Logging;
 using System.Threading.Tasks;
 
-namespace IdentityServer8.Validation
+namespace IdentityServer8.Validation;
+
+/// <summary>
+/// Default custom token validator
+/// </summary>
+public class DefaultCustomTokenValidator : ICustomTokenValidator
 {
     /// <summary>
-    /// Default custom token validator
+    /// The logger
     /// </summary>
-    public class DefaultCustomTokenValidator : ICustomTokenValidator
+    protected readonly ILogger Logger;
+
+    /// <summary>
+    /// The user service
+    /// </summary>
+    protected readonly IProfileService Profile;
+
+    /// <summary>
+    /// The client store
+    /// </summary>
+    protected readonly IClientStore Clients;
+
+    /// <summary>
+    /// Custom validation logic for access tokens.
+    /// </summary>
+    /// <param name="result">The validation result so far.</param>
+    /// <returns>
+    /// The validation result
+    /// </returns>
+    public virtual Task<TokenValidationResult> ValidateAccessTokenAsync(TokenValidationResult result)
     {
-        /// <summary>
-        /// The logger
-        /// </summary>
-        protected readonly ILogger Logger;
+        return Task.FromResult(result);
+    }
 
-        /// <summary>
-        /// The user service
-        /// </summary>
-        protected readonly IProfileService Profile;
-
-        /// <summary>
-        /// The client store
-        /// </summary>
-        protected readonly IClientStore Clients;
-
-        /// <summary>
-        /// Custom validation logic for access tokens.
-        /// </summary>
-        /// <param name="result">The validation result so far.</param>
-        /// <returns>
-        /// The validation result
-        /// </returns>
-        public virtual Task<TokenValidationResult> ValidateAccessTokenAsync(TokenValidationResult result)
-        {
-            return Task.FromResult(result);
-        }
-
-        /// <summary>
-        /// Custom validation logic for identity tokens.
-        /// </summary>
-        /// <param name="result">The validation result so far.</param>
-        /// <returns>
-        /// The validation result
-        /// </returns>
-        public virtual Task<TokenValidationResult> ValidateIdentityTokenAsync(TokenValidationResult result)
-        {
-            return Task.FromResult(result);
-        }
+    /// <summary>
+    /// Custom validation logic for identity tokens.
+    /// </summary>
+    /// <param name="result">The validation result so far.</param>
+    /// <returns>
+    /// The validation result
+    /// </returns>
+    public virtual Task<TokenValidationResult> ValidateIdentityTokenAsync(TokenValidationResult result)
+    {
+        return Task.FromResult(result);
     }
 }

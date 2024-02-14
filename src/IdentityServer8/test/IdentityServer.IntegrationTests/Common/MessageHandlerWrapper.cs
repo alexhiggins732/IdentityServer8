@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -17,21 +17,20 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IdentityServer.IntegrationTests.Common
+namespace IdentityServer.IntegrationTests.Common;
+
+public class MessageHandlerWrapper : DelegatingHandler
 {
-    public class MessageHandlerWrapper : DelegatingHandler
+    public HttpResponseMessage Response { get; set; }
+
+    public MessageHandlerWrapper(HttpMessageHandler handler)
+        : base(handler)
     {
-        public HttpResponseMessage Response { get; set; }
+    }
 
-        public MessageHandlerWrapper(HttpMessageHandler handler)
-            : base(handler)
-        {
-        }
-
-        protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-        {
-            Response = await base.SendAsync(request, cancellationToken);
-            return Response;
-        }
+    protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+    {
+        Response = await base.SendAsync(request, cancellationToken);
+        return Response;
     }
 }

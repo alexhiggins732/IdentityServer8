@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -15,47 +15,46 @@
 
 using System.Net.Http;
 
-namespace IdentityServer.IntegrationTests.Common
+namespace IdentityServer.IntegrationTests.Common;
+
+public class BrowserClient : HttpClient
 {
-    public class BrowserClient : HttpClient
+    public BrowserClient(BrowserHandler browserHandler)
+        : base(browserHandler)
     {
-        public BrowserClient(BrowserHandler browserHandler)
-            : base(browserHandler)
-        {
-            BrowserHandler = browserHandler;
-        }
+        BrowserHandler = browserHandler;
+    }
 
-        public BrowserHandler BrowserHandler { get; private set; }
+    public BrowserHandler BrowserHandler { get; private set; }
 
-        public bool AllowCookies
-        {
-            get { return BrowserHandler.AllowCookies; }
-            set { BrowserHandler.AllowCookies = value; }
-        }
-        public bool AllowAutoRedirect
-        {
-            get { return BrowserHandler.AllowAutoRedirect; }
-            set { BrowserHandler.AllowAutoRedirect = value; }
-        }
-        public int ErrorRedirectLimit
-        {
-            get { return BrowserHandler.ErrorRedirectLimit; }
-            set { BrowserHandler.ErrorRedirectLimit = value; }
-        }
-        public int StopRedirectingAfter
-        {
-            get { return BrowserHandler.StopRedirectingAfter; }
-            set { BrowserHandler.StopRedirectingAfter = value; }
-        }
+    public bool AllowCookies
+    {
+        get { return BrowserHandler.AllowCookies; }
+        set { BrowserHandler.AllowCookies = value; }
+    }
+    public bool AllowAutoRedirect
+    {
+        get { return BrowserHandler.AllowAutoRedirect; }
+        set { BrowserHandler.AllowAutoRedirect = value; }
+    }
+    public int ErrorRedirectLimit
+    {
+        get { return BrowserHandler.ErrorRedirectLimit; }
+        set { BrowserHandler.ErrorRedirectLimit = value; }
+    }
+    public int StopRedirectingAfter
+    {
+        get { return BrowserHandler.StopRedirectingAfter; }
+        set { BrowserHandler.StopRedirectingAfter = value; }
+    }
 
-        internal void RemoveCookie(string uri, string name)
-        {
-            BrowserHandler.RemoveCookie(uri, name);
-        }
+    internal void RemoveCookie(string uri, string name)
+    {
+        BrowserHandler.RemoveCookie(uri, name);
+    }
 
-        internal System.Net.Cookie GetCookie(string uri, string name)
-        {
-            return BrowserHandler.GetCookie(uri, name);
-        }
+    internal System.Net.Cookie GetCookie(string uri, string name)
+    {
+        return BrowserHandler.GetCookie(uri, name);
     }
 }

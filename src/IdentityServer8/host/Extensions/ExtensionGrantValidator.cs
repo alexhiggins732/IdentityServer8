@@ -17,30 +17,29 @@ using IdentityServer8.Models;
 using IdentityServer8.Validation;
 using System.Threading.Tasks;
 
-namespace IdentityServerHost.Extensions
+namespace IdentityServerHost.Extensions;
+
+public class ExtensionGrantValidator : IExtensionGrantValidator
 {
-    public class ExtensionGrantValidator : IExtensionGrantValidator
+    public Task ValidateAsync(ExtensionGrantValidationContext context)
     {
-        public Task ValidateAsync(ExtensionGrantValidationContext context)
+        var credential = context.Request.Raw.Get("custom_credential");
+
+        if (credential != null)
         {
-            var credential = context.Request.Raw.Get("custom_credential");
-
-            if (credential != null)
-            {
-                context.Result = new GrantValidationResult(subject: "818727", authenticationMethod: "custom");
-            }
-            else
-            {
-                // custom error message
-                context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid custom credential");
-            }
-
-            return Task.CompletedTask;
+            context.Result = new GrantValidationResult(subject: "818727", authenticationMethod: "custom");
+        }
+        else
+        {
+            // custom error message
+            context.Result = new GrantValidationResult(TokenRequestErrors.InvalidGrant, "invalid custom credential");
         }
 
-        public string GrantType
-        {
-            get { return "custom"; }
-        }
+        return Task.CompletedTask;
+    }
+
+    public string GrantType
+    {
+        get { return "custom"; }
     }
 }

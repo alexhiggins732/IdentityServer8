@@ -13,31 +13,30 @@
 
 */
 
-namespace IdentityServer8.Events
+namespace IdentityServer8.Events;
+
+/// <summary>
+/// Indicates if the event is a success or fail event.
+/// </summary>
+public enum EventTypes
 {
     /// <summary>
-    /// Indicates if the event is a success or fail event.
+    /// Success event
     /// </summary>
-    public enum EventTypes
-    {
-        /// <summary>
-        /// Success event
-        /// </summary>
-        Success = 1,
+    Success = 1,
 
-        /// <summary>
-        /// Failure event
-        /// </summary>
-        Failure = 2,
+    /// <summary>
+    /// Failure event
+    /// </summary>
+    Failure = 2,
 
-        /// <summary>
-        /// Information event
-        /// </summary>
-        Information = 3,
-        
-        /// <summary>
-        /// Error event
-        /// </summary>
-        Error = 4
-    }
+    /// <summary>
+    /// Information event
+    /// </summary>
+    Information = 3,
+    
+    /// <summary>
+    /// Error event
+    /// </summary>
+    Error = 4
 }

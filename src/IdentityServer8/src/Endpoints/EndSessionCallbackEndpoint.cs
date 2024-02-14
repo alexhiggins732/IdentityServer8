@@ -22,44 +22,43 @@ using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServer8.Endpoints
+namespace IdentityServer8.Endpoints;
+
+internal class EndSessionCallbackEndpoint : IEndpointHandler
 {
-    internal class EndSessionCallbackEndpoint : IEndpointHandler
+    private readonly IEndSessionRequestValidator _endSessionRequestValidator;
+    private readonly ILogger _logger;
+
+    public EndSessionCallbackEndpoint(
+        IEndSessionRequestValidator endSessionRequestValidator,
+        ILogger<EndSessionCallbackEndpoint> logger)
     {
-        private readonly IEndSessionRequestValidator _endSessionRequestValidator;
-        private readonly ILogger _logger;
+        _endSessionRequestValidator = endSessionRequestValidator;
+        _logger = logger;
+    }
 
-        public EndSessionCallbackEndpoint(
-            IEndSessionRequestValidator endSessionRequestValidator,
-            ILogger<EndSessionCallbackEndpoint> logger)
+    public async Task<IEndpointResult> ProcessAsync(HttpContext context)
+    {
+        if (!HttpMethods.IsGet(context.Request.Method))
         {
-            _endSessionRequestValidator = endSessionRequestValidator;
-            _logger = logger;
+            _logger.LogWarning("Invalid HTTP method for end session callback endpoint.");
+            return new StatusCodeResult(HttpStatusCode.MethodNotAllowed);
         }
 
-        public async Task<IEndpointResult> ProcessAsync(HttpContext context)
+        _logger.LogDebug("Processing signout callback request");
+
+        var parameters = context.Request.Query.AsNameValueCollection();
+        var result = await _endSessionRequestValidator.ValidateCallbackAsync(parameters);
+
+        if (!result.IsError)
         {
-            if (!HttpMethods.IsGet(context.Request.Method))
-            {
-                _logger.LogWarning("Invalid HTTP method for end session callback endpoint.");
-                return new StatusCodeResult(HttpStatusCode.MethodNotAllowed);
-            }
-
-            _logger.LogDebug("Processing signout callback request");
-
-            var parameters = context.Request.Query.AsNameValueCollection();
-            var result = await _endSessionRequestValidator.ValidateCallbackAsync(parameters);
-
-            if (!result.IsError)
-            {
-                _logger.LogInformation("Successful signout callback.");
-            }
-            else
-            {
-                _logger.LogError("Error validating signout callback: {error}", result.Error);
-            }
-            
-            return new EndSessionCallbackResult(result);
+            _logger.LogInformation("Successful signout callback.");
         }
+        else
+        {
+            _logger.LogError("Error validating signout callback: {error}", result.Error);
+        }
+        
+        return new EndSessionCallbackResult(result);
     }
 }

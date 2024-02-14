@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -18,32 +18,31 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Configuration;
 using Microsoft.EntityFrameworkCore;
 
-namespace SqlServer
+namespace SqlServer;
+
+public class Startup
 {
-    public class Startup
+    public IConfiguration Configuration { get; }
+
+    public Startup(IConfiguration config)
     {
-        public IConfiguration Configuration { get; }
+        Configuration = config;
+    }
 
-        public Startup(IConfiguration config)
-        {
-            Configuration = config;
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var cn = Configuration.GetConnectionString("db");
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var cn = Configuration.GetConnectionString("db");
+        services.AddIdentityServer()
+            .AddConfigurationStore(options => {
+                options.ConfigureDbContext = b => b.UseSqlServer(cn);
+            })
+            .AddOperationalStore(options => {
+                options.ConfigureDbContext = b => b.UseSqlServer(cn);
+            });
+    }
 
-            services.AddIdentityServer()
-                .AddConfigurationStore(options => {
-                    options.ConfigureDbContext = b => b.UseSqlServer(cn);
-                })
-                .AddOperationalStore(options => {
-                    options.ConfigureDbContext = b => b.UseSqlServer(cn);
-                });
-        }
-
-        public void Configure(IApplicationBuilder app)
-        {
-        }
+    public void Configure(IApplicationBuilder app)
+    {
     }
 }

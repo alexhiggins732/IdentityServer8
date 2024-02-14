@@ -15,15 +15,14 @@
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Models
+namespace IdentityServer8.Models;
+
+public static class GrantType
 {
-    public static class GrantType
-    {
-        public const string Implicit = "implicit";
-        public const string Hybrid = "hybrid";
-        public const string AuthorizationCode = "authorization_code";
-        public const string ClientCredentials = "client_credentials";
-        public const string ResourceOwnerPassword = "password";
-        public const string DeviceFlow = "urn:ietf:params:oauth:grant-type:device_code";
-    }
+    public const string Implicit = "implicit";
+    public const string Hybrid = "hybrid";
+    public const string AuthorizationCode = "authorization_code";
+    public const string ClientCredentials = "client_credentials";
+    public const string ResourceOwnerPassword = "password";
+    public const string DeviceFlow = "urn:ietf:params:oauth:grant-type:device_code";
 }

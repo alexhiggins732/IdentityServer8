@@ -15,17 +15,16 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServer8.Validation
+namespace IdentityServer8.Validation;
+
+/// <summary>
+/// Validation result for end session callback requests.
+/// </summary>
+/// <seealso cref="IdentityServer8.Validation.ValidationResult" />
+public class EndSessionCallbackValidationResult : ValidationResult
 {
     /// <summary>
-    /// Validation result for end session callback requests.
+    /// Gets the client front-channel logout urls.
     /// </summary>
-    /// <seealso cref="IdentityServer8.Validation.ValidationResult" />
-    public class EndSessionCallbackValidationResult : ValidationResult
-    {
-        /// <summary>
-        /// Gets the client front-channel logout urls.
-        /// </summary>
-        public IEnumerable<string> FrontChannelLogoutUrls { get; set; }
-    }
+    public IEnumerable<string> FrontChannelLogoutUrls { get; set; }
 }

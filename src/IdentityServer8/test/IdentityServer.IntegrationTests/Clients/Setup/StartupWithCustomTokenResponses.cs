@@ -18,41 +18,40 @@ using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup
+namespace IdentityServer.IntegrationTests.Clients.Setup;
+
+public class StartupWithCustomTokenResponses
 {
-    public class StartupWithCustomTokenResponses
+    public void ConfigureServices(IServiceCollection services)
     {
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddAuthentication();
+        services.AddAuthentication();
 
-            var builder = services.AddIdentityServer(options =>
+        var builder = services.AddIdentityServer(options =>
+        {
+            options.IssuerUri = "https://idsvr8";
+
+            options.Events = new EventsOptions
             {
-                options.IssuerUri = "https://idsvr8";
+                RaiseErrorEvents = true,
+                RaiseFailureEvents = true,
+                RaiseInformationEvents = true,
+                RaiseSuccessEvents = true
+            };
+        });
 
-                options.Events = new EventsOptions
-                {
-                    RaiseErrorEvents = true,
-                    RaiseFailureEvents = true,
-                    RaiseInformationEvents = true,
-                    RaiseSuccessEvents = true
-                };
-            });
+        builder.AddInMemoryClients(Clients.Get());
+        builder.AddInMemoryIdentityResources(Scopes.GetIdentityScopes());
+        builder.AddInMemoryApiResources(Scopes.GetApiResources());
+        builder.AddInMemoryApiScopes(Scopes.GetApiScopes());
 
-            builder.AddInMemoryClients(Clients.Get());
-            builder.AddInMemoryIdentityResources(Scopes.GetIdentityScopes());
-            builder.AddInMemoryApiResources(Scopes.GetApiResources());
-            builder.AddInMemoryApiScopes(Scopes.GetApiScopes());
+        builder.AddDeveloperSigningCredential(persistKey: false);
 
-            builder.AddDeveloperSigningCredential(persistKey: false);
+        services.AddTransient<IResourceOwnerPasswordValidator, CustomResponseResourceOwnerValidator>();
+        builder.AddExtensionGrantValidator<CustomResponseExtensionGrantValidator>();
+    }
 
-            services.AddTransient<IResourceOwnerPasswordValidator, CustomResponseResourceOwnerValidator>();
-            builder.AddExtensionGrantValidator<CustomResponseExtensionGrantValidator>();
-        }
-
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseIdentityServer();
-        }
+    public void Configure(IApplicationBuilder app)
+    {
+        app.UseIdentityServer();
     }
 }

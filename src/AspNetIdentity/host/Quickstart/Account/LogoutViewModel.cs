@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
@@ -13,10 +13,9 @@
 
 */
 
-namespace IdentityServerHost.Quickstart.UI
+namespace IdentityServerHost.Quickstart.UI;
+
+public class LogoutViewModel : LogoutInputModel
 {
-    public class LogoutViewModel : LogoutInputModel
-    {
-        public bool ShowLogoutPrompt { get; set; } = true;
-    }
+    public bool ShowLogoutPrompt { get; set; } = true;
 }

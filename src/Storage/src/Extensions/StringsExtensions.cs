@@ -15,20 +15,19 @@
 
 using System.Diagnostics;
 
-namespace IdentityServer8.Extensions
-{
-    internal static class StringExtensions
-    {
-        [DebuggerStepThrough]
-        public static bool IsMissing(this string value)
-        {
-            return string.IsNullOrWhiteSpace(value);
-        }
+namespace IdentityServer8.Extensions;
 
-        [DebuggerStepThrough]
-        public static bool IsPresent(this string value)
-        {
-            return !string.IsNullOrWhiteSpace(value);
-        }
+internal static class StringExtensions
+{
+    [DebuggerStepThrough]
+    public static bool IsMissing(this string value)
+    {
+        return string.IsNullOrWhiteSpace(value);
+    }
+
+    [DebuggerStepThrough]
+    public static bool IsPresent(this string value)
+    {
+        return !string.IsNullOrWhiteSpace(value);
     }
 }
