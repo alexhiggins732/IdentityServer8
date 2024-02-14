@@ -1,5 +1,6 @@
 using IdentityServer8.Security;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.DependencyInjection;
 using System.Net;
 using System.Web;
@@ -360,7 +361,7 @@ namespace Microsoft.DependencyInjection.Extensions
         public static void RedirectIfAllowed(this HttpResponse response, string url)
         {
             if (IsAllowedRedirect(url))
-                response.Redirect(url);
+                response.Redirect(url.SanitizeForRedirect());
             else
                 SetRedirectNotAllowed(response);
         }
@@ -374,6 +375,7 @@ namespace Microsoft.DependencyInjection.Extensions
         {
             ctx.Response.SetRedirectNotAllowed();
         }
+
     }
     public static class SanitizerServiceExtensions
     {
@@ -415,6 +417,25 @@ namespace Microsoft.DependencyInjection.Extensions
         public static string? SanitizeForJson(this object? input, SanitizerMode mode = SanitizerMode.Clean)
         {
             return Ioc.Sanitizer.Json.Sanitize(input?.ToString(), mode);
+        }
+
+        public static string SanitizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
+        {
+            var urlString = input?.ToString() ?? "";
+            if (string.IsNullOrEmpty(urlString))
+                return urlString;
+            else
+            {
+                if (Uri.TryCreate(urlString, UriKind.Absolute, out var uri))
+                {
+                    return uri.ToString().SanitizeForLog() ?? "";
+                }
+                else
+                {
+                    throw new ArgumentException("Invalid URL", nameof(input));
+                }
+            }
+           
         }
 
         public static string? SanitizeForUrl(this object? input, SanitizerMode mode = SanitizerMode.Clean)

@@ -76,7 +76,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (vm.IsExternalLoginOnly)
             {
                 // we only have one option for logging in and it's an external provider
-                return returnUrl.IsAllowedRedirect() ? RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl }) : Forbid();
+                return returnUrl.IsAllowedRedirect() ? RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl = returnUrl.SanitizeForRedirect() }) : Forbid();
             }
 
             return View(vm);
@@ -126,17 +126,17 @@ namespace IdentityServerHost.Quickstart.UI
                         {
                             // The client is native, so this change in how to
                             // return the response is for better UX for the end user.
-                            return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl) : Forbid();
+                            return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                        return Redirect(model.ReturnUrl);
+                        return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                     }
 
                     // request for a local page
                     if (Url.IsLocalUrl(model.ReturnUrl))
                     {
-                        return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl) : Forbid();
+                        return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                     }
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
                     {
@@ -180,10 +180,10 @@ namespace IdentityServerHost.Quickstart.UI
                 {
                     // The client is native, so this change in how to
                     // return the response is for better UX for the end user.
-                    return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl) : Forbid();
+                    return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                 }
 
-                return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl) : Forbid();
+                return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
             }
             else
             {
