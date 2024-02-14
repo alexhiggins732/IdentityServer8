@@ -1,4 +1,19 @@
-﻿using Microsoft.AspNetCore.Mvc;
+/*
+ Copyright (c) 2024 HigginsSoft
+ Written by Alexander Higgins https://github.com/alexhiggins732/ 
+ 
+
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+
+*/
+
+using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using IdentityModel.Client;
@@ -13,8 +28,8 @@ using Clients;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
-using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using System.Text.Json;
 
 namespace MvcImplicit.Controllers
 {
@@ -60,8 +75,8 @@ namespace MvcImplicit.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> BackChannelLogout(string logout_token)
         {
-            Response.Headers.Add("Cache-Control", "no-cache, no-store");
-            Response.Headers.Add("Pragma", "no-cache");
+            Response.Headers.Append("Cache-Control", "no-cache, no-store");
+            Response.Headers.Append("Pragma", "no-cache");
 
             try
             {
@@ -138,9 +153,9 @@ namespace MvcImplicit.Controllers
             var eventsJson = claims.FindFirst("events")?.Value;
             if (String.IsNullOrWhiteSpace(eventsJson)) throw new Exception("Invalid logout token");
 
-            var events = JObject.Parse(eventsJson);
+            var events = JsonSerializer.Deserialize<JsonElement>(eventsJson);
             var logoutEvent = events.TryGetValue("http://schemas.openid.net/event/backchannel-logout");
-            if (logoutEvent == null) throw new Exception("Invalid logout token");
+            if (logoutEvent.ValueKind== JsonValueKind.Null) throw new Exception("Invalid logout token");
 
             return claims;
         }

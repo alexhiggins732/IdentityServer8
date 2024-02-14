@@ -13,21 +13,14 @@
 
 */
 
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-
-namespace MvcHybrid
+namespace Clients
 {
-    public class Program
+    public class Constants
     {
-        public static void Main(string[] args)
-        {
-            BuildWebHost(args).Run();
-        }
+        public const string Authority = "https://localhost:5001";
+        public const string AuthorityMtls = "https://identityserver.local";
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
+        public const string SampleApi = "https://localhost:5005/";
+        public const string SampleApiMtls = "https://api.identityserver.local/";
     }
 }
