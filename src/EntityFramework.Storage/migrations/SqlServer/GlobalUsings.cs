@@ -13,16 +13,10 @@
 
 */
 
-namespace SqlServer;
-
-class Program
-{
-    public static void Main(string[] args)
-    {
-    }
-
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .Build();
-}
+global using IdentityServer8.EntityFramework.DbContexts;
+global using IdentityServer8.EntityFramework.Storage;
+global using Microsoft.AspNetCore;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.EntityFrameworkCore.Metadata;
+global using Microsoft.EntityFrameworkCore.Migrations;

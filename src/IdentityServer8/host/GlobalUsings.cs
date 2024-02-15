@@ -13,7 +13,6 @@
 
 */
 
-global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;
 global using IdentityModel;
 global using IdentityServer8;
 global using IdentityServer8.Configuration;
@@ -27,21 +26,13 @@ global using IdentityServer8.Validation;
 global using IdentityServerHost.Configuration;
 global using IdentityServerHost.Extensions;
 global using IdentityServerHost.Quickstart.UI;
-global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using Microsoft.AspNetCore.Authentication;
 global using Microsoft.AspNetCore.Authentication.Certificate;
 global using Microsoft.AspNetCore.Authorization;
-global using Microsoft.AspNetCore.Builder;
-global using Microsoft.AspNetCore.Hosting;
-global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.HttpOverrides;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Filters;
 global using Microsoft.DependencyInjection.Extensions;
-global using Microsoft.Extensions.Configuration;
-global using Microsoft.Extensions.DependencyInjection;
-global using Microsoft.Extensions.Hosting;
-global using Microsoft.Extensions.Logging;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Logging;
 global using Microsoft.IdentityModel.Tokens;
@@ -49,14 +40,11 @@ global using Newtonsoft.Json;
 global using Serilog;
 global using Serilog.Events;
 global using Serilog.Sinks.SystemConsole.Themes;
-global using static IdentityServer8.IdentityServerConstants;
-global using System;
-global using System.Collections.Generic;
 global using System.ComponentModel.DataAnnotations;
 global using System.Diagnostics;
-global using System.Linq;
 global using System.Security.Claims;
 global using System.Security.Cryptography.X509Certificates;
 global using System.Text;
-global using System.Text.Json;
-global using System.Threading.Tasks;
+global using static IdentityServer8.IdentityServerConstants;
+global using ILogger = Microsoft.Extensions.Logging.ILogger;
+global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;

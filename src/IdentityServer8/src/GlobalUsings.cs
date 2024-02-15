@@ -13,7 +13,6 @@
 
 */
 
-global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;
 global using IdentityModel;
 global using IdentityServer8;
 global using IdentityServer8.Configuration;
@@ -57,20 +56,13 @@ global using Microsoft.Extensions.Primitives;
 //global using Microsoft.Net.Http.Headers;
 global using Newtonsoft.Json;
 global using Newtonsoft.Json.Linq;
-global using static IdentityServer8.Constants;
-global using static IdentityServer8.IdentityServerConstants;
-global using System;
 global using System.Buffers;
 global using System.Collections.Concurrent;
-global using System.Collections.Generic;
 global using System.Collections.Specialized;
 global using System.Diagnostics;
 global using System.Globalization;
 global using System.IdentityModel.Tokens.Jwt;
-global using System.IO;
-global using System.Linq;
 global using System.Net;
-global using System.Net.Http;
 global using System.Reflection;
 global using System.Runtime.CompilerServices;
 global using System.Security.Claims;
@@ -81,4 +73,6 @@ global using System.Text;
 global using System.Text.Encodings.Web;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
-global using System.Threading.Tasks;
+global using static IdentityServer8.Constants;
+global using static IdentityServer8.IdentityServerConstants;
+global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;
