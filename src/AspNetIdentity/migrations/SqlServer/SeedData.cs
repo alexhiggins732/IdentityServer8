@@ -13,16 +13,6 @@
 
 */
 
-using System;
-using System.Linq;
-using System.Security.Claims;
-using IdentityServerHost.Data;
-using IdentityModel;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace IdentityServerHost;
 
 public class SeedData

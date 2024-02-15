@@ -13,18 +13,14 @@
 
 */
 
-namespace SqlServer;
-
-class Program
-{
-    public static void Main(string[] args)
-    {
-        var host = BuildWebHost(args);
-        SeedData.EnsureSeedData(host.Services);
-    }
-
-    public static IWebHost BuildWebHost(string[] args) =>
-        WebHost.CreateDefaultBuilder(args)
-            .UseStartup<Startup>()
-            .Build();
-}
+global using IdentityModel;
+global using IdentityServer8.Models;
+global using IdentityServerHost;
+global using IdentityServerHost.Data;
+global using Microsoft.AspNetCore;
+global using Microsoft.AspNetCore.Identity;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.EntityFrameworkCore.Metadata;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using System.Security.Claims;

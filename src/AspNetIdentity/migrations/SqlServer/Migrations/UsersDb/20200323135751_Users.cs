@@ -13,9 +13,6 @@
 
 */
 
-using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
 namespace SqlServer.Migrations.UsersDb;
 
 public partial class Users : Migration

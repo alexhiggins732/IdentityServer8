@@ -13,14 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Configuration;
-using Microsoft.EntityFrameworkCore;
-using IdentityServerHost.Data;
-using Microsoft.AspNetCore.Identity;
-using IdentityServer8.Models;
-
 namespace SqlServer;
 
 public class Startup
