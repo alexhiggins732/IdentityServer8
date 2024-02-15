@@ -64,6 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		..\global.json = ..\global.json
 		..\IdentityServer8.DotNet.ruleset = ..\IdentityServer8.DotNet.ruleset
 		..\LICENSE = ..\LICENSE
+		..\LicenseHeader.txt = ..\LicenseHeader.txt
 		..\NuGet.config = ..\NuGet.config
 		..\README.md = ..\README.md
 		..\SECURITY.MD = ..\SECURITY.MD

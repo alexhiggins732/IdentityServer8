@@ -1,27 +1,17 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using IdentityModel;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.ResponseHandling;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
+using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IdentityServer8.Endpoints.Results;
 
@@ -46,7 +36,7 @@ internal class TokenResult : IEndpointResult
             expires_in = Response.AccessTokenLifetime,
             token_type = OidcConstants.TokenResponse.BearerTokenType,
             scope = Response.Scope,
-            
+
             Custom = Response.Custom
         };
 
@@ -63,6 +53,6 @@ internal class TokenResult : IEndpointResult
         public string scope { get; set; }
 
         [JsonExtensionData]
-        public Dictionary<string, object> Custom { get; set; }
+        public Dictionary<string, object>? Custom { get; set; }
     }
 }

@@ -1,16 +1,13 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 using System.Collections.Generic;
@@ -23,6 +20,7 @@ using IdentityServer.IntegrationTests.Clients.Setup;
 using IdentityServer8.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
+using Microsoft.VisualStudio.TestPlatform.ObjectModel;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Clients;
@@ -56,9 +54,7 @@ public class CustomTokenRequestValidatorClient
             ClientSecret = "secret",
             Scope = "api1"
         });
-
-        var fields = GetFields(response);
-        fields["custom"].ToString().Should().Be("custom");
+        ValidateCustomFields(response);
     }
 
     [Fact]
@@ -76,8 +72,7 @@ public class CustomTokenRequestValidatorClient
             Password = "bob"
         });
 
-        var fields = GetFields(response);
-        fields["custom"].ToString().Should().Be("custom");
+        ValidateCustomFields(response);
     }
 
     [Fact]
@@ -104,8 +99,7 @@ public class CustomTokenRequestValidatorClient
             RefreshToken = response.RefreshToken
         });
 
-        var fields = GetFields(response);
-        fields["custom"].ToString().Should().Be("custom");
+        ValidateCustomFields(response);
     }
 
     [Fact]
@@ -126,12 +120,17 @@ public class CustomTokenRequestValidatorClient
             }
         });
 
-        var fields = GetFields(response);
-        fields["custom"].ToString().Should().Be("custom");
+        ValidateCustomFields(response);
     }
 
-    private Dictionary<string, JsonElement> GetFields(TokenResponse response)
+     private Dictionary<string, JsonElement> GetFields(JsonElement json)
     {
-        return response.Json.ToObject<Dictionary<string, JsonElement>>();
+        return json.ToObject<Dictionary<string, JsonElement>>();
+    }
+    private void ValidateCustomFields(TokenResponse response)
+    {
+        var fields = GetFields(response.Json);
+        fields["custom"].ToString().Should().Be("custom");
+
     }
 }

@@ -1,24 +1,16 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using IdentityModel;
-using IdentityServer8.Test;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text.Json;
-using IdentityServer8;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IdentityServerHost.Quickstart.UI;
 

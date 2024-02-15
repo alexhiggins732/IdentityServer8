@@ -1,16 +1,13 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 using System;
@@ -251,7 +248,8 @@ public class CustomTokenResponseClients
             }
         });
 
-
+        var s = response.Json.ToString();
+        var fd = GetFieldsD(response);
         // raw fields
         var fields = GetFields(response);
         fields["string_value"].ToString().Should().Be("some_string");
@@ -292,9 +290,20 @@ public class CustomTokenResponseClients
         return responseObject.ToObject<CustomResponseDto>();
     }
 
+    private Dictionary<string, object> GetFieldsD(TokenResponse response)
+    {
+        return response.Json.ToObject<Dictionary<string, object>>();
+    }
+
+
     private Dictionary<string, JsonElement> GetFields(TokenResponse response)
     {
-        return response.Json.ToObject<Dictionary<string, JsonElement>>();
+        return GetFields(response.Json);
+    }
+
+    private Dictionary<string, JsonElement> GetFields(JsonElement json)
+    {
+        return json.ToObject<Dictionary<string, JsonElement>>();
     }
 
     private Dictionary<string, object> GetPayload(TokenResponse response)
