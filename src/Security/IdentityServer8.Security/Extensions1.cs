@@ -1,8 +1,3 @@
-using IdentityServer8.Security;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-
 namespace Microsoft.DependencyInjection.Extensions;
 
 public static class RedirectUrlServiceExtensions

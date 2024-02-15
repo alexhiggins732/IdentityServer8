@@ -13,7 +13,6 @@
 
 */
 
-using System;
 
 namespace IdentityServer8.Models;
 

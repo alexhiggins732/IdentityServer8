@@ -1,10 +1,3 @@
-using IdentityServer8.Security;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-using System.Web;
-
 namespace IdentityServer8.Security;
 
 public enum SanitizerType

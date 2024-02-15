@@ -1,14 +1,3 @@
-using Microsoft.DependencyInjection.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.CompilerServices;
-using System.Text;
-using System.Threading.Tasks;
-
-
 namespace IdentityServer8.Security;
 
 public interface IRedirectService
@@ -91,7 +80,7 @@ public class Host
     public Host(string value)
     {
         Value = ((value ?? "").ToLower().Trim() ?? "");
-        var domainParts = value.Split('.');
+        var domainParts = Value.Split('.');
         domainParts = domainParts.Where(x => !string.IsNullOrEmpty(x)).ToArray();
         HostParts = new List<string>(domainParts);
     }

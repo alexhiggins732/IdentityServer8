@@ -13,7 +13,6 @@
 
 */
 
-using Newtonsoft.Json;
 
 namespace IdentityServer8.Stores.Serialization;
 
