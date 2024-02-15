@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning 2](http://semver.org/).
  
 ## [Unreleased] - 2024-02-13
 
-Current templates and quickstarts will be added to seperate template and quickstart repositories to continue previous version functionality.
-
-DotNet tool to install template currently under development.
+- Current templates and quickstarts will be added to seperate template and quickstart repositories to continue previous version functionality.
+- DotNet tool to install template currently under development.
+- Convert Top Level usings
+- Convert Implicit usings.
+- [Security] 100+ Security patches and updates to address issues outline in #9 and #10 plus:
+ - User-controlled redirect to external site
+ - User supplied DOM parsed as HTML
 
 
 ## [8.0.3] - 2024-02-12
