@@ -13,7 +13,6 @@
 
 */
 
-
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
 

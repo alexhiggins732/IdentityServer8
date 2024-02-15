@@ -13,7 +13,6 @@
 
 */
 
-
 #pragma warning disable 1591
 
 namespace IdentityServer8.Extensions;

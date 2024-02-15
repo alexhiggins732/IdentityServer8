@@ -13,8 +13,6 @@
 
 */
 
-
-
 ConfigureLogger();
 
 try

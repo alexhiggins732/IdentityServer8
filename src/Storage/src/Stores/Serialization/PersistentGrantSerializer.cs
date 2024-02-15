@@ -13,7 +13,6 @@
 
 */
 
-
 namespace IdentityServer8.Stores.Serialization;
 
 /// <summary>

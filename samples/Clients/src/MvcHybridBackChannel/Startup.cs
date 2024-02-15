@@ -1,4 +1,4 @@
-﻿/*
+/*
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  
