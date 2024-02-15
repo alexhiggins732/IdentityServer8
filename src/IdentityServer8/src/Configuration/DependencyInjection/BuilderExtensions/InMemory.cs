@@ -13,8 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>

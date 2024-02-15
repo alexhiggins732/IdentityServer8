@@ -13,8 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.IdentityModel.Tokens;
 
 namespace IdentityServer8.Validation;

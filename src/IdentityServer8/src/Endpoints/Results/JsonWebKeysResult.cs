@@ -13,14 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-
 namespace IdentityServer8.Endpoints.Results;
 
 /// <summary>

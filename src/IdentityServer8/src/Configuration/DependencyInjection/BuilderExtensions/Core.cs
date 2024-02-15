@@ -13,8 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Http;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>

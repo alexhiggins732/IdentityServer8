@@ -13,11 +13,6 @@
 
 */
 
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using IdentityServer8.Validation;
-
 namespace IdentityServerHost.Extensions;
 
 public class ParameterizedScopeTokenRequestValidator : ICustomTokenRequestValidator

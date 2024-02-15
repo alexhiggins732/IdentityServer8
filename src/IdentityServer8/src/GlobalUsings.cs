@@ -13,6 +13,7 @@
 
 */
 
+global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;
 global using IdentityModel;
 global using IdentityServer8;
 global using IdentityServer8.Configuration;
@@ -81,7 +82,3 @@ global using System.Text.Encodings.Web;
 global using System.Text.Json;
 global using System.Text.Json.Serialization;
 global using System.Threading.Tasks;
-//IdentityServer8.Models.JsonWebKey' and 'Microsoft.IdentityModel.Tokens.JsonWebKey'
-//'Microsoft.Net.Http.Headers.SameSiteMode' and 'Microsoft.AspNetCore.Http.SameSiteMode'
-
-global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;

@@ -13,9 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-using System.Collections.Generic;
-
 namespace IdentityServerHost.Configuration;
 
 public static class Clients

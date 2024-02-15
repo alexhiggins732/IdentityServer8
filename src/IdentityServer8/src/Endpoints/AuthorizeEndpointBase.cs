@@ -13,9 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Endpoints;
 
 internal abstract class AuthorizeEndpointBase : IEndpointHandler

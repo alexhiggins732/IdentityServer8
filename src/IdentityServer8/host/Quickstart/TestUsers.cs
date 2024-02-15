@@ -13,12 +13,7 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Test;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Text.Json;
-using IdentityServer8;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IdentityServerHost.Quickstart.UI;
 

@@ -13,15 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.ResponseHandling;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using System.Threading.Tasks;
 using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 

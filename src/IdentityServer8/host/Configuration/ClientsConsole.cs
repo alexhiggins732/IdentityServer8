@@ -13,10 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using IdentityServer8;
-using IdentityServer8.Models;
-
 namespace IdentityServerHost.Configuration;
 
 public static class ClientsConsole

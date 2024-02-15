@@ -13,7 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
 using Microsoft.IdentityModel.Tokens;
 using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 

@@ -13,8 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Services;
 
 /// <summary>

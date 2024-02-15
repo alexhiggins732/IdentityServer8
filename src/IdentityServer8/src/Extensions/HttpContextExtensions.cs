@@ -15,8 +15,6 @@
 
 #pragma warning disable 1591
 
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Http;
 
 namespace IdentityServer8.Extensions;
 
