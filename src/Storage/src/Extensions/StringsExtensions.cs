@@ -13,7 +13,6 @@
 
 */
 
-using System.Diagnostics;
 
 namespace IdentityServer8.Extensions;
 

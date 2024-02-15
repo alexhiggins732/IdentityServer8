@@ -13,11 +13,6 @@
 
 */
 
-using IdentityModel;
-using Newtonsoft.Json;
-using System;
-using System.Linq;
-using System.Security.Claims;
 
 #pragma warning disable 1591
 
