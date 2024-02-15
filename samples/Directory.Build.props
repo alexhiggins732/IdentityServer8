@@ -1,4 +1,7 @@
 <Project>
+  <PropertyGroup>
+	<IdentityServerVersion>8.0.4-alpha.0</IdentityServerVersion>
+  </PropertyGroup>
   <ImportGroup>
 	 <Import Project="../Directory.Build.props" />
   </ImportGroup>
