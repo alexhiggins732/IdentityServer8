@@ -13,13 +13,6 @@
 
 */
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Identity;
-using System.Security.Claims;
-using IdentityModel;
-
 namespace IdentityServer8.AspNetIdentity;
 
 internal class UserClaimsFactory<TUser> : IUserClaimsPrincipalFactory<TUser>

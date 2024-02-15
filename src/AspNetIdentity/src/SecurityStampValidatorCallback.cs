@@ -13,10 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Identity;
-using System.Threading.Tasks;
-using System.Linq;
-
 namespace IdentityServer8.AspNetIdentity;
 
 /// <summary>

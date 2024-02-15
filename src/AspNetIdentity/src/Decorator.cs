@@ -13,8 +13,6 @@
 
 */
 
-using System;
-
 namespace IdentityServer8.AspNetIdentity;
 
 internal class Decorator<TService>

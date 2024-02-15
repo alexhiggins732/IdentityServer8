@@ -13,15 +13,6 @@
 
 */
 
-using System;
-using System.Linq;
-using IdentityModel;
-using IdentityServer8;
-using IdentityServer8.AspNetIdentity;
-using IdentityServer8.Configuration;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Identity;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
