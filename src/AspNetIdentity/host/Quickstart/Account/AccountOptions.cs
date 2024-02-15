@@ -13,8 +13,6 @@
 
 */
 
-using System;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class AccountOptions

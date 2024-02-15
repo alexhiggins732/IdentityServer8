@@ -13,11 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Models;
-using System.Collections.Generic;
-using static IdentityServer8.IdentityServerConstants;
-
 namespace IdentityServerHost.Configuration;
 
 public class Resources

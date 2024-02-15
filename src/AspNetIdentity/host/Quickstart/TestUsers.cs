@@ -13,11 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Test;
-using System.Collections.Generic;
-using System.Security.Claims;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class TestUsers

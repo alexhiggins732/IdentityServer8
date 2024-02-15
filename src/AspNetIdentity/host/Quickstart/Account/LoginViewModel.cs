@@ -13,10 +13,6 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class LoginViewModel : LoginInputModel

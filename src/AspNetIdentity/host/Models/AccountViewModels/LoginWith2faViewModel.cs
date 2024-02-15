@@ -13,8 +13,6 @@
 
 */
 
-using System.ComponentModel.DataAnnotations;
-
 namespace IdentityServer8.Models.AccountViewModels;
 
 public class LoginWith2faViewModel

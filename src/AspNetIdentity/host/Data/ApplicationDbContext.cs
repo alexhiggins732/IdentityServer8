@@ -13,10 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-
 namespace IdentityServerHost.Data;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>

@@ -13,10 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Identity;
-
 namespace IdentityServer8.Models.ManageViewModels;
 
 public class ExternalLoginsViewModel

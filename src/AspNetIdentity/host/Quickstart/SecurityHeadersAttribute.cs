@@ -13,10 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class SecurityHeadersAttribute : ActionFilterAttribute

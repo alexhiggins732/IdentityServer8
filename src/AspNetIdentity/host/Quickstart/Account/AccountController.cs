@@ -13,23 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.DependencyInjection.Extensions;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 [SecurityHeaders]

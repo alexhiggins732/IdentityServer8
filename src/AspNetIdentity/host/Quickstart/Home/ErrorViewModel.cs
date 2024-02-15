@@ -13,8 +13,6 @@
 
 */
 
-using IdentityServer8.Models;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class ErrorViewModel
