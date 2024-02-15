@@ -13,14 +13,6 @@
 
 */
 
-using IdentityServer8.EntityFramework.Options;
-using IdentityServer8.EntityFramework;
-using Microsoft.Extensions.Hosting;
-using System.Threading;
-using System.Threading.Tasks;
-using System;
-using Microsoft.Extensions.Logging;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>

@@ -13,17 +13,6 @@
 
 */
 
-using System;
-using System.Threading.Tasks;
-using IdentityServer8.Services;
-using System.Linq;
-using IdentityServer8.EntityFramework.Interfaces;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.DependencyInjection.Extensions;
-
 namespace IdentityServer8.EntityFramework.Services;
 
 /// <summary>

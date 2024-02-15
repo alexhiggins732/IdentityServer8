@@ -13,18 +13,6 @@
 
 */
 
-using IdentityServer8.EntityFramework.DbContexts;
-using IdentityServer8.EntityFramework.Interfaces;
-using IdentityServer8.EntityFramework.Services;
-using IdentityServer8.EntityFramework.Stores;
-using IdentityServer8.Stores;
-using System;
-using IdentityServer8.EntityFramework.Options;
-using IdentityServer8.EntityFramework;
-using IdentityServer8.EntityFramework.Storage;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Hosting;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>
