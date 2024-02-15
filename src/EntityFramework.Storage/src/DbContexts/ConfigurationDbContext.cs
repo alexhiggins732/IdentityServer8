@@ -13,12 +13,7 @@
 
 */
 
-using System;
 using IdentityServer8.EntityFramework.Entities;
-using IdentityServer8.EntityFramework.Extensions;
-using IdentityServer8.EntityFramework.Interfaces;
-using IdentityServer8.EntityFramework.Options;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServer8.EntityFramework.DbContexts
 {

@@ -13,9 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using System.Security.Claims;
-using AutoMapper;
 using IdentityServer8.Models;
 
 namespace IdentityServer8.EntityFramework.Mappers

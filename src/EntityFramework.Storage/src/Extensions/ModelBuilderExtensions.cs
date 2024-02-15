@@ -14,9 +14,6 @@
 */
 
 using IdentityServer8.EntityFramework.Entities;
-using IdentityServer8.EntityFramework.Options;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace IdentityServer8.EntityFramework.Extensions
 {

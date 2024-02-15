@@ -13,8 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
 using IdentityServer8.EntityFramework.Entities;
 
 namespace IdentityServer8.EntityFramework

@@ -13,10 +13,7 @@
 
 */
 
-using System;
-using System.Threading.Tasks;
 using IdentityServer8.EntityFramework.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace IdentityServer8.EntityFramework.Interfaces
 {

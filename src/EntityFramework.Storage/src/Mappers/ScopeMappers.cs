@@ -13,7 +13,6 @@
 
 */
 
-using AutoMapper;
 using IdentityServer8.EntityFramework.Entities;
 
 namespace IdentityServer8.EntityFramework.Mappers

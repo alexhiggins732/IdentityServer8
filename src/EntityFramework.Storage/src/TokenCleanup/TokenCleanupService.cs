@@ -13,15 +13,6 @@
 
 */
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityServer8.EntityFramework.Entities;
-using IdentityServer8.EntityFramework.Interfaces;
-using IdentityServer8.EntityFramework.Options;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
-
 namespace IdentityServer8.EntityFramework
 {
     /// <summary>

@@ -13,9 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using AutoMapper;
-
 namespace IdentityServer8.EntityFramework.Mappers
 {
     /// <summary>

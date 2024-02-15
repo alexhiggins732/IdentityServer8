@@ -13,11 +13,6 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using AutoMapper;
-
 namespace IdentityServer8.EntityFramework.Mappers
 {
     class AllowedSigningAlgorithmsConverter : 

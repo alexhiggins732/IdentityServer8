@@ -15,8 +15,6 @@
 
 #pragma warning disable 1591
 
-using System;
-
 namespace IdentityServer8.EntityFramework.Entities
 {
     public abstract class Secret

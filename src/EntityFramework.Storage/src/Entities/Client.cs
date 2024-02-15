@@ -16,8 +16,6 @@
 #pragma warning disable 1591
 
 using IdentityServer8.Models;
-using System;
-using System.Collections.Generic;
 
 namespace IdentityServer8.EntityFramework.Entities
 {

@@ -13,13 +13,6 @@
 
 */
 
-using IdentityServer8.EntityFramework.DbContexts;
-using IdentityServer8.EntityFramework.Interfaces;
-using System;
-using IdentityServer8.EntityFramework.Options;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace IdentityServer8.EntityFramework.Storage
 {
     /// <summary>

@@ -13,16 +13,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityServer8.EntityFramework.Interfaces;
-using IdentityServer8.EntityFramework.Mappers;
 using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
 
 namespace IdentityServer8.EntityFramework.Stores
 {

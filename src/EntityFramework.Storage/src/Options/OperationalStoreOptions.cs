@@ -13,9 +13,6 @@
 
 */
 
-using System;
-using Microsoft.EntityFrameworkCore;
-
 namespace IdentityServer8.EntityFramework.Options
 {
     /// <summary>
