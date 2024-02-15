@@ -13,9 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.ResponseHandling;
-
 namespace IdentityServer8.Logging.Models;
 
 internal class AuthorizeResponseLog

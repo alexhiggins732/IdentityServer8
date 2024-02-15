@@ -13,10 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Models;
-using Microsoft.Extensions.Logging;
-
 namespace IdentityServer8.Services;
 
 /// <summary>

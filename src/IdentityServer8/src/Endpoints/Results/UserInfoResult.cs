@@ -13,12 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Endpoints.Results;
 
 internal class UserInfoResult : IEndpointResult

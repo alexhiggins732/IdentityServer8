@@ -13,10 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using System;
-using System.Security.Claims;
-
 namespace IdentityServer8.Models;
 
 /// <summary>

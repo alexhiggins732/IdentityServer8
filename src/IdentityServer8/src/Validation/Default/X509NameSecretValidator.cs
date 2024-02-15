@@ -13,15 +13,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Threading.Tasks;
-using IdentityServer8.Extensions;
 using IdentityServer8.Models;
-using Microsoft.Extensions.Logging;
-using static IdentityServer8.IdentityServerConstants;
 
 namespace IdentityServer8.Validation;
 

@@ -13,12 +13,6 @@
 
 */
 
-using IdentityServer8.Services;
-using Microsoft.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
-
 namespace IdentityServer8.Extensions;
 
 /// <summary>

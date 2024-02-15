@@ -13,11 +13,6 @@
 
 */
 
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using Microsoft.DependencyInjection.Extensions;
-
 namespace IdentityServer8.Validation;
 
 /// <summary>

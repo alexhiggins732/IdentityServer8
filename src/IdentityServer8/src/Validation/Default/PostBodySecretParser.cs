@@ -13,15 +13,6 @@
 
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-using System.Linq;
-using IdentityModel;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Validation;
 
 /// <summary>

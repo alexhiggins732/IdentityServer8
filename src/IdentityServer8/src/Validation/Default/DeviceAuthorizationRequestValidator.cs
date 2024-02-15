@@ -13,18 +13,6 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Logging;
-using IdentityServer8.Models;
-using Microsoft.Extensions.Logging;
-
 namespace IdentityServer8.Validation;
 
 internal class DeviceAuthorizationRequestValidator : IDeviceAuthorizationRequestValidator

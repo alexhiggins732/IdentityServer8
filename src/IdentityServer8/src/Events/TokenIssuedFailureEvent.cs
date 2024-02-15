@@ -13,10 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Validation;
-using static IdentityServer8.Constants;
-
 namespace IdentityServer8.Events;
 
 /// <summary>

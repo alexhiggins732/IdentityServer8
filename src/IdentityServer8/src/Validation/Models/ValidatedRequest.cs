@@ -13,15 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using System.Collections.Specialized;
-using System.Security.Claims;
-using IdentityModel;
-using System.Linq;
-using System;
-
 namespace IdentityServer8.Validation;
 
 /// <summary>

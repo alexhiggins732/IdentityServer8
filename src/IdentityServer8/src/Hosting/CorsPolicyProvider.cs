@@ -13,18 +13,6 @@
 
 */
 
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Extensions.Logging;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Cors.Infrastructure;
-using IdentityServer8.Configuration;
-using IdentityServer8.Configuration.DependencyInjection;
-using IdentityServer8.Services;
-using Microsoft.Extensions.DependencyInjection;
-using IdentityServer8.Extensions;
-using Microsoft.DependencyInjection.Extensions;
-
 namespace IdentityServer8.Hosting;
 
 internal class CorsPolicyProvider : ICorsPolicyProvider

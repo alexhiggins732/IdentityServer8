@@ -13,8 +13,6 @@
 
 */
 
-using static IdentityServer8.Constants;
-
 namespace IdentityServer8.Events;
 
 /// <summary>

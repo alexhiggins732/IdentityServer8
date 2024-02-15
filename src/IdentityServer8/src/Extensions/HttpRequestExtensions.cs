@@ -13,12 +13,12 @@
 
 */
 
-using System;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
 using Microsoft.Net.Http.Headers;
 
+
 #pragma warning disable 1591
+
+using Microsoft.AspNetCore.Http;
 
 namespace IdentityServer8.Extensions;
 

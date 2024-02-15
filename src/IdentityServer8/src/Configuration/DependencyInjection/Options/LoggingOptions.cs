@@ -13,9 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using IdentityModel;
-
 namespace IdentityServer8.Configuration;
 
 /// <summary>

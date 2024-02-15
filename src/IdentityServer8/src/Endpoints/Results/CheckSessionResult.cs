@@ -13,13 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-
 namespace IdentityServer8.Endpoints.Results;
 
 internal class CheckSessionResult : IEndpointResult

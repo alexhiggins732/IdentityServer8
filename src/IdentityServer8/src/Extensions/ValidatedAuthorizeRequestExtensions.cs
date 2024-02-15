@@ -13,14 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Text;
-
 #pragma warning disable 1591
 
 namespace IdentityServer8.Validation;

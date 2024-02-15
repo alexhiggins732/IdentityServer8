@@ -13,14 +13,6 @@
 
 */
 
-using IdentityModel;
-using System.Collections.Generic;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using IdentityServer8.Extensions;
-using Microsoft.Extensions.DependencyInjection;
-using IdentityServer8.Configuration;
-
 namespace IdentityServer8;
 
 /// <summary>

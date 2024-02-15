@@ -14,7 +14,6 @@
 */
 
 using IdentityServer8.Models;
-using IdentityServer8.Validation;
 
 namespace IdentityServer8.Events;
 

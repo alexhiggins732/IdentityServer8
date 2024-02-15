@@ -13,17 +13,7 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Validation;
-using IdentityServer8.ResponseHandling;
-using Microsoft.Extensions.Logging;
-using IdentityServer8.Hosting;
-using IdentityServer8.Endpoints.Results;
 using Microsoft.AspNetCore.Http;
-using System.Net;
-using IdentityServer8.Services;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
 
 namespace IdentityServer8.Endpoints;
 

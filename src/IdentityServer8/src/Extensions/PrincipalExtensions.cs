@@ -13,13 +13,6 @@
 
 */
 
-using IdentityModel;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Security.Claims;
-using System.Security.Principal;
-
 namespace IdentityServer8.Extensions;
 
 /// <summary>

@@ -13,13 +13,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.DataProtection;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Caching.Distributed;
-using Microsoft.Extensions.DependencyInjection;
 
 namespace IdentityServer8.Infrastructure;
 

@@ -13,8 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Authentication;
-
 namespace IdentityServer8.Hosting.LocalApiAuthentication;
 
 /// <summary>

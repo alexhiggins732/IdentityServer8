@@ -13,9 +13,7 @@
 
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Hosting;
-using static IdentityServer8.Constants;
+using Endpoint = IdentityServer8.Hosting.Endpoint;
 
 namespace IdentityServer8.Extensions;
 

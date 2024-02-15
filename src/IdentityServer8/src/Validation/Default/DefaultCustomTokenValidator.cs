@@ -13,11 +13,6 @@
 
 */
 
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
 namespace IdentityServer8.Validation;
 
 /// <summary>

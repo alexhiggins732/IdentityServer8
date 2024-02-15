@@ -22,6 +22,8 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json.Serialization;
 using System.Threading.Tasks;
+using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IdentityServer8.Endpoints.Results;
 
@@ -46,7 +48,7 @@ internal class TokenResult : IEndpointResult
             expires_in = Response.AccessTokenLifetime,
             token_type = OidcConstants.TokenResponse.BearerTokenType,
             scope = Response.Scope,
-            
+
             Custom = Response.Custom
         };
 
@@ -63,6 +65,6 @@ internal class TokenResult : IEndpointResult
         public string scope { get; set; }
 
         [JsonExtensionData]
-        public Dictionary<string, object> Custom { get; set; }
+        public Dictionary<string, object>? Custom { get; set; }
     }
 }

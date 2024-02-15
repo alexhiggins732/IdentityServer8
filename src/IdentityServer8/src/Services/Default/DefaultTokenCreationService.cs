@@ -13,18 +13,7 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Globalization;
-using System.IdentityModel.Tokens.Jwt;
-using System.Threading.Tasks;
-using static IdentityServer8.IdentityServerConstants;
 
 namespace IdentityServer8.Services;
 

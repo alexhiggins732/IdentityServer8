@@ -13,18 +13,7 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Validation;
-using IdentityServer8.Hosting;
-using Microsoft.AspNetCore.Http;
-using IdentityServer8.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using IdentityServer8.Extensions;
-using System;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.DependencyInjection.Extensions;
 
 namespace IdentityServer8.Endpoints.Results;
 

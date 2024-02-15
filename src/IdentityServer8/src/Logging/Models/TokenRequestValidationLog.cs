@@ -13,12 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using IdentityModel;
-using IdentityServer8.Extensions;
-using IdentityServer8.Validation;
-
 namespace IdentityServer8.Logging.Models;
 
 internal class TokenRequestValidationLog

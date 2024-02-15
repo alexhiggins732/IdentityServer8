@@ -13,20 +13,7 @@
 
 */
 
-using System;
-using System.Collections.Generic;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
 
 namespace IdentityServer8.Validation;
 

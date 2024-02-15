@@ -13,13 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace IdentityServer8.Test;
 
 /// <summary>

@@ -13,8 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-
 namespace IdentityServer8.ResponseHandling;
 
 /// <summary>

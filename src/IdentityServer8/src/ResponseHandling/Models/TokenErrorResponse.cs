@@ -13,9 +13,6 @@
 
 */
 
-using IdentityModel;
-using System.Collections.Generic;
-
 namespace IdentityServer8.ResponseHandling;
 
 /// <summary>

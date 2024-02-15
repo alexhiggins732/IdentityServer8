@@ -13,19 +13,8 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Validation;
-using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
-using System.Threading.Tasks;
+using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
 namespace IdentityServer8.ResponseHandling;
 

@@ -13,13 +13,6 @@
 
 */
 
-using System;
-using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using IdentityServer8.Validation;
-using Microsoft.Extensions.Logging;
-
 namespace IdentityServer8.Services;
 
 internal class DefaultDeviceFlowInteractionService : IDeviceFlowInteractionService

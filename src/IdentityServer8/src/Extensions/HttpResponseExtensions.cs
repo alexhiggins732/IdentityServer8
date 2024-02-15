@@ -13,15 +13,10 @@
 
 */
 
-using IdentityServer8.Configuration;
+#pragma warning disable 1591
+
 using IdentityServer8.Models;
 using Microsoft.AspNetCore.Http;
-using Microsoft.DependencyInjection.Extensions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-#pragma warning disable 1591
 
 namespace IdentityServer8.Extensions;
 

@@ -13,16 +13,6 @@
 
 */
 
-using System.Net;
-using System.Threading.Tasks;
-using IdentityServer8.Configuration;
-using IdentityServer8.Endpoints.Results;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.ResponseHandling;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Logging;
-
 namespace IdentityServer8.Endpoints;
 
 internal class DiscoveryEndpoint : IEndpointHandler

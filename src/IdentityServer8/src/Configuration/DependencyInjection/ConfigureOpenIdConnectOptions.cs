@@ -13,12 +13,7 @@
 
 */
 
-using System;
-using System.Linq;
-using IdentityServer8.Infrastructure;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
 
 namespace IdentityServer8.Configuration;
 

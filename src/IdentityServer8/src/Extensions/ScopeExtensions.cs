@@ -13,10 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-
 namespace IdentityServer8.Models;
 
 internal static class ScopeExtensions

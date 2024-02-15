@@ -13,11 +13,6 @@
 
 */
 
-using System.Collections.Generic;
-using IdentityModel;
-using IdentityServer8.Extensions;
-using IdentityServer8.Validation;
-
 namespace IdentityServer8.Logging.Models;
 
 internal class EndSessionRequestValidationLog

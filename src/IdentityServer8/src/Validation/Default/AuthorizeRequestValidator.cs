@@ -13,20 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using IdentityServer8.Logging.Models;
-
 namespace IdentityServer8.Validation;
 
 internal class AuthorizeRequestValidator : IAuthorizeRequestValidator

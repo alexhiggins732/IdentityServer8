@@ -13,10 +13,6 @@
 
 */
 
-using IdentityModel;
-using System.Collections.Generic;
-using System.Security.Claims;
-
 namespace IdentityServer8.Test;
 
 /// <summary>

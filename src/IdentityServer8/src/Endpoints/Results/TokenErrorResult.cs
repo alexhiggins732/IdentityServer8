@@ -13,14 +13,9 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Hosting;
 using Microsoft.AspNetCore.Http;
-using IdentityServer8.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Text.Json.Serialization;
-using IdentityServer8.ResponseHandling;
+using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
+
 
 namespace IdentityServer8.Endpoints.Results;
 

@@ -13,10 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.ResponseHandling;
-using System.Collections.Specialized;
-
 namespace IdentityServer8.Models;
 
 internal static class AuthorizeResponseExtensions

@@ -13,11 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
 namespace IdentityServer8.Configuration;
 
 internal class ConfigureInternalCookieOptions : IConfigureNamedOptions<CookieAuthenticationOptions>

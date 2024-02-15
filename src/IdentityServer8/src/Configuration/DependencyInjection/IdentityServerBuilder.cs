@@ -13,9 +13,6 @@
 
 */
 
-using Microsoft.Extensions.DependencyInjection;
-using System;
-
 namespace IdentityServer8.Configuration;
 
 /// <summary>

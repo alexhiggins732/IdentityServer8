@@ -13,9 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Validation;
-
 #pragma warning disable 1591
 
 namespace IdentityServer8.ResponseHandling;

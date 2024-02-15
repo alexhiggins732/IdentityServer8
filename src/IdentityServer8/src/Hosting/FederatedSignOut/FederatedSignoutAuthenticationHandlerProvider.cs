@@ -13,11 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Configuration.DependencyInjection;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Hosting.FederatedSignOut;
 
 // this intercepts IAuthenticationRequestHandler authentication handlers

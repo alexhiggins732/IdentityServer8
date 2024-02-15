@@ -13,13 +13,6 @@
 
 */
 
-using IdentityServer8;
-using IdentityServer8.Hosting.LocalApiAuthentication;
-using Microsoft.AspNetCore.Authentication;
-using System;
-using System.Security.Claims;
-using System.Threading.Tasks;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>

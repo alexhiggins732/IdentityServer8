@@ -13,8 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-
 namespace IdentityServer8.Services;
 
 /// <summary>

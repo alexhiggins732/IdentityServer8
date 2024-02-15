@@ -13,12 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Validation;
-using System.Threading.Tasks;
-using System;
-using Microsoft.AspNetCore.Authentication;
-
 namespace IdentityServer8.Test;
 
 /// <summary>

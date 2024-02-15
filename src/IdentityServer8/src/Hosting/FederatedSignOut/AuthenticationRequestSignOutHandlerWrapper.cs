@@ -13,10 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Hosting.FederatedSignOut;
 
 internal class AuthenticationRequestSignOutHandlerWrapper : AuthenticationRequestHandlerWrapper, IAuthenticationSignOutHandler

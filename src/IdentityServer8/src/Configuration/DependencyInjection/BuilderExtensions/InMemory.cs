@@ -14,13 +14,6 @@
 */
 
 using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.Extensions.Caching.Memory;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.Extensions.Configuration;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

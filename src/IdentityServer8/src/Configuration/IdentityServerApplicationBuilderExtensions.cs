@@ -13,18 +13,6 @@
 
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.Stores;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Diagnostics;
-using System.Reflection;
-using System.Threading.Tasks;
-
 namespace Microsoft.AspNetCore.Builder;
 
 /// <summary>

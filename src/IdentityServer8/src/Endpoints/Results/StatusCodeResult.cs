@@ -13,11 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using System.Net;
-using IdentityServer8.Hosting;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Endpoints.Results;
 
 /// <summary>

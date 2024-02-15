@@ -13,18 +13,6 @@
 
 */
 
-using System.Linq;
-using IdentityServer8.Validation;
-using System.Threading.Tasks;
-using IdentityServer8.Hosting;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
-using System.Net;
-using System;
-using IdentityServer8.Extensions;
-using IdentityServer8.Configuration;
-using System.Text.Encodings.Web;
-
 namespace IdentityServer8.Endpoints.Results;
 
 internal class EndSessionCallbackResult : IEndpointResult

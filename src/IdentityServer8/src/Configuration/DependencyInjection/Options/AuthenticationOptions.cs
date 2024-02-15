@@ -13,7 +13,6 @@
 
 */
 
-using System;
 using Microsoft.AspNetCore.Http;
 
 namespace IdentityServer8.Configuration;

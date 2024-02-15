@@ -13,14 +13,6 @@
 
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using Microsoft.AspNetCore.Http;
-using Microsoft.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-
 namespace IdentityServer8.Hosting;
 
 internal class EndpointRouter : IEndpointRouter

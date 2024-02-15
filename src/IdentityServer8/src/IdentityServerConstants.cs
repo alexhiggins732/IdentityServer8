@@ -15,8 +15,8 @@
 
 #pragma warning disable 1591
 
+
 using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
 
 namespace IdentityServer8;
 

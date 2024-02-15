@@ -13,10 +13,7 @@
 
 */
 
-using System;
-using System.Buffers;
-using System.Diagnostics;
-using System.Text.Json;
+using JsonSerializer = System.Text.Json.JsonSerializer;
 
 namespace IdentityServer8.Extensions;
 

@@ -13,15 +13,6 @@
 
 */
 
-using System;
-using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Extensions;
-using IdentityServer8.Validation;
-using Microsoft.Extensions.Logging;
-using IdentityServer8.Stores;
-using System.Collections.Specialized;
-
 namespace IdentityServer8.Services;
 
 internal class OidcReturnUrlParser : IReturnUrlParser

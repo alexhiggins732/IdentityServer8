@@ -13,13 +13,6 @@
 
 */
 
-using System;
-using System.Threading.Tasks;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
-using IdentityServer8.ResponseHandling;
-using Microsoft.AspNetCore.Http;
-
 namespace IdentityServer8.Endpoints.Results;
 
 internal class DeviceAuthorizationResult : IEndpointResult

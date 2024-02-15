@@ -13,8 +13,6 @@
 
 */
 
-using System;
-
 namespace Microsoft.AspNetCore.Builder;
 
 /// <summary>

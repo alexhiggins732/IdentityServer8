@@ -13,19 +13,6 @@
 
 */
 
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Http;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using IdentityServer8.Services;
-using Microsoft.Extensions.Logging;
-using IdentityServer8.Configuration.DependencyInjection;
-using IdentityServer8.Extensions;
-using System;
-using IdentityModel;
-using System.Linq;
-using IdentityServer8.Configuration;
-
 namespace IdentityServer8.Hosting;
 
 // this decorates the real authentication service to detect when the 

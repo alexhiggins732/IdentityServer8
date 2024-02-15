@@ -13,13 +13,6 @@
 
 */
 
-using IdentityServer8.Configuration;
-using Microsoft.Extensions.Configuration;
-using System;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.Options;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-
 namespace Microsoft.Extensions.DependencyInjection;
 
 /// <summary>

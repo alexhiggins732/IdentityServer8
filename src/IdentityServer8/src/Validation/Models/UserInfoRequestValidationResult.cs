@@ -13,8 +13,6 @@
 
 */
 
-using System.Security.Claims;
-
 namespace IdentityServer8.Validation;
 
 /// <summary>

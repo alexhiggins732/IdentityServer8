@@ -13,23 +13,6 @@
 
 */
 
-using IdentityModel;
-using IdentityServer8.Configuration;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Collections.Specialized;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using IdentityServer8.Logging.Models;
-using Microsoft.AspNetCore.Authentication;
-
 namespace IdentityServer8.Validation;
 
 internal class TokenRequestValidator : ITokenRequestValidator

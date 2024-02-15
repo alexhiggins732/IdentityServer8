@@ -13,9 +13,6 @@
 
 */
 
-using System;
-using System.Diagnostics;
-
 namespace IdentityServer8.Extensions;
 
 internal static class DateTimeExtensions

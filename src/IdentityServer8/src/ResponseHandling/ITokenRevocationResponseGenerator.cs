@@ -13,9 +13,6 @@
 
 */
 
-using System.Threading.Tasks;
-using IdentityServer8.Validation;
-
 namespace IdentityServer8.ResponseHandling;
 
 /// <summary>

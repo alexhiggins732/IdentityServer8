@@ -13,17 +13,6 @@
 
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using Microsoft.AspNetCore.Http;
-using System;
-using System.Threading.Tasks;
-using System.Collections.Generic;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using Microsoft.AspNetCore.Authentication;
-
 namespace IdentityServer8.Services;
 
 internal class DefaultIdentityServerInteractionService : IIdentityServerInteractionService

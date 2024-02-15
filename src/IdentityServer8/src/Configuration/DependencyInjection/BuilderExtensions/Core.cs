@@ -13,30 +13,7 @@
 
 */
 
-using IdentityServer8;
-using IdentityServer8.Configuration;
-using IdentityServer8.Configuration.DependencyInjection;
-using IdentityServer8.Endpoints;
-using IdentityServer8.Events;
-using IdentityServer8.Hosting;
-using IdentityServer8.ResponseHandling;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Stores.Serialization;
-using IdentityServer8.Validation;
-using Microsoft.AspNetCore.Cors.Infrastructure;
 using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Microsoft.Extensions.Options;
-using System;
-using System.Linq;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authentication;
-using static IdentityServer8.Constants;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting.FederatedSignOut;
-using IdentityServer8.Services.Default;
 
 namespace Microsoft.Extensions.DependencyInjection;
 
