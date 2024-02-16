@@ -40,7 +40,6 @@ global using Microsoft.AspNetCore.Cors.Infrastructure;
 //global using Microsoft.AspNetCore.DataProtection;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.AspNetCore.WebUtilities;
-global using Microsoft.DependencyInjection.Extensions;
 global using Microsoft.Extensions.Caching.Distributed;
 global using Microsoft.Extensions.Caching.Memory;
 global using Microsoft.Extensions.Configuration;

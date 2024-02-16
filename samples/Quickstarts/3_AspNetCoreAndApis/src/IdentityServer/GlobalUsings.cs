@@ -39,4 +39,3 @@ global using System.Text;
 global using System.Text.Json;
 global using static IdentityModel.JwtClaimTypes;
 global using IdentityServerClaimValueTypes = IdentityServer8.IdentityServerConstants.ClaimValueTypes;
-global using ILogger = Microsoft.Extensions.Logging.ILogger;

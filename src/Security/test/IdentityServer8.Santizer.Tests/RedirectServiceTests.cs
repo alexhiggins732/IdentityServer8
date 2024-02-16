@@ -10,15 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-using Xunit;
-using IdentityServer8.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.DependencyInjection.Extensions;
+using Xunit;
 
 
 namespace IdentityServer8.Security.Tests;

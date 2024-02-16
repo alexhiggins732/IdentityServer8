@@ -3,7 +3,6 @@
     <PackageReference Include="HigginsSoft.IdentityServer8" />
     <PackageReference Include="HigginsSoft.IdentityServer8.Security" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
-    <PackageReference Include="Serilog.AspNetCore" />  
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
   </ItemGroup>
 </Project>

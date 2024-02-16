@@ -22,7 +22,6 @@ global using IdentityServer8.Extensions;
 //global using IdentityServer8.Models;
 global using IdentityServer8.Stores;
 global using IdentityServer8.Stores.Serialization;
-global using Microsoft.DependencyInjection.Extensions;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Metadata.Builders;
 global using Microsoft.Extensions.DependencyInjection;

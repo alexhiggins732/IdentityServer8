@@ -10,16 +10,11 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.Extensions.DependencyInjection;
-
-using IdentityServer8.Security;
-using Microsoft.DependencyInjection.Extensions;
-using Xunit;
 using FluentAssertions;
-using System.Text.Json;
-using System;
+using Microsoft.Extensions.DependencyInjection;
 using System.Diagnostics;
-using Newtonsoft.Json.Linq;
+using System.Text.Json;
+using Xunit;
 
 namespace IdentityServer8.Security.Tests;
 

@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using Secret = IdentityServer8.Models.Secret;
+
 public static class Config
 {
     public static IEnumerable<IdentityResource> IdentityResources =>

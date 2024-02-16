@@ -29,7 +29,7 @@ global using Microsoft.AspNetCore.Authorization;
 global using Microsoft.AspNetCore.HttpOverrides;
 global using Microsoft.AspNetCore.Mvc;
 global using Microsoft.AspNetCore.Mvc.Filters;
-global using Microsoft.DependencyInjection.Extensions;
+global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Logging;
 global using Microsoft.IdentityModel.Tokens;
