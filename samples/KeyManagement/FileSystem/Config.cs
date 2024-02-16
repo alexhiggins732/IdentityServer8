@@ -11,28 +11,24 @@
 */
 
 using IdentityServer4.Models;
-using System.Collections.Generic;
 
-namespace sample
+public static class Config
 {
-    public static class Config
+    public static IEnumerable<IdentityResource> GetIdentityResources()
     {
-        public static IEnumerable<IdentityResource> GetIdentityResources()
+        return new IdentityResource[]
         {
-            return new IdentityResource[]
-            {
-                new IdentityResources.OpenId()
-            };
-        }
+            new IdentityResources.OpenId()
+        };
+    }
 
-        public static IEnumerable<ApiResource> GetApis()
-        {
-            return new ApiResource[] { };
-        }
+    public static IEnumerable<ApiResource> GetApis()
+    {
+        return new ApiResource[] { };
+    }
 
-        public static IEnumerable<Client> GetClients()
-        {
-            return new Client[] { };
-        }
+    public static IEnumerable<Client> GetClients()
+    {
+        return new Client[] { };
     }
 }

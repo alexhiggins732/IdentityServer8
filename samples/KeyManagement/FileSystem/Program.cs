@@ -10,16 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Hosting;
-using System;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
-using Microsoft.AspNetCore;
-using Serilog;
-using IdentityModel;
-using Microsoft.AspNetCore.DataProtection;
 using sample;
-
 
 Console.Title = "IdentityServer8";
 

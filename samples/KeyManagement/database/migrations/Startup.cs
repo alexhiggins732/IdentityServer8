@@ -10,32 +10,28 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.EntityFrameworkCore;
 using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
-namespace migrations
+public class Startup
 {
-    public class Startup
+    public IConfiguration Configuration { get; }
+
+    public Startup(IConfiguration config)
     {
-        public IConfiguration Configuration { get; }
+        Configuration = config;
+    }
 
-        public Startup(IConfiguration config)
-        {
-            Configuration = config;
-        }
+    public void ConfigureServices(IServiceCollection services)
+    {
+        var cn = Configuration.GetConnectionString("db");
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            var cn = Configuration.GetConnectionString("db");
+        //services.AddKeyManagementDbContext(new DatabaseKeyManagementOptions {
+        //    ConfigureDbContext = b =>
+        //         b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName))
+        //});
+    }
 
-            //services.AddKeyManagementDbContext(new DatabaseKeyManagementOptions {
-            //    ConfigureDbContext = b =>
-            //         b.UseSqlServer(cn, dbOpts => dbOpts.MigrationsAssembly(typeof(Startup).Assembly.FullName))
-            //});
-        }
-
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-        {
-        }
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
     }
 }

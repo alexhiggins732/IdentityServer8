@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29215.179
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "filesystem", "filesystem", "{66069BF5-F9C7-446A-8AD6-C4FA556F99CD}"
 EndProject
@@ -11,7 +11,12 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FileSystemSample", "FileSys
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "EfSample", "database\EF\EfSample.csproj", "{7B9531E7-47A4-4C36-95B9-ADAA4FADF732}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "migrations", "database\migrations\migrations.csproj", "{1979B108-6006-4CFC-81F1-6397659580AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "migrations", "database\migrations\migrations.csproj", "{1979B108-6006-4CFC-81F1-6397659580AB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0287EA18-2EE5-4878-A2D7-B8FBA31DCE44}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

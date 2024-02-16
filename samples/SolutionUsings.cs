@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-global using Clients;
+
 global using IdentityModel;
 global using IdentityModel.Client;
 global using Serilog;
@@ -25,6 +25,7 @@ global using IdentityModel.AspNetCore.AccessTokenValidation;
 
 
 global using Microsoft.AspNetCore.Builder;
+global using Microsoft.AspNetCore.DataProtection;
 global using Microsoft.AspNetCore.Hosting;
 global using Microsoft.AspNetCore.Http;
 
