@@ -10,10 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.AspNetCore.Authentication.Cookies;
-
 namespace MvcImplicit
 {
     public class Startup

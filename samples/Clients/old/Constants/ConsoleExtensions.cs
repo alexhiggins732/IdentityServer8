@@ -10,9 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Diagnostics;
-
 namespace Clients
 {
     public static class ConsoleExtensions

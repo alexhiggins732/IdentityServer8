@@ -10,12 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Options;
-using System;
-
 namespace IdentityModel.AspNetCore
 {
     public static class AutomaticTokenManagementBuilderExtensions

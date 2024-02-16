@@ -10,17 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using System;
-using System.Collections.Concurrent;
-using System.Globalization;
-using System.Linq;
-using System.Threading.Tasks;
-
 namespace IdentityModel.AspNetCore
 {
     public class AutomaticTokenManagementCookieEvents : CookieAuthenticationEvents

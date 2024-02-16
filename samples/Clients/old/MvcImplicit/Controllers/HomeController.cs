@@ -10,9 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-
 namespace MvcImplicit.Controllers
 {
     public class HomeController : Controller

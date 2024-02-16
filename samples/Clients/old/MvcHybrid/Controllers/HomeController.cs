@@ -10,14 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Clients;
-using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Globalization;
-using System.Text.Json;
-
 namespace MvcHybrid.Controllers
 {
     public class HomeController : Controller

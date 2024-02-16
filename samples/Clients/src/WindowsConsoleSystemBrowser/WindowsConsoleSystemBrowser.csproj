@@ -1,19 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
-  <PropertyGroup>
-    <OutputType>Exe</OutputType>
-
-  </PropertyGroup>
-
-  <ItemGroup>
-    <PackageReference Include="IdentityModel.OidcClient" />
-    <PackageReference Include="Microsoft.IdentityModel.Logging" />
-    <PackageReference Include="Serilog.Extensions.Logging" />
-    <PackageReference Include="Serilog.Sinks.Console" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Constants\Constants.csproj" />
-  </ItemGroup>
-
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+    </PropertyGroup>
 </Project>

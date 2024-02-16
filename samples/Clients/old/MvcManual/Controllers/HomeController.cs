@@ -10,24 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using IdentityModel.Client;
-using System.Security.Claims;
-using System.Linq;
-using Microsoft.IdentityModel.Tokens;
-using System.Collections.Generic;
-using IdentityModel;
-using System.Security.Cryptography;
-using System.IdentityModel.Tokens.Jwt;
-using Clients;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Authorization;
-using System.Net.Http;
-using System.Text.Json;
-
 namespace MvcImplicit.Controllers
 {
     public class HomeController : Controller

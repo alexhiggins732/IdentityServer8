@@ -10,15 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Clients;
-using IdentityModel;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.IdentityModel.Tokens;
-using System;
-using System.IdentityModel.Tokens.Jwt;
-
 namespace MvcImplicit
 {
     public class Startup

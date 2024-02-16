@@ -10,11 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityModel;
-using IdentityModel.Client;
-using System.Text;
-using System.Text.Json;
-
 namespace Clients
 {
     public static class TokenResponseExtensions

@@ -10,13 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Clients;
-using IdentityModel.AspNetCore.AccessTokenValidation;
-using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
-using ILogger = Microsoft.Extensions.Logging.ILogger;
-
 ConfigureLogger();
 
 Console.Title = "Resource API";

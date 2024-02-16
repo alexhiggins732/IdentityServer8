@@ -10,14 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Clients;
-using IdentityModel;
-using IdentityModel.AspNetCore;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.Cookies;
-using Microsoft.IdentityModel.Tokens;
-using System.IdentityModel.Tokens.Jwt;
-
 namespace MvcHybrid
 {
     public class Startup

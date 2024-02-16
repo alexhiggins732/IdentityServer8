@@ -18,6 +18,5 @@
 	<PackageVersion Include="HigginsSoft.IdentityServer8.Security" Version="$(IdentityServerVersion)" />
 	<PackageVersion Include="HigginsSoft.IdentityServer8.AspNetIdentity" Version="$(IdentityServerVersion)" />
     <PackageVersion Include="HigginsSoft.IdentityServer8.EntityFramework" Version="$(IdentityServerVersion)" />
-  </ItemGroup>
-  
+  </ItemGroup>  
 </Project>

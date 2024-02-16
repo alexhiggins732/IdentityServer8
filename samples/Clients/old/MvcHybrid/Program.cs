@@ -10,9 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
-
 namespace MvcHybrid
 {
     public class Program
