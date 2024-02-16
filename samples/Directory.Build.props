@@ -19,20 +19,20 @@
 	<PackageVersion Include="HigginsSoft.IdentityServer8.AspNetIdentity" Version="$(IdentityServerVersion)" />
     <PackageVersion Include="HigginsSoft.IdentityServer8.EntityFramework" Version="$(IdentityServerVersion)" />
   </ItemGroup> 
-
-    <ItemGroup>
-        <PackageReference Include="IdentityModel.OidcClient" />
-        <PackageReference Include="IdentityModel.AspNetCore" />
-        <PackageReference Include="IdentityModel.AspNetCore.AccessTokenValidation" />
-        <PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection"  />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
-        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-        <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" />
-        <PackageReference Include="SeriLog" />
-        <PackageReference Include="Serilog.AspNetCore" />
-        <PackageReference Include="Serilog.Extensions.Logging" />
-        <PackageReference Include="Serilog.Sinks.Console" />
-        <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-        <Compile Include="$(SolutionDir)..\SolutionUsings.cs" Link="SolutionUsings.cs" />
-    </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="IdentityModel.OidcClient" />
+    <PackageReference Include="IdentityModel.AspNetCore" />
+    <PackageReference Include="IdentityModel.AspNetCore.AccessTokenValidation" />
+    <PackageReference Include="IdentityModel.AspNetCore.OAuth2Introspection"  />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
+    <PackageReference Include="Microsoft.AspNetCore.Server.Kestrel" />
+    <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
+    <PackageReference Include="SeriLog" />
+    <PackageReference Include="Serilog.AspNetCore" />
+    <PackageReference Include="Serilog.Extensions.Logging" />
+    <PackageReference Include="Serilog.Sinks.Console" />
+    <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
+    <Compile Include="$(SolutionDir)..\..\SolutionUsings.cs" Link="SolutionUsings.cs" />
+</ItemGroup>
 </Project>

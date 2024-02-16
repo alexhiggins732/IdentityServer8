@@ -10,64 +10,61 @@
  copies or substantial portions of the Software.
 */
 
-namespace MvcImplicit
+public class Startup
 {
-    public class Startup
+    public Startup()
     {
-        public Startup()
-        {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        }
+        JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
+    }
 
-        public void ConfigureServices(IServiceCollection services)
-        {
-            services.AddControllersWithViews();
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
 
-            services.AddAuthentication(options =>
+        services.AddAuthentication(options =>
+        {
+            options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            options.DefaultChallengeScheme = "oidc";
+        })
+            .AddCookie(options =>
             {
-                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
-                options.DefaultChallengeScheme = "oidc";
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                options.Cookie.Name = "mvcimplicit";
             })
-                .AddCookie(options =>
-                {
-                    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                    options.Cookie.Name = "mvcimplicit";
-                })
-                .AddOpenIdConnect("oidc", options =>
-                {
-                    options.Authority = Constants.Authority;
-                    options.RequireHttpsMetadata = false;
-
-                    options.ClientId = "mvc.implicit";
-
-                    options.Scope.Clear();
-                    options.Scope.Add("openid");
-                    options.Scope.Add("profile");
-                    options.Scope.Add("email");
-
-                    options.SaveTokens = true;
-
-                    options.TokenValidationParameters = new TokenValidationParameters
-                    {
-                        NameClaimType = JwtClaimTypes.Name,
-                        RoleClaimType = JwtClaimTypes.Role,
-                    };
-                });
-        }
-
-        public void Configure(IApplicationBuilder app)
-        {
-            app.UseDeveloperExceptionPage();
-            app.UseStaticFiles();
-
-            app.UseRouting();
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseEndpoints(endpoints =>
+            .AddOpenIdConnect("oidc", options =>
             {
-                endpoints.MapDefaultControllerRoute();
+                options.Authority = Constants.Authority;
+                options.RequireHttpsMetadata = false;
+
+                options.ClientId = "mvc.implicit";
+
+                options.Scope.Clear();
+                options.Scope.Add("openid");
+                options.Scope.Add("profile");
+                options.Scope.Add("email");
+
+                options.SaveTokens = true;
+
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    NameClaimType = JwtClaimTypes.Name,
+                    RoleClaimType = JwtClaimTypes.Role,
+                };
             });
-        }
+    }
+
+    public void Configure(IApplicationBuilder app)
+    {
+        app.UseDeveloperExceptionPage();
+        app.UseStaticFiles();
+
+        app.UseRouting();
+        app.UseAuthentication();
+        app.UseAuthorization();
+
+        app.UseEndpoints(endpoints =>
+        {
+            endpoints.MapDefaultControllerRoute();
+        });
     }
 }

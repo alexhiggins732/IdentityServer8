@@ -42,11 +42,3 @@ global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using Microsoft.IdentityModel.Tokens;
 global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
-
-
-
-global using Microsoft.IdentityModel.Logging;
-
-global using System.IO.Pipes;
-global using System.Reflection;
-global using System.Runtime.Versioning;

@@ -10,24 +10,3 @@
  copies or substantial portions of the Software.
 */
 
-global using Clients;
-global using IdentityModel;
-global using IdentityModel.Client;
-global using Microsoft.AspNetCore;
-global using Microsoft.AspNetCore.Authentication;
-global using Microsoft.AspNetCore.Authentication.Cookies;
-global using Microsoft.AspNetCore.Authorization;
-global using Microsoft.AspNetCore.Builder;
-global using Microsoft.AspNetCore.Hosting;
-global using Microsoft.AspNetCore.Mvc;
-global using Microsoft.Extensions.DependencyInjection;
-global using Microsoft.IdentityModel.Tokens;
-global using System;
-global using System.Collections.Generic;
-global using System.IdentityModel.Tokens.Jwt;
-global using System.Linq;
-global using System.Net.Http;
-global using System.Security.Claims;
-global using System.Security.Cryptography;
-global using System.Text.Json;
-global using System.Threading.Tasks;
