@@ -10,9 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Linq;
-using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer8.EntityFramework.DbContexts;
 using IdentityServer8.EntityFramework.Mappers;

@@ -10,13 +10,9 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Linq;
-using IdentityServerHost.Configuration;
 using IdentityServer8.EntityFramework.DbContexts;
-using IdentityServer8.EntityFramework.Interfaces;
 using IdentityServer8.EntityFramework.Mappers;
-using Microsoft.Extensions.DependencyInjection;
+using IdentityServerHost.Configuration;
 
 namespace SqlServer;
 

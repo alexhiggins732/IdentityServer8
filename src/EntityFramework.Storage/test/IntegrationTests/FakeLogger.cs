@@ -11,7 +11,6 @@
 */
 
 using Microsoft.Extensions.Logging;
-using System;
 
 namespace IdentityServer8.EntityFramework.IntegrationTests;
 

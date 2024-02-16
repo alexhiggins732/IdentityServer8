@@ -10,20 +10,16 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Collections.Generic;
 using IdentityServer8.EntityFramework.DbContexts;
-using IdentityServer8.EntityFramework.Mappers;
-using IdentityServer8.Models;
-using Microsoft.EntityFrameworkCore;
-using Xunit;
-using System.Linq;
-using IdentityServer8.EntityFramework.Options;
-using Microsoft.AspNetCore.Http;
-using Microsoft.Extensions.DependencyInjection;
 using IdentityServer8.EntityFramework.Interfaces;
+using IdentityServer8.EntityFramework.Mappers;
+using IdentityServer8.EntityFramework.Options;
 using IdentityServer8.EntityFramework.Services;
-using System.Threading.Tasks;
+using IdentityServer8.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using Xunit;
 
 namespace IdentityServer8.EntityFramework.IntegrationTests.Services;
 

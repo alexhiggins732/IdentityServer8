@@ -10,11 +10,9 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Linq;
-using System.Runtime.InteropServices;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
+using System.Runtime.InteropServices;
 using Xunit;
 
 namespace IdentityServer8.EntityFramework.IntegrationTests;

@@ -11,20 +11,16 @@
 */
 
 using FluentAssertions;
+using IdentityModel;
 using IdentityServer8.EntityFramework.DbContexts;
+using IdentityServer8.EntityFramework.Entities;
 using IdentityServer8.EntityFramework.Options;
 using IdentityServer8.EntityFramework.Stores;
 using IdentityServer8.Models;
 using IdentityServer8.Stores.Serialization;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
-using IdentityModel;
-using IdentityServer8.EntityFramework.Entities;
 using Microsoft.EntityFrameworkCore.InMemory.Infrastructure.Internal;
+using System.Security.Claims;
 using Xunit;
 
 namespace IdentityServer8.EntityFramework.IntegrationTests.Stores;

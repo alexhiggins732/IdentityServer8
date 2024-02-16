@@ -10,8 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System.Net.Http;
-using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Clients.Setup;

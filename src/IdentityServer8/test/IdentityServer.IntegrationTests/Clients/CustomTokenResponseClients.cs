@@ -10,13 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
-using System.Text;
-using System.Text.Json;
-using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityModel.Client;
@@ -26,6 +19,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Text;
+using System.Text.Json;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Clients;
