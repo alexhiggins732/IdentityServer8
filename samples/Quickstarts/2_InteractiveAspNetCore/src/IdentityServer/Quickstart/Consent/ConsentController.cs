@@ -10,9 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Security;
-using Microsoft.Extensions.DependencyInjection;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 /// <summary>

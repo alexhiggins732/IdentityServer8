@@ -10,7 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb

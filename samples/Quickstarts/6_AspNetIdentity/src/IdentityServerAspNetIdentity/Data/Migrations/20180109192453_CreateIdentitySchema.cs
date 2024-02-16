@@ -11,7 +11,6 @@
 */
 
 using Microsoft.EntityFrameworkCore.Migrations;
-using System;
 
 namespace IdentityServerAspNetIdentity.Data.Migrations
 {

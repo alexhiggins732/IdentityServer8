@@ -11,8 +11,6 @@
 */
 
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore;
-using IdentityServerAspNetIdentity.Models;
 
 namespace IdentityServerAspNetIdentity.Data
 {
