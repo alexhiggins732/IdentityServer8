@@ -20,7 +20,6 @@ global using IdentityServer8.EntityFramework.Stores;
 global using IdentityServer8.Services;
 global using IdentityServer8.Stores;
 global using Microsoft.AspNetCore.Http;
-global using Microsoft.DependencyInjection.Extensions;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Hosting;

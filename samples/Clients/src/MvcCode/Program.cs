@@ -10,23 +10,76 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Hosting;
+JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
-namespace MvcCode
+var builder = WebApplication.CreateBuilder(args);
+
+var services = builder.Services;
+
+services.AddControllersWithViews();
+
+services
+.AddHttpClient()
+.AddSingleton<IDiscoveryCache>(r =>
 {
-    public class Program
-    {
-        public static void Main(string[] args)
-        {
-            CreateHostBuilder(args).Build().Run();
-        }
-
-        public static IHostBuilder CreateHostBuilder(string[] args) =>
-            Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder =>
-                {
-                    webBuilder.UseStartup<Startup>();
-                });
-    }
+    var factory = r.GetRequiredService<IHttpClientFactory>();
+    return new DiscoveryCache(Constants.Authority, () => factory.CreateClient());
 }
+)
+.AddAuthentication(options =>
+{
+    options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = "oidc";
+})
+.AddCookie(options =>
+{
+    options.Cookie.Name = "mvccode";
+})
+.AddOpenIdConnect("oidc", options =>
+{
+    options.Authority = Constants.Authority;
+    options.RequireHttpsMetadata = false;
+
+    options.ClientId = "mvc.code";
+    options.ClientSecret = "secret";
+
+    // code flow + PKCE (PKCE is turned on by default)
+    options.ResponseType = "code";
+    options.UsePkce = true;
+
+    options.Scope.Clear();
+    options.Scope.Add("openid");
+    options.Scope.Add("profile");
+    options.Scope.Add("email");
+    options.Scope.Add("resource1.scope1");
+    options.Scope.Add("transaction:123");
+    //options.Scope.Add("transaction");
+    options.Scope.Add("offline_access");
+
+    // not mapped by default
+    options.ClaimActions.MapJsonKey("website", "website");
+
+    // keeps id_token smaller
+    options.GetClaimsFromUserInfoEndpoint = true;
+    options.SaveTokens = true;
+
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        NameClaimType = JwtClaimTypes.Name,
+        RoleClaimType = JwtClaimTypes.Role,
+    };
+});
+
+var app = builder.Build();
+
+app.UseSerilogRequestLogging()
+.UseDeveloperExceptionPage()
+.UseHttpsRedirection()
+.UseStaticFiles()
+.UseRouting()
+.UseAuthentication()
+.UseAuthorization();
+
+app.MapDefaultControllerRoute().RequireAuthorization();
+
+await app.RunAsync();

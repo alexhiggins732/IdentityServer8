@@ -10,59 +10,47 @@
  copies or substantial portions of the Software.
 */
 
-using Clients;
-using IdentityModel.Client;
-using System.Text.Json;
+Console.Title = "Console Client Credentials Flow";
 
-namespace ConsoleClientCredentialsFlow
+var response = await RequestTokenAsync();
+response.Show();
+
+Console.ReadLine();
+await CallServiceAsync(response.AccessToken);
+
+
+async Task<TokenResponse> RequestTokenAsync()
 {
-    public class Program
+    var client = new HttpClient();
+
+    var disco = await client.GetDiscoveryDocumentAsync(Constants.Authority);
+    if (disco.IsError) throw new Exception(disco.Error);
+
+    var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
     {
-        public static async Task Main()
-        {
-            Console.Title = "Console Client Credentials Flow";
+        Address = disco.TokenEndpoint,
 
-            var response = await RequestTokenAsync();
-            response.Show();
+        ClientId = "client",
+        ClientSecret = "secret",
+    });
 
-            Console.ReadLine();
-            await CallServiceAsync(response.AccessToken);
-        }
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
 
-        static async Task<TokenResponse> RequestTokenAsync()
-        {
-            var client = new HttpClient();
+async Task CallServiceAsync(string token)
+{
+    var baseAddress = Constants.SampleApi;
 
-            var disco = await client.GetDiscoveryDocumentAsync(Constants.Authority);
-            if (disco.IsError) throw new Exception(disco.Error);
+    var client = new HttpClient
+    {
+        BaseAddress = new Uri(baseAddress)
+    };
 
-            var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = disco.TokenEndpoint,
+    client.SetBearerToken(token);
+    var response = await client.GetStringAsync("identity");
 
-                ClientId = "client",
-                ClientSecret = "secret",
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
-        }
-
-        static async Task CallServiceAsync(string token)
-        {
-            var baseAddress = Constants.SampleApi;
-
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri(baseAddress)
-            };
-
-            client.SetBearerToken(token);
-            var response = await client.GetStringAsync("identity");
-
-            "\n\nService claims:".ConsoleGreen();
-            var obj = JsonSerializer.Deserialize<JsonElement>(response);
-            Console.WriteLine(obj);
-        }
-    }
+    "\n\nService claims:".ConsoleGreen();
+    var obj = JsonSerializer.Deserialize<JsonElement>(response);
+    Console.WriteLine(obj);
 }

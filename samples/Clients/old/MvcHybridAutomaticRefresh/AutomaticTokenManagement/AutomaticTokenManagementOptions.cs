@@ -10,8 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-
 namespace IdentityModel.AspNetCore
 {
     public class AutomaticTokenManagementOptions

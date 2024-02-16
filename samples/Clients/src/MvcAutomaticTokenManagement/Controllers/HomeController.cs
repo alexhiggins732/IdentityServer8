@@ -10,36 +10,29 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using System.Text.Json;
-
-namespace MvcCode.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    private readonly IHttpClientFactory _httpClientFactory;
+
+    public HomeController(IHttpClientFactory httpClientFactory)
     {
-        private readonly IHttpClientFactory _httpClientFactory;
+        _httpClientFactory = httpClientFactory;
+    }
 
-        public HomeController(IHttpClientFactory httpClientFactory)
-        {
-            _httpClientFactory = httpClientFactory;
-        }
+    [AllowAnonymous]
+    public IActionResult Index() => View();
 
-        [AllowAnonymous]
-        public IActionResult Index() => View();
+    public IActionResult Secure() => View();
 
-        public IActionResult Secure() => View();
+    public IActionResult Logout() => SignOut("oidc");
 
-        public IActionResult Logout() => SignOut("oidc");
+    public async Task<IActionResult> CallApi()
+    {
+        var client = _httpClientFactory.CreateClient("client");
 
-        public async Task<IActionResult> CallApi()
-        {
-            var client = _httpClientFactory.CreateClient("client");
+        var response = await client.GetStringAsync("identity");
+        ViewBag.Json = JsonSerializer.Deserialize<JsonElement>(response).ToString();
 
-            var response = await client.GetStringAsync("identity");
-            ViewBag.Json = JsonSerializer.Deserialize<JsonElement>(response).ToString();
-
-            return View();
-        }
+        return View();
     }
 }

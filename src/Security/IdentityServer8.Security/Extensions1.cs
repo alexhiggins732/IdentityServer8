@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace Microsoft.DependencyInjection.Extensions;
+namespace Microsoft.Extensions.DependencyInjection;
 
 public static class RedirectUrlServiceExtensions
 {

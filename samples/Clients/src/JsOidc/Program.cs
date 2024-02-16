@@ -10,21 +10,28 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore;
-using Microsoft.AspNetCore.Hosting;
 
-namespace JsOidc
+// run a static files web server
+var app = WebApplication.Create(args);
+app
+    .UseDefaultFiles()
+    .UseStaticFiles();
+
+// uncomment to enable to test w/ CSP (Content-Security-Policy)
+/*
+app.Use(async (ctx, next) =>
 {
-    public class Program
+    ctx.Response.OnStarting(() =>
     {
-        public static void Main(string[] args)
+        if (ctx.Response.ContentType?.StartsWith("text/html") == true)
         {
-            BuildWebHost(args).Run();
+            ctx.Response.Headers.Add("Content-Security-Policy", "default-src 'self'; connect-src http://localhost:5000 http://localhost:3721; frame-src 'self' http://localhost:5000");
         }
+        return Task.CompletedTask;
+    });
 
-        public static IWebHost BuildWebHost(string[] args) =>
-            WebHost.CreateDefaultBuilder(args)
-                .UseStartup<Startup>()
-                .Build();
-    }
-}
+    await next();
+});
+*/
+
+await app.RunAsync();

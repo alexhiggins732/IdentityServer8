@@ -10,32 +10,26 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-
-namespace MvcImplicit.Controllers
+public class HomeController : Controller
 {
-    public class HomeController : Controller
+    public IActionResult Index()
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        return View();
+    }
 
-        [Authorize]
-        public IActionResult Secure()
-        {
-            return View();
-        }
+    [Authorize]
+    public IActionResult Secure()
+    {
+        return View();
+    }
 
-        public IActionResult Logout()
-        {
-            return new SignOutResult(new string[] { "oidc", "Cookies" });
-        }
+    public IActionResult Logout()
+    {
+        return new SignOutResult(new string[] { "oidc", "Cookies" });
+    }
 
-        public IActionResult Error()
-        {
-            return View();
-        }
+    public IActionResult Error()
+    {
+        return View();
     }
 }

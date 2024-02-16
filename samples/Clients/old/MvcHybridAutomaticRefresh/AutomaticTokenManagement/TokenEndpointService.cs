@@ -10,15 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityModel.Client;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authentication.OpenIdConnect;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-using System.Net.Http;
-using System.Threading;
-using System.Threading.Tasks;
-
 namespace IdentityModel.AspNetCore
 {
     public class TokenEndpointService

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <Folder Include="dataprotectionkeys\" />
+    <Folder Include="signingkeys\" />
+  </ItemGroup>
+ 
+</Project>
