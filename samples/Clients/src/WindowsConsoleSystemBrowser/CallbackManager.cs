@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using System.IO.Pipes;
+
 class CallbackManager
 {
     private readonly string _name;

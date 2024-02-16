@@ -11,6 +11,8 @@
 */
 
 using Microsoft.Win32;
+using System.Reflection;
+
 class RegistryConfig
 {
     public RegistryConfig(string uriScheme)

@@ -15,8 +15,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{AFE7085F-0
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlow", "src\ConsoleClientCredentialsFlow\ConsoleClientCredentialsFlow.csproj", "{6729A51B-A7D9-43F3-8F48-D55478254AB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "src\Constants\Constants.csproj", "{2096C1D4-5C89-46D5-874A-66E78C9E5A98}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlow", "src\ConsoleResourceOwnerFlow\ConsoleResourceOwnerFlow.csproj", "{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlowPostBody", "src\ConsoleClientCredentialsFlowPostBody\ConsoleClientCredentialsFlowPostBody.csproj", "{BEA2C25F-0551-4AFC-9961-7DB934724FF1}"
@@ -71,6 +69,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF723CAE-AB9
 		..\..\Directory.Packages.props = ..\..\Directory.Packages.props
 	EndProjectSection
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "shared\Constants\Constants.csproj", "{9F9DD306-1AE4-49F1-AD10-489A1475B400}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,10 +81,6 @@ Global
 		{6729A51B-A7D9-43F3-8F48-D55478254AB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6729A51B-A7D9-43F3-8F48-D55478254AB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6729A51B-A7D9-43F3-8F48-D55478254AB7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{2096C1D4-5C89-46D5-874A-66E78C9E5A98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2096C1D4-5C89-46D5-874A-66E78C9E5A98}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2096C1D4-5C89-46D5-874A-66E78C9E5A98}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2096C1D4-5C89-46D5-874A-66E78C9E5A98}.Release|Any CPU.Build.0 = Release|Any CPU
 		{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -173,6 +169,10 @@ Global
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -180,7 +180,6 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{AFE7085F-051E-4829-955F-3426FE643BDD} = {187AC294-0420-4726-808B-ED49148C0632}
 		{6729A51B-A7D9-43F3-8F48-D55478254AB7} = {D027D36B-262B-450A-B444-5B7893B5142E}
-		{2096C1D4-5C89-46D5-874A-66E78C9E5A98} = {187AC294-0420-4726-808B-ED49148C0632}
 		{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{BEA2C25F-0551-4AFC-9961-7DB934724FF1} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{2952A3E3-8831-419B-B14C-448C409961A7} = {D027D36B-262B-450A-B444-5B7893B5142E}

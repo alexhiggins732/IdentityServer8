@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using Microsoft.IdentityModel.Logging;
+
 IdentityModelEventSource.ShowPII = true;
 
 if (args.Any())

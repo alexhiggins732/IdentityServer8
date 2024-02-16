@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-
+global using Clients;
 global using IdentityModel;
 global using IdentityModel.Client;
 global using Serilog;
@@ -43,3 +43,4 @@ global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using Microsoft.IdentityModel.Tokens;
 global using System.IdentityModel.Tokens.Jwt;
 global using System.Security.Claims;
+global using System.Runtime.Versioning;
