@@ -7,9 +7,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{187AC294-042
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{179A2A2C-3B3D-437C-B5F3-3B81472C8335}"
 	ProjectSection(SolutionItems) = preProject
-		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		..\..\Directory.Packages.props = ..\..\Directory.Packages.props
-		SolutionUsings.cs = SolutionUsings.cs
+		..\Directory.Build.props = ..\Directory.Build.props
+		..\SolutionUsings.cs = ..\SolutionUsings.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{AFE7085F-051E-4829-955F-3426FE643BDD}"
@@ -65,6 +64,12 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApi", "src\APIs\SimpleApi\SimpleApi.csproj", "{215D863E-9D87-42F4-AD17-209C330C6ECB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceBasedApi", "src\APIs\ResourceBasedApi\ResourceBasedApi.csproj", "{933613BD-35B0-4F79-A7A7-02F663C55B61}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF723CAE-AB9F-4FFB-A36A-D56F9F1DC1B3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		..\..\Directory.Packages.props = ..\..\Directory.Packages.props
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -200,6 +205,7 @@ Global
 		{AE8D301D-BDDD-4E04-A487-FD08BAF18B75} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{215D863E-9D87-42F4-AD17-209C330C6ECB} = {AFE7085F-051E-4829-955F-3426FE643BDD}
 		{933613BD-35B0-4F79-A7A7-02F663C55B61} = {AFE7085F-051E-4829-955F-3426FE643BDD}
+		{EF723CAE-AB9F-4FFB-A36A-D56F9F1DC1B3} = {179A2A2C-3B3D-437C-B5F3-3B81472C8335}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {BAD78470-3D66-466E-9C17-2A67F0905B18}

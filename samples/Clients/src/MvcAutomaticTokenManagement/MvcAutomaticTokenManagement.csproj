@@ -1,22 +1,5 @@
-﻿<Project Sdk="Microsoft.NET.Sdk.Web">
-
-  <PropertyGroup>
-    
-  </PropertyGroup>
-
+<Project Sdk="Microsoft.NET.Sdk.Web">
   <ItemGroup>
-    <PackageReference Include="IdentityModel.AspNetCore" />
-    
-    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
-    
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
-
-    <PackageReference Include="Serilog.AspNetCore" />
-    <PackageReference Include="Serilog.Sinks.Console" />
   </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\Constants\Constants.csproj" />
-  </ItemGroup>
-
 </Project>
