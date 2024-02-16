@@ -29,13 +29,13 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{66694F08-6E72-4D7B-A555-D4EB25A9CCC8}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		..\..\SolutionUsings.cs = ..\..\SolutionUsings.cs
+		..\..\SamplesGlobalUsings.cs = ..\..\SamplesGlobalUsings.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{97D760DC-D81F-43D4-93D0-B81BD2112705}"
 	ProjectSection(SolutionItems) = preProject
+		..\ClientsGlobalUsings.cs = ..\ClientsGlobalUsings.cs
 		..\..\Directory.Build.props = ..\..\Directory.Build.props
-		..\..\SolutionUsings.cs = ..\..\SolutionUsings.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "old", "old", "{B729491B-30F9-4DB3-B871-77BA9BA8BE8D}"

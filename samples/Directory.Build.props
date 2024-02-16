@@ -33,6 +33,6 @@
     <PackageReference Include="Serilog.Extensions.Logging" />
     <PackageReference Include="Serilog.Sinks.Console" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-    <Compile Include="$(SolutionDir)..\SolutionUsings.cs" Link="SolutionUsings.cs" />
-</ItemGroup>
+    <Compile Include="$(SolutionDir)..\..\SamplesGlobalUsings.cs" Link="SamplesGlobalUsings.cs" />
+  </ItemGroup>
 </Project>

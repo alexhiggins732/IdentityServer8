@@ -10,13 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore.DataProtection;
-using sample;
-using Serilog;
-using Serilog.Events;
-using Serilog.Sinks.SystemConsole.Themes;
-
-
 Console.Title = "IdentityServer8";
 
 var builder = WebApplication.CreateBuilder(args);

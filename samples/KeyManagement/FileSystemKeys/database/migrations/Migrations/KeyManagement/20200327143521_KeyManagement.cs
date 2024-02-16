@@ -10,8 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.EntityFrameworkCore.Migrations;
-
 public partial class KeyManagement : Migration
 {
     protected override void Up(MigrationBuilder migrationBuilder)

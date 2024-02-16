@@ -10,8 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using sample;
-
 Console.Title = "IdentityServer8";
 
 var app = CreateWebHostBuilder(args);

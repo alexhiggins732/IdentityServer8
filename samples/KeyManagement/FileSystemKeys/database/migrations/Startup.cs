@@ -10,8 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
-
 public class Startup
 {
     public IConfiguration Configuration { get; }

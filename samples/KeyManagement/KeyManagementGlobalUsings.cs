@@ -10,8 +10,10 @@
  copies or substantial portions of the Software.
 */
 
-using Microsoft.AspNetCore;
-
-IWebHostBuilder CreateWebHostBuilder(string[] args) =>
-    WebHost.CreateDefaultBuilder(args)
-        .UseStartup<Startup>();
+global using IdentityServer4.Models;
+global using Microsoft.AspNetCore;
+global using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
+global using Microsoft.EntityFrameworkCore.Migrations;
+global using Microsoft.EntityFrameworkCore;
+global using Microsoft.EntityFrameworkCore.Infrastructure;
+global using Microsoft.EntityFrameworkCore.Metadata;

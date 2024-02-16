@@ -3,65 +3,64 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.8.34322.80
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{187AC294-0420-4726-808B-ED49148C0632}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{179A2A2C-3B3D-437C-B5F3-3B81472C8335}"
 	ProjectSection(SolutionItems) = preProject
+		..\shared\Constants\Constants.csproj = ..\shared\Constants\Constants.csproj
 		..\Directory.Build.props = ..\Directory.Build.props
 		..\SolutionUsings.cs = ..\SolutionUsings.cs
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIs", "APIs", "{AFE7085F-051E-4829-955F-3426FE643BDD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlow", "src\ConsoleClientCredentialsFlow\ConsoleClientCredentialsFlow.csproj", "{6729A51B-A7D9-43F3-8F48-D55478254AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlow", "ConsoleClientCredentialsFlow\ConsoleClientCredentialsFlow.csproj", "{6729A51B-A7D9-43F3-8F48-D55478254AB7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlow", "src\ConsoleResourceOwnerFlow\ConsoleResourceOwnerFlow.csproj", "{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlow", "ConsoleResourceOwnerFlow\ConsoleResourceOwnerFlow.csproj", "{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlowPostBody", "src\ConsoleClientCredentialsFlowPostBody\ConsoleClientCredentialsFlowPostBody.csproj", "{BEA2C25F-0551-4AFC-9961-7DB934724FF1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlowPostBody", "ConsoleClientCredentialsFlowPostBody\ConsoleClientCredentialsFlowPostBody.csproj", "{BEA2C25F-0551-4AFC-9961-7DB934724FF1}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowRefreshToken", "src\ConsoleResourceOwnerFlowRefreshToken\ConsoleResourceOwnerFlowRefreshToken.csproj", "{2952A3E3-8831-419B-B14C-448C409961A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowRefreshToken", "ConsoleResourceOwnerFlowRefreshToken\ConsoleResourceOwnerFlowRefreshToken.csproj", "{2952A3E3-8831-419B-B14C-448C409961A7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowUserInfo", "src\ConsoleResourceOwnerFlowUserInfo\ConsoleResourceOwnerFlowUserInfo.csproj", "{120F561D-5670-4C80-8CAB-4D770204DC91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowUserInfo", "ConsoleResourceOwnerFlowUserInfo\ConsoleResourceOwnerFlowUserInfo.csproj", "{120F561D-5670-4C80-8CAB-4D770204DC91}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleIntrospectionClient", "src\ConsoleIntrospectionClient\ConsoleIntrospectionClient.csproj", "{395F9DF7-AE5A-403E-BE7A-4AF045B21BB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleIntrospectionClient", "ConsoleIntrospectionClient\ConsoleIntrospectionClient.csproj", "{395F9DF7-AE5A-403E-BE7A-4AF045B21BB3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowReference", "src\ConsoleResourceOwnerFlowReference\ConsoleResourceOwnerFlowReference.csproj", "{0E9145DB-CC70-44F9-B52B-1D7D4C2B2E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowReference", "ConsoleResourceOwnerFlowReference\ConsoleResourceOwnerFlowReference.csproj", "{0E9145DB-CC70-44F9-B52B-1D7D4C2B2E5F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleExtensionGrant", "src\ConsoleCustomGrant\ConsoleExtensionGrant.csproj", "{546267CD-BE21-44E1-A06E-C7558864EE4F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleExtensionGrant", "ConsoleCustomGrant\ConsoleExtensionGrant.csproj", "{546267CD-BE21-44E1-A06E-C7558864EE4F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsOidc", "src\JsOidc\JsOidc.csproj", "{A29115B9-30E4-4967-AD5A-C32394B8A64C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JsOidc", "JsOidc\JsOidc.csproj", "{A29115B9-30E4-4967-AD5A-C32394B8A64C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowPublic", "src\ConsoleResourceOwnerFlowPublic\ConsoleResourceOwnerFlowPublic.csproj", "{8648122C-EE91-4B3B-98CD-355C3F1B9FDF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleResourceOwnerFlowPublic", "ConsoleResourceOwnerFlowPublic\ConsoleResourceOwnerFlowPublic.csproj", "{8648122C-EE91-4B3B-98CD-355C3F1B9FDF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsolePrivateKeyJwtClient", "src\ConsolePrivateKeyJwtClient\ConsolePrivateKeyJwtClient.csproj", "{1EC25581-781E-4FEA-A8AC-72BBD599FB87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsolePrivateKeyJwtClient", "ConsolePrivateKeyJwtClient\ConsolePrivateKeyJwtClient.csproj", "{1EC25581-781E-4FEA-A8AC-72BBD599FB87}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleCode", "src\ConsoleCode\ConsoleCode.csproj", "{BB38F47A-1BBF-47E1-9872-088FC81DC825}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleCode", "ConsoleCode\ConsoleCode.csproj", "{BB38F47A-1BBF-47E1-9872-088FC81DC825}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridBackChannel", "src\MvcHybridBackChannel\MvcHybridBackChannel.csproj", "{57F395AD-48D2-48BF-A117-881E112D947E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridBackChannel", "MvcHybridBackChannel\MvcHybridBackChannel.csproj", "{57F395AD-48D2-48BF-A117-881E112D947E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleDeviceFlow", "src\ConsoleDeviceFlow\ConsoleDeviceFlow.csproj", "{879689CC-38F7-418F-9721-9D4158302B69}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleDeviceFlow", "ConsoleDeviceFlow\ConsoleDeviceFlow.csproj", "{879689CC-38F7-418F-9721-9D4158302B69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlowCallingIdentityServerApi", "src\ConsoleClientCredentialsFlowCallingIdentityServerApi\ConsoleClientCredentialsFlowCallingIdentityServerApi.csproj", "{141BD303-CD29-472F-B5D8-C1F28ED0621A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleClientCredentialsFlowCallingIdentityServerApi", "ConsoleClientCredentialsFlowCallingIdentityServerApi\ConsoleClientCredentialsFlowCallingIdentityServerApi.csproj", "{141BD303-CD29-472F-B5D8-C1F28ED0621A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleMTLSClient", "src\ConsoleMTLSClient\ConsoleMTLSClient.csproj", "{EA1583D5-80DE-4A11-9530-26A0ED1FBA2C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleMTLSClient", "ConsoleMTLSClient\ConsoleMTLSClient.csproj", "{EA1583D5-80DE-4A11-9530-26A0ED1FBA2C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcCode", "src\MvcCode\MvcCode.csproj", "{9FB83FF6-5A75-4036-80E6-11B302B921BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcCode", "MvcCode\MvcCode.csproj", "{9FB83FF6-5A75-4036-80E6-11B302B921BE}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcAutomaticTokenManagement", "src\MvcAutomaticTokenManagement\MvcAutomaticTokenManagement.csproj", "{8302E4DD-2A99-439C-9D0C-A4BCF48E3FA3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcAutomaticTokenManagement", "MvcAutomaticTokenManagement\MvcAutomaticTokenManagement.csproj", "{8302E4DD-2A99-439C-9D0C-A4BCF48E3FA3}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsConsoleSystemBrowser", "src\WindowsConsoleSystemBrowser\WindowsConsoleSystemBrowser.csproj", "{43BF1DCB-7343-471E-A53C-D59F19E2EB74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WindowsConsoleSystemBrowser", "WindowsConsoleSystemBrowser\WindowsConsoleSystemBrowser.csproj", "{43BF1DCB-7343-471E-A53C-D59F19E2EB74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleEphemeralMtlsClient", "src\ConsoleEphemeralMtlsClient\ConsoleEphemeralMtlsClient.csproj", "{47A706D4-4DF6-437E-9401-61878ECA243C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleEphemeralMtlsClient", "ConsoleEphemeralMtlsClient\ConsoleEphemeralMtlsClient.csproj", "{47A706D4-4DF6-437E-9401-61878ECA243C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Web", "Web", "{158628D7-8B68-451E-AF22-B64F473C5943}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Console", "Console", "{D027D36B-262B-450A-B444-5B7893B5142E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleParameterizedScopeClient", "src\ConsoleParameterizedScopeClient\ConsoleParameterizedScopeClient.csproj", "{AE8D301D-BDDD-4E04-A487-FD08BAF18B75}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleParameterizedScopeClient", "ConsoleParameterizedScopeClient\ConsoleParameterizedScopeClient.csproj", "{AE8D301D-BDDD-4E04-A487-FD08BAF18B75}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApi", "src\APIs\SimpleApi\SimpleApi.csproj", "{215D863E-9D87-42F4-AD17-209C330C6ECB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SimpleApi", "APIs\SimpleApi\SimpleApi.csproj", "{215D863E-9D87-42F4-AD17-209C330C6ECB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceBasedApi", "src\APIs\ResourceBasedApi\ResourceBasedApi.csproj", "{933613BD-35B0-4F79-A7A7-02F663C55B61}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ResourceBasedApi", "APIs\ResourceBasedApi\ResourceBasedApi.csproj", "{933613BD-35B0-4F79-A7A7-02F663C55B61}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF723CAE-AB9F-4FFB-A36A-D56F9F1DC1B3}"
 	ProjectSection(SolutionItems) = preProject
@@ -69,7 +68,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{EF723CAE-AB9
 		..\..\Directory.Packages.props = ..\..\Directory.Packages.props
 	EndProjectSection
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "shared\Constants\Constants.csproj", "{9F9DD306-1AE4-49F1-AD10-489A1475B400}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "..\shared\Constants\Constants.csproj", "{DB7A49D0-27E5-4B20-A153-D132BE9655D3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -169,16 +168,15 @@ Global
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{933613BD-35B0-4F79-A7A7-02F663C55B61}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9F9DD306-1AE4-49F1-AD10-489A1475B400}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DB7A49D0-27E5-4B20-A153-D132BE9655D3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DB7A49D0-27E5-4B20-A153-D132BE9655D3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DB7A49D0-27E5-4B20-A153-D132BE9655D3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DB7A49D0-27E5-4B20-A153-D132BE9655D3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{AFE7085F-051E-4829-955F-3426FE643BDD} = {187AC294-0420-4726-808B-ED49148C0632}
 		{6729A51B-A7D9-43F3-8F48-D55478254AB7} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{9BFE1F4E-C2F4-49FC-917E-BE25C0F42D84} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{BEA2C25F-0551-4AFC-9961-7DB934724FF1} = {D027D36B-262B-450A-B444-5B7893B5142E}
@@ -199,8 +197,6 @@ Global
 		{8302E4DD-2A99-439C-9D0C-A4BCF48E3FA3} = {158628D7-8B68-451E-AF22-B64F473C5943}
 		{43BF1DCB-7343-471E-A53C-D59F19E2EB74} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{47A706D4-4DF6-437E-9401-61878ECA243C} = {D027D36B-262B-450A-B444-5B7893B5142E}
-		{158628D7-8B68-451E-AF22-B64F473C5943} = {187AC294-0420-4726-808B-ED49148C0632}
-		{D027D36B-262B-450A-B444-5B7893B5142E} = {187AC294-0420-4726-808B-ED49148C0632}
 		{AE8D301D-BDDD-4E04-A487-FD08BAF18B75} = {D027D36B-262B-450A-B444-5B7893B5142E}
 		{215D863E-9D87-42F4-AD17-209C330C6ECB} = {AFE7085F-051E-4829-955F-3426FE643BDD}
 		{933613BD-35B0-4F79-A7A7-02F663C55B61} = {AFE7085F-051E-4829-955F-3426FE643BDD}

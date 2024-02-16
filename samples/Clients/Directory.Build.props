@@ -2,4 +2,7 @@
     <ImportGroup>
         <Import Project="../Directory.Build.props" />
     </ImportGroup>
+	<ItemGroup>
+        <Compile Include="$(SolutionDir)..\ClientsGlobalUsings.cs" Link="ClientsGlobalUsings.cs" />
+    </ItemGroup>
 </Project>

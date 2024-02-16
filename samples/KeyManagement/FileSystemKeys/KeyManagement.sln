@@ -16,6 +16,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{0287EA18-2EE5-4878-A2D7-B8FBA31DCE44}"
 	ProjectSection(SolutionItems) = preProject
 		Directory.Build.props = Directory.Build.props
+		KeyManagement.sln.licenseheader = KeyManagement.sln.licenseheader
 	EndProjectSection
 EndProject
 Global

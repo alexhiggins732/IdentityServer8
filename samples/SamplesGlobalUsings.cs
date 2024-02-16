@@ -10,7 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-global using Clients;
 global using IdentityModel;
 global using IdentityModel.Client;
 global using Serilog;

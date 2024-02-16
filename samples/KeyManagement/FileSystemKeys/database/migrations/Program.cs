@@ -10,25 +10,6 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer4.Models;
-
-public static class Config
-{
-    public static IEnumerable<IdentityResource> GetIdentityResources()
-    {
-        return new IdentityResource[]
-        {
-            new IdentityResources.OpenId()
-        };
-    }
-
-    public static IEnumerable<ApiResource> GetApis()
-    {
-        return new ApiResource[] { };
-    }
-
-    public static IEnumerable<Client> GetClients()
-    {
-        return new Client[] { };
-    }
-}
+IWebHostBuilder CreateWebHostBuilder(string[] args) =>
+    WebHost.CreateDefaultBuilder(args)
+        .UseStartup<Startup>();

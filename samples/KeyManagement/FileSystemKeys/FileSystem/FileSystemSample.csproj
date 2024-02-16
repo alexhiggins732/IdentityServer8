@@ -3,8 +3,5 @@
     <Folder Include="dataprotectionkeys\" />
     <Folder Include="signingkeys\" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\database\EF\EfSample.csproj" />
-  </ItemGroup>
  
 </Project>
