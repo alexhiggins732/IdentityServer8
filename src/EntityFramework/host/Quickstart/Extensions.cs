@@ -10,14 +10,10 @@
  copies or substantial portions of the Software.
 */
 
-using System;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Mvc;
+namespace IdentityServerHost.Quickstart.UI;
 
-namespace IdentityServerHost.Quickstart.UI
+public static class Extensions
 {
-    public static class Extensions
-    {
         /// <summary>
         /// Checks if the redirect URI is for a native client.
         /// </summary>
@@ -34,6 +30,5 @@ namespace IdentityServerHost.Quickstart.UI
             controller.HttpContext.Response.Headers["Location"] = "";
             
             return controller.View(viewName, new RedirectViewModel { RedirectUrl = redirectUri });
-        }
     }
 }

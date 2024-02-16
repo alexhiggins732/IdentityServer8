@@ -10,24 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+namespace IdentityServerHost.Quickstart.UI;
 
-
-using IdentityServer8.Services;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using Microsoft.Extensions.Logging;
-using System.Threading.Tasks;
-
-namespace IdentityServerHost.Quickstart.UI
+[SecurityHeaders]
+[AllowAnonymous]
+public class HomeController : Controller
 {
-    [SecurityHeaders]
-    [AllowAnonymous]
-    public class HomeController : Controller
-    {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IWebHostEnvironment _environment;
         private readonly ILogger _logger;
@@ -72,6 +60,5 @@ namespace IdentityServerHost.Quickstart.UI
             }
 
             return View("Error", vm);
-        }
     }
 }

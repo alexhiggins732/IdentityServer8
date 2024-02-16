@@ -10,29 +10,15 @@
  copies or substantial portions of the Software.
 */
 
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+namespace IdentityServerHost.Quickstart.UI;
 
-
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using Microsoft.AspNetCore.Mvc;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Authorization;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
-
-namespace IdentityServerHost.Quickstart.UI
+/// <summary>
+/// This sample controller allows a user to revoke grants given to clients
+/// </summary>
+[SecurityHeaders]
+[Authorize]
+public class GrantsController : Controller
 {
-    /// <summary>
-    /// This sample controller allows a user to revoke grants given to clients
-    /// </summary>
-    [SecurityHeaders]
-    [Authorize]
-    public class GrantsController : Controller
-    {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clients;
         private readonly IResourceStore _resources;
@@ -104,6 +90,5 @@ namespace IdentityServerHost.Quickstart.UI
             {
                 Grants = list
             };
-        }
     }
 }

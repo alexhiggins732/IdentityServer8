@@ -10,29 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityModel;
-using IdentityServer8;
-using IdentityServer8.Events;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Test;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Claims;
-using System.Threading.Tasks;
+namespace IdentityServerHost.Quickstart.UI;
 
-namespace IdentityServerHost.Quickstart.UI
+[SecurityHeaders]
+[AllowAnonymous]
+public class ExternalController : Controller
 {
-    [SecurityHeaders]
-    [AllowAnonymous]
-    public class ExternalController : Controller
-    {
         private readonly TestUserStore _users;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
@@ -202,7 +185,6 @@ namespace IdentityServerHost.Quickstart.UI
             if (idToken != null)
             {
                 localSignInProps.StoreTokens(new[] { new AuthenticationToken { Name = "id_token", Value = idToken } });
-            }
         }
     }
 }

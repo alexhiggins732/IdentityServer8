@@ -10,37 +10,17 @@
  copies or substantial portions of the Software.
 */
 
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+namespace IdentityServerHost.Quickstart.UI;
 
-
-using IdentityModel;
-using IdentityServer8;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Test;
-using Microsoft.AspNetCore.Authentication;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace IdentityServerHost.Quickstart.UI
+/// <summary>
+/// This sample controller implements a typical login/logout/provision workflow for local and external accounts.
+/// The login service encapsulates the interactions with the user data store. This data store is in-memory only and cannot be used for production!
+/// The interaction service provides a way for the UI to communicate with identityserver for validation and context retrieval
+/// </summary>
+[SecurityHeaders]
+[AllowAnonymous]
+public class AccountController : Controller
 {
-    /// <summary>
-    /// This sample controller implements a typical login/logout/provision workflow for local and external accounts.
-    /// The login service encapsulates the interactions with the user data store. This data store is in-memory only and cannot be used for production!
-    /// The interaction service provides a way for the UI to communicate with identityserver for validation and context retrieval
-    /// </summary>
-    [SecurityHeaders]
-    [AllowAnonymous]
-    public class AccountController : Controller
-    {
         private readonly TestUserStore _users;
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IClientStore _clientStore;
@@ -76,7 +56,7 @@ namespace IdentityServerHost.Quickstart.UI
             if (vm.IsExternalLoginOnly)
             {
                 // we only have one option for logging in and it's an external provider
-                return RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl });
+            return returnUrl.IsAllowedRedirect() ? RedirectToAction("Challenge", "External", new { scheme = vm.ExternalLoginScheme, returnUrl = returnUrl.SanitizeForRedirect() }) : Forbid();
             }
 
             return View(vm);
@@ -87,37 +67,10 @@ namespace IdentityServerHost.Quickstart.UI
         /// </summary>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginInputModel model, string button)
+    public async Task<IActionResult> Login(LoginInputModel model)
         {
             // check if we are in the context of an authorization request
             var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
-
-            // the user clicked the "cancel" button
-            if (button != "login")
-            {
-                if (context != null)
-                {
-                    // if the user cancels, send a result back into IdentityServer as if they 
-                    // denied the consent (even if this client does not require consent).
-                    // this will send back an access denied OIDC error response to the client.
-                    await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
-
-                    // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                    if (context.IsNativeClient())
-                    {
-                        // The client is native, so this change in how to
-                        // return the response is for better UX for the end user.
-                        return this.LoadingPage("Redirect", model.ReturnUrl);
-                    }
-
-                    return Redirect(model.ReturnUrl);
-                }
-                else
-                {
-                    // since we don't have a valid context, then we just go back to the home page
-                    return Redirect("~/");
-                }
-            }
 
             if (ModelState.IsValid)
             {
@@ -153,21 +106,21 @@ namespace IdentityServerHost.Quickstart.UI
                         {
                             // The client is native, so this change in how to
                             // return the response is for better UX for the end user.
-                            return this.LoadingPage("Redirect", model.ReturnUrl);
+                        return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                         }
 
                         // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
-                        return Redirect(model.ReturnUrl);
+                    return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                     }
 
                     // request for a local page
                     if (Url.IsLocalUrl(model.ReturnUrl))
                     {
-                        return Redirect(model.ReturnUrl);
+                    return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
                     }
                     else if (string.IsNullOrEmpty(model.ReturnUrl))
                     {
-                        return Redirect("~/");
+                    return model.ReturnUrl.IsAllowedRedirect() ? Redirect("~/") : Forbid();
                     }
                     else
                     {
@@ -176,7 +129,7 @@ namespace IdentityServerHost.Quickstart.UI
                     }
                 }
 
-                await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId:context?.Client.ClientId));
+            await _events.RaiseAsync(new UserLoginFailureEvent(model.Username, "invalid credentials", clientId: context?.Client.ClientId));
                 ModelState.AddModelError(string.Empty, AccountOptions.InvalidCredentialsErrorMessage);
             }
 
@@ -185,6 +138,40 @@ namespace IdentityServerHost.Quickstart.UI
             return View(vm);
         }
 
+    /// <summary>
+    /// Handle postback from username/password login
+    /// </summary>
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> LoginCancel(LoginInputModel model)
+    {
+        // check if we are in the context of an authorization request
+        var context = await _interaction.GetAuthorizationContextAsync(model.ReturnUrl);
+
+        if (context != null)
+        {
+            // if the user cancels, send a result back into IdentityServer as if they 
+            // denied the consent (even if this client does not require consent).
+            // this will send back an access denied OIDC error response to the client.
+            await _interaction.DenyAuthorizationAsync(context, AuthorizationError.AccessDenied);
+
+            // we can trust model.ReturnUrl since GetAuthorizationContextAsync returned non-null
+            if (context.IsNativeClient())
+            {
+                // The client is native, so this change in how to
+                // return the response is for better UX for the end user.
+                return model.ReturnUrl.IsAllowedRedirect() ? this.LoadingPage("Redirect", model.ReturnUrl.SanitizeForRedirect()) : Forbid();
+            }
+
+            return model.ReturnUrl.IsAllowedRedirect() ? Redirect(model.ReturnUrl.SanitizeForRedirect()) : Forbid();
+        }
+        else
+        {
+            // since we don't have a valid context, then we just go back to the home page
+            return model.ReturnUrl.IsAllowedRedirect() ? Redirect("~/") : Forbid();
+        }
+
+    }
         
         /// <summary>
         /// Show logout page
@@ -375,6 +362,5 @@ namespace IdentityServerHost.Quickstart.UI
             }
 
             return vm;
-        }
     }
 }

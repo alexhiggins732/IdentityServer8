@@ -10,31 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+namespace IdentityServerHost.Quickstart.UI;
 
-
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityServer8.Configuration;
-using IdentityServer8.Events;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Validation;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using Microsoft.Extensions.Options;
-
-namespace IdentityServerHost.Quickstart.UI
+[Authorize]
+[SecurityHeaders]
+public class DeviceController : Controller
 {
-    [Authorize]
-    [SecurityHeaders]
-    public class DeviceController : Controller
-    {
         private readonly IDeviceFlowInteractionService _interaction;
         private readonly IEventService _events;
         private readonly IOptions<IdentityServerOptions> _options;
@@ -239,6 +220,5 @@ namespace IdentityServerHost.Quickstart.UI
                 Emphasize = true,
                 Checked = check
             };
-        }
     }
 }

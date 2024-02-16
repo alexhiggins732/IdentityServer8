@@ -10,32 +10,15 @@
  copies or substantial portions of the Software.
 */
 
-// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+namespace IdentityServerHost.Quickstart.UI;
 
-
-using IdentityServer8.Events;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Extensions;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
-using System.Linq;
-using System.Threading.Tasks;
-using IdentityServer8.Validation;
-using System.Collections.Generic;
-using System;
-
-namespace IdentityServerHost.Quickstart.UI
+/// <summary>
+/// This controller processes the consent UI
+/// </summary>
+[SecurityHeaders]
+[Authorize]
+public class ConsentController : Controller
 {
-    /// <summary>
-    /// This controller processes the consent UI
-    /// </summary>
-    [SecurityHeaders]
-    [Authorize]
-    public class ConsentController : Controller
-    {
         private readonly IIdentityServerInteractionService _interaction;
         private readonly IEventService _events;
         private readonly ILogger<ConsentController> _logger;
@@ -85,8 +68,7 @@ namespace IdentityServerHost.Quickstart.UI
                     // return the response is for better UX for the end user.
                     return this.LoadingPage("Redirect", result.RedirectUri);
                 }
-
-                return Redirect(result.RedirectUri);
+            return result.RedirectUri.IsAllowedRedirect() ? Redirect(result.RedirectUri.SanitizeForRedirect()) : Forbid();
             }
 
             if (result.HasValidationError)
@@ -182,7 +164,7 @@ namespace IdentityServerHost.Quickstart.UI
             }
             else
             {
-                _logger.LogError("No consent request matching request: {0}", returnUrl);
+            _logger.LogError("No consent request matching request: {0}", returnUrl.SanitizeForLog());
             }
 
             return null;
@@ -269,6 +251,5 @@ namespace IdentityServerHost.Quickstart.UI
                 Emphasize = true,
                 Checked = check
             };
-        }
     }
 }
