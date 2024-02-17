@@ -58,7 +58,7 @@ jobs:
     - uses: dotnet/nbgv@master
       id: nbgv
 
-    - name: Diplay Package Version
+    - name: Display Package Version
       run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}"
 
 

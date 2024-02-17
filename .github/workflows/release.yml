@@ -56,8 +56,8 @@ jobs:
     - uses: dotnet/nbgv@master
       id: nbgv
  
-    - name: Diplay Package Version
-      run: echo "PackageVersion=${{ steps.nbgv.outputs.SemVer2 }}
+    - name: Display Package Version
+      run: echo "PackageVersion=${{ steps.nbgv.outputs.SemVer2 }}"
 
 
 
@@ -68,6 +68,11 @@ jobs:
     - name: Test
       run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
 
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      env:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: alexhiggins732/IdentityServer8
 
     - name: Push
       if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 
