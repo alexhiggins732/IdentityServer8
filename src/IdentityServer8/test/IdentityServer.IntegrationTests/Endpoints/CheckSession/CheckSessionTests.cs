@@ -1,16 +1,13 @@
-﻿/*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+/*
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 using System.Net;
@@ -19,26 +16,25 @@ using FluentAssertions;
 using IdentityServer.IntegrationTests.Common;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.CheckSession
+namespace IdentityServer.IntegrationTests.Endpoints.CheckSession;
+
+public class CheckSessionTests
 {
-    public class CheckSessionTests
+    private const string Category = "Check session endpoint";
+
+    private IdentityServerPipeline _mockPipeline = new IdentityServerPipeline();
+
+    public CheckSessionTests()
     {
-        private const string Category = "Check session endpoint";
+        _mockPipeline.Initialize();
+    }
 
-        private IdentityServerPipeline _mockPipeline = new IdentityServerPipeline();
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task get_request_should_not_return_404()
+    {
+        var response = await _mockPipeline.BackChannelClient.GetAsync(IdentityServerPipeline.CheckSessionEndpoint);
 
-        public CheckSessionTests()
-        {
-            _mockPipeline.Initialize();
-        }
-
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task get_request_should_not_return_404()
-        {
-            var response = await _mockPipeline.BackChannelClient.GetAsync(IdentityServerPipeline.CheckSessionEndpoint);
-
-            response.StatusCode.Should().NotBe(HttpStatusCode.NotFound);
-        }
+        response.StatusCode.Should().NotBe(HttpStatusCode.NotFound);
     }
 }

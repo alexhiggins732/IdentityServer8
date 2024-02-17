@@ -2,4 +2,7 @@
   <ImportGroup>
 	 <Import Project="../Directory.Build.props" />
   </ImportGroup>
+  <ItemGroup>
+     <ProjectReference Include="$(SolutionDir)..\shared\Constants\Constants.csproj" Condition="$(MSBuildProjectName) != 'Constants' " />
+  </ItemGroup>
 </Project>

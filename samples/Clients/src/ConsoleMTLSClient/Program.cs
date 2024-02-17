@@ -1,86 +1,67 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using Clients;
-using IdentityModel;
-using IdentityModel.Client;
-using System.Security.Cryptography.X509Certificates;
-using System.Text.Json;
 
-namespace ConsoleMTLSClient
+Console.Title = "Console mTLS Client";
+var response = await RequestTokenAsync();
+response.Show();
+
+Console.ReadLine();
+await CallServiceAsync(response.AccessToken);
+async Task<TokenResponse> RequestTokenAsync()
 {
-    public class Program
+    var client = new HttpClient(GetHandler());
+
+    var disco = await client.GetDiscoveryDocumentAsync("https://identityserver.local");
+    if (disco.IsError) throw new Exception(disco.Error);
+
+    var endpoint = disco.TokenEndpoint;
+    //.TryGetValue(OidcConstants.Discovery.MtlsEndpointAliases)
+    //.Value<string>(OidcConstants.Discovery.TokenEndpoint)
+    //.ToString();
+
+    var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
     {
-        public static async Task Main()
-        {
-            Console.Title = "Console mTLS Client";
+        Address = endpoint,
 
-            var response = await RequestTokenAsync();
-            response.Show();
+        ClientId = "mtls",
+        Scope = "resource1.scope1"
+    });
 
-            Console.ReadLine();
-            await CallServiceAsync(response.AccessToken);
-        }
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
 
-        static async Task<TokenResponse> RequestTokenAsync()
-        {
-            var client = new HttpClient(GetHandler());
+async Task CallServiceAsync(string token)
+{
+    var client = new HttpClient(GetHandler())
+    {
+        BaseAddress = new Uri(Constants.SampleApi)
+    };
 
-            var disco = await client.GetDiscoveryDocumentAsync("https://identityserver.local");
-            if (disco.IsError) throw new Exception(disco.Error);
+    client.SetBearerToken(token);
+    var response = await client.GetStringAsync("identity");
 
-            var endpoint = disco.TokenEndpoint;
-                    //.TryGetValue(OidcConstants.Discovery.MtlsEndpointAliases)
-                    //.Value<string>(OidcConstants.Discovery.TokenEndpoint)
-                    //.ToString();
-            
-            var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = endpoint,
+    "\n\nService claims:".ConsoleGreen();
+    var json = JsonSerializer.Deserialize<JsonElement>(response);
+    Console.WriteLine(json);
+}
 
-                ClientId = "mtls",
-                Scope = "resource1.scope1"
-            });
+SocketsHttpHandler GetHandler()
+{
+    var handler = new SocketsHttpHandler();
 
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
-        }
+    var cert = new X509Certificate2("client.p12", "changeit");
+    handler.SslOptions.ClientCertificates = new X509CertificateCollection { cert };
 
-        static async Task CallServiceAsync(string token)
-        {
-            var client = new HttpClient(GetHandler())
-            {
-                BaseAddress = new Uri(Constants.SampleApi)
-            };
-
-            client.SetBearerToken(token);
-            var response = await client.GetStringAsync("identity");
-
-            "\n\nService claims:".ConsoleGreen();
-            var json = JsonSerializer.Deserialize<JsonElement>(response);
-            Console.WriteLine(json);
-        }
-
-        static SocketsHttpHandler GetHandler()
-        {
-            var handler = new SocketsHttpHandler();
-            
-            var cert = new X509Certificate2("client.p12", "changeit");
-            handler.SslOptions.ClientCertificates = new X509CertificateCollection { cert };
-
-            return handler;
-        }
-    }
+    return handler;
 }

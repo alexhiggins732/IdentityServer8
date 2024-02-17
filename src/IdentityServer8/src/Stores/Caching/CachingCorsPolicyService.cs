@@ -1,88 +1,78 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Services;
-using System.Threading.Tasks;
-using IdentityServer8.Configuration;
-using Microsoft.Extensions.Logging;
+namespace IdentityServer8.Stores;
 
-namespace IdentityServer8.Stores
+/// <summary>
+/// Caching decorator for ICorsPolicyService
+/// </summary>
+/// <seealso cref="IdentityServer8.Services.ICorsPolicyService" />
+public class CachingCorsPolicyService<T> : ICorsPolicyService
+    where T : ICorsPolicyService
 {
     /// <summary>
-    /// Caching decorator for ICorsPolicyService
+    /// Class to model entries in CORS origin cache.
     /// </summary>
-    /// <seealso cref="IdentityServer8.Services.ICorsPolicyService" />
-    public class CachingCorsPolicyService<T> : ICorsPolicyService
-        where T : ICorsPolicyService
+    public class CorsCacheEntry
     {
         /// <summary>
-        /// Class to model entries in CORS origin cache.
+        /// Ctor.
         /// </summary>
-        public class CorsCacheEntry
+        public CorsCacheEntry(bool allowed)
         {
-            /// <summary>
-            /// Ctor.
-            /// </summary>
-            public CorsCacheEntry(bool allowed)
-            {
-                Allowed = allowed;
-            }
-
-            /// <summary>
-            /// Is origin allowed.
-            /// </summary>
-            public bool Allowed { get; }
-        }
-
-        private readonly IdentityServerOptions Options;
-        private readonly ICache<CorsCacheEntry> CorsCache;
-        private readonly ICorsPolicyService Inner;
-        private readonly ILogger Logger;
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="CachingResourceStore{T}"/> class.
-        /// </summary>
-        /// <param name="options">The options.</param>
-        /// <param name="inner">The inner.</param>
-        /// <param name="corsCache">The CORS origin cache.</param>
-        /// <param name="logger">The logger.</param>
-        public CachingCorsPolicyService(IdentityServerOptions options,
-            T inner,
-            ICache<CorsCacheEntry> corsCache,
-            ILogger<CachingCorsPolicyService<T>> logger)
-        {
-            Options = options;
-            Inner = inner;
-            CorsCache = corsCache;
-            Logger = logger;
+            Allowed = allowed;
         }
 
         /// <summary>
-        /// Determines whether origin is allowed.
+        /// Is origin allowed.
         /// </summary>
-        /// <param name="origin">The origin.</param>
-        /// <returns></returns>
-        public virtual async Task<bool> IsOriginAllowedAsync(string origin)
-        {
-            var entry = await CorsCache.GetAsync(origin,
-                          Options.Caching.CorsExpiration,
-                          async () => new CorsCacheEntry(await Inner.IsOriginAllowedAsync(origin)),
-                          Logger);
+        public bool Allowed { get; }
+    }
 
-            return entry.Allowed;
-        }
+    private readonly IdentityServerOptions Options;
+    private readonly ICache<CorsCacheEntry> CorsCache;
+    private readonly ICorsPolicyService Inner;
+    private readonly ILogger Logger;
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="CachingResourceStore{T}"/> class.
+    /// </summary>
+    /// <param name="options">The options.</param>
+    /// <param name="inner">The inner.</param>
+    /// <param name="corsCache">The CORS origin cache.</param>
+    /// <param name="logger">The logger.</param>
+    public CachingCorsPolicyService(IdentityServerOptions options,
+        T inner,
+        ICache<CorsCacheEntry> corsCache,
+        ILogger<CachingCorsPolicyService<T>> logger)
+    {
+        Options = options;
+        Inner = inner;
+        CorsCache = corsCache;
+        Logger = logger;
+    }
+
+    /// <summary>
+    /// Determines whether origin is allowed.
+    /// </summary>
+    /// <param name="origin">The origin.</param>
+    /// <returns></returns>
+    public virtual async Task<bool> IsOriginAllowedAsync(string origin)
+    {
+        var entry = await CorsCache.GetAsync(origin,
+                      Options.Caching.CorsExpiration,
+                      async () => new CorsCacheEntry(await Inner.IsOriginAllowedAsync(origin)),
+                      Logger);
+
+        return entry.Allowed;
     }
 }

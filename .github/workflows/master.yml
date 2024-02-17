@@ -28,7 +28,6 @@ on:
     - "global.json"
     - "IdentityServer8.DotNet.ruleset"
     - "LICENSCE"
-    - "version.json"
     - "Nuget.config"
     - "SECURITY.md"
     - "SPONSORS.md"
@@ -56,7 +55,7 @@ jobs:
 
     - uses: dotnet/nbgv@master
       id: nbgv
-    - name: Diplay Package Version
+    - name: Display Package Version
       run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}"
 
     - name: Restore dependencies
@@ -64,8 +63,14 @@ jobs:
     - name: Build
       run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}
     - name: Test
-      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
+      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
+    - name: Upload coverage reports to Codecov
+      uses: codecov/codecov-action@v4.0.1
+      env:
+        token: ${{ secrets.CODECOV_TOKEN }}
+        slug: alexhiggins732/IdentityServer8
+        CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 
     - name: Push
       if: ${{ (github.event_name == 'push') && (runner.os == 'Windows') }} 

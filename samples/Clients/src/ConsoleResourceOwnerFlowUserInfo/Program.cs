@@ -1,81 +1,66 @@
-﻿/*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+/*
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using Clients;
-using IdentityModel.Client;
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 
-namespace ConsoleResourceOwnerFlowUserInfo
+HttpClient tokenClient = new HttpClient();
+DiscoveryCache cache = new DiscoveryCache(Constants.Authority);
+
+
+Console.Title = "Console ResourceOwner Flow UserInfo";
+
+var response = await RequestTokenAsync();
+response.Show();
+
+await GetClaimsAsync(response.AccessToken);
+
+
+async Task<TokenResponse> RequestTokenAsync()
 {
-    class Program
+    var disco = await cache.GetAsync();
+    if (disco.IsError) throw new Exception(disco.Error);
+
+    var response = await tokenClient.RequestPasswordTokenAsync(new PasswordTokenRequest
     {
-        static HttpClient _tokenClient = new HttpClient();
-        static DiscoveryCache _cache = new DiscoveryCache(Constants.Authority);
+        Address = disco.TokenEndpoint,
 
-        static async Task Main()
-        {
-            Console.Title = "Console ResourceOwner Flow UserInfo";
+        ClientId = "roclient",
+        ClientSecret = "secret",
 
-            var response = await RequestTokenAsync();
-            response.Show();
+        UserName = "bob",
+        Password = "bob",
 
-            await GetClaimsAsync(response.AccessToken);
-        }
+        Scope = "openid custom.profile"
+    });
 
-        static async Task<TokenResponse> RequestTokenAsync()
-        {
-            var disco = await _cache.GetAsync();
-            if (disco.IsError) throw new Exception(disco.Error);
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
 
-            var response = await _tokenClient.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = disco.TokenEndpoint,
+async Task GetClaimsAsync(string token)
+{
+    var disco = await cache.GetAsync();
+    if (disco.IsError) throw new Exception(disco.Error);
 
-                ClientId = "roclient",
-                ClientSecret = "secret",
+    var response = await tokenClient.GetUserInfoAsync(new UserInfoRequest
+    {
+        Address = disco.UserInfoEndpoint,
+        Token = token
+    });
 
-                UserName = "bob",
-                Password = "bob",
+    if (response.IsError) throw new Exception(response.Error);
 
-                Scope = "openid custom.profile"
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
-        }
-
-        static async Task GetClaimsAsync(string token)
-        {
-            var disco = await _cache.GetAsync();
-            if (disco.IsError) throw new Exception(disco.Error);
-
-            var response = await _tokenClient.GetUserInfoAsync(new UserInfoRequest
-            {
-                Address = disco.UserInfoEndpoint,
-                Token = token
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-
-            "\n\nUser claims:".ConsoleGreen();
-            foreach (var claim in response.Claims)
-            {
-                Console.WriteLine("{0}\n {1}", claim.Type, claim.Value);
-            }
-        }
+    "\n\nUser claims:".ConsoleGreen();
+    foreach (var claim in response.Claims)
+    {
+        Console.WriteLine("{0}\n {1}", claim.Type, claim.Value);
     }
 }

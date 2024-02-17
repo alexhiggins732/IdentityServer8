@@ -1,16 +1,13 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 using System.Net.Http;
@@ -22,75 +19,74 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Clients
+namespace IdentityServer.IntegrationTests.Clients;
+
+public class RevocationClient
 {
-    public class RevocationClient
+    private const string TokenEndpoint = "https://server/connect/token";
+    private const string RevocationEndpoint = "https://server/connect/revocation";
+    private const string IntrospectionEndpoint = "https://server/connect/introspect";
+
+    private readonly HttpClient _client;
+
+    public RevocationClient()
     {
-        private const string TokenEndpoint = "https://server/connect/token";
-        private const string RevocationEndpoint = "https://server/connect/revocation";
-        private const string IntrospectionEndpoint = "https://server/connect/introspect";
+        var builder = new WebHostBuilder()
+            .UseStartup<Startup>();
+        var server = new TestServer(builder);
 
-        private readonly HttpClient _client;
+        _client = server.CreateClient();
+    }
 
-        public RevocationClient()
+    [Fact]
+    public async Task Revoking_reference_token_should_invalidate_token()
+    {
+        // request acccess token
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
         {
-            var builder = new WebHostBuilder()
-                .UseStartup<Startup>();
-            var server = new TestServer(builder);
+            Address = TokenEndpoint,
+            ClientId = "roclient.reference",
+            ClientSecret = "secret",
 
-            _client = server.CreateClient();
-        }
+            Scope = "api1",
+            UserName = "bob",
+            Password = "bob"
+        });
 
-        [Fact]
-        public async Task Revoking_reference_token_should_invalidate_token()
+        response.IsError.Should().BeFalse();
+
+        // introspect - should be active
+        var introspectionResponse = await _client.IntrospectTokenAsync(new TokenIntrospectionRequest
         {
-            // request acccess token
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient.reference",
-                ClientSecret = "secret",
+            Address = IntrospectionEndpoint,
+            ClientId = "api",
+            ClientSecret = "secret",
 
-                Scope = "api1",
-                UserName = "bob",
-                Password = "bob"
-            });
+            Token = response.AccessToken
+        });
 
-            response.IsError.Should().BeFalse();
+        introspectionResponse.IsActive.Should().Be(true);
 
-            // introspect - should be active
-            var introspectionResponse = await _client.IntrospectTokenAsync(new TokenIntrospectionRequest
-            {
-                Address = IntrospectionEndpoint,
-                ClientId = "api",
-                ClientSecret = "secret",
+        // revoke access token
+        var revocationResponse = await _client.RevokeTokenAsync(new TokenRevocationRequest
+        {
+            Address = RevocationEndpoint,
+            ClientId = "roclient.reference",
+            ClientSecret = "secret",
 
-                Token = response.AccessToken
-            });
+            Token = response.AccessToken
+        });
 
-            introspectionResponse.IsActive.Should().Be(true);
+        // introspect - should be inactive
+        introspectionResponse = await _client.IntrospectTokenAsync(new TokenIntrospectionRequest
+        {
+            Address = IntrospectionEndpoint,
+            ClientId = "api",
+            ClientSecret = "secret",
 
-            // revoke access token
-            var revocationResponse = await _client.RevokeTokenAsync(new TokenRevocationRequest
-            {
-                Address = RevocationEndpoint,
-                ClientId = "roclient.reference",
-                ClientSecret = "secret",
+            Token = response.AccessToken
+        });
 
-                Token = response.AccessToken
-            });
-
-            // introspect - should be inactive
-            introspectionResponse = await _client.IntrospectTokenAsync(new TokenIntrospectionRequest
-            {
-                Address = IntrospectionEndpoint,
-                ClientId = "api",
-                ClientSecret = "secret",
-
-                Token = response.AccessToken
-            });
-
-            introspectionResponse.IsActive.Should().Be(false);
-        }
+        introspectionResponse.IsActive.Should().Be(false);
     }
 }

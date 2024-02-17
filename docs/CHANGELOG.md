@@ -4,12 +4,31 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](http://keepachangelog.com/)
 and this project adheres to [Semantic Versioning 2](http://semver.org/).
  
-## [Unreleased] - 2024-02-13
+## [Unreleased] - 2024-02-17
 
-Current templates and quickstarts will be added to seperate template and quickstart repositories to continue previous version functionality.
+- Current templates and quickstarts being added to seperate template and quickstart repositories to continue previous version functionality.
+- DotNet tool to install template currently under development.
+- 
+## [8.0.4] - 2024-02-17
 
-DotNet tool to install template currently under development.
+Identity Server 8.0.4 is a security release that addresses hundreds of security vulnerabilities in the IdentityServer8 code base. We recommend that you update to this version.
 
+- Fix over 100+ security vulnerabilities in the IdentityServer8 code base:
+ - #17 Unsafe expansion of self-closing HTML tag
+ - #18 URL redirection from remote source
+ - #19 DOM text reinterpreted as HTML
+ - #20 Incomplete string escaping or encoding
+ - #21 Inefficient regular expression bug dependencies
+ - #22 Bad HTML filtering regexp bug dependencies
+ - #23 User-controlled bypass of sensitive method bug
+ - #24 Unsafe jQuery plugins bug dependencies
+
+Additional the codebase has been refactored to use the latest DotNet 8 features and best practices. 
+
+This includes refactroing in #25 and consolidation of reused code that remove some nearly 1 million lines of code from the base.:
+- Convert Top Level usings
+- Convert Implicit usings.
+- Samples use shared API and MVC projects to reduce code duplication and need to maintain dozens of copies of the same code.
 
 ## [8.0.3] - 2024-02-12
 

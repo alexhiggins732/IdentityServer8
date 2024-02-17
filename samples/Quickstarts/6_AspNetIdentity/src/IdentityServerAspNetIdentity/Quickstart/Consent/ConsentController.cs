@@ -1,16 +1,13 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 namespace IdentityServerHost.Quickstart.UI;
@@ -71,8 +68,7 @@ public class ConsentController : Controller
                 // return the response is for better UX for the end user.
                 return this.LoadingPage("Redirect", result.RedirectUri);
             }
-
-            return Redirect(result.RedirectUri);
+            return result.RedirectUri.IsAllowedRedirect() ? Redirect(result.RedirectUri.SanitizeForRedirect()) : Forbid();
         }
 
         if (result.HasValidationError)
@@ -168,7 +164,7 @@ public class ConsentController : Controller
         }
         else
         {
-            _logger.LogError("No consent request matching request: {0}", returnUrl);
+            _logger.LogError("No consent request matching request: {0}", returnUrl.SanitizeForLog());
         }
 
         return null;

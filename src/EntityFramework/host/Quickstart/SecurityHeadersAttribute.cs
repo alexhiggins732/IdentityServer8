@@ -1,14 +1,19 @@
-﻿// Copyright (c) Brock Allen & Dominick Baier. All rights reserved.
-// Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information.
+/*
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Filters;
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code and license this software can be found 
 
-namespace IdentityServerHost.Quickstart.UI
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+*/
+
+namespace IdentityServerHost.Quickstart.UI;
+
+public class SecurityHeadersAttribute : ActionFilterAttribute
 {
-    public class SecurityHeadersAttribute : ActionFilterAttribute
-    {
         public override void OnResultExecuting(ResultExecutingContext context)
         {
             var result = context.Result;
@@ -17,13 +22,13 @@ namespace IdentityServerHost.Quickstart.UI
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Content-Type-Options
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Content-Type-Options"))
                 {
-                    context.HttpContext.Response.Headers.Add("X-Content-Type-Options", "nosniff");
+                context.HttpContext.Response.Headers.Append("X-Content-Type-Options", "nosniff");
                 }
 
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/X-Frame-Options
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Frame-Options"))
                 {
-                    context.HttpContext.Response.Headers.Add("X-Frame-Options", "SAMEORIGIN");
+                context.HttpContext.Response.Headers.Append("X-Frame-Options", "SAMEORIGIN");
                 }
 
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Content-Security-Policy
@@ -36,20 +41,19 @@ namespace IdentityServerHost.Quickstart.UI
                 // once for standards compliant browsers
                 if (!context.HttpContext.Response.Headers.ContainsKey("Content-Security-Policy"))
                 {
-                    context.HttpContext.Response.Headers.Add("Content-Security-Policy", csp);
+                context.HttpContext.Response.Headers.Append("Content-Security-Policy", csp);
                 }
                 // and once again for IE
                 if (!context.HttpContext.Response.Headers.ContainsKey("X-Content-Security-Policy"))
                 {
-                    context.HttpContext.Response.Headers.Add("X-Content-Security-Policy", csp);
+                context.HttpContext.Response.Headers.Append("X-Content-Security-Policy", csp);
                 }
 
                 // https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Referrer-Policy
                 var referrer_policy = "no-referrer";
                 if (!context.HttpContext.Response.Headers.ContainsKey("Referrer-Policy"))
                 {
-                    context.HttpContext.Response.Headers.Add("Referrer-Policy", referrer_policy);
-                }
+                context.HttpContext.Response.Headers.Append("Referrer-Policy", referrer_policy);
             }
         }
     }

@@ -1,53 +1,44 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using System.Linq;
-using System.Threading.Tasks;
+namespace IdentityServer8.Services;
 
-namespace IdentityServer8.Services
+/// <summary>
+/// Extension for IUserSession.
+/// </summary>
+public static class IUserSessionExtensions
 {
     /// <summary>
-    /// Extension for IUserSession.
+    /// Creates a LogoutNotificationContext for the current user session.
     /// </summary>
-    public static class IUserSessionExtensions
+    /// <returns></returns>
+    public static async Task<LogoutNotificationContext> GetLogoutNotificationContext(this IUserSession session)
     {
-        /// <summary>
-        /// Creates a LogoutNotificationContext for the current user session.
-        /// </summary>
-        /// <returns></returns>
-        public static async Task<LogoutNotificationContext> GetLogoutNotificationContext(this IUserSession session)
+        var clientIds = await session.GetClientListAsync();
+
+        if (clientIds.Any())
         {
-            var clientIds = await session.GetClientListAsync();
+            var user = await session.GetUserAsync();
+            var sub = user.GetSubjectId();
+            var sid = await session.GetSessionIdAsync();
 
-            if (clientIds.Any())
+            return new LogoutNotificationContext
             {
-                var user = await session.GetUserAsync();
-                var sub = user.GetSubjectId();
-                var sid = await session.GetSessionIdAsync();
-
-                return new LogoutNotificationContext
-                {
-                    SubjectId = sub,
-                    SessionId = sid,
-                    ClientIds = clientIds
-                };
-            }
-
-            return null;
+                SubjectId = sub,
+                SessionId = sid,
+                ClientIds = clientIds
+            };
         }
+
+        return null;
     }
 }

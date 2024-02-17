@@ -1,152 +1,131 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using Clients;
-using IdentityModel;
-using IdentityModel.Client;
-using System.Text.Json;
-using System;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace ConsoleResourceOwnerFlowRefreshToken
+HttpClient tokenClient = new HttpClient();
+DiscoveryCache cache = new DiscoveryCache(Constants.Authority);
+
+
+Console.Title = "Console ResourceOwner Flow RefreshToken";
+
+var response = await RequestTokenAsync();
+response.Show();
+
+Console.ReadLine();
+
+var refresh_token = response.RefreshToken;
+
+while (true)
 {
-    public class Program
+    response = await RefreshTokenAsync(refresh_token);
+    ShowResponse(response);
+
+    Console.ReadLine();
+    await CallServiceAsync(response.AccessToken);
+
+    if (response.RefreshToken != refresh_token)
     {
-        static HttpClient _tokenClient = new HttpClient();
-        static DiscoveryCache _cache = new DiscoveryCache(Constants.Authority);
+        refresh_token = response.RefreshToken;
+    }
+}
+async Task<TokenResponse> RequestTokenAsync()
+{
+    var disco = await cache.GetAsync();
 
-        static async Task Main()
+    var response = await tokenClient.RequestPasswordTokenAsync(new PasswordTokenRequest
+    {
+        Address = disco.TokenEndpoint,
+
+        ClientId = "roclient",
+        ClientSecret = "secret",
+
+        UserName = "bob",
+        Password = "bob",
+
+        Scope = "resource1.scope1 offline_access",
+    });
+
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
+ async Task<TokenResponse> RefreshTokenAsync(string refreshToken)
+{
+    Console.WriteLine("Using refresh token: {0}", refreshToken);
+
+    var disco = await cache.GetAsync();
+    var response = await tokenClient.RequestRefreshTokenAsync(new RefreshTokenRequest
+    {
+        Address = disco.TokenEndpoint,
+
+        ClientId = "roclient",
+        ClientSecret = "secret",
+        RefreshToken = refreshToken
+    });
+
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
+
+async Task CallServiceAsync(string token)
+{
+    var baseAddress = Constants.SampleApi;
+
+    var client = new HttpClient
+    {
+        BaseAddress = new Uri(baseAddress)
+    };
+
+    client.SetBearerToken(token);
+    var response = await client.GetStringAsync("identity");
+
+    "\n\nService claims:".ConsoleGreen();
+    var json = JsonSerializer.Deserialize<JsonElement>(response);
+    Console.WriteLine(json);
+}
+
+static void ShowResponse(TokenResponse response)
+{
+    if (!response.IsError)
+    {
+        "Token response:".ConsoleGreen();
+        Console.WriteLine(response.Json);
+
+        if (response.AccessToken.Contains("."))
         {
-            Console.Title = "Console ResourceOwner Flow RefreshToken";
+            "\nAccess Token (decoded):".ConsoleGreen();
 
-            var response = await RequestTokenAsync();
-            response.Show();
+            var parts = response.AccessToken.Split('.');
+            var header = parts[0];
+            var claims = parts[1];
 
-            Console.ReadLine();
-
-            var refresh_token = response.RefreshToken;
-
-            while (true)
-            {
-                response = await RefreshTokenAsync(refresh_token);
-                ShowResponse(response);
-
-                Console.ReadLine();
-                await CallServiceAsync(response.AccessToken);
-
-                if (response.RefreshToken != refresh_token)
-                {
-                    refresh_token = response.RefreshToken;
-                }
-            }
+            var headerJson = Encoding.UTF8.GetString(Base64Url.Decode(header));
+            Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(header));
+            var claimsJson = Encoding.UTF8.GetString(Base64Url.Decode(claims));
+            Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(claims));
         }
-
-        static async Task<TokenResponse> RequestTokenAsync()
+    }
+    else
+    {
+        if (response.ErrorType == ResponseErrorType.Http)
         {
-            var disco = await _cache.GetAsync();
-
-            var response = await _tokenClient.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-
-                ClientId = "roclient",
-                ClientSecret = "secret",
-
-                UserName = "bob",
-                Password = "bob",
-
-                Scope = "resource1.scope1 offline_access",
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
+            "HTTP error: ".ConsoleGreen();
+            Console.WriteLine(response.Error);
+            "HTTP status code: ".ConsoleGreen();
+            Console.WriteLine(response.HttpStatusCode);
         }
-
-        private static async Task<TokenResponse> RefreshTokenAsync(string refreshToken)
+        else
         {
-            Console.WriteLine("Using refresh token: {0}", refreshToken);
-
-            var disco = await _cache.GetAsync();
-            var response = await _tokenClient.RequestRefreshTokenAsync(new RefreshTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-
-                ClientId = "roclient",
-                ClientSecret = "secret",
-                RefreshToken = refreshToken
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
-        }
-
-        static async Task CallServiceAsync(string token)
-        {
-            var baseAddress = Constants.SampleApi;
-
-            var client = new HttpClient
-            {
-                BaseAddress = new Uri(baseAddress)
-            };
-
-            client.SetBearerToken(token);
-            var response = await client.GetStringAsync("identity");
-
-            "\n\nService claims:".ConsoleGreen();
-            var json = JsonSerializer.Deserialize<JsonElement>(response);
-            Console.WriteLine(json);
-        }
-
-        private static void ShowResponse(TokenResponse response)
-        {
-            if (!response.IsError)
-            {
-                "Token response:".ConsoleGreen();
-                Console.WriteLine(response.Json);
-
-                if (response.AccessToken.Contains("."))
-                {
-                    "\nAccess Token (decoded):".ConsoleGreen();
-
-                    var parts = response.AccessToken.Split('.');
-                    var header = parts[0];
-                    var claims = parts[1];
-
-                    var headerJson = Encoding.UTF8.GetString(Base64Url.Decode(header));
-                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(header));
-                    var claimsJson = Encoding.UTF8.GetString(Base64Url.Decode(claims));
-                    Console.WriteLine(JsonSerializer.Deserialize<JsonElement>(claims));
-                }
-            }
-            else
-            {
-                if (response.ErrorType == ResponseErrorType.Http)
-                {
-                    "HTTP error: ".ConsoleGreen();
-                    Console.WriteLine(response.Error);
-                    "HTTP status code: ".ConsoleGreen();
-                    Console.WriteLine(response.HttpStatusCode);
-                }
-                else
-                {
-                    "Protocol error response:".ConsoleGreen();
-                    Console.WriteLine(response.Json);
-                }
-            }
+            "Protocol error response:".ConsoleGreen();
+            Console.WriteLine(response.Json);
         }
     }
 }

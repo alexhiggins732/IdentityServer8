@@ -1,11 +1,19 @@
-using System;
-using IdentityServer8.Models;
-using Microsoft.AspNetCore.Mvc;
+/*
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
-namespace IdentityServerHost.Quickstart.UI
+ Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
+
+ Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
+ Source code and license this software can be found 
+
+ The above copyright notice and this permission notice shall be included in all
+ copies or substantial portions of the Software.
+*/
+
+namespace IdentityServerHost.Quickstart.UI;
+
+public static class Extensions
 {
-    public static class Extensions
-    {
         /// <summary>
         /// Checks if the redirect URI is for a native client.
         /// </summary>
@@ -22,6 +30,5 @@ namespace IdentityServerHost.Quickstart.UI
             controller.HttpContext.Response.Headers["Location"] = "";
             
             return controller.View(viewName, new RedirectViewModel { RedirectUrl = redirectUri });
-        }
     }
 }

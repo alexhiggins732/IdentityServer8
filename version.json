@@ -1,10 +1,11 @@
 {
-  "version": "8.0.3",
+  "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
+  "version": "8.0.4-beta.4",
   "nugetPackageVersion": {
-    "semVer": 1, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
-    "precision": "build" // optional. Use when you want to use a more or less precise package version than the default major.minor.build.
+    "semVer": 2, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
+    "precision": "revision"
   },
-
+  "semVer1NumericIdentifierPadding": 4,
   "pathFilters": [
     // optional list of paths to consider when calculating version height.
     "!docs",
@@ -15,7 +16,7 @@
     "!.config",
     "!Directory.Build.props",
     "!Directory.Build.targets",
-    "!Directory.Build.props",
+    "!Directory.Packages.props",
     "docker-compose.yml",
     "docker-compose.override.yml",
     "docker-compose.vs.debug.yml",
@@ -25,7 +26,6 @@
     "!global.json",
     "!IdentityServer8.DotNet.ruleset",
     "!LICENSCE",
-    "!version.json",
     "!Nuget.config",
     "!SECURITY.md",
     "!SPONSORS.md",
@@ -36,15 +36,15 @@
   "publicReleaseRefSpec": [
     "^refs/heads/master$", // we release out of master
     "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
-    "^refs/heads/develop", // we release alpha out of develop
+    "^refs/heads/develop$", // we release alpha out of develop
     "^refs/heads/release/*" // we release beta out of release
   ],
   "cloudBuild": {
     "setVersionVariables": true,
     "buildNumber": {
-      "enabled": false,
+      "enabled": true,
       "includeCommitId": {
-        "when": "nonPublicReleaseOnly",
+        "when": "always",
         "where": "buildMetadata"
       }
     }

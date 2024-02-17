@@ -1,0 +1,90 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34322.80
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{179A2A2C-3B3D-437C-B5F3-3B81472C8335}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybrid", "MvcHybrid\MvcHybrid.csproj", "{926ACA55-AA27-475D-90CB-AC6D4B113322}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcHybridAutomaticRefresh", "MvcHybridAutomaticRefresh\MvcHybridAutomaticRefresh.csproj", "{AF1E5A26-F1DC-4B71-988D-F3B69F47D604}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcImplicit", "MvcImplicit\MvcImplicit.csproj", "{24B7CDFC-87B7-4C45-A73B-AA0D9FAD25B8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcImplicitJwtRequest", "MvcImplicitJwtRequest\MvcImplicitJwtRequest.csproj", "{DD2BC29A-9874-4953-8AAC-9ABF8DE97F2F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MvcManual", "MvcManual\MvcManual.csproj", "{B3757E48-9817-4390-9A35-58D106C2D6E2}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "root", "root", "{3CDFF45B-4773-419E-99DA-BE8545B7DECB}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\Directory.Build.props = ..\..\..\Directory.Build.props
+		..\..\..\Directory.Packages.props = ..\..\..\Directory.Packages.props
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Constants", "..\shared\Constants\Constants.csproj", "{F2D39DF0-367D-456B-820F-2A081F7C1CC7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{66694F08-6E72-4D7B-A555-D4EB25A9CCC8}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
+		..\..\SamplesGlobalUsings.cs = ..\..\SamplesGlobalUsings.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{97D760DC-D81F-43D4-93D0-B81BD2112705}"
+	ProjectSection(SolutionItems) = preProject
+		..\ClientsGlobalUsings.cs = ..\ClientsGlobalUsings.cs
+		..\..\Directory.Build.props = ..\..\Directory.Build.props
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "old", "old", "{B729491B-30F9-4DB3-B871-77BA9BA8BE8D}"
+	ProjectSection(SolutionItems) = preProject
+		Directory.Build.props = Directory.Build.props
+		MvcUsings.cs = MvcUsings.cs
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{926ACA55-AA27-475D-90CB-AC6D4B113322}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{926ACA55-AA27-475D-90CB-AC6D4B113322}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{926ACA55-AA27-475D-90CB-AC6D4B113322}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{926ACA55-AA27-475D-90CB-AC6D4B113322}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AF1E5A26-F1DC-4B71-988D-F3B69F47D604}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AF1E5A26-F1DC-4B71-988D-F3B69F47D604}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AF1E5A26-F1DC-4B71-988D-F3B69F47D604}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AF1E5A26-F1DC-4B71-988D-F3B69F47D604}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24B7CDFC-87B7-4C45-A73B-AA0D9FAD25B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24B7CDFC-87B7-4C45-A73B-AA0D9FAD25B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24B7CDFC-87B7-4C45-A73B-AA0D9FAD25B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24B7CDFC-87B7-4C45-A73B-AA0D9FAD25B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2BC29A-9874-4953-8AAC-9ABF8DE97F2F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2BC29A-9874-4953-8AAC-9ABF8DE97F2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2BC29A-9874-4953-8AAC-9ABF8DE97F2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2BC29A-9874-4953-8AAC-9ABF8DE97F2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3757E48-9817-4390-9A35-58D106C2D6E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3757E48-9817-4390-9A35-58D106C2D6E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3757E48-9817-4390-9A35-58D106C2D6E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3757E48-9817-4390-9A35-58D106C2D6E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F2D39DF0-367D-456B-820F-2A081F7C1CC7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F2D39DF0-367D-456B-820F-2A081F7C1CC7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F2D39DF0-367D-456B-820F-2A081F7C1CC7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F2D39DF0-367D-456B-820F-2A081F7C1CC7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{3CDFF45B-4773-419E-99DA-BE8545B7DECB} = {179A2A2C-3B3D-437C-B5F3-3B81472C8335}
+		{66694F08-6E72-4D7B-A555-D4EB25A9CCC8} = {3CDFF45B-4773-419E-99DA-BE8545B7DECB}
+		{97D760DC-D81F-43D4-93D0-B81BD2112705} = {66694F08-6E72-4D7B-A555-D4EB25A9CCC8}
+		{B729491B-30F9-4DB3-B871-77BA9BA8BE8D} = {97D760DC-D81F-43D4-93D0-B81BD2112705}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BAD78470-3D66-466E-9C17-2A67F0905B18}
+	EndGlobalSection
+EndGlobal

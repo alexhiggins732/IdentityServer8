@@ -1,16 +1,13 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
 using System;
@@ -27,147 +24,146 @@ using IdentityServer8.Models;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.DeviceAuthorization
+namespace IdentityServer.IntegrationTests.Endpoints.DeviceAuthorization;
+
+public class DeviceAuthorizationTests
 {
-    public class DeviceAuthorizationTests
+    private const string Category = "Device authorization endpoint";
+
+    private IdentityServerPipeline _mockPipeline = new IdentityServerPipeline();
+
+    public DeviceAuthorizationTests()
     {
-        private const string Category = "Device authorization endpoint";
-
-        private IdentityServerPipeline _mockPipeline = new IdentityServerPipeline();
-
-        public DeviceAuthorizationTests()
+        _mockPipeline.Clients.Add(new Client
         {
-            _mockPipeline.Clients.Add(new Client
-            {
-                ClientId = "client1",
-                ClientSecrets = {new Secret("secret".Sha256())},
-                AllowedGrantTypes = GrantTypes.DeviceFlow,
-                AllowedScopes = {"openid"}
-            });
+            ClientId = "client1",
+            ClientSecrets = {new Secret("secret".Sha256())},
+            AllowedGrantTypes = GrantTypes.DeviceFlow,
+            AllowedScopes = {"openid"}
+        });
 
-            _mockPipeline.IdentityScopes.AddRange(new IdentityResource[] {
-                new IdentityResources.OpenId()
-            });
+        _mockPipeline.IdentityScopes.AddRange(new IdentityResource[] {
+            new IdentityResources.OpenId()
+        });
 
-            _mockPipeline.Initialize();
-        }
+        _mockPipeline.Initialize();
+    }
 
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task get_should_return_InvalidRequest()
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task get_should_return_InvalidRequest()
+    {
+        var response = await _mockPipeline.BackChannelClient.GetAsync(IdentityServerPipeline.DeviceAuthorization);
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+        var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
+
+        resultDto.Should().NotBeNull();
+        resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidRequest);
+    }
+
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task wrong_content_type_return_InvalidRequest()
+    {
+        var form = new Dictionary<string, string>
         {
-            var response = await _mockPipeline.BackChannelClient.GetAsync(IdentityServerPipeline.DeviceAuthorization);
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+            {"client_id", Guid.NewGuid().ToString()}
+        };
+        var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization,
+            new StringContent(@"{""client_id"": ""client1""}", Encoding.UTF8, "application/json"));
 
-            var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-            resultDto.Should().NotBeNull();
-            resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidRequest);
-        }
+        var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
 
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task wrong_content_type_return_InvalidRequest()
+        resultDto.Should().NotBeNull();
+        resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidRequest);
+    }
+
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task empty_request_should_return_InvalidClient()
+    {
+        var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization,
+            new FormUrlEncodedContent(new Dictionary<string, string>()));
+
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+
+        var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
+
+        resultDto.Should().NotBeNull();
+        resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidClient);
+    }
+
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task unknown_client_should_return_InvalidClient()
+    {
+        var form = new Dictionary<string, string>
         {
-            var form = new Dictionary<string, string>
-            {
-                {"client_id", Guid.NewGuid().ToString()}
-            };
-            var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization,
-                new StringContent(@"{""client_id"": ""client1""}", Encoding.UTF8, "application/json"));
+            {"client_id", "client1"}
+        };
+        var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization, new FormUrlEncodedContent(form));
 
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
 
-            var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
+        var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
 
-            resultDto.Should().NotBeNull();
-            resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidRequest);
-        }
+        resultDto.Should().NotBeNull();
+        resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidClient);
+    }
 
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task empty_request_should_return_InvalidClient()
+    [Fact]
+    [Trait("Category", Category)]
+    public async Task valid_should_return_json()
+    {
+        var form = new Dictionary<string, string>
         {
-            var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization,
-                new FormUrlEncodedContent(new Dictionary<string, string>()));
+            {"client_id", "client1"},
+            {"client_secret", "secret" }
+        };
+        var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization, new FormUrlEncodedContent(form));
 
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.StatusCode.Should().Be(HttpStatusCode.OK);
+        response.Content.Headers.ContentType.MediaType.Should().Be("application/json");
+        
+        var resultDto = ParseJsonBody<ResultDto>(await response.Content.ReadAsStreamAsync());
 
-            var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
+        resultDto.Should().NotBeNull();
 
-            resultDto.Should().NotBeNull();
-            resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidClient);
-        }
+        resultDto.Should().NotBeNull();
+        resultDto.device_code.Should().NotBeNull();
+        resultDto.user_code.Should().NotBeNull();
+        resultDto.verification_uri.Should().NotBeNull();
+        resultDto.verification_uri_complete.Should().NotBeNull();
+        resultDto.expires_in.Should().BeGreaterThan(0);
+        resultDto.interval.Should().BeGreaterThan(0);
+    }
 
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task unknown_client_should_return_InvalidClient()
+    private T ParseJsonBody<T>(Stream streamBody)
+    {
+        streamBody.Position = 0;
+        using (var reader = new StreamReader(streamBody))
         {
-            var form = new Dictionary<string, string>
-            {
-                {"client_id", "client1"}
-            };
-            var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization, new FormUrlEncodedContent(form));
-
-            response.StatusCode.Should().Be(HttpStatusCode.BadRequest);
-
-            var resultDto = ParseJsonBody<ErrorResultDto>(await response.Content.ReadAsStreamAsync());
-
-            resultDto.Should().NotBeNull();
-            resultDto.error.Should().Be(OidcConstants.TokenErrors.InvalidClient);
+            var jsonString = reader.ReadToEnd();
+            return JsonConvert.DeserializeObject<T>(jsonString);
         }
+    }
 
-        [Fact]
-        [Trait("Category", Category)]
-        public async Task valid_should_return_json()
-        {
-            var form = new Dictionary<string, string>
-            {
-                {"client_id", "client1"},
-                {"client_secret", "secret" }
-            };
-            var response = await _mockPipeline.BackChannelClient.PostAsync(IdentityServerPipeline.DeviceAuthorization, new FormUrlEncodedContent(form));
+    internal class ResultDto
+    {
+        public string device_code { get; set; }
+        public string user_code { get; set; }
+        public string verification_uri { get; set; }
+        public string verification_uri_complete { get; set; }
+        public int expires_in { get; set; }
+        public int interval { get; set; }
+    }
 
-            response.StatusCode.Should().Be(HttpStatusCode.OK);
-            response.Content.Headers.ContentType.MediaType.Should().Be("application/json");
-            
-            var resultDto = ParseJsonBody<ResultDto>(await response.Content.ReadAsStreamAsync());
-
-            resultDto.Should().NotBeNull();
-
-            resultDto.Should().NotBeNull();
-            resultDto.device_code.Should().NotBeNull();
-            resultDto.user_code.Should().NotBeNull();
-            resultDto.verification_uri.Should().NotBeNull();
-            resultDto.verification_uri_complete.Should().NotBeNull();
-            resultDto.expires_in.Should().BeGreaterThan(0);
-            resultDto.interval.Should().BeGreaterThan(0);
-        }
-
-        private T ParseJsonBody<T>(Stream streamBody)
-        {
-            streamBody.Position = 0;
-            using (var reader = new StreamReader(streamBody))
-            {
-                var jsonString = reader.ReadToEnd();
-                return JsonConvert.DeserializeObject<T>(jsonString);
-            }
-        }
-
-        internal class ResultDto
-        {
-            public string device_code { get; set; }
-            public string user_code { get; set; }
-            public string verification_uri { get; set; }
-            public string verification_uri_complete { get; set; }
-            public int expires_in { get; set; }
-            public int interval { get; set; }
-        }
-
-        internal class ErrorResultDto
-        {
-            public string error { get; set; }
-            public string error_description { get; set; }
-        }
+    internal class ErrorResultDto
+    {
+        public string error { get; set; }
+        public string error_description { get; set; }
     }
 }

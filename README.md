@@ -1,6 +1,10 @@
 # Identity Server 8 update
 This project is a DotNet 8 revival of the Identity Server 4 and Identity Server 4 Admin UI, for Open ID Connect (OIDC) and OAuth, which was archived when .NET Core 3.1 reached end of support.
 
+The latest verion, 8.0.4, is now available on NuGet. It contains [hundreds of security and bug fixes](https://github.com/alexhiggins732/IdentityServer8/blob/master/docs/CHANGELOG.md) from the original Identity Server 4 project.
+
+It is recommend you update all previous version, 4 or 8, to the latest version to ensure you have the latest security updates. 
+
 - [Documentation](http://identityserver8.readthedocs.io/)
 - [Support](https://identityserver8.readthedocs.io/en/latest/into/support.html)
 - [Gitter Chat](https://app.gitter.im/#/room/#identityserver8:gitter.im)

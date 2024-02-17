@@ -1,75 +1,65 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using IdentityServer8.Services;
-using Microsoft.DependencyInjection.Extensions;
-using Microsoft.Extensions.Logging;
-using System;
-using System.Threading.Tasks;
+namespace IdentityServer8.Extensions;
 
-namespace IdentityServer8.Extensions
+/// <summary>
+/// Extensions for ICache
+/// </summary>
+public static class ICacheExtensions
 {
     /// <summary>
-    /// Extensions for ICache
+    /// Attempts to get an item from the cache. If the item is not found, the <c>get</c> function is used to
+    /// obtain the item and populate the cache.
     /// </summary>
-    public static class ICacheExtensions
+    /// <typeparam name="T"></typeparam>
+    /// <param name="cache">The cache.</param>
+    /// <param name="key">The key.</param>
+    /// <param name="duration">The duration.</param>
+    /// <param name="get">The get function.</param>
+    /// <param name="logger">The logger.</param>
+    /// <returns></returns>
+    /// <exception cref="System.ArgumentNullException">cache
+    /// or
+    /// get</exception>
+    /// <exception cref="ArgumentNullException">cache
+    /// or
+    /// get</exception>
+    public static async Task<T> GetAsync<T>(this ICache<T> cache, string key, TimeSpan duration, Func<Task<T>> get, ILogger logger)
+        where T : class
     {
-        /// <summary>
-        /// Attempts to get an item from the cache. If the item is not found, the <c>get</c> function is used to
-        /// obtain the item and populate the cache.
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <param name="cache">The cache.</param>
-        /// <param name="key">The key.</param>
-        /// <param name="duration">The duration.</param>
-        /// <param name="get">The get function.</param>
-        /// <param name="logger">The logger.</param>
-        /// <returns></returns>
-        /// <exception cref="System.ArgumentNullException">cache
-        /// or
-        /// get</exception>
-        /// <exception cref="ArgumentNullException">cache
-        /// or
-        /// get</exception>
-        public static async Task<T> GetAsync<T>(this ICache<T> cache, string key, TimeSpan duration, Func<Task<T>> get, ILogger logger)
-            where T : class
+        if (cache == null) throw new ArgumentNullException(nameof(cache));
+        if (get == null) throw new ArgumentNullException(nameof(get));
+        if (key == null) return null;
+
+        var item = await cache.GetAsync(key);
+
+        if (item == null)
         {
-            if (cache == null) throw new ArgumentNullException(nameof(cache));
-            if (get == null) throw new ArgumentNullException(nameof(get));
-            if (key == null) return null;
+            logger.LogTrace("Cache miss for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
 
-            var item = await cache.GetAsync(key);
+            item = await get();
 
-            if (item == null)
+            if (item != null)
             {
-                logger.LogTrace("Cache miss for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
-
-                item = await get();
-
-                if (item != null)
-                {
-                    logger.LogTrace("Setting item in cache for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
-                    await cache.SetAsync(key, item, duration);
-                }
+                logger.LogTrace("Setting item in cache for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
+                await cache.SetAsync(key, item, duration);
             }
-            else
-            {
-                logger.LogTrace("Cache hit for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
-            }
-
-            return item;
         }
+        else
+        {
+            logger.LogTrace("Cache hit for {cacheKey}", Ioc.Sanitizer.Log.Sanitize(key));
+        }
+
+        return item;
     }
 }

@@ -1,5 +1,5 @@
 @model RedirectViewModel
-
+@using Microsoft.Extensions.DependencyInjection;
 <div class="redirect-page">
     <div class="lead">
         <h1>You are now being returned to the application</h1>
@@ -7,5 +7,8 @@
     </div>
 </div>
 
-<meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl">
-<script src="~/js/signin-redirect.js"></script>
+<meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl.SantizeForRedirect()">
+<script>
+    var url = '@Model.RedirectUrl.SanitizeForUrl()';
+    window.location.href = url;
+</script>

@@ -64,6 +64,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		..\global.json = ..\global.json
 		..\IdentityServer8.DotNet.ruleset = ..\IdentityServer8.DotNet.ruleset
 		..\LICENSE = ..\LICENSE
+		..\LicenseHeader.txt = ..\LicenseHeader.txt
 		..\NuGet.config = ..\NuGet.config
 		..\README.md = ..\README.md
 		..\SECURITY.MD = ..\SECURITY.MD
@@ -108,6 +109,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.Security", "Security\IdentityServer8.Security\IdentityServer8.Security.csproj", "{284DF9E0-8007-4E84-949D-5B610D76B1CF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.Sanitizer.Tests", "Security\test\IdentityServer8.Santizer.Tests\IdentityServer8.Sanitizer.Tests.csproj", "{00BDF864-B06A-4A48-B8B4-85C219B33CD1}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "EntityFramework\host\Host.csproj", "{C7939ADD-36C9-444F-A773-28EC81587831}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -186,6 +189,10 @@ Global
 		{00BDF864-B06A-4A48-B8B4-85C219B33CD1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00BDF864-B06A-4A48-B8B4-85C219B33CD1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00BDF864-B06A-4A48-B8B4-85C219B33CD1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C7939ADD-36C9-444F-A773-28EC81587831}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7939ADD-36C9-444F-A773-28EC81587831}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7939ADD-36C9-444F-A773-28EC81587831}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7939ADD-36C9-444F-A773-28EC81587831}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -226,6 +233,7 @@ Global
 		{19B652D0-0AA1-415C-AA62-065EE8C77182} = {45C22EDD-91B1-4AEF-8620-77F4E3E7C544}
 		{284DF9E0-8007-4E84-949D-5B610D76B1CF} = {9B9C47C4-560E-4F2E-8F53-97F9FDE46008}
 		{00BDF864-B06A-4A48-B8B4-85C219B33CD1} = {19B652D0-0AA1-415C-AA62-065EE8C77182}
+		{C7939ADD-36C9-444F-A773-28EC81587831} = {06FC2C45-FCD6-469C-8F2D-3E1A750D1EF9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {176723F7-4A9B-4F05-A9F3-3BA715E4BDC3}

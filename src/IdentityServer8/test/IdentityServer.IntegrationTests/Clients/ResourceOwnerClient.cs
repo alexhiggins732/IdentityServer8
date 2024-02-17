@@ -1,24 +1,15 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Text;
-using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityModel.Client;
@@ -27,266 +18,267 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System.Net;
+using System.Text;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Clients
+namespace IdentityServer.IntegrationTests.Clients;
+
+public class ResourceOwnerClient
 {
-    public class ResourceOwnerClient
+    private const string TokenEndpoint = "https://server/connect/token";
+
+    private readonly HttpClient _client;
+
+    public ResourceOwnerClient()
     {
-        private const string TokenEndpoint = "https://server/connect/token";
+        var builder = new WebHostBuilder()
+            .UseStartup<Startup>();
+        var server = new TestServer(builder);
 
-        private readonly HttpClient _client;
+        _client = server.CreateClient();
+    }
 
-        public ResourceOwnerClient()
+    [Fact]
+    public async Task Valid_user_should_succeed_with_expected_response_payload()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
         {
-            var builder = new WebHostBuilder()
-                .UseStartup<Startup>();
-            var server = new TestServer(builder);
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
 
-            _client = server.CreateClient();
-        }
+            Scope = "api1",
+            UserName = "bob",
+            Password = "bob"
+        });
 
-        [Fact]
-        public async Task Valid_user_should_succeed_with_expected_response_payload()
-        {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
+        response.IsError.Should().Be(false);
+        response.ExpiresIn.Should().Be(3600);
+        response.TokenType.Should().Be("Bearer");
+        response.IdentityToken.Should().BeNull();
+        response.RefreshToken.Should().BeNull();
 
-                Scope = "api1",
-                UserName = "bob",
-                Password = "bob"
-            });
+        var payload = GetPayload(response);
 
-            response.IsError.Should().Be(false);
-            response.ExpiresIn.Should().Be(3600);
-            response.TokenType.Should().Be("Bearer");
-            response.IdentityToken.Should().BeNull();
-            response.RefreshToken.Should().BeNull();
-
-            var payload = GetPayload(response);
-
-            payload.Count().Should().Be(12);
-            payload.Should().Contain("iss", "https://idsvr8");
-            payload.Should().Contain("client_id", "roclient");
-            payload.Should().Contain("sub", "88421113");
-            payload.Should().Contain("idp", "local");
-            payload.Keys.Should().Contain("jti");
-            payload.Keys.Should().Contain("iat");
-            
-            payload["aud"].Should().Be("api");
-
-            var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
-            scopes.Count().Should().Be(1);
-            scopes.Should().Contain("api1");
-
-            var amr = payload["amr"] as JArray;
-            amr.Count().Should().Be(1);
-            amr.First().ToString().Should().Be("pwd");
-        }
-
-        [Fact]
-        public async Task Request_with_no_explicit_scopes_should_return_allowed_scopes()
-        {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
-
-                UserName = "bob",
-                Password = "bob"
-            });
-
-            response.IsError.Should().Be(false);
-            response.ExpiresIn.Should().Be(3600);
-            response.TokenType.Should().Be("Bearer");
-            response.IdentityToken.Should().BeNull();
-            response.RefreshToken.Should().NotBeNull();
-
-            var payload = GetPayload(response);
-            
-            payload.Should().Contain("iss", "https://idsvr8");
-            payload.Should().Contain("client_id", "roclient");
-            payload.Should().Contain("sub", "88421113");
-            payload.Should().Contain("idp", "local");
-
-            payload["aud"].Should().Be("api");
-
-            var amr = payload["amr"] as JArray;
-            amr.Count().Should().Be(1);
-            amr.First().ToString().Should().Be("pwd");
-
-            var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
-            scopes.Count().Should().Be(8);
-
-            // {[  "address",  "api1",  "api2", "api4.with.roles", "email",  "offline_access",  "openid", "role"]}
-
-            scopes.Should().Contain("address");
-            scopes.Should().Contain("api1");
-            scopes.Should().Contain("api2");
-            scopes.Should().Contain("api4.with.roles");
-            scopes.Should().Contain("email");
-            scopes.Should().Contain("offline_access");
-            scopes.Should().Contain("openid");
-            scopes.Should().Contain("roles");
-        }
-
-        [Fact]
-        public async Task Request_containing_identity_scopes_should_return_expected_payload()
-        {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
-
-                Scope = "openid email api1",
-                UserName = "bob",
-                Password = "bob"
-            });
-
-            response.IsError.Should().Be(false);
-            response.ExpiresIn.Should().Be(3600);
-            response.TokenType.Should().Be("Bearer");
-            response.IdentityToken.Should().BeNull();
-            response.RefreshToken.Should().BeNull();
-
-            var payload = GetPayload(response);
-
-            payload.Count().Should().Be(12);
-            payload.Should().Contain("iss", "https://idsvr8");
-            payload.Should().Contain("client_id", "roclient");
-            payload.Should().Contain("sub", "88421113");
-            payload.Should().Contain("idp", "local");
-            payload.Keys.Should().Contain("jti");
-            payload.Keys.Should().Contain("iat");
-
-            payload["aud"].Should().Be("api");
-
-            var amr = payload["amr"] as JArray;
-            amr.Count().Should().Be(1);
-            amr.First().ToString().Should().Be("pwd");
-
-            var scopes = ((JArray)payload["scope"]).Select(x=>x.ToString());
-            scopes.Count().Should().Be(3);
-            scopes.Should().Contain("api1");
-            scopes.Should().Contain("email");
-            scopes.Should().Contain("openid");
-        }
-
-        [Fact]
-        public async Task Request_for_refresh_token_should_return_expected_payload()
-        {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
-
-                Scope = "openid email api1 offline_access",
-                UserName = "bob",
-                Password = "bob"
-            });
-
-            response.IsError.Should().Be(false);
-            response.ExpiresIn.Should().Be(3600);
-            response.TokenType.Should().Be("Bearer");
-            response.IdentityToken.Should().BeNull();
-            response.RefreshToken.Should().NotBeNullOrWhiteSpace();
-
-            var payload = GetPayload(response);
-
-            payload.Count().Should().Be(12);
-            payload.Should().Contain("iss", "https://idsvr8");
-            payload.Should().Contain("client_id", "roclient");
-            payload.Should().Contain("sub", "88421113");
-            payload.Should().Contain("idp", "local");
-            payload.Keys.Should().Contain("jti");
-            payload.Keys.Should().Contain("iat");
-
-            payload["aud"].Should().Be("api");
-
-            var amr = payload["amr"] as JArray;
-            amr.Count().Should().Be(1);
-            amr.First().ToString().Should().Be("pwd");
-
-            var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
-            scopes.Count().Should().Be(4);
-            scopes.Should().Contain("api1");
-            scopes.Should().Contain("email");
-            scopes.Should().Contain("offline_access");
-            scopes.Should().Contain("openid");
-        }
-
-        [Fact]
-        public async Task Unknown_user_should_fail()
-        {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
-
-                Scope = "api1",
-                UserName = "unknown",
-                Password = "bob"
-            });
-
-            response.IsError.Should().Be(true);
-            response.ErrorType.Should().Be(ResponseErrorType.Protocol);
-            response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
-            response.Error.Should().Be("invalid_grant");
-        }
+        payload.Count().Should().Be(12);
+        payload.Should().Contain("iss", "https://idsvr8");
+        payload.Should().Contain("client_id", "roclient");
+        payload.Should().Contain("sub", "88421113");
+        payload.Should().Contain("idp", "local");
+        payload.Keys.Should().Contain("jti");
+        payload.Keys.Should().Contain("iat");
         
-        [Fact]
-        public async Task User_with_empty_password_should_succeed()
+        payload["aud"].Should().Be("api");
+
+        var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
+        scopes.Count().Should().Be(1);
+        scopes.Should().Contain("api1");
+
+        var amr = payload["amr"] as JArray;
+        amr.Count().Should().Be(1);
+        amr.First().ToString().Should().Be("pwd");
+    }
+
+    [Fact]
+    public async Task Request_with_no_explicit_scopes_should_return_allowed_scopes()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
         {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
 
-                Scope = "api1",
-                UserName = "bob_no_password"
-            });
+            UserName = "bob",
+            Password = "bob"
+        });
 
-            response.IsError.Should().Be(false);
-        }
+        response.IsError.Should().Be(false);
+        response.ExpiresIn.Should().Be(3600);
+        response.TokenType.Should().Be("Bearer");
+        response.IdentityToken.Should().BeNull();
+        response.RefreshToken.Should().NotBeNull();
 
-        [Theory]
-        [InlineData("invalid")]
-        [InlineData("")]
-        public async Task User_with_invalid_password_should_fail(string password)
+        var payload = GetPayload(response);
+        
+        payload.Should().Contain("iss", "https://idsvr8");
+        payload.Should().Contain("client_id", "roclient");
+        payload.Should().Contain("sub", "88421113");
+        payload.Should().Contain("idp", "local");
+
+        payload["aud"].Should().Be("api");
+
+        var amr = payload["amr"] as JArray;
+        amr.Count().Should().Be(1);
+        amr.First().ToString().Should().Be("pwd");
+
+        var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
+        scopes.Count().Should().Be(8);
+
+        // {[  "address",  "api1",  "api2", "api4.with.roles", "email",  "offline_access",  "openid", "role"]}
+
+        scopes.Should().Contain("address");
+        scopes.Should().Contain("api1");
+        scopes.Should().Contain("api2");
+        scopes.Should().Contain("api4.with.roles");
+        scopes.Should().Contain("email");
+        scopes.Should().Contain("offline_access");
+        scopes.Should().Contain("openid");
+        scopes.Should().Contain("roles");
+    }
+
+    [Fact]
+    public async Task Request_containing_identity_scopes_should_return_expected_payload()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
         {
-            var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
-            {
-                Address = TokenEndpoint,
-                ClientId = "roclient",
-                ClientSecret = "secret",
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
 
-                Scope = "api1",
-                UserName = "bob",
-                Password = password
-            });
+            Scope = "openid email api1",
+            UserName = "bob",
+            Password = "bob"
+        });
 
-            response.IsError.Should().Be(true);
-            response.ErrorType.Should().Be(ResponseErrorType.Protocol);
-            response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
-            response.Error.Should().Be("invalid_grant");
-        }
+        response.IsError.Should().Be(false);
+        response.ExpiresIn.Should().Be(3600);
+        response.TokenType.Should().Be("Bearer");
+        response.IdentityToken.Should().BeNull();
+        response.RefreshToken.Should().BeNull();
 
+        var payload = GetPayload(response);
 
-        private static Dictionary<string, object> GetPayload(IdentityModel.Client.TokenResponse response)
+        payload.Count().Should().Be(12);
+        payload.Should().Contain("iss", "https://idsvr8");
+        payload.Should().Contain("client_id", "roclient");
+        payload.Should().Contain("sub", "88421113");
+        payload.Should().Contain("idp", "local");
+        payload.Keys.Should().Contain("jti");
+        payload.Keys.Should().Contain("iat");
+
+        payload["aud"].Should().Be("api");
+
+        var amr = payload["amr"] as JArray;
+        amr.Count().Should().Be(1);
+        amr.First().ToString().Should().Be("pwd");
+
+        var scopes = ((JArray)payload["scope"]).Select(x=>x.ToString());
+        scopes.Count().Should().Be(3);
+        scopes.Should().Contain("api1");
+        scopes.Should().Contain("email");
+        scopes.Should().Contain("openid");
+    }
+
+    [Fact]
+    public async Task Request_for_refresh_token_should_return_expected_payload()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
         {
-            var token = response.AccessToken.Split('.').Skip(1).Take(1).First();
-            var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(
-                Encoding.UTF8.GetString(Base64Url.Decode(token)));
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
 
-            return dictionary;
-        }
+            Scope = "openid email api1 offline_access",
+            UserName = "bob",
+            Password = "bob"
+        });
+
+        response.IsError.Should().Be(false);
+        response.ExpiresIn.Should().Be(3600);
+        response.TokenType.Should().Be("Bearer");
+        response.IdentityToken.Should().BeNull();
+        response.RefreshToken.Should().NotBeNullOrWhiteSpace();
+
+        var payload = GetPayload(response);
+
+        payload.Count().Should().Be(12);
+        payload.Should().Contain("iss", "https://idsvr8");
+        payload.Should().Contain("client_id", "roclient");
+        payload.Should().Contain("sub", "88421113");
+        payload.Should().Contain("idp", "local");
+        payload.Keys.Should().Contain("jti");
+        payload.Keys.Should().Contain("iat");
+
+        payload["aud"].Should().Be("api");
+
+        var amr = payload["amr"] as JArray;
+        amr.Count().Should().Be(1);
+        amr.First().ToString().Should().Be("pwd");
+
+        var scopes = ((JArray)payload["scope"]).Select(x => x.ToString());
+        scopes.Count().Should().Be(4);
+        scopes.Should().Contain("api1");
+        scopes.Should().Contain("email");
+        scopes.Should().Contain("offline_access");
+        scopes.Should().Contain("openid");
+    }
+
+    [Fact]
+    public async Task Unknown_user_should_fail()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
+        {
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
+
+            Scope = "api1",
+            UserName = "unknown",
+            Password = "bob"
+        });
+
+        response.IsError.Should().Be(true);
+        response.ErrorType.Should().Be(ResponseErrorType.Protocol);
+        response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.Error.Should().Be("invalid_grant");
+    }
+    
+    [Fact]
+    public async Task User_with_empty_password_should_succeed()
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
+        {
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
+
+            Scope = "api1",
+            UserName = "bob_no_password"
+        });
+
+        response.IsError.Should().Be(false);
+    }
+
+    [Theory]
+    [InlineData("invalid")]
+    [InlineData("")]
+    public async Task User_with_invalid_password_should_fail(string password)
+    {
+        var response = await _client.RequestPasswordTokenAsync(new PasswordTokenRequest
+        {
+            Address = TokenEndpoint,
+            ClientId = "roclient",
+            ClientSecret = "secret",
+
+            Scope = "api1",
+            UserName = "bob",
+            Password = password
+        });
+
+        response.IsError.Should().Be(true);
+        response.ErrorType.Should().Be(ResponseErrorType.Protocol);
+        response.HttpStatusCode.Should().Be(HttpStatusCode.BadRequest);
+        response.Error.Should().Be("invalid_grant");
+    }
+
+
+    private static Dictionary<string, object> GetPayload(IdentityModel.Client.TokenResponse response)
+    {
+        var token = response.AccessToken.Split('.').Skip(1).Take(1).First();
+        var dictionary = JsonConvert.DeserializeObject<Dictionary<string, object>>(
+            Encoding.UTF8.GetString(Base64Url.Decode(token)));
+
+        return dictionary;
     }
 }

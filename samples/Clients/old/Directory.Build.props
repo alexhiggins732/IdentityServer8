@@ -2,4 +2,8 @@
   <ImportGroup>
 	 <Import Project="../Directory.Build.props" />
   </ImportGroup>
+  <ItemGroup>
+      <Compile Include="$(SolutionDir)MvcUsings.cs" Link="MvcUsings.cs" />
+     <ProjectReference Include="$(SolutionDir)..\shared\Constants\Constants.csproj" Condition="$(MSBuildProjectName) != 'Constants' " />
+  </ItemGroup>
 </Project>

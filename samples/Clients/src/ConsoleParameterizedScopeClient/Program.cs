@@ -1,71 +1,51 @@
 /*
- Copyright (c) 2024 HigginsSoft
- Written by Alexander Higgins https://github.com/alexhiggins732/ 
- 
+ Copyright (c) 2024 HigginsSoft, Alexander Higgins - https://github.com/alexhiggins732/ 
 
  Copyright (c) 2018, Brock Allen & Dominick Baier. All rights reserved.
 
  Licensed under the Apache License, Version 2.0. See LICENSE in the project root for license information. 
- Source code for this software can be found at https://github.com/alexhiggins732/IdentityServer8
+ Source code and license this software can be found 
 
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
-
 */
 
-using System;
-using System.Net.Http;
-using System.Text.Json;
-using System.Threading.Tasks;
-using Clients;
-using IdentityModel.Client;
+Console.Title = "Console Parameterized Scope Client";
 
-namespace ConsoleParameterizedScopeClient
+var response = await RequestTokenAsync();
+response.Show();
+
+Console.ReadLine();
+await CallServiceAsync(response.AccessToken);
+async Task<TokenResponse> RequestTokenAsync()
 {
-    public class Program
+    var client = new HttpClient();
+
+    var disco = await client.GetDiscoveryDocumentAsync(Constants.Authority);
+    if (disco.IsError) throw new Exception(disco.Error);
+
+    var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
     {
-        public static async Task Main()
-        {
-            Console.Title = "Console Parameterized Scope Client";
+        Address = disco.TokenEndpoint,
+        ClientId = "parameterized.client",
+        ClientSecret = "secret",
+        Scope = "transaction:123"
+    });
 
-            var response = await RequestTokenAsync();
-            response.Show();
+    if (response.IsError) throw new Exception(response.Error);
+    return response;
+}
 
-            Console.ReadLine();
-            await CallServiceAsync(response.AccessToken);
-        }
+async Task CallServiceAsync(string token)
+{
+    var baseAddress = Constants.SampleApi;
 
-        static async Task<TokenResponse> RequestTokenAsync()
-        {
-            var client = new HttpClient();
+    var client = new HttpClient { BaseAddress = new Uri(baseAddress) };
 
-            var disco = await client.GetDiscoveryDocumentAsync(Constants.Authority);
-            if (disco.IsError) throw new Exception(disco.Error);
+    client.SetBearerToken(token);
+    var response = await client.GetStringAsync("identity");
 
-            var response = await client.RequestClientCredentialsTokenAsync(new ClientCredentialsTokenRequest
-            {
-                Address = disco.TokenEndpoint,
-                ClientId = "parameterized.client",
-                ClientSecret = "secret",
-                Scope = "transaction:123"
-            });
-
-            if (response.IsError) throw new Exception(response.Error);
-            return response;
-        }
-
-        static async Task CallServiceAsync(string token)
-        {
-            var baseAddress = Constants.SampleApi;
-
-            var client = new HttpClient { BaseAddress = new Uri(baseAddress) };
-
-            client.SetBearerToken(token);
-            var response = await client.GetStringAsync("identity");
-
-            "\n\nService claims:".ConsoleGreen();
-            var json = JsonSerializer.Deserialize<JsonElement>(response);
-            Console.WriteLine(json);
-        }
-    }
+    "\n\nService claims:".ConsoleGreen();
+    var json = JsonSerializer.Deserialize<JsonElement>(response);
+    Console.WriteLine(json);
 }

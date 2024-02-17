@@ -16,7 +16,6 @@
     <PackageReference Include="Serilog.AspNetCore" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" />
-    <!--<PackageReference Include="IdentityServer8.EntityFramework" />-->
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="All" />
     <PackageReference Include="System.Security.Principal.Windows" />
     
