@@ -4,7 +4,7 @@
     "semVer": 2, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
     "precision": 3
   },
-  "semVer1NumericIdentifierPadding": 4,
+  "semVer1NumericIdentifierPadding": 3,
   "pathFilters": [
     // optional list of paths to consider when calculating version height.
     "!docs",
