@@ -58,14 +58,14 @@ jobs:
       id: nbgv
  
     - name: Diplay Package Version
-      run: echo "PackageVersion=${{ steps.nbgv.outputs.SimpleVersion }}-beta.${{ steps.nbgv.outputs.VersionRevision }}"
+      run: echo "PackageVersion=${{ steps.nbgv.outputs.SemVer2 }}
 
 
 
     - name: Restore dependencies
       run: dotnet restore src/IdentityServer8.sln
     - name: Build
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-beta.${{ steps.nbgv.outputs.VersionRevision }}
+      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SemVer2 }}
     - name: Test
       run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal
 
