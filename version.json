@@ -25,7 +25,6 @@
     "!global.json",
     "!IdentityServer8.DotNet.ruleset",
     "!LICENSCE",
-    "!version.json",
     "!Nuget.config",
     "!SECURITY.md",
     "!SPONSORS.md",
