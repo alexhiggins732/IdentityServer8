@@ -26,15 +26,19 @@ General speaking, the existing documentation for Identity Server 4 will be valid
 In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet feed](https://www.nuget.org/profiles/IdentityServer8) and the [IdentityServer8 MyGet feed](https://www.myget.org/F/identityserver8/api/v3/index.json).
 
 
-# Build Status And Stats
+## Build Status And Stats
 
 [![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
-[![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
 [![Release|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
-[![Release|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+
 [![Develop|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
-[![Develop|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
 [![CI/CD|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
+
+## Code Coverage
+[![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://img.shields.io/codecov/c/github/alexhiggins732/identityserver8) [![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+
+[![Develop|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://img.shields.io/codecov/c/github/alexhiggins732/identityserver8/tree/develop)
+[![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml?branch=develop)
 
 ## Documentation
 [![Documentation Status](https://readthedocs.org/projects/identityserver8/badge/?version=latest)](https://identityserver8.readthedocs.io/en/latest/?badge=latest)
