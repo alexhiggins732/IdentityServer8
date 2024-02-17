@@ -2,7 +2,7 @@
   "version": "8.0.4-alpha",
   "nugetPackageVersion": {
     "semVer": 2, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
-    "precision": 4
+    "precision": 3
   },
   "semVer1NumericIdentifierPadding": 4,
   "pathFilters": [
@@ -32,12 +32,6 @@
     "!README.md",
     "!samples",
     "!nuget"
-  ],
-  "publicReleaseRefSpec": [
-    "^refs/heads/master$", // we release out of master
-    "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
-    "^refs/heads/develop$", // we release alpha out of develop
-    "^refs/heads/release/*" // we release beta out of release
   ],
   "cloudBuild": {
     "setVersionVariables": true,
