@@ -1,10 +1,14 @@
 {
+  "$schema": "https://raw.githubusercontent.com/dotnet/Nerdbank.GitVersioning/main/src/NerdBank.GitVersioning/version.schema.json",
   "version": "8.0.4-alpha",
   "nugetPackageVersion": {
-    "semVer": 2, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
-    "precision": 3
+    "semVer": 1, // optional. Set to either 1 or 2 to control how the NuGet package version string is generated. Default is 1.
+    "precision": "build"
   },
-  "semVer1NumericIdentifierPadding": 3,
+  "NugetPackageVersion": {
+    "SemVer": 1.0
+  },
+  "semVer1NumericIdentifierPadding": 4,
   "pathFilters": [
     // optional list of paths to consider when calculating version height.
     "!docs",
@@ -25,6 +29,7 @@
     "!global.json",
     "!IdentityServer8.DotNet.ruleset",
     "!LICENSCE",
+    "!version.json",
     "!Nuget.config",
     "!SECURITY.md",
     "!SPONSORS.md",
@@ -32,12 +37,18 @@
     "!samples",
     "!nuget"
   ],
+  "publicReleaseRefSpec": [
+    "^refs/heads/master$", // we release out of master
+    "^refs/tags/v\\d+\\.\\d+", // we also release tags starting with vN.N
+    "^refs/heads/develop$", // we release alpha out of develop
+    "^refs/heads/release/*" // we release beta out of release
+  ],
   "cloudBuild": {
     "setVersionVariables": true,
     "buildNumber": {
-      "enabled": true,
+      "enabled": false,
       "includeCommitId": {
-        "when":  "always",
+        "when": "nonPublicReleaseOnly",
         "where": "buildMetadata"
       }
     }
