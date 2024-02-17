@@ -4,7 +4,7 @@
         <TargetFramework>net8.0</TargetFramework>
         <!--always bump /version.json and /docs/conf.py to <Version>X.Y.Z</Version>to keep nuget, build and document versions in sync-->
         <Version>8.0.4-alpha.4</Version>
-		<IdentityServerVersion>8.0.4-alpha.3</IdentityServerVersion>
+		<IdentityServerVersion>8.0.4-alpha.4</IdentityServerVersion>
         <PackageId>HigginsSoft.$(MSBuildProjectName)</PackageId>
         <Title>$(MSBuildProjectName)</Title>
         <ImplicitUsings>enable</ImplicitUsings>
