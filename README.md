@@ -1,6 +1,10 @@
 # Identity Server 8 update
 This project is a DotNet 8 revival of the Identity Server 4 and Identity Server 4 Admin UI, for Open ID Connect (OIDC) and OAuth, which was archived when .NET Core 3.1 reached end of support.
 
+The latest verion, 8.0.4, is now available on NuGet. It contains [hundreds of security and bug fixes](https://github.com/alexhiggins732/IdentityServer8/blob/master/docs/CHANGELOG.md) from the original Identity Server 4 project.
+
+It is recommend you update all previous version, 4 or 8, to the latest version to ensure you have the latest security updates. 
+
 - [Documentation](http://identityserver8.readthedocs.io/)
 - [Support](https://identityserver8.readthedocs.io/en/latest/into/support.html)
 - [Gitter Chat](https://app.gitter.im/#/room/#identityserver8:gitter.im)
@@ -22,15 +26,19 @@ General speaking, the existing documentation for Identity Server 4 will be valid
 In the meantime, NuGet packages will be published to the [IdentityServer8 NuGet feed](https://www.nuget.org/profiles/IdentityServer8) and the [IdentityServer8 MyGet feed](https://www.myget.org/F/identityserver8/api/v3/index.json).
 
 
-# Build Status And Stats
+## Build Status And Stats
 
 [![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml)
-[![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=master)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
 [![Release|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/release.yml)
-[![Release|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=release/8.0.1)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+
 [![Develop|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml)
-[![Develop|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
 [![CI/CD|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/pre-release.yml)
+
+## Code Coverage
+[![Master | Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/master.yml/badge.svg)](https://img.shields.io/codecov/c/github/alexhiggins732/identityserver8) [![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml)
+
+[![Develop|Build](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/develop.yml/badge.svg)](https://img.shields.io/codecov/c/github/alexhiggins732/identityserver8/tree/develop)
+[![Master|CodeQL](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/alexhiggins732/IdentityServer8/actions/workflows/codeql.yml?branch=develop)
 
 ## Documentation
 [![Documentation Status](https://readthedocs.org/projects/identityserver8/badge/?version=latest)](https://identityserver8.readthedocs.io/en/latest/?badge=latest)

@@ -14,6 +14,8 @@ using IdentityModel.Client;
 using System.Diagnostics;
 using System.Text.Json;
 
+Console.Title = "Client";
+
 // discover endpoints from metadata
 using HttpClient client = new();
 

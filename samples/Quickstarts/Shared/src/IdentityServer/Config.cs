@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using Secret = IdentityServer8.Models.Secret;
+namespace Shared;
 public static class Config
 {
     public static IEnumerable<IdentityResource> IdentityResources =>
@@ -60,6 +62,25 @@ public static class Config
                     IdentityServerConstants.StandardScopes.Profile,
                     "api1"
                 }
-            }
-        };
+            },
+             // JavaScript Client
+                new Client
+                {
+                    ClientId = "js",
+                    ClientName = "JavaScript Client",
+                    AllowedGrantTypes = GrantTypes.Code,
+                    RequireClientSecret = false,
+
+                    RedirectUris =           { "https://localhost:5003/callback.html" },
+                    PostLogoutRedirectUris = { "https://localhost:5003/index.html" },
+                    AllowedCorsOrigins =     { "https://localhost:5003" },
+
+                    AllowedScopes =
+                    {
+                        IdentityServerConstants.StandardScopes.OpenId,
+                        IdentityServerConstants.StandardScopes.Profile,
+                        "api1"
+                    }
+                }
+            };
 }
