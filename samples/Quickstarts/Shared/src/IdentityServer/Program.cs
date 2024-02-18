@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using Secret = IdentityServer8.Models.Secret;
+
 ConfigureLogger();
 
 try
@@ -20,40 +22,26 @@ try
 
     var services = builder.Services;
 
-    services.AddControllersWithViews();
+    // uncomment, if you want to add an MVC-based UI
+    //services.AddControllersWithViews();
 
     services
         .AddIdentityServer()
-        .AddInMemoryIdentityResources(Config.IdentityResources)
-        .AddInMemoryApiScopes(Config.ApiScopes)
-        .AddInMemoryClients(Config.Clients)
-        .AddTestUsers(TestUsers.Users)
-        .AddDeveloperSigningCredential();
-
-    services.AddAuthentication()
-        .AddGoogle("Google", options =>
-        {
-            options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-
-            options.ClientId = "<insert here>";
-            options.ClientSecret = "<insert here>";
-        })
-        .AddOpenIdConnect("oidc", "Demo IdentityServer", options =>
-        {
-            options.SignInScheme = IdentityServerConstants.ExternalCookieAuthenticationScheme;
-            options.SignOutScheme = IdentityServerConstants.SignoutScheme;
-            options.SaveTokens = true;
-
-            options.Authority = "https://demo.identityserver8.io/";
-            options.ClientId = "interactive.confidential";
-            options.ClientSecret = "secret";
-            options.ResponseType = "code";
-
-            options.TokenValidationParameters = new()
+        .AddInMemoryApiScopes(new ApiScope[] { new("api1", "My API") })
+        .AddDeveloperSigningCredential()
+        .AddInMemoryClients(new Client[] { new()
             {
-                NameClaimType = "name",
-                RoleClaimType = "role"
-            };
+                    ClientId = "client",
+
+                    // no interactive user, use the clientid/secret for authentication
+                    AllowedGrantTypes = GrantTypes.ClientCredentials,
+
+                    // secret for authentication
+                    ClientSecrets = new Secret[] {new ("secret".Sha256()) },
+
+                    // scopes that client has access to
+                    AllowedScopes = { "api1" }
+            }
         });
 
 
@@ -62,12 +50,18 @@ try
         if (app.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
 
-        app.UseStaticFiles()
-            .UseRouting()
-            .UseIdentityServer()
-            .UseAuthorization();
+        // uncomment if you want to add MVC
+        //app.UseStaticFiles();
+        //app.UseRouting();
 
-        app.MapDefaultControllerRoute();
+        app.UseIdentityServer();
+
+        // uncomment, if you want to add MVC-based
+        //app.UseAuthorization();
+        //app.UseEndpoints(endpoints =>
+        //{
+        //    endpoints.MapDefaultControllerRoute();
+        //});
 
         await app.RunAsync();
     }

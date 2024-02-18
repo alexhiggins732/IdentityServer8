@@ -8,14 +8,14 @@
         <PackageId>HigginsSoft.$(MSBuildProjectName)</PackageId>
         <Title>$(MSBuildProjectName)</Title>
         <ImplicitUsings>enable</ImplicitUsings>
-
-        <PackageLicenseFile>LICENSE</PackageLicenseFile>
+        <RepositoryRoot>$(MSBuildThisFileDirectory)</RepositoryRoot>
+        <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
         <NoWarn>$(NoWarn);CS0618;SYSLIB0023;SYSLIB0020;EF1001</NoWarn>
 
 		<SignAssembly>true</SignAssembly>
-		<AssemblyOriginatorKeyFile>$(SolutionDir)../key.snk</AssemblyOriginatorKeyFile>
+		<AssemblyOriginatorKeyFile>$(RepositoryRoot)key.snk</AssemblyOriginatorKeyFile>
 
 
         <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
@@ -73,20 +73,20 @@
     </ItemGroup>
 
     <ItemGroup>
-        <None Include="$(SolutionDir)../LICENSE">
+        <None Include="$(RepositoryRoot)LICENSE.md">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
     </ItemGroup>
     <ItemGroup>
-        <None Include="$(SolutionDir)../README.md">
+        <None Include="$(RepositoryRoot)README.md">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>
 
     </ItemGroup>
     <ItemGroup>
-        <None Include="$(SolutionDir)../icon.jpg">
+        <None Include="$(RepositoryRoot)icon.jpg">
             <Pack>True</Pack>
             <PackagePath>\</PackagePath>
         </None>

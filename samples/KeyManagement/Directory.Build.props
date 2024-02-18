@@ -9,6 +9,6 @@
 	   <PrivateAssets>all</PrivateAssets>
 	   <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-    <Compile Include="$(SolutionDir)..\KeyManagementGlobalUsings.cs" Link="KeyManagementGlobalUsings" />
+    <Compile Include="$(RepositoryRoot)samples\KeyManagement\KeyManagementGlobalUsings.cs" Link="KeyManagementGlobalUsings" />
   </ItemGroup>	
 </Project>

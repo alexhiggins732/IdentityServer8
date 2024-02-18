@@ -12,6 +12,7 @@
 
 JwtSecurityTokenHandler.DefaultMapInboundClaims = false;
 
+Console.Title = "Mvc Client";
 
 var builder = WebApplication.CreateBuilder(args);
 
