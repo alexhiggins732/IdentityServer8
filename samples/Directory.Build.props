@@ -23,6 +23,6 @@
     <PackageReference Include="Serilog.Extensions.Logging" />
     <PackageReference Include="Serilog.Sinks.Console" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" />
-    <Compile Include="$(RepositoryRoot)Samples\SamplesGlobalUsings.cs" Link="SamplesGlobalUsings.cs" />
+    <Compile Include="$(RepositoryRoot)samples\SamplesGlobalUsings.cs" Link="SamplesGlobalUsings.cs" />
   </ItemGroup>
 </Project>
