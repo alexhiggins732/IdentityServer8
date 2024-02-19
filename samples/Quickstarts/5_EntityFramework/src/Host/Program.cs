@@ -10,10 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-
 ConfigureLogger();
-
-Console.Title = "Identity Server";
 
 try
 {
@@ -21,20 +18,26 @@ try
 
     var builder = WebApplication.CreateBuilder(args);
 
-
     var services = builder.Services;
-
+    services.AddScoped<ISignInHelper, HttpContextSignInHelper>();
     services.AddControllersWithViews();
 
-    services
-        .AddSingleton<ISignInHelper, HttpContextSignInHelper>()
-        .AddIdentityServer()
-        .AddInMemoryIdentityResources(Config.IdentityResources)
-        .AddInMemoryApiScopes(Config.ApiScopes)
-        .AddInMemoryClients(Config.Clients)
-        .AddTestUsers(TestUsers.Users)
-        .AddDeveloperSigningCredential();
+    var migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name;
+    const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer8.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
 
+    services.AddIdentityServer()
+        .AddTestUsers(TestUsers.Users)
+        .AddConfigurationStore(options =>
+        {
+            options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                sql => sql.MigrationsAssembly(migrationsAssembly));
+        })
+        .AddOperationalStore(options =>
+        {
+            options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                sql => sql.MigrationsAssembly(migrationsAssembly));
+        })
+        .AddDeveloperSigningCredential();
 
     services.AddAuthentication()
         .AddGoogle("Google", options =>
@@ -65,6 +68,9 @@ try
 
     using (var app = builder.Build())
     {
+        // this will do the initial DB population
+        InitializeDatabase(app);
+
         if (app.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
 
@@ -107,3 +113,40 @@ void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
     //    flushToDiskInterval: TimeSpan.FromSeconds(1))
     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
     .CreateLogger();
+
+ void InitializeDatabase(IApplicationBuilder app)
+{
+    using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
+    {
+        serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+
+        var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
+        context.Database.Migrate();
+        if (!context.Clients.Any())
+        {
+            foreach (var client in Shared.Config.Clients)
+            {
+                context.Clients.Add(client.ToEntity());
+            }
+            context.SaveChanges();
+        }
+
+        if (!context.IdentityResources.Any())
+        {
+            foreach (var resource in Shared.Config.IdentityResources)
+            {
+                context.IdentityResources.Add(resource.ToEntity());
+            }
+            context.SaveChanges();
+        }
+
+        if (!context.ApiScopes.Any())
+        {
+            foreach (var resource in Shared.Config.ApiScopes)
+            {
+                context.ApiScopes.Add(resource.ToEntity());
+            }
+            context.SaveChanges();
+        }
+    }
+}

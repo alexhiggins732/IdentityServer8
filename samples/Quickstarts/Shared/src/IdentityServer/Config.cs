@@ -11,6 +11,7 @@
 */
 
 using Secret = IdentityServer8.Models.Secret;
+
 namespace Shared;
 public static class Config
 {
