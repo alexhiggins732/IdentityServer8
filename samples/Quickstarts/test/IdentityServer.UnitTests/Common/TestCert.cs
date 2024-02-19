@@ -14,13 +14,19 @@ using System.IO;
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.IdentityModel.Tokens;
 
-namespace  IdentityServer.Common
+namespace IdentityServer.Common
 {
     internal static class TestCert
     {
         public static X509Certificate2 Load()
         {
             var cert = Path.Combine(System.AppContext.BaseDirectory, "identityserver_testing.pfx");
+            var ful = Path.GetFullPath(cert);
+            if (!File.Exists(ful))
+            {
+                Console.WriteLine($"Certificate file not found: {ful} in AppContext.BaseDirectory = {AppContext.BaseDirectory}");
+                throw new FileNotFoundException($"Certificate file not found: {ful} in AppContext.BaseDirectory = {AppContext.BaseDirectory}");
+            }
             return new X509Certificate2(cert, "password");
         }
 
