@@ -64,7 +64,7 @@ jobs:
 
 
     - name: Restore dependencies
-      run: dotnet restore src/IdentityServer8.sln
+      run: dotnet restore IdentityServer8.AllProjects.sln
     - name: Build
       run: dotnet build IdentityServer8.AllProjects.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
     - name: Test
