@@ -12,7 +12,7 @@
         <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
 
         <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
-        <NoWarn>$(NoWarn);CS0618;SYSLIB0023;SYSLIB0020;EF1001</NoWarn>
+        <NoWarn>$(NoWarn);CS8002;CA1416;CS0618;SYSLIB0023;SYSLIB0020;EF1001</NoWarn>
 
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>$(RepositoryRoot)key.snk</AssemblyOriginatorKeyFile>

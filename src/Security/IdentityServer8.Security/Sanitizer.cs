@@ -211,7 +211,9 @@ public class JsonSanitizer : SanitizerBase, IJsonSanitizer
 }
 public class UrlSanitizer : SanitizerBase, IUrlSanitizer
 {
+#pragma warning disable SYSLIB0013 // Type or member is obsolete
     public UrlSanitizer() : base(x => Uri.EscapeUriString(x?.ToString() ?? ""))
+#pragma warning restore SYSLIB0013 // Type or member is obsolete
     {
 
     }
