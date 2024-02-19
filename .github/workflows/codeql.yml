@@ -105,10 +105,10 @@ jobs:
 
     - name: Restore dependencies
       if: ${{ (matrix.language == 'csharp') }} 
-      run: dotnet restore src/IdentityServer8.sln
+      run: dotnet restore IdentityServer8.AllProjects.sln
     - name: Build
       if: ${{ (matrix.language == 'csharp') }} 
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore
+      run: dotnet build IdentityServer8.AllProjects.sln --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3
