@@ -12,7 +12,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Client", "..\Shared\src\Cli
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "shared", "shared", "{602EB949-9344-43BF-B2A2-9EC8FAF05B1F}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "src\IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{D28C0DAA-3074-4F1B-BA46-89E4FFC0E9EF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{D28C0DAA-3074-4F1B-BA46-89E4FFC0E9EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

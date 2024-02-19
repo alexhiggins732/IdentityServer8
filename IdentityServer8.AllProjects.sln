@@ -264,7 +264,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "6_AspNetIdentity", "6_AspNe
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{52564533-E769-4A26-9C3C-CC2D427BB7AD}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServerAspNetIdentity", "samples\Quickstarts\6_AspNetIdentity\src\IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{C1588920-0A8A-44A1-8611-06AB3DCFAAFF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "samples\Quickstarts\6_AspNetIdentity\src\IdentityServerAspNetIdentity\IdentityServer.csproj", "{C1588920-0A8A-44A1-8611-06AB3DCFAAFF}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "samples\Quickstarts\1_ClientCredentials\src\Host\Host.csproj", "{8DF32D14-5807-4E65-B367-7D03BF271555}"
 EndProject
