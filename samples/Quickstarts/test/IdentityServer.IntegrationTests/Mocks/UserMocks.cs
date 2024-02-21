@@ -48,6 +48,16 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Mocks
 
             return loginDataForm;
         }
+        public static Dictionary<string, string> GenerateLogoutData(string logoutId, string antiForgeryToken)
+        {
+            var logoutFormData = new Dictionary<string, string>
+            {
+                {"logoutId", logoutId},
+                {AntiForgeryTokenKey, antiForgeryToken}
+            };
+
+            return logoutFormData;
+        }
 
         public static Dictionary<string, string> GenerateManageProfileData(string email, string antiForgeryToken)
         {

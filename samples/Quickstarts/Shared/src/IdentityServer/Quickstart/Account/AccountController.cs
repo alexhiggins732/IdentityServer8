@@ -176,7 +176,7 @@ public class AccountController : Controller
     /// Handle logout page postback
     /// </summary>
     [HttpPost]
-    [ValidateAntiForgeryToken]
+    //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout(LogoutInputModel model)
     {
         // build a model so the logged out page knows what to display

@@ -122,12 +122,24 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
             // Assert Identity cookie
             existsCookie.Should().BeTrue();
 
-            var logoutoutUrl = "/Account/Logout"; Client.DefaultRequestHeaders.Clear();
-            var logoutResponse = await Client.GetAsync(logoutoutUrl);
+            var logoutUrl = "/Account/Logout";
+            Client.DefaultRequestHeaders.Clear();
+            Client.PutCookiesOnRequest(responseMessage);
+            var logoutResponse = await Client.GetAsync(logoutUrl);
             logoutResponse.EnsureSuccessStatusCode();
 
             var content = await logoutResponse.Content.ReadAsStringAsync();
-            content.Should().Contain("You are now logged out");
+            content.Should().Contain("Would you like to logout");
+
+            Client.DefaultRequestHeaders.Clear();
+
+            var antiForgeryTokenLogout = await logoutResponse.ExtractAntiForgeryToken();
+            var logoutFormData = UserMocks.GenerateLogoutData(null, antiForgeryTokenLogout);
+            //logoutFormData.Add("__RequestVerificationToken", value);
+            var logoutRequestMessage = RequestHelper.CreatePostRequestWithCookies(logoutUrl, logoutFormData, logoutResponse);
+            var doLogoutResponse = await Client.SendAsync(logoutRequestMessage);
+            var logoutContent = await doLogoutResponse.Content.ReadAsStringAsync();
+            logoutContent.Should().Contain("You are now logged out");
             existsCookie = CookiesHelper.ExistsCookie(responseMessage, identityCookieName);
             existsCookie.Should().BeTrue();
         }
@@ -151,6 +163,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
             var antiForgeryToken = await loginResponse.ExtractAntiForgeryToken();
             // Prepare request to login
             var loginDataForm = UserMocks.GenerateLoginData("alice", "alice", antiForgeryToken);
+
 
             // Login
             var requestMessage = RequestHelper.CreatePostRequestWithCookies(loginUrl, loginDataForm, loginResponse);
