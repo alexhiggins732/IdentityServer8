@@ -94,7 +94,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
         {
             // Clear headers
             Client.DefaultRequestHeaders.Clear();
-       
+
             const string accountLoginAction = "/Account/Login";
             var loginResponse = await Client.GetAsync(accountLoginAction);
             loginResponse.EnsureSuccessStatusCode();
@@ -122,7 +122,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
             // Assert Identity cookie
             existsCookie.Should().BeTrue();
 
-            var logoutoutUrl= "/Account/Logout"; Client.DefaultRequestHeaders.Clear();
+            var logoutoutUrl = "/Account/Logout"; Client.DefaultRequestHeaders.Clear();
             var logoutResponse = await Client.GetAsync(logoutoutUrl);
             logoutResponse.EnsureSuccessStatusCode();
 
@@ -183,8 +183,8 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
 
             // Login
             var requestMessage = RequestHelper.CreatePostRequestWithCookies(loginUrl, loginDataForm, loginResponse);
-
-            await Assert.ThrowsAsync<Exception>(async () => await Client.SendAsync(requestMessage));
+            var response = await Client.SendAsync(requestMessage);
+            response.StatusCode.Should().Be(HttpStatusCode.InternalServerError);
 
         }
         [Fact]
