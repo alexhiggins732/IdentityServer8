@@ -21,16 +21,11 @@ using IdentityServer.Samples.Shared.IntegrationTests.Tests.Base;
 using IdentityServer8.Test;
 using Xunit;
 
-namespace IdentityServer.Samples.Shared.IntegrationTests.Tests
+namespace IdentityServer.Samples.Shared.IntegrationTests
 {
-    public abstract class GrantsControllerTests<TFixture> : BaseClassFixture<TFixture>
+    public abstract partial class ControllerTests<TFixture> : BaseClassFixture<TFixture>
         where TFixture : class
     {
-        public GrantsControllerTests(TestFixture<TFixture> fixture) : base(fixture)
-        {
-            
-        }
-
         [Fact]
         public async Task AuthorizeUserCanAccessGrantsView()
         {

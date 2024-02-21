@@ -22,10 +22,10 @@ using Xunit;
 
 namespace IdentityServer.Samples.Shared.IntegrationTests
 {
-    public abstract class AccountControllerTests<TFixture> : BaseClassFixture<TFixture>
+    public abstract partial class ControllerTests<TFixture> : BaseClassFixture<TFixture>
         where TFixture : class
     { 
-        public AccountControllerTests(TestFixture<TFixture> fixture) : base(fixture)
+        public ControllerTests(TestFixture<TFixture> fixture) : base(fixture)
         {
         }
 

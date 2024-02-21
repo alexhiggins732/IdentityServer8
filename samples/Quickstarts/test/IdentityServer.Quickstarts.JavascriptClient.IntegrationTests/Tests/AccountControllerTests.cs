@@ -12,14 +12,11 @@
 
 */
 
-
-
-
 namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
 {
-    public class AccountControllerTests : AccountControllerTests<StartupTests>
+    public class ControllerTests : ControllerTests<StartupTests>
     {
-        public AccountControllerTests(TestFixture<StartupTests> fixture) : base(fixture)
+        public ControllerTests(TestFixture<StartupTests> fixture) : base(fixture)
         {
         }
     }

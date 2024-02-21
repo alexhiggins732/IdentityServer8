@@ -20,15 +20,11 @@ using IdentityServer.Samples.Shared.IntegrationTests.Mocks;
 using IdentityServer.Samples.Shared.IntegrationTests.Tests.Base;
 using Xunit;
 
-namespace IdentityServer.Samples.Shared.IntegrationTests.Tests
+namespace IdentityServer.Samples.Shared.IntegrationTests
 {
-    public abstract class DiagnosticsControllerTests<TFixture> : BaseClassFixture<TFixture>
+    public abstract partial class ControllerTests<TFixture> : BaseClassFixture<TFixture>
         where TFixture : class
     {
-        public DiagnosticsControllerTests(TestFixture<TFixture> fixture) : base(fixture)
-        {
-        }
-
         [Fact]
         public async Task UnAuthorizeUserCannotAccessDiagnosticsView()
         {

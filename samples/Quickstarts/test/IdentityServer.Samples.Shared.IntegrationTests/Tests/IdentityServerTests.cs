@@ -18,16 +18,11 @@ using IdentityModel.Client;
 using IdentityServer.Samples.Shared.IntegrationTests.Tests.Base;
 using Xunit;
 
-namespace IdentityServer.Samples.Shared.IntegrationTests.Tests
+namespace IdentityServer.Samples.Shared.IntegrationTests
 {
-    public abstract class IdentityServerTests<TFixture> : BaseClassFixture<TFixture>
+    public abstract partial class ControllerTests<TFixture> : BaseClassFixture<TFixture>
         where TFixture : class
     {
-        public IdentityServerTests(TestFixture<TFixture> fixture) : base(fixture)
-        {
-        }
-
-
         [Fact]
         public async Task CanShowDiscoveryEndpoint()
         {
