@@ -278,6 +278,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.UnitTests", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework", "src\EntityFramework\src\IdentityServer8.EntityFramework.csproj", "{A80E8159-03FA-48EF-955F-C3F22FDC63A4}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{549BF398-DF47-48E1-A1AA-32C1B66B0852}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.IntegrationTests", "samples\Quickstarts\test\IdentityServer.IntegrationTests\IdentityServer.IntegrationTests.csproj", "{E1D7510D-D40F-4651-81DF-766D548E8FB0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -535,6 +539,10 @@ Global
 		{A80E8159-03FA-48EF-955F-C3F22FDC63A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A80E8159-03FA-48EF-955F-C3F22FDC63A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A80E8159-03FA-48EF-955F-C3F22FDC63A4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1D7510D-D40F-4651-81DF-766D548E8FB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1D7510D-D40F-4651-81DF-766D548E8FB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1D7510D-D40F-4651-81DF-766D548E8FB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1D7510D-D40F-4651-81DF-766D548E8FB0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -645,6 +653,8 @@ Global
 		{4D241138-307B-4EC2-B54B-7D3246CF5096} = {1ADAC3B4-1B01-4E54-BCF2-00795EEBB13B}
 		{6F94DD8C-AB32-48C0-9677-0A1C749B2241} = {4D241138-307B-4EC2-B54B-7D3246CF5096}
 		{A80E8159-03FA-48EF-955F-C3F22FDC63A4} = {06FC2C45-FCD6-469C-8F2D-3E1A750D1EF9}
+		{549BF398-DF47-48E1-A1AA-32C1B66B0852} = {45C22EDD-91B1-4AEF-8620-77F4E3E7C544}
+		{E1D7510D-D40F-4651-81DF-766D548E8FB0} = {4D241138-307B-4EC2-B54B-7D3246CF5096}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {176723F7-4A9B-4F05-A9F3-3BA715E4BDC3}

@@ -12,24 +12,27 @@
 
 using Secret = IdentityServer8.Models.Secret;
 
-ConfigureLogger();
 
-try
-{
-    Log.Information("Starting host...");
 
-    var builder = WebApplication.CreateBuilder(args);
+    ConfigureLogger();
 
-    var services = builder.Services;
 
-    // uncomment, if you want to add an MVC-based UI
-    //services.AddControllersWithViews();
+    try
+    {
+        Log.Information("Starting host...");
 
-    services
-        .AddIdentityServer()
-        .AddInMemoryApiScopes(new ApiScope[] { new("api1", "My API") })
-        .AddDeveloperSigningCredential()
-        .AddInMemoryClients(new Client[] { new()
+        var builder = WebApplication.CreateBuilder(args);
+        builder.Host.UseSerilog();
+        var services = builder.Services;
+
+        // uncomment, if you want to add an MVC-based UI
+        //services.AddControllersWithViews();
+
+        services
+            .AddIdentityServer()
+            .AddInMemoryApiScopes(new ApiScope[] { new("api1", "My API") })
+            .AddDeveloperSigningCredential()
+            .AddInMemoryClients(new Client[] { new()
             {
                     ClientId = "client",
 
@@ -42,19 +45,19 @@ try
                     // scopes that client has access to
                     AllowedScopes = { "api1" }
             }
-        });
+            });
 
 
-    using (var app = builder.Build())
-    {
-        if (app.Environment.IsDevelopment())
-            app.UseDeveloperExceptionPage();
+        using (var app = builder.Build())
+        {
+            if (app.Environment.IsDevelopment())
+                app.UseDeveloperExceptionPage();
 
-        // uncomment if you want to add MVC
-        //app.UseStaticFiles();
-        //app.UseRouting();
+            // uncomment if you want to add MVC
+            //app.UseStaticFiles();
+            //app.UseRouting();
 
-        app.UseIdentityServer();
+            app.UseIdentityServer();
 
         // uncomment, if you want to add MVC-based
         //app.UseAuthorization();
@@ -62,36 +65,36 @@ try
         //{
         //    endpoints.MapDefaultControllerRoute();
         //});
+        app.Run();
+            await app.RunAsync();
+        }
 
-        await app.RunAsync();
+        return 0;
+    }
+    catch (Exception ex)
+    {
+        Log.Fatal(ex, "Host terminated unexpectedly.");
+        return 1;
+    }
+    finally
+    {
+        Log.CloseAndFlush();
     }
 
-    return 0;
-}
-catch (Exception ex)
-{
-    Log.Fatal(ex, "Host terminated unexpectedly.");
-    return 1;
-}
-finally
-{
-    Log.CloseAndFlush();
-}
 
-
-void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
-    .MinimumLevel.Debug()
-    .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
-    .MinimumLevel.Override("System", LogEventLevel.Warning)
-    .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
-    .Enrich.FromLogContext()
-    // uncomment to write to Azure diagnostics stream
-    //.WriteTo.File(
-    //    @"D:\home\LogFiles\Application\identityserver.txt",
-    //    fileSizeLimitBytes: 1_000_000,
-    //    rollOnFileSizeLimit: true,
-    //    shared: true,
-    //    flushToDiskInterval: TimeSpan.FromSeconds(1))
-    .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
-    .CreateLogger();
+    void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
+        .MinimumLevel.Debug()
+        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+        .MinimumLevel.Override("Microsoft.Hosting.Lifetime", LogEventLevel.Information)
+        .MinimumLevel.Override("System", LogEventLevel.Warning)
+        .MinimumLevel.Override("Microsoft.AspNetCore.Authentication", LogEventLevel.Information)
+        .Enrich.FromLogContext()
+        // uncomment to write to Azure diagnostics stream
+        //.WriteTo.File(
+        //    @"D:\home\LogFiles\Application\identityserver.txt",
+        //    fileSizeLimitBytes: 1_000_000,
+        //    rollOnFileSizeLimit: true,
+        //    shared: true,
+        //    flushToDiskInterval: TimeSpan.FromSeconds(1))
+        .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
+        .CreateLogger();

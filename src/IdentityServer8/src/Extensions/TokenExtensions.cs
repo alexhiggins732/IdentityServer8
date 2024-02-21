@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using Newtonsoft.Json.Linq;
+
 namespace IdentityServer8.Extensions;
 
 /// <summary>

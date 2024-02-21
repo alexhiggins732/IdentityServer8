@@ -45,7 +45,7 @@
     <PackageVersion Include="Grpc.Net.Client" Version="$(GrpcVersion)" />
     <PackageVersion Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)" />
     <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.40" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
     <PackageVersion Include="IdentityModel" Version="6.2.0" />
     <PackageVersion Include="IdentityModel.OidcClient" Version="5.3.0-preview.1" />

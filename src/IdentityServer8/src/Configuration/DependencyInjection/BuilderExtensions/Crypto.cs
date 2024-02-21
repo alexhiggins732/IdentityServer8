@@ -11,6 +11,7 @@
 */
 
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
 using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
 namespace Microsoft.Extensions.DependencyInjection;
