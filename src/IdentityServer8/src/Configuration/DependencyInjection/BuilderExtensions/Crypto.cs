@@ -30,7 +30,7 @@ public static class IdentityServerBuilderExtensionsCrypto
     public static IIdentityServerBuilder AddSigningCredential(this IIdentityServerBuilder builder, SigningCredentials credential)
     {
         if (!(credential.Key is AsymmetricSecurityKey
-            || credential.Key is IdentityModel.Tokens.JsonWebKey && ((IdentityModel.Tokens.JsonWebKey)credential.Key).HasPrivateKey))
+            || credential.Key is IdentityModel.Tokens.JsonWebKey && ((IdentityModel.Tokens.JsonWebKey) credential.Key).HasPrivateKey))
         {
             throw new InvalidOperationException("Signing key is not asymmetric");
         }
@@ -151,6 +151,7 @@ public static class IdentityServerBuilderExtensionsCrypto
         return builder.AddSigningCredential(credential);
     }
 
+    static Mutex Mutex = new Mutex();
     /// <summary>
     /// Sets the temporary signing credential.
     /// </summary>
@@ -165,17 +166,19 @@ public static class IdentityServerBuilderExtensionsCrypto
         string filename = null,
         IdentityServerConstants.RsaSigningAlgorithm signingAlgorithm = IdentityServerConstants.RsaSigningAlgorithm.RS256)
     {
+        Mutex.WaitOne();
         if (filename == null)
         {
             filename = Path.Combine(Directory.GetCurrentDirectory(), "tempkey.jwk");
         }
-
+        IIdentityServerBuilder result;
         if (File.Exists(filename))
         {
             var json = File.ReadAllText(filename);
             var jwk = new JsonWebKey(json);
 
-            return builder.AddSigningCredential(jwk, jwk.Alg);
+            result = builder.AddSigningCredential(jwk, jwk.Alg);
+
         }
         else
         {
@@ -188,8 +191,11 @@ public static class IdentityServerBuilderExtensionsCrypto
                 File.WriteAllText(filename, JsonConvert.SerializeObject(jwk));
             }
 
-            return builder.AddSigningCredential(key, signingAlgorithm);
+            result = builder.AddSigningCredential(key, signingAlgorithm);
         }
+
+        Mutex.ReleaseMutex();
+        return result;
     }
 
     /// <summary>
@@ -265,7 +271,7 @@ public static class IdentityServerBuilderExtensionsCrypto
         // add signing algorithm name to key ID to allow using the same key for two different algorithms (e.g. RS256 and PS56);
         var key = new X509SecurityKey(certificate);
         key.KeyId += signingAlgorithm;
-        
+
         var keyInfo = new SecurityKeyInfo
         {
             Key = key,

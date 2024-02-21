@@ -13,6 +13,7 @@
 */
 
 using System.Net.Http;
+using IdentityServer.QuickStarts;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
@@ -22,7 +23,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Common
 {
     public static class WebApplicationFactoryExtensions 
     {
-        public static HttpClient SetupClient(this WebApplicationFactory<IdentityServer.StartupTest> fixture)
+        public static HttpClient SetupClient(this WebApplicationFactory<StartupTest> fixture)
         {
             var options = new WebApplicationFactoryClientOptions
             {
@@ -31,7 +32,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Common
 
             return fixture.WithWebHostBuilder(
                 builder => builder
-                    .UseStartup<IdentityServer.StartupTest>()
+                    .UseStartup<StartupTest>()
                     .ConfigureTestServices(services => { })
             ).CreateClient(options);
         }

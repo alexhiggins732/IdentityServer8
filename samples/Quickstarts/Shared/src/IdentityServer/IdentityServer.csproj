@@ -3,11 +3,7 @@
     <Compile Remove="SeedData.cs" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="HigginsSoft.IdentityServer8" />
-    <PackageReference Include="HigginsSoft.IdentityServer8.AspnetIdentity" />
-    <PackageReference Include="HigginsSoft.IdentityServer8.Security" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
-    <PackageReference Include="HigginsSoft.IdentityServer8.EntityFramework" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" />
@@ -18,5 +14,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\..\..\src\AspNetIdentity\src\IdentityServer8.AspNetIdentity.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\EntityFramework\src\IdentityServer8.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\Security\IdentityServer8.Security\IdentityServer8.Security.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\Storage\src\IdentityServer8.Storage.csproj" />
   </ItemGroup>
 </Project>

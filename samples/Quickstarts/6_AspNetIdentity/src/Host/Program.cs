@@ -38,9 +38,9 @@ try
              // see https://IdentityServer8.readthedocs.io/en/latest/topics/resources.html
              options.EmitStaticAudienceClaim = true;
          })
-         .AddInMemoryIdentityResources(Shared.Config.IdentityResources)
-         .AddInMemoryApiScopes(Shared.Config.ApiScopes)
-         .AddInMemoryClients(Shared.Config.Clients)
+         .AddInMemoryIdentityResources(Config.IdentityResources)
+         .AddInMemoryApiScopes(Config.ApiScopes)
+         .AddInMemoryClients(Config.Clients)
          .AddAspNetIdentity<ApplicationUser>()
          // not recommended for production - you need to store your key material somewhere secure
          .AddDeveloperSigningCredential();

@@ -41,7 +41,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests.Base
                     configApp.AddJsonFile($"serilog.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
                     configApp.AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true, reloadOnChange: true);
                 })
-                .UseStartup<IdentityServer.StartupTest>();
+                .UseStartup<StartupTest>();
 
             TestServer = new TestServer(builder);
             Client = TestServer.CreateClient();

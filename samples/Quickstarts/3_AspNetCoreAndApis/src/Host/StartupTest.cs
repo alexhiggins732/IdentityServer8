@@ -12,7 +12,7 @@
 
 using Secret = IdentityServer8.Models.Secret;
 
-namespace IdentityServer;
+namespace IdentityServer.QuickStarts;
 
 public class StartupTest
 {
@@ -66,7 +66,9 @@ public class StartupTest
 
         app.UseStaticFiles()
             .UseRouting()
-            .UseIdentityServer()
+            .UseIdentityServer();
+
+        app
             .UseAuthorization();
 
         app.UseEndpoints(endpoints =>

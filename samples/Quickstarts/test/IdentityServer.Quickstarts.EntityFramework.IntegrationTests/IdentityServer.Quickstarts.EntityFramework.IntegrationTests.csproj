@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <ItemGroup>
+        <PackageReference Include="HtmlAgilityPack" />
+        <PackageReference Include="Microsoft.NET.Test.Sdk" />
+        <PackageReference Include="Microsoft.AspNetCore.TestHost" />
+        <PackageReference Include="Microsoft.AspNetCore.Mvc.Testing" />
+
+        <PackageReference Include="xunit" />
+        <PackageReference Include="xunit.runner.visualstudio" PrivateAssets="All" />
+        <PackageReference Include="FluentAssertions" />
+        <PackageReference Include="coverlet.collector" GeneratePathProperty="true">
+            <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+            <PrivateAssets>all</PrivateAssets>
+        </PackageReference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\..\5_EntityFramework\src\Host\Host.csproj" />
+      <ProjectReference Include="..\IdentityServer.Samples.Shared.IntegrationTests\IdentityServer.Samples.Shared.IntegrationTests.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+        <None Update="identityserver_testing.cer">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="identityserver_testing.pfx">
+            <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+        </None>
+        <None Update="xunit.runner.json">
+            <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+        </None>
+    </ItemGroup>
+
+</Project>

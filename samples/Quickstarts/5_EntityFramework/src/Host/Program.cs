@@ -9,6 +9,7 @@
  The above copyright notice and this permission notice shall be included in all
  copies or substantial portions of the Software.
 */
+using IdentityServer.QuickStarts;
 
 ConfigureLogger();
 
@@ -69,7 +70,7 @@ try
     using (var app = builder.Build())
     {
         // this will do the initial DB population
-        InitializeDatabase(app);
+        StartupTest.InitializeDatabase(app);
 
         if (app.Environment.IsDevelopment())
             app.UseDeveloperExceptionPage();
@@ -114,39 +115,3 @@ void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
     .CreateLogger();
 
- void InitializeDatabase(IApplicationBuilder app)
-{
-    using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
-    {
-        serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
-
-        var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-        context.Database.Migrate();
-        if (!context.Clients.Any())
-        {
-            foreach (var client in Shared.Config.Clients)
-            {
-                context.Clients.Add(client.ToEntity());
-            }
-            context.SaveChanges();
-        }
-
-        if (!context.IdentityResources.Any())
-        {
-            foreach (var resource in Shared.Config.IdentityResources)
-            {
-                context.IdentityResources.Add(resource.ToEntity());
-            }
-            context.SaveChanges();
-        }
-
-        if (!context.ApiScopes.Any())
-        {
-            foreach (var resource in Shared.Config.ApiScopes)
-            {
-                context.ApiScopes.Add(resource.ToEntity());
-            }
-            context.SaveChanges();
-        }
-    }
-}
