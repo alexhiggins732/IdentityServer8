@@ -49,7 +49,7 @@ namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
         {
             Client.DefaultRequestHeaders.Clear();
             const string accountLoginAction = "/Account/Login";
-            var loginUrl = accountLoginAction + "?ReturnUrl=%2FDiagnostics%2FIndex";
+            //var loginUrl = accountLoginAction + "?ReturnUrl=%2FDiagnostics%2FIndex";
             var loginResponse = await Client.GetAsync(accountLoginAction);
             loginResponse.EnsureSuccessStatusCode();
 
