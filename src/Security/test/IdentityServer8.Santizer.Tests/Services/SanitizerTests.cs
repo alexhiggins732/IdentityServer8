@@ -176,10 +176,10 @@ test
 
     void Validate(string expected, string output)
     {
-        Console.WriteLine("Expected: " + expected);
-        Console.WriteLine("Output: " + output);
-        Debug.WriteLine("Expected: " + expected);
-        Debug.WriteLine("Output: " + output);
+        //Console.WriteLine("Expected: " + expected);
+        //Console.WriteLine("Output: " + output);
+        //Debug.WriteLine("Expected: " + expected);
+        //Debug.WriteLine("Output: " + output);
         output.Should().Be(expected);
     }
 

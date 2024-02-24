@@ -14,7 +14,6 @@
 
 namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
 {
-    [SupportedOSPlatform("windows")]
     public class ControllerTests : ControllerTests<StartupTests>
     {
         public ControllerTests(TestFixture<StartupTests> fixture) : base(fixture)

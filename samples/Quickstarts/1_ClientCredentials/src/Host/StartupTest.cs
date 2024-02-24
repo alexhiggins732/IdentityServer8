@@ -14,7 +14,7 @@ using Secret = IdentityServer8.Models.Secret;
 
 namespace IdentityServer.QuickStarts.ClientCredentials;
 
-public class StartupTest
+public class ClientCredentialsStartupTest
 {
 
 

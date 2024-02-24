@@ -10,8 +10,10 @@
  copies or substantial portions of the Software.
 */
 
+using System.Xml.Linq;
 using Secret = IdentityServer8.Models.Secret;
 
+using Microsoft.EntityFrameworkCore;
 namespace IdentityServer.QuickStarts;
 
 public class StartupTest
@@ -21,23 +23,41 @@ public class StartupTest
     public void ConfigureServices(IServiceCollection services)
     {
 
+     
         services.AddScoped<ISignInHelper, HttpContextSignInHelper>();
         services.AddControllersWithViews();
 
         var migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name;
         const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer8.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
-
+        const string sqliteConnectionString = $"Filename=./Test.IdentityServer8.EntityFramework-3.1.0.db";
         services.AddIdentityServer()
             .AddTestUsers(TestUsers.Users)
             .AddConfigurationStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
-                    sql => sql.MigrationsAssembly(migrationsAssembly));
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
+                }
+                else
+                {
+                    options.ConfigureDbContext = b => b.UseInMemoryDatabase("EntityFramework");
+                                              // sql => sql.MigrationsAssembly(migrationsAssembly));
+
+                }
             })
             .AddOperationalStore(options =>
             {
-                options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
-                    sql => sql.MigrationsAssembly(migrationsAssembly));
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                {
+                    options.ConfigureDbContext = b => b.UseSqlServer(connectionString,
+                        sql => sql.MigrationsAssembly(migrationsAssembly));
+                }
+                else
+                {
+                    options.ConfigureDbContext = b => b.UseInMemoryDatabase("EntityFramework");
+                    // sql => sql.MigrationsAssembly(migrationsAssembly));
+                }
             })
             .AddDeveloperSigningCredential();
 
@@ -90,15 +110,18 @@ public class StartupTest
 
 
     }
-
+    [SupportedOSPlatformGuard("windows")]
     internal static void InitializeDatabase(IApplicationBuilder app)
     {
         using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
         {
-            serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
             var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-            context.Database.Migrate();
+            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                context.Database.Migrate();
+
             if (!context.Clients.Any())
             {
                 foreach (var client in Config.Clients)

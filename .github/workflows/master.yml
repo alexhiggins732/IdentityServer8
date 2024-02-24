@@ -44,11 +44,11 @@ jobs:
     name: ${{ matrix.runs-on }}
     runs-on: ${{ matrix.runs-on }}
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
       with:        
         fetch-depth: 0
     - name: Setup .NET
-      uses: actions/setup-dotnet@v3
+      uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
 
@@ -63,7 +63,7 @@ jobs:
     - name: Build
       run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}
     - name: Test
-      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
+      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity quiet --nologo /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1

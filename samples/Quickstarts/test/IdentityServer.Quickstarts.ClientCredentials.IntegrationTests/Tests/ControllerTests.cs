@@ -17,9 +17,9 @@
 
 namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
 {
-    public class ControllerTests : ControllerTests<StartupTests>
+    public class ControllerTests : ControllerTests<ClientCredentialsStartupTest>
     {
-        public ControllerTests(TestFixture<StartupTests> fixture) : base(fixture)
+        public ControllerTests(TestFixture<ClientCredentialsStartupTest> fixture) : base(fixture)
         {
         }
     }
