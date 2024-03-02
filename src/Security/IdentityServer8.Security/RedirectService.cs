@@ -108,26 +108,27 @@ public class Host
     public bool IsAny => Value == "*";
     public bool IsLocalhost => Value.Equals("localhost", StringComparison.OrdinalIgnoreCase) || Value.Equals("127.0.0.1");
     public bool IsIpAddress => Uri.CheckHostName(Value) == UriHostNameType.IPv4 || Uri.CheckHostName(Value) == UriHostNameType.IPv6;
-    public bool IsLocalNetwork => IsLocalhost || IsIpAddress;
-    public bool IsFullQualifiedDomainName => !IsLocalNetwork && !HasWildcard && !IsAny && Value.IndexOf('.') > -1;
+    public bool IsLocalOrIpNetwork => IsLocalhost || IsIpAddress;
+    public bool IsFullQualifiedDomainName => !IsLocalOrIpNetwork && !HasWildcard && !IsAny && Value.IndexOf('.') > -1;
 
 }
 
 public class Port
 {
-    public Port(int value) { Value = value; }
-    public int Value { get; }
+    public Port(ushort value) { Value = value; }
+    public ushort Value { get; }
 
-    public static readonly Port Any = new Port(-1); // Assuming -1 signifies any port
+    public bool IsAny => Value == 0;
+    public static readonly Port Any = new Port(0); // Assuming -1 signifies any port
 
-    public static Port Create(int portNumber) => new Port(portNumber);
+    public static Port Create(ushort portNumber) => new Port(portNumber);
 }
 
 public class Path
 {
-    public Path(string value) { Value = value; }
+    public Path(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
+    public bool IsAny => Value == "";
     public static readonly Path Any = new Path("*");
 
     public static Path Create(string path) => new Path(path);
@@ -135,20 +136,20 @@ public class Path
 
 public class Query
 {
-    public Query(string value) { Value = value; }
+    public Query(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
-    public static readonly Query Any = new Query("*");
+    public bool IsAny => Value == "";
+    public static readonly Query Any = new Query("");
 
     public static Query Create(string query) => new Query(query);
 }
 
 public class Fragment
 {
-    public Fragment(string value) { Value = value; }
+    public Fragment(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
-    public static readonly Fragment Any = new Fragment("*");
+    public bool IsAny => Value == "";
+    public static readonly Fragment Any = new Fragment("");
 
     public static Fragment Create(string fragment) => new Fragment(fragment);
 }

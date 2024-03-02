@@ -127,8 +127,8 @@ public class RedirectUrlParser
         var portDelimiter = hostAndPort.IndexOf(":");
         var host = portDelimiter > 0 ? hostAndPort.Substring(0, portDelimiter) : hostAndPort;
         var port = portDelimiter > 0 ? hostAndPort.Substring(portDelimiter + 1) : "";
-        int portNumber = 0;
-        if(int.TryParse(port, out var parsedPort))
+        ushort portNumber = 0;
+        if(ushort.TryParse(port, out var parsedPort))
         {
             portNumber = parsedPort;
         }
