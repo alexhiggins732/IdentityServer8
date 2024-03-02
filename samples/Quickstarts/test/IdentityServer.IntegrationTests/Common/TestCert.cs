@@ -13,7 +13,7 @@
 using System.IO;
 using System.Security.Cryptography.X509Certificates;
 
-namespace IdentityServer.IntegrationTests.Common;
+namespace IdentityServer.Samples.IntegrationTests.Common;
 
 internal static class TestCert
 {

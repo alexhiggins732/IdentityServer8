@@ -13,8 +13,8 @@
 using FluentAssertions;
 using IdentityModel;
 using IdentityModel.Client;
-using IdentityServer.IntegrationTests.Clients.Setup;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Clients.Setup;
+using IdentityServer.Samples.IntegrationTests.Common;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Microsoft.IdentityModel.Tokens;
@@ -25,7 +25,7 @@ using System.Text.Json;
 using Xunit;
 
 
-namespace IdentityServer.IntegrationTests.Clients;
+namespace IdentityServer.Samples.IntegrationTests.Clients;
 
 public class ClientAssertionClient
 {

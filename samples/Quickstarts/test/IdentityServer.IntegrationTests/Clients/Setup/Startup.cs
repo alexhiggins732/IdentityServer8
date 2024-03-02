@@ -15,7 +15,7 @@ using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 public class Startup
 {

@@ -12,14 +12,14 @@
 
 using FluentAssertions;
 using IdentityModel.Client;
-using IdentityServer.IntegrationTests.Clients.Setup;
+using IdentityServer.Samples.IntegrationTests.Clients.Setup;
 using IdentityServer8.Extensions;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using System.Text.Json;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Clients;
+namespace IdentityServer.Samples.IntegrationTests.Clients;
 
 public class CustomTokenRequestValidatorClient
 {

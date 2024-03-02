@@ -17,7 +17,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IdentityServer.IntegrationTests.Common;
+namespace IdentityServer.Samples.IntegrationTests.Common;
 
 // thanks to Damian Hickey for this awesome sample
 // https://github.com/damianh/OwinHttpMessageHandler/blob/master/src/OwinHttpMessageHandler/OwinHttpMessageHandler.cs

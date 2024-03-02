@@ -14,12 +14,12 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Models;
 using IdentityServer8.Test;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Authorize;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Authorize;
 
 public class SessionIdTests
 {

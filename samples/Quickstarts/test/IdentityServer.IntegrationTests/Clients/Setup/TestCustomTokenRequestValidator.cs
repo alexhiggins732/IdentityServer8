@@ -14,7 +14,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using IdentityServer8.Validation;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 public class TestCustomTokenRequestValidator : ICustomTokenRequestValidator
 {

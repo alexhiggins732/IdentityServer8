@@ -12,7 +12,7 @@
 
 using System.Net.Http;
 
-namespace IdentityServer.IntegrationTests.Common;
+namespace IdentityServer.Samples.IntegrationTests.Common;
 
 public class BrowserClient : HttpClient
 {

@@ -13,7 +13,7 @@
 using System.Collections.Generic;
 using IdentityServer8.Models;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Introspection.Setup;
 
 internal class Clients
 {

@@ -11,22 +11,13 @@
  copies or substantial portions of the Software.
 
 */
-
-using System.Net.Http;
-using Microsoft.AspNetCore.TestHost;
-using Xunit;
-
-namespace IdentityServer.Samples.Identity.IntegrationTests.Tests.Base
+using SharedStartupTest = IdentityServer.QuickStarts.IdentityServerShared.StartupTest;
+namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
 {
-    public class BaseClassFixture : IClassFixture<TestFixture>
+    public class ControllerTests : ControllerTests<SharedStartupTest>
     {
-        protected readonly HttpClient Client;
-        protected readonly TestServer TestServer;
-
-        public BaseClassFixture(TestFixture fixture)
+        public ControllerTests(TestFixture<SharedStartupTest> fixture) : base(fixture)
         {
-            Client = fixture.Client;
-            TestServer = fixture.TestServer;
         }
     }
 }

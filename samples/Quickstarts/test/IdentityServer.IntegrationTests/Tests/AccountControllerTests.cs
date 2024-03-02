@@ -14,12 +14,12 @@
 
 using FluentAssertions;
 using HtmlAgilityPack;
-using IdentityServer8.STS.Identity.IntegrationTests.Common;
-using IdentityServer8.STS.Identity.IntegrationTests.Mocks;
-using IdentityServer8.STS.Identity.IntegrationTests.Tests.Base;
+using IdentityServer.Samples.Identity.IntegrationTests.Common;
+using IdentityServer.Samples.Identity.IntegrationTests.Mocks;
+using IdentityServer.Samples.Identity.IntegrationTests.Tests.Base;
 using Xunit;
 
-namespace IdentityServer8.STS.Identity.IntegrationTests.Tests
+namespace IdentityServer.Samples.Identity.IntegrationTests.Tests
 {
     public class AccountControllerTests : BaseClassFixture
     {

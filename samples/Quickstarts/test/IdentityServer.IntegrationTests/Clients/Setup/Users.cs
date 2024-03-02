@@ -16,7 +16,7 @@ using IdentityModel;
 using IdentityServer8;
 using IdentityServer8.Test;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 internal static class Users
 {

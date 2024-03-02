@@ -14,7 +14,7 @@ using IdentityServer8.Models;
 using IdentityServer8.Validation;
 using Newtonsoft.Json;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 public class ConfirmationSecretValidator : ISecretValidator
 {

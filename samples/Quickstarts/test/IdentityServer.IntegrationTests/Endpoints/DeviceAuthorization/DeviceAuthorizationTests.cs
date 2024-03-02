@@ -19,12 +19,12 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Models;
 using Newtonsoft.Json;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.DeviceAuthorization;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.DeviceAuthorization;
 
 public class DeviceAuthorizationTests
 {

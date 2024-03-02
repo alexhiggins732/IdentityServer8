@@ -282,7 +282,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{549BF3
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.IntegrationTests", "samples\Quickstarts\test\IdentityServer.IntegrationTests\IdentityServer.IntegrationTests.csproj", "{E1D7510D-D40F-4651-81DF-766D548E8FB0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServer.Samples.Shared.IntegrationTests", "samples\Quickstarts\test\IdentityServer.Samples.Shared.IntegrationTests\IdentityServer.Samples.Shared.IntegrationTests.csproj", "{7FC1B3AF-12F8-4100-9FA8-07EE7AA07C4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Samples.Shared.IntegrationTests", "samples\Quickstarts\test\IdentityServer.Samples.Shared.IntegrationTests\IdentityServer.Samples.Shared.IntegrationTests.csproj", "{7FC1B3AF-12F8-4100-9FA8-07EE7AA07C4E}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Quickstarts.AspNetCore.IntegrationTests", "samples\Quickstarts\test\IdentityServer.Quickstarts.AspNetCore.IntegrationTests\IdentityServer.Quickstarts.AspNetCore.IntegrationTests.csproj", "{A816EE7A-50B0-40C7-990B-698D9F08DAEB}"
 EndProject
@@ -299,6 +299,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Quickstarts.IdentityServer.IntegrationTests", "samples\Quickstarts\test\IdentityServer.Quickstarts.IdentityServer.IntegrationTests\IdentityServer.Quickstarts.IdentityServer.IntegrationTests.csproj", "{D2B84593-417D-465D-AAEA-0CE0F2E509C3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Quickstarts.JavascriptClient.IntegrationTests", "samples\Quickstarts\test\IdentityServer.Quickstarts.JavascriptClient.IntegrationTests\IdentityServer.Quickstarts.JavascriptClient.IntegrationTests.csproj", "{41F5321C-2D41-44B3-94AC-94DDEA256911}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Quickstarts.Shared.IdentityServerIntegrationTests", "samples\Quickstarts\test\IdentityServer.Quickstarts.Shared.IdentityServerIntegrationTests\IdentityServer.Quickstarts.Shared.IdentityServerIntegrationTests.csproj", "{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -593,6 +595,10 @@ Global
 		{41F5321C-2D41-44B3-94AC-94DDEA256911}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41F5321C-2D41-44B3-94AC-94DDEA256911}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41F5321C-2D41-44B3-94AC-94DDEA256911}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -714,6 +720,7 @@ Global
 		{B14CC575-018C-46C1-9A3A-0E9D11FF950D} = {3521EC6E-A8C1-4EC3-AEA0-A8CC2E3A54F9}
 		{D2B84593-417D-465D-AAEA-0CE0F2E509C3} = {3521EC6E-A8C1-4EC3-AEA0-A8CC2E3A54F9}
 		{41F5321C-2D41-44B3-94AC-94DDEA256911} = {3521EC6E-A8C1-4EC3-AEA0-A8CC2E3A54F9}
+		{0BAA0AE5-9E94-47AA-BAE5-AA16ED74AD25} = {3521EC6E-A8C1-4EC3-AEA0-A8CC2E3A54F9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {176723F7-4A9B-4F05-A9F3-3BA715E4BDC3}

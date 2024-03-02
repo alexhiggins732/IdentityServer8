@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.TestHost;
 using Microsoft.Extensions.Configuration;
 using IdentityServer;
 
-namespace IdentityServer8.STS.Identity.IntegrationTests.Tests.Base
+namespace IdentityServer.Samples.Identity.IntegrationTests.Tests.Base
 {
     public class TestFixture : IDisposable
     {

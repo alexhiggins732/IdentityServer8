@@ -15,7 +15,7 @@ using IdentityServer8.Models;
 using IdentityServer8.Test;
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 class CustomProfileService : TestUserProfileService
 {

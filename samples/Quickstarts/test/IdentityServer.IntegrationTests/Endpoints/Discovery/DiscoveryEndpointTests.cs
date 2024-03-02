@@ -12,7 +12,7 @@
 
 using FluentAssertions;
 using IdentityModel.Client;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8;
 using IdentityServer8.Configuration;
 using IdentityServer8.Models;
@@ -24,7 +24,7 @@ using System.Threading.Tasks;
 using Xunit;
 using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Discovery;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Discovery;
 
 public class DiscoveryEndpointTests
 {

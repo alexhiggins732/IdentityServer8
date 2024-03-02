@@ -13,7 +13,7 @@
 using System.Collections.Generic;
 using IdentityServer8.Test;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Introspection.Setup;
 
 public static class Users
 {

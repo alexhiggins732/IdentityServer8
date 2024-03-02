@@ -18,7 +18,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8;
 using IdentityServer8.Models;
 using IdentityServer8.Stores;
@@ -27,7 +27,7 @@ using IdentityServer8.Test;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Authorize;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Authorize;
 
 public class AuthorizeTests
 {

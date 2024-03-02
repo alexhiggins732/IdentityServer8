@@ -19,10 +19,10 @@ using System.Net;
 using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Token;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Token;
 
 public class TokenEndpointTests
 {

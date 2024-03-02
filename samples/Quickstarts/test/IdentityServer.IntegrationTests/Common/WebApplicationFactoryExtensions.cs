@@ -19,7 +19,7 @@ using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.AspNetCore.TestHost;
 
 
-namespace IdentityServer8.STS.Identity.IntegrationTests.Common
+namespace IdentityServer.Samples.Identity.IntegrationTests.Common
 {
     public static class WebApplicationFactoryExtensions 
     {

@@ -16,7 +16,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace IdentityServer.IntegrationTests.Common;
+namespace IdentityServer.Samples.IntegrationTests.Common;
 
 public class NetworkHandler : HttpMessageHandler
 {

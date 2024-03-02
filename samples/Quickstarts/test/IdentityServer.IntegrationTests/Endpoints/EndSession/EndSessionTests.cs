@@ -21,7 +21,7 @@ using System.Text.Encodings.Web;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Models;
 using IdentityServer8.Test;
 using Microsoft.AspNetCore.WebUtilities;
@@ -29,7 +29,7 @@ using Newtonsoft.Json.Linq;
 using Xunit;
 using static IdentityServer8.IdentityServerConstants;
 
-namespace IdentityServer.IntegrationTests.Endpoints.EndSession;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.EndSession;
 
 public class EndSessionTests
 {

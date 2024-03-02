@@ -16,14 +16,14 @@ using System.Net.Http;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Models;
 using IdentityServer8.Services;
 using IdentityServer8.Test;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Pipeline;
+namespace IdentityServer.Samples.IntegrationTests.Pipeline;
 
 public class CorsTests
 {

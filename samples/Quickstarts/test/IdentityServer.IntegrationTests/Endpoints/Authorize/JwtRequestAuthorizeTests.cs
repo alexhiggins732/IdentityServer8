@@ -21,7 +21,7 @@ using System.Text.Json;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8;
 using IdentityServer8.Configuration;
 using IdentityServer8.Models;
@@ -31,7 +31,7 @@ using Microsoft.IdentityModel.Tokens;
 using Xunit;
 using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
-namespace IdentityServer.IntegrationTests.Endpoints.Authorize;
+namespace IdentityServer.Samples.IntegrationTests.Endpoints.Authorize;
 
 public class JwtRequestAuthorizeTests
 {
@@ -188,7 +188,7 @@ public class JwtRequestAuthorizeTests
             issuer: issuer,
             audience: audience,
             signingCredentials: credential,
-            subject: Identity.Create("pwd", claims));
+            subject: IdentityModel.Identity.Create("pwd", claims));
 
         if (setJwtTyp)
         {

@@ -12,7 +12,7 @@
 
 using Secret = IdentityServer8.Models.Secret;
 
-namespace IdentityServer.QuickStarts.IdentityServer;
+namespace IdentityServer.QuickStarts.IdentityServerShared;
 
 public class StartupTest
 {

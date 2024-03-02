@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServer8.STS.Identity.IntegrationTests.Common
+namespace IdentityServer.Samples.Identity.IntegrationTests.Common
 {
     public static class RoutesConstants
     {

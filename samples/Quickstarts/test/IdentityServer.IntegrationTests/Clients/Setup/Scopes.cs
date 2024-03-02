@@ -13,7 +13,7 @@
 using System.Collections.Generic;
 using IdentityServer8.Models;
 
-namespace IdentityServer.IntegrationTests.Clients.Setup;
+namespace IdentityServer.Samples.IntegrationTests.Clients.Setup;
 
 internal class Scopes
 {

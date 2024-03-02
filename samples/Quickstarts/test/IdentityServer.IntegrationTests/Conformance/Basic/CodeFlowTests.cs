@@ -19,13 +19,13 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel.Client;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Configuration;
 using IdentityServer8.Models;
 using IdentityServer8.Test;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Conformance.Basic;
+namespace IdentityServer.Samples.IntegrationTests.Conformance.Basic;
 
 public class CodeFlowTests 
 {

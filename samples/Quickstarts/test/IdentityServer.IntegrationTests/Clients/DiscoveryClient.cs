@@ -12,12 +12,12 @@
 
 using FluentAssertions;
 using IdentityModel.Client;
-using IdentityServer.IntegrationTests.Clients.Setup;
+using IdentityServer.Samples.IntegrationTests.Clients.Setup;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.TestHost;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Clients;
+namespace IdentityServer.Samples.IntegrationTests.Clients;
 
 public class DiscoveryClientTests
 {

@@ -35,7 +35,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using LogoutRequest = IdentityServer8.Models.LogoutRequest;
 
-namespace IdentityServer.IntegrationTests.Common;
+namespace IdentityServer.Samples.IntegrationTests.Common;
 
 public class IdentityServerPipeline
 {

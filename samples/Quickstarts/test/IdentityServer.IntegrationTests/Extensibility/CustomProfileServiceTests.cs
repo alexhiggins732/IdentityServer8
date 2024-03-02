@@ -16,14 +16,14 @@ using System.Text;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
-using IdentityServer.IntegrationTests.Common;
+using IdentityServer.Samples.IntegrationTests.Common;
 using IdentityServer8.Models;
 using IdentityServer8.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Xunit;
 
-namespace IdentityServer.IntegrationTests.Extensibility;
+namespace IdentityServer.Samples.IntegrationTests.Extensibility;
 
 public class CustomProfileServiceTests
 {
