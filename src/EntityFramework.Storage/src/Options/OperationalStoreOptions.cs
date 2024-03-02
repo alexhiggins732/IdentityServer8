@@ -65,7 +65,7 @@ namespace IdentityServer8.EntityFramework.Options
         /// <value>
         ///   <c>true</c> if [enable token cleanup]; otherwise, <c>false</c>.
         /// </value>
-        public bool EnableTokenCleanup { get; set; } = false;
+        public virtual bool EnableTokenCleanup { get; set; } = false;
 
         /// <summary>
         /// Gets or sets the token cleanup interval (in seconds). The default is 3600 (1 hour).
