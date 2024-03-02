@@ -35,7 +35,7 @@ public class DependencyInjection
 
 
 
-public class AllowAnyTests 
+public class AllowAnyTests
 {
     private readonly RedirectService _redirectService;
 
@@ -47,7 +47,7 @@ public class AllowAnyTests
 
 
     [Theory]
-    [InlineData("http://example.com",  true)]
+    [InlineData("http://example.com", true)]
     [InlineData("http://a.example.com", true)]
     [InlineData("http://a.b.example.com", true)]
     [InlineData("https://example.com", true)]
@@ -55,16 +55,14 @@ public class AllowAnyTests
     [InlineData("https://a.b.example.com", true)]
     [InlineData("http://localhost", true)]
     [InlineData("https://localhost", true)]
-
-
-
-
-    public void AllowAnyShouldReturnTrue(string uriString, bool expectedResult)
+    public void AllowAnyShouldReturnTrueUnlessInvalidUri(string uriString, bool expectedResult)
     {
         var result = _redirectService.IsRedirectAllowed(uriString);
 
         Assert.Equal(expectedResult, result);
     }
+
+
 }
 public class RedirectServiceTests
 {
@@ -97,10 +95,25 @@ public class RedirectServiceTests
         Assert.Equal(expectedResult, result);
     }
 
-    [Fact()]
-    public void RedirectServiceTest()
-    {
+    [Theory]
+    [InlineData("", "*", true)]
+    [InlineData("http", "", true)]
+    [InlineData("https", "", true)]
+    [InlineData("http", "*", true)]
+    [InlineData("https", "*", true)]
+    [InlineData("", "http", false)]
+    [InlineData("http", "http", true)]
+    [InlineData("https", "http", false)]
 
+    [InlineData("", "https", false)]
+    [InlineData("http", "https", false)]
+    [InlineData("https", "https", true)]
+    public void IsAllowedScheme_ShouldCorrectlyMatchPath(string actual, string allowed, bool expected)
+    {
+        var scheme = Scheme.Parse(allowed);
+        var result = _redirectService.IsSchemeMatch(actual, scheme);
+
+        Assert.Equal(expected, result);
     }
 
     [Fact()]

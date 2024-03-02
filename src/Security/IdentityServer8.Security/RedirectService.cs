@@ -49,20 +49,17 @@ public class RedirectRule
 
 public class Scheme
 {
-    public Scheme(string name) { Name = name; }
+    public Scheme(string name) { Name = (name ?? "").Trim().ToLower(); }
     public string Name { get; }
-
+    public bool IsAny => Name == "";
     public static readonly Scheme Http = new Scheme("http");
     public static readonly Scheme Https = new Scheme("https");
-    public static readonly Scheme Any = new Scheme("*");
+    public static readonly Scheme Any = new Scheme("");
 
     public static Scheme Parse(string schemeName)
     {
-        if (string.IsNullOrWhiteSpace(schemeName))
-        {
-            throw new ArgumentException("Scheme name cannot be null or empty");
-        }
-        else if (schemeName.Equals("http", StringComparison.OrdinalIgnoreCase))
+        schemeName = (schemeName ?? "").Trim().ToLower();
+        if (schemeName.Equals("http", StringComparison.OrdinalIgnoreCase))
         {
             return Http;
         }
@@ -70,7 +67,7 @@ public class Scheme
         {
             return Https;
         }
-        else if (schemeName.Equals("*", StringComparison.OrdinalIgnoreCase))
+        else if (schemeName == "" || schemeName.Equals("*", StringComparison.OrdinalIgnoreCase))
         {
             return Any;
         }
@@ -91,7 +88,7 @@ public class Host
 {
     public Host(string value)
     {
-        Value = ((value ?? "").ToLower().Trim() ?? "");
+        Value = (value ?? "").ToLower().Trim() ?? "";
         var domainParts = Value.Split('.');
         domainParts = domainParts.Where(x => !string.IsNullOrEmpty(x)).ToArray();
         HostParts = new List<string>(domainParts);
@@ -129,7 +126,7 @@ public class Path
     public Path(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
     public bool IsAny => Value == "";
-    public static readonly Path Any = new Path("*");
+    public static readonly Path Any = new Path("");
 
     public static Path Create(string path) => new Path(path);
 }
@@ -275,7 +272,7 @@ public class RedirectService : IRedirectService
 
     public bool IsRuleMatch(Uri uri, RedirectRule rule)
     {
-        return IsSchemeMatch(uri, rule.AllowedScheme) &&
+        return IsSchemeMatch(uri.Scheme.ToString(), rule.AllowedScheme) &&
                IsHostMatch(uri, rule.AllowedHost) &&
                IsPortMatch(uri, rule.AllowedPort) &&
                IsPathMatch(uri, rule.AllowedPath) &&
@@ -283,9 +280,9 @@ public class RedirectService : IRedirectService
                IsFragmentMatch(uri, rule.AllowedFragment);
     }
 
-    public bool IsSchemeMatch(Uri uri, Scheme allowedScheme)
+    public bool IsSchemeMatch(string scheme, Scheme allowedScheme)
     {
-        return allowedScheme == Scheme.Any || uri.Scheme.Equals(allowedScheme.Name, StringComparison.OrdinalIgnoreCase);
+        return allowedScheme.IsAny || scheme.Equals(allowedScheme.Name, StringComparison.OrdinalIgnoreCase);
     }
 
     public bool IsHostMatch(string url, Host allowedHost)
