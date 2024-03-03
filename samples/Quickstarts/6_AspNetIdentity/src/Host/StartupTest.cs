@@ -10,26 +10,14 @@
  copies or substantial portions of the Software.
 */
 
-
-
 namespace IdentityServer.QuickStarts.AspNetIdentity;
 
-public class StartupTests : StartupTest
-{
-
-
-    public StartupTests(IConfiguration configuration) : base(configuration, true)
-    {
-        IsTest = true;
-    }
-}
 public class StartupTest
 {
     public IConfiguration Configuration { get; }
 
-    public StartupTest(IConfiguration configuration, bool isTest = false)
+    public StartupTest(IConfiguration configuration)
     {
-        IsTest = isTest;
         Configuration = configuration;
     }
 
@@ -80,7 +68,6 @@ public class StartupTest
 
     }
 
-    public static bool IsTest = false;
     public void Configure(IApplicationBuilder app)
     {
         var env = app.ApplicationServices.GetRequiredService<Microsoft.AspNetCore.Hosting.IHostingEnvironment>();

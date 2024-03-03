@@ -33,16 +33,7 @@ public class SeedData
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
-                if (StartupTest.IsTest)
-                {
-                    context.Database.EnsureDeleted();
-                    context.Database.EnsureCreated();
-                }
-                else
-                {
-                    context.Database.Migrate();
-                }
-               
+                context.Database.Migrate();
 
                 var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 var alice = userMgr.FindByNameAsync("alice").Result;
