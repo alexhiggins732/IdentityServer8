@@ -12,14 +12,24 @@
 
 
 
-namespace IdentityServer.QuickStarts;
+namespace IdentityServer.QuickStarts.AspNetIdentity;
 
+public class StartupTests : StartupTest
+{
+
+
+    public StartupTests(IConfiguration configuration) : base(configuration, true)
+    {
+        IsTest = true;
+    }
+}
 public class StartupTest
 {
     public IConfiguration Configuration { get; }
 
-    public StartupTest(IConfiguration configuration)
+    public StartupTest(IConfiguration configuration, bool isTest = false)
     {
+        IsTest = isTest;
         Configuration = configuration;
     }
 
@@ -70,21 +80,22 @@ public class StartupTest
 
     }
 
+    public static bool IsTest = false;
     public void Configure(IApplicationBuilder app)
     {
         var env = app.ApplicationServices.GetRequiredService<Microsoft.AspNetCore.Hosting.IHostingEnvironment>();
-      
+
 
         var args = Environment.GetCommandLineArgs();
         //if (args.Contains("/seed"))
-       // {
-            Log.Information("Seeding database...");
-            var config = app.ApplicationServices.GetRequiredService<IConfiguration>();
-            var connectionString = config.GetConnectionString("DefaultConnection");
-            Shared.SeedData.EnsureSeedData(connectionString);
-            Log.Information("Done seeding database.");
+        // {
+        Log.Information("Seeding database...");
+        var config = app.ApplicationServices.GetRequiredService<IConfiguration>();
+        var connectionString = config.GetConnectionString("DefaultConnection");
+        Shared.SeedData.EnsureSeedData(connectionString);
+        Log.Information("Done seeding database.");
 
-       // }
+        // }
 
         if (env.IsDevelopment())
         {

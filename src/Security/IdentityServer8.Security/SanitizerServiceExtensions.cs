@@ -53,21 +53,32 @@ public static class SanitizerServiceExtensions
         return Ioc.Sanitizer.Json.Sanitize(input?.ToString(), mode);
     }
 
-    public static string SanitizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
+    public static string SanitizeForRedirect(this string? input, SanitizerMode mode = SanitizerMode.Clean)
     {
-        var rawUrl = input?.ToString() ?? "";
+        return (input ?? "").Trim();
+        var rawUrl = (input?.ToString() ?? "").Trim();
         if (string.IsNullOrEmpty(rawUrl))
             return rawUrl;
         else
         {
             if (Uri.TryCreate(rawUrl, UriKind.RelativeOrAbsolute, out var uri))
             {
-                var parsedUrl = uri.ToString();
+                string parsedUrl = "";
+                if (!uri.IsAbsoluteUri)
+                {
+                    uri = new Uri(new Uri("http://localhost"), uri);
+                    parsedUrl = uri.AbsolutePath;
+
+                }
+                else
+                {
+                    parsedUrl = uri.AbsoluteUri.ToString();
+                }
                 if (parsedUrl == rawUrl.ToString())
                     return parsedUrl;
                 else
                 {
-                    return uri.ToString().SanitizeForLog() ?? "";
+                    return parsedUrl.SanitizeForLog() ?? "";
                 }
 
             }
@@ -104,12 +115,12 @@ public static class SanitizerServiceExtensions
         return Ioc.Sanitizer.Sql.Sanitize(input?.ToString(), mode);
     }
 
-    public static string? SantizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
-    {
-        var decoded = Uri.UnescapeDataString(input?.ToString() ?? "");
-        decoded.SanitizeForHtml();
-        var escaped = Uri.EscapeDataString(decoded);
-        return escaped;
-    }
+    //public static string? SantizeForRedirect(this object? input, SanitizerMode mode = SanitizerMode.Clean)
+    //{
+    //    var decoded = Uri.UnescapeDataString(input?.ToString() ?? "");
+    //    decoded.SanitizeForHtml();
+    //    var escaped = Uri.EscapeDataString(decoded);
+    //    return escaped;
+    //}
 
 }

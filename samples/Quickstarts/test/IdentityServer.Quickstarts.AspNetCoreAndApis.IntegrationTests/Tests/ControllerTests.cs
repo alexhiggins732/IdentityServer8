@@ -12,7 +12,7 @@
 
 */
 
-namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
+namespace IdentityServer.QuickStarts.IntegrationTests
 {
     public class ControllerTests : ControllerTests<StartupTests>
     {

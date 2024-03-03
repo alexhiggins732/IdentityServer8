@@ -42,12 +42,17 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
 
         }
 
+        [Fact]
+        public void PathCreate_AllowsNull()
+        {
+            Path.Create(null).IsAny.Should().BeTrue();
+        }
     }
     public class QueryTests
     {
         [Fact]
         public void Query_AllowsNull()
-        { 
+        {
             var result = new Query(null);
             result.Value.Should().NotBeNull();
             result.Value.Should().Be(string.Empty);
@@ -79,6 +84,23 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
 
         }
 
+
+        [Fact]
+        public void CreateIsAnyTests()
+        {
+            var value = Query.Create("");
+            value.IsAny.Should().BeTrue();
+
+            value = Query.Create("test");
+            value.IsAny.Should().BeFalse();
+
+        }
+
+        [Fact]
+        public void QueryCreate_AllowsNull()
+        {
+            Query.Create(null).IsAny.Should().BeTrue();
+        }
     }
 
     public class FragmentTests
@@ -117,6 +139,24 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
 
         }
 
+
+        [Fact]
+        public void CreateIsAnyTests()
+        {
+            var value = Fragment.Create("");
+            value.IsAny.Should().BeTrue();
+
+            value = Fragment.Create("test");
+            value.IsAny.Should().BeFalse();
+
+        }
+
+
+        [Fact]
+        public void Create_AllowsNull()
+        {
+            Fragment.Create(null).IsAny.Should().BeTrue();
+        }
     }
 
 
@@ -143,9 +183,22 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
             anyPort.IsAny.Should().BeTrue();
         }
 
+        [Fact]
+        public void Port_CreateIsAnyTests()
+        {
+            var port = Port.Create(0);
+            port.IsAny.Should().BeTrue();
+
+            var anyPort = new Port(1);
+            anyPort.IsAny.Should().BeFalse();
+
+        }
+
+
     }
     public class HostTests
     {
+
         [Fact]
         public void Host_AllowsNullName()
         {
@@ -254,7 +307,7 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
             host.Value.Should().NotBeNull();
             host.IsIpAddress.Should().BeTrue();
 
-    
+
         }
 
         [Fact]
@@ -313,11 +366,11 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
             host.Value.Should().NotBeNull();
             host.IsFullQualifiedDomainName.Should().BeFalse();
 
-            host= new Host("some.domain.com");
+            host = new Host("some.domain.com");
             host.Value.Should().NotBeNull();
             host.IsFullQualifiedDomainName.Should().BeTrue();
 
-            host= new Host("domain.com");
+            host = new Host("domain.com");
             host.Value.Should().NotBeNull();
             host.IsFullQualifiedDomainName.Should().BeTrue();
 
@@ -325,6 +378,7 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
             host.Value.Should().NotBeNull();
             host.IsFullQualifiedDomainName.Should().BeTrue();
         }
+
 
     }
 }

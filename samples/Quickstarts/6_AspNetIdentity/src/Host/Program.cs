@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 
+using System.Diagnostics.CodeAnalysis;
+
 ConfigureLogger();
 
 try
@@ -126,3 +128,6 @@ void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
     //    flushToDiskInterval: TimeSpan.FromSeconds(1))
     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
     .CreateLogger();
+
+[ExcludeFromCodeCoverage]
+public partial class Program { }

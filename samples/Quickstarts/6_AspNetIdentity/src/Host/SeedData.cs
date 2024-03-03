@@ -10,6 +10,9 @@
  copies or substantial portions of the Software.
 */
 
+using IdentityServer.QuickStarts.AspNetIdentity;
+using System.Diagnostics.CodeAnalysis;
+
 namespace Shared;
 
 public class SeedData
@@ -30,7 +33,16 @@ public class SeedData
             using (var scope = serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
             {
                 var context = scope.ServiceProvider.GetService<ApplicationDbContext>();
-                context.Database.Migrate();
+                if (StartupTest.IsTest)
+                {
+                    context.Database.EnsureDeleted();
+                    context.Database.EnsureCreated();
+                }
+                else
+                {
+                    context.Database.Migrate();
+                }
+               
 
                 var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<ApplicationUser>>();
                 var alice = userMgr.FindByNameAsync("alice").Result;

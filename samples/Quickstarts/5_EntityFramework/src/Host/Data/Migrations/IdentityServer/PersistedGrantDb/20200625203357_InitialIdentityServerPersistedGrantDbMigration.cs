@@ -11,9 +11,11 @@
 */
 
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdentityServer.Data.Migrations.IdentityServer.PersistedGrantDb
 {
+    [ExcludeFromCodeCoverage(Justification = "Code Coverage does not detect migrations in tests despite being ran.")]
     public partial class InitialIdentityServerPersistedGrantDbMigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

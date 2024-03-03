@@ -11,9 +11,11 @@
 */
 
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdentityServerAspNetIdentity.Data.Migrations
 {
+    [ExcludeFromCodeCoverage(Justification = "Code Coverage does not detect migrations in tests despite being ran.")]
     public partial class CreateIdentitySchema : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

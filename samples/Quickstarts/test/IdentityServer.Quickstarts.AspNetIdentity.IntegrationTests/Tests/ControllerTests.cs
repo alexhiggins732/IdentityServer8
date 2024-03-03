@@ -14,10 +14,18 @@
 
 
 
-namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
+using IdentityServerAspNetIdentity.Data;
+using Microsoft.EntityFrameworkCore;
+
+namespace IdentityServer.QuickStarts.IntegrationTests
 {
     public class ControllerTests : ControllerTests<StartupTests>
     {
+        static ControllerTests()
+        {
+            StartupTests.IsTest = true;
+
+        }
         public ControllerTests(TestFixture<StartupTests> fixture) : base(fixture)
         {
             UserMocks.SetTestUser(new() { Username = "alice", Password = "Pass123$" });

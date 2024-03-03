@@ -14,22 +14,29 @@ using System.Xml.Linq;
 using Secret = IdentityServer8.Models.Secret;
 
 using Microsoft.EntityFrameworkCore;
-namespace IdentityServer.QuickStarts;
+namespace IdentityServer.QuickStarts.EntityFramework;
 
+public class StartupTests : StartupTest
+{
+    public StartupTests()
+    {
+        IsTest = true;
+    }
+}
 public class StartupTest
 {
 
-
+    public static bool IsTest = false;
     public void ConfigureServices(IServiceCollection services)
     {
 
-     
+
         services.AddScoped<ISignInHelper, HttpContextSignInHelper>();
         services.AddControllersWithViews();
 
         var migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name;
         const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer8.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
-        const string sqliteConnectionString = $"Filename=./Test.IdentityServer8.EntityFramework-3.1.0.db";
+        //const string sqliteConnectionString = $"Filename=./Test.IdentityServer8.EntityFramework-3.1.0.db";
         services.AddIdentityServer()
             .AddTestUsers(TestUsers.Users)
             .AddConfigurationStore(options =>
@@ -42,7 +49,7 @@ public class StartupTest
                 else
                 {
                     options.ConfigureDbContext = b => b.UseInMemoryDatabase("EntityFramework");
-                                              // sql => sql.MigrationsAssembly(migrationsAssembly));
+                    // sql => sql.MigrationsAssembly(migrationsAssembly));
 
                 }
             })
@@ -115,12 +122,14 @@ public class StartupTest
     {
         using (var serviceScope = app.ApplicationServices.GetService<IServiceScopeFactory>().CreateScope())
         {
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
+            //if (StartupTests.IsTest)
+            //    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+            //        serviceScope.ServiceProvider.GetRequiredService<PersistedGrantDbContext>().Database.Migrate();
 
             var context = serviceScope.ServiceProvider.GetRequiredService<ConfigurationDbContext>();
-            if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
-                context.Database.Migrate();
+            if (StartupTests.IsTest)
+                if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
+                    context.Database.Migrate();
 
             if (!context.Clients.Any())
             {

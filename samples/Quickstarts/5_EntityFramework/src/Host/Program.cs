@@ -10,6 +10,8 @@
  copies or substantial portions of the Software.
 */
 using IdentityServer.QuickStarts;
+using IdentityServer.QuickStarts.EntityFramework;
+using System.Diagnostics.CodeAnalysis;
 
 ConfigureLogger();
 
@@ -115,3 +117,5 @@ void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
     .CreateLogger();
 
+[ExcludeFromCodeCoverage]
+public partial class Program { }

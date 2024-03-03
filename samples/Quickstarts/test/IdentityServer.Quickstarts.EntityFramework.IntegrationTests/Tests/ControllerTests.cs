@@ -12,7 +12,11 @@
 
 */
 
-namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
+using IdentityServer8.EntityFramework.DbContexts;
+using IdentityServer8.EntityFramework.Options;
+using Microsoft.EntityFrameworkCore;
+
+namespace IdentityServer.QuickStarts.EntityFramework.IntegrationTests
 {
     public class ControllerTests : ControllerTests<StartupTests>
     {

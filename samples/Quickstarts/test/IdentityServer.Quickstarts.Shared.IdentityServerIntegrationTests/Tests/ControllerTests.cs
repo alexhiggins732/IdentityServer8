@@ -12,7 +12,7 @@
 
 */
 using SharedStartupTest = IdentityServer.QuickStarts.IdentityServerShared.StartupTest;
-namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
+namespace IdentityServer.QuickStarts.IntegrationTests
 {
     public class ControllerTests : ControllerTests<SharedStartupTest>
     {

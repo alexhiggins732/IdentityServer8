@@ -15,7 +15,9 @@
 
 
 
-namespace IdentityServer.QuickStarts.ClientCredentials.IntegrationTests
+using IdentityServer.QuickStarts.ClientCredentials;
+
+namespace IdentityServer.QuickStarts.IntegrationTests
 {
     public class ControllerTests : ControllerTests<ClientCredentialsStartupTest>
     {

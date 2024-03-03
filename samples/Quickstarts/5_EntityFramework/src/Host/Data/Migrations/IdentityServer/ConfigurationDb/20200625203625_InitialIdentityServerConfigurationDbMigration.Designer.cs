@@ -14,9 +14,11 @@
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
+using System.Diagnostics.CodeAnalysis;
 
 namespace IdentityServer.Data.Migrations.IdentityServer.ConfigurationDb
 {
+    [ExcludeFromCodeCoverage(Justification = "Code Coverage does not detect migrations in tests despite being ran.")]
     [DbContext(typeof(ConfigurationDbContext))]
     [Migration("20200625203625_InitialIdentityServerConfigurationDbMigration")]
     partial class InitialIdentityServerConfigurationDbMigration

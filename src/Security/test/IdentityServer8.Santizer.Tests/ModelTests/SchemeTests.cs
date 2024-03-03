@@ -1,3 +1,4 @@
+using FluentAssertions;
 using IdentityServer8.Security;
 using System;
 using System.Collections.Generic;
@@ -60,6 +61,12 @@ namespace IdentityServer8.Sanitizer.Tests.ModelTests
         {
             var scheme = "foo";
             Assert.Throws<ArgumentException>(()=> Scheme.Parse(scheme));
+        }
+
+        [Fact]
+        public void Scheme_AllowsNull()
+        {
+            Scheme.Parse(null).IsAny.Should().BeTrue();
         }
     }
 }

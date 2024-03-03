@@ -10,11 +10,16 @@
  copies or substantial portions of the Software.
 */
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace IdentityServer8.Security;
 
 public interface IRedirectService
 {
     bool IsRedirectAllowed(string redirectUrl);
+    List<RedirectRule> GetRedirectRules();
+    bool IsMatch(string url, RedirectRule rule);
+    bool IsRuleMatch(Uri uri, RedirectRule rule);
 }
 
 
@@ -22,7 +27,7 @@ public class RuleMatcher
 {
     public bool IsMatch(string url, RedirectRule rule)
     {
-        throw new NotImplementedException();
+        return Ioc.RedirectService.IsMatch(url, rule);
     }
 }
 public class RedirectRule
@@ -88,7 +93,7 @@ public class Host
 {
     public Host(string value)
     {
-        Value = (value ?? "").ToLower().Trim() ?? "";
+        Value = (value ?? "").ToLower().Trim();
         var domainParts = Value.Split('.');
         domainParts = domainParts.Where(x => !string.IsNullOrEmpty(x)).ToArray();
         HostParts = new List<string>(domainParts);
@@ -186,6 +191,24 @@ public class AllowAnyRedirectService : RedirectService
     }
 }
 
+
+[ExcludeFromCodeCoverage(Justification = "Class is currently unused")]
+public class UrlValidator
+{
+    public static bool IsInvalidUri(Uri uri)
+    {
+        try
+        {
+            var path = uri.AbsolutePath;
+            var valid = string.IsNullOrWhiteSpace(path) || path.Length > 0;
+            return !valid;
+        }
+        catch (Exception)
+        {
+            return true;
+        }
+    }
+}
 public class RedirectService : IRedirectService
 {
     public RedirectService(ILogger<RedirectService> logger, ISanitizer sanitizer)
@@ -197,6 +220,10 @@ public class RedirectService : IRedirectService
     private readonly ILogger<RedirectService> _logger;
     private readonly ISanitizer _sanitizer;
 
+    public List<RedirectRule> GetRedirectRules()
+    {
+        return _rules;
+    }
     public IRedirectService AddRedirectRule(RedirectRule rule)
     {
         _rules.Add(rule);
@@ -233,6 +260,7 @@ public class RedirectService : IRedirectService
         return this;
     }
 
+
     public virtual bool IsRedirectAllowed(string redirectUrl)
     {
         if (!Uri.TryCreate(redirectUrl, UriKind.RelativeOrAbsolute, out var uri))
@@ -261,6 +289,7 @@ public class RedirectService : IRedirectService
         return false;
     }
 
+
     public bool HandleRelativeUrl(Uri uri)
     {
         // Implement logic for handling relative URLs on local server.
@@ -270,6 +299,11 @@ public class RedirectService : IRedirectService
     }
 
 
+    public bool IsMatch(string url, RedirectRule rule)
+    {
+        return Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out var uri)
+            && IsRuleMatch(uri, rule);
+    }
     public bool IsRuleMatch(Uri uri, RedirectRule rule)
     {
         return IsSchemeMatch(uri.Scheme.ToString(), rule.AllowedScheme) &&
@@ -287,16 +321,15 @@ public class RedirectService : IRedirectService
 
     public bool IsHostMatch(string url, Host allowedHost)
     {
-        if (string.IsNullOrWhiteSpace(url))
-        {
-            return false;
-        }
-
         if (allowedHost == Host.Any)
         {
             return true;
         }
 
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return false;
+        }
         // Check if URL already has a valid scheme; if not, prepend "http://" as a default
         if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
             !url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -374,6 +407,7 @@ public class RedirectService : IRedirectService
 }
 
 
+[ExcludeFromCodeCoverage( Justification ="Class is currently unused")]
 public class RedirectUrlValidator
 {
     private readonly IRedirectService _redirectService;
