@@ -16,10 +16,12 @@ namespace IdentityServerHost.Quickstart.UI;
 [Authorize]
 public class DiagnosticsController : Controller
 {
+    [HttpGet]
     public async Task<IActionResult> Index()
     {
-        var localAddresses = new string[] { "127.0.0.1", "::1", HttpContext.Connection.LocalIpAddress.ToString() };
-        if (!localAddresses.Contains(HttpContext.Connection.RemoteIpAddress.ToString()))
+        // allow only local request from local host and AspNetCore test host which will not have a local IP address or Remote IP address
+        var localAddresses = new string[] { "127.0.0.1", "::1", HttpContext.Connection.LocalIpAddress?.ToString() ?? "localhost" };
+        if (!localAddresses.Contains(HttpContext.Connection.RemoteIpAddress?.ToString() ?? "localhost"))
         {
             return NotFound();
         }

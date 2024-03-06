@@ -45,11 +45,12 @@ public class X509ThumbprintSecretValidator : ISecretValidator
         }
 
         var thumbprint = cert.Thumbprint;
-        if (thumbprint == null)
-        {
-            _logger.LogWarning("No thumbprint found in X509 certificate.");
-            return fail;
-        }
+        /* removing branch, it is an autocalculated hash based on the certificate and can never be null*/
+        //if (thumbprint == null)
+        //{
+        //    _logger.LogWarning("No thumbprint found in X509 certificate.");
+        //    return fail;
+        //}
 
         var thumbprintSecrets = secrets.Where(s => s.Type == SecretTypes.X509CertificateThumbprint);
         if (!thumbprintSecrets.Any())

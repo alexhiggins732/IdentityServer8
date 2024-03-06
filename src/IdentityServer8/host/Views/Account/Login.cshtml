@@ -1,5 +1,6 @@
 @model LoginViewModel
-
+@using Microsoft.Extensions.Configuration
+@inject IConfiguration Configuration
 <div class="login-page">
     <div class="lead">
         <h1>Login</h1>
@@ -41,6 +42,11 @@
                                     </div>
                                 </div>
                             }
+
+                            <div>
+                                <p>@Configuration["DefaultUsers"]</p>
+                            </div>
+
                             <button class="btn btn-primary" name="button" value="login">Login</button>
                             <button class="btn btn-secondary" name="button" value="cancel" formaction="/Account/LoginCancel">Cancel</button>
                         </form>

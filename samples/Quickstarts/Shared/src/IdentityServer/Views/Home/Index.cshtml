@@ -1,7 +1,8 @@
 @using System.Diagnostics
+@using System.Reflection
 
 @{
-    var version = FileVersionInfo.GetVersionInfo(typeof(IdentityServer8.Hosting.IdentityServerMiddleware).Assembly.Location).ProductVersion.Split('+').First();
+    var version = typeof(IdentityServer8.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+').First();
 }
 
 <div class="welcome-page">

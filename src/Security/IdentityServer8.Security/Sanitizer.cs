@@ -126,7 +126,7 @@ public class SanitizerBase : IInputSanitizer
                     case SanitizerMode.Mask:
                         return Mask(result);
                     case SanitizerMode.Full:
-                        return result;
+                        return Mask(result, 0);
                     default:
                         throw new NotImplementedException();
                 }
@@ -136,7 +136,7 @@ public class SanitizerBase : IInputSanitizer
     }
 
 
-    public string? Mask(string? input, int unmaskedChars = 4, bool unmaskFirst = false)
+    public string? Mask(string? input, int unmaskedChars = 6, bool unmaskFirst = false)
     {
         if (string.IsNullOrEmpty(input))
             return input;
@@ -152,11 +152,11 @@ public class SanitizerBase : IInputSanitizer
         }
         else if (unmaskFirst)
         {
-            return input.Substring(0, unmaskedChars) + new string('*', input.Length - unmaskedChars);
+            return input.Substring(0, unmaskedChars) + (input.Length - unmaskedChars < 1 ? "" : new string('*', input.Length - unmaskedChars));
         }
         else
         {
-            return new string('*', input.Length - unmaskedChars) + input.Substring(input.Length - unmaskedChars);
+            return new string('*', unmaskedChars) + (input.Length - unmaskedChars < 1 ? "" : input.Substring(unmaskedChars));
         }
     }
 
@@ -211,7 +211,9 @@ public class JsonSanitizer : SanitizerBase, IJsonSanitizer
 }
 public class UrlSanitizer : SanitizerBase, IUrlSanitizer
 {
-    public UrlSanitizer() : base(x => Uri.EscapeUriString(x?.ToString() ?? ""))
+#pragma warning disable SYSLIB0013 // Type or member is obsolete
+    public UrlSanitizer() : base(x => Uri.EscapeUriString((x?.ToString() ?? "").Trim()))
+#pragma warning restore SYSLIB0013 // Type or member is obsolete
     {
 
     }
@@ -225,7 +227,7 @@ public class CssSanitizer : SanitizerBase, ICssSanitizer
 }
 public class ScriptSanitizer : SanitizerBase, IScriptSanitizer
 {
-    public ScriptSanitizer() : base(x => Uri.EscapeDataString(x?.ToString() ?? ""))
+    public ScriptSanitizer() : base(HttpUtility.HtmlEncode)
     {
 
     }
@@ -258,7 +260,7 @@ public class LogSanitizer : SanitizerBase, ILogSanitizer
         switch (mode)
         {
             case SanitizerMode.Debug:
-                return base.Mask(input, input.Length);
+                return input;
             case SanitizerMode.Clean:
                 return base.Clean(input);
             case SanitizerMode.Mask:
@@ -266,7 +268,7 @@ public class LogSanitizer : SanitizerBase, ILogSanitizer
             case SanitizerMode.Full:
                 return base.Mask(input, 0);
             default:
-                throw new NotImplementedException();
+                throw new ArgumentException($"Specified mode: {(int) mode} is not a valid {nameof(SanitizerMode)}");
         }
     }
 }
@@ -302,7 +304,7 @@ public class SanitizerFactory : ISanitizerFactory
             case SanitizerType.LogSanitizer:
                 return new LogSanitizer();
             default:
-                throw new NotImplementedException();
+                throw new ArgumentException($"Specified mode: {(int) type} is not a valid {nameof(SanitizerType)}");
         }
     }
 }

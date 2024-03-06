@@ -10,17 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-using JsonSerializer = System.Text.Json.JsonSerializer;
-
 namespace IdentityServerHost.Quickstart.UI;
 
 public class TestUsers
 {
-    public static List<TestUser> Users
-    {
-        get
-        {
-            var address = new
+
+    static readonly object UserAddress = new
             {
                 street_address = "One Hacker Way",
                 locality = "Heidelberg",
@@ -28,41 +23,39 @@ public class TestUsers
                 country = "Germany"
             };
             
-            return new List<TestUser>
+    public static List<TestUser> Users => new List<TestUser>
             {
-                new TestUser
+        new()
                 {
                     SubjectId = "818727",
                     Username = "alice",
                     Password = "alice",
                     Claims =
                     {
-                        new Claim(JwtClaimTypes.Name, "Alice Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Alice"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "AliceSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://alice.com"),
-                        new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                new (Name, "Alice Smith"),
+                new (GivenName, "Alice"),
+                new (FamilyName, "Smith"),
+                new (Email, "AliceSmith@email.com"),
+                new (EmailVerified, "true", ClaimValueTypes.Boolean),
+                new (WebSite, "http://alice.com"),
+                new (Address, JsonSerializer.Serialize(UserAddress), IdentityServerClaimValueTypes.Json)
                     }
                 },
-                new TestUser
+        new()
                 {
                     SubjectId = "88421113",
                     Username = "bob",
                     Password = "bob",
                     Claims =
                     {
-                        new Claim(JwtClaimTypes.Name, "Bob Smith"),
-                        new Claim(JwtClaimTypes.GivenName, "Bob"),
-                        new Claim(JwtClaimTypes.FamilyName, "Smith"),
-                        new Claim(JwtClaimTypes.Email, "BobSmith@email.com"),
-                        new Claim(JwtClaimTypes.EmailVerified, "true", ClaimValueTypes.Boolean),
-                        new Claim(JwtClaimTypes.WebSite, "http://bob.com"),
-                        new Claim(JwtClaimTypes.Address, JsonSerializer.Serialize(address), IdentityServerConstants.ClaimValueTypes.Json)
+                new (Name, "Bob Smith"),
+                new (GivenName, "Bob"),
+                new (FamilyName, "Smith"),
+                new (Email, "BobSmith@email.com"),
+                new (EmailVerified, "true", ClaimValueTypes.Boolean),
+                new (WebSite, "http://bob.com"),
+                new (Address, JsonSerializer.Serialize(UserAddress), IdentityServerClaimValueTypes.Json)
                     }
                 }
             };
-        }
-    }
 }

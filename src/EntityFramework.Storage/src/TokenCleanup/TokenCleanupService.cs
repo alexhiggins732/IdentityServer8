@@ -12,10 +12,15 @@
 
 namespace IdentityServer8.EntityFramework
 {
+    public interface ITokenCleanupService
+    {
+        Task RemoveExpiredGrantsAsync();
+    }
+
     /// <summary>
     /// Helper to cleanup stale persisted grants and device codes.
     /// </summary>
-    public class TokenCleanupService
+    public class TokenCleanupService : ITokenCleanupService
     {
         private readonly OperationalStoreOptions _options;
         private readonly IPersistedGrantDbContext _persistedGrantDbContext;
@@ -31,7 +36,7 @@ namespace IdentityServer8.EntityFramework
         /// <param name="logger"></param>
         public TokenCleanupService(
             OperationalStoreOptions options,
-            IPersistedGrantDbContext persistedGrantDbContext, 
+            IPersistedGrantDbContext persistedGrantDbContext,
             ILogger<TokenCleanupService> logger,
             IOperationalStoreNotification operationalStoreNotification = null)
         {
@@ -70,7 +75,7 @@ namespace IdentityServer8.EntityFramework
         protected virtual async Task RemoveGrantsAsync()
         {
             var found = Int32.MaxValue;
-            
+
             while (found >= _options.TokenCleanupBatchSize)
             {
                 var expiredGrants = await _persistedGrantDbContext.PersistedGrants

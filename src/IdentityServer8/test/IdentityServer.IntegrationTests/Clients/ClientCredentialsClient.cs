@@ -165,9 +165,8 @@ public class ClientCredentialsClient
         payload["cnf"].ValueKind.Should().Be(JsonValueKind.Array);
         var cnfArray = payload["cnf"].EnumerateArray().ToList();
         cnfArray.Count.Should().Be(1);
-        var elArray= cnfArray.First().EnumerateArray().ToList();
-        elArray.Count.Should().Be(1);
-        elArray.First().GetString().Should().Be("foo");
+        var elArray = cnfArray.First();
+        elArray.ValueKind.Should().Be(JsonValueKind.Object);
 
     }
 

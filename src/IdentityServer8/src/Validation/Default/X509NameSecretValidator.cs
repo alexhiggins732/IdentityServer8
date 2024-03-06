@@ -45,7 +45,7 @@ public class X509NameSecretValidator : ISecretValidator
         }
 
         var name = cert.Subject;
-        if (name == null)
+        if (string.IsNullOrEmpty(name))
         {
             _logger.LogWarning("No subject/name found in X509 certificate.");
             return fail;

@@ -7,7 +7,7 @@
     </div>
 </div>
 
-<meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl.SantizeForRedirect()">
+<meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl.SanitizeForRedirect()">
 <script>
     var url = '@Model.RedirectUrl.SanitizeForUrl()';
     window.location.href = url;

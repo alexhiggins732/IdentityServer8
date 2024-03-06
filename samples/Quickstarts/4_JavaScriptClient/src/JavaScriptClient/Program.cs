@@ -10,7 +10,12 @@
  copies or substantial portions of the Software.
 */
 
+using System.Diagnostics.CodeAnalysis;
+
 var app = WebApplication.Create(args);
 app.UseDefaultFiles();
 app.UseStaticFiles();
 await app.RunAsync();
+
+[ExcludeFromCodeCoverage]
+public partial class Program { }

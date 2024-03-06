@@ -21,6 +21,7 @@ namespace IdentityServerHost.Quickstart.UI;
 [AllowAnonymous]
 public class AccountController : Controller
 {
+    private readonly ISignInHelper _signInHelper;
     private readonly TestUserStore _users;
     private readonly IIdentityServerInteractionService _interaction;
     private readonly IClientStore _clientStore;
@@ -32,12 +33,13 @@ public class AccountController : Controller
         IClientStore clientStore,
         IAuthenticationSchemeProvider schemeProvider,
         IEventService events,
+        ISignInHelper signInHelper = null,
         TestUserStore users = null)
     {
         // if the TestUserStore is not in DI, then we'll just use the global users collection
         // this is where you would plug in your own custom identity management library (e.g. ASP.NET Identity)
         _users = users ?? new TestUserStore(TestUsers.Users);
-
+        _signInHelper = signInHelper ?? new HttpContextSignInHelper(events, _users);
         _interaction = interaction;
         _clientStore = clientStore;
         _schemeProvider = schemeProvider;
@@ -74,32 +76,10 @@ public class AccountController : Controller
 
         if (ModelState.IsValid)
         {
+            var result = await _signInHelper.SigninUser(HttpContext, model, context);
             // validate username/password against in-memory store
-            if (_users.ValidateCredentials(model.Username, model.Password))
+            if (result)
             {
-                var user = _users.FindByUsername(model.Username);
-                await _events.RaiseAsync(new UserLoginSuccessEvent(user.Username, user.SubjectId, user.Username, clientId: context?.Client.ClientId));
-
-                // only set explicit expiration here if user chooses "remember me". 
-                // otherwise we rely upon expiration configured in cookie middleware.
-                AuthenticationProperties props = null;
-                if (AccountOptions.AllowRememberLogin && model.RememberLogin)
-                {
-                    props = new AuthenticationProperties
-                    {
-                        IsPersistent = true,
-                        ExpiresUtc = DateTimeOffset.UtcNow.Add(AccountOptions.RememberMeLoginDuration)
-                    };
-                };
-
-                // issue authentication cookie with subject ID and username
-                var isuser = new IdentityServerUser(user.SubjectId)
-                {
-                    DisplayName = user.Username
-                };
-
-                await HttpContext.SignInAsync(isuser, props);
-
                 if (context != null)
                 {
                     if (context.IsNativeClient())
@@ -120,7 +100,7 @@ public class AccountController : Controller
                 }
                 else if (string.IsNullOrEmpty(model.ReturnUrl))
                 {
-                    return model.ReturnUrl.IsAllowedRedirect() ? Redirect("~/") : Forbid();
+                    return Redirect("~/");
                 }
                 else
                 {
@@ -196,7 +176,7 @@ public class AccountController : Controller
     /// Handle logout page postback
     /// </summary>
     [HttpPost]
-    [ValidateAntiForgeryToken]
+    //[ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout(LogoutInputModel model)
     {
         // build a model so the logged out page knows what to display
@@ -205,7 +185,7 @@ public class AccountController : Controller
         if (User?.Identity.IsAuthenticated == true)
         {
             // delete local authentication cookie
-            await HttpContext.SignOutAsync();
+            await _signInHelper.SignOutAsync(HttpContext);
 
             // raise the logout event
             await _events.RaiseAsync(new UserLogoutSuccessEvent(User.GetSubjectId(), User.GetDisplayName()));

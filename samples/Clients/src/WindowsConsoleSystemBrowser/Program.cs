@@ -146,18 +146,18 @@ void BringConsoleToFront()
     SetForegroundWindow(GetConsoleWindow());
 }
 
-static string GetRequestPostData(HttpListenerRequest request)
-{
-    if (!request.HasEntityBody)
-    {
-        return null;
-    }
+//static string GetRequestPostData(HttpListenerRequest request)
+//{
+//    if (!request.HasEntityBody)
+//    {
+//        return null;
+//    }
 
-    using (var body = request.InputStream)
-    {
-        using (var reader = new System.IO.StreamReader(body, request.ContentEncoding))
-        {
-            return reader.ReadToEnd();
-        }
-    }
-}
+//    using (var body = request.InputStream)
+//    {
+//        using (var reader = new System.IO.StreamReader(body, request.ContentEncoding))
+//        {
+//            return reader.ReadToEnd();
+//        }
+//    }
+//}

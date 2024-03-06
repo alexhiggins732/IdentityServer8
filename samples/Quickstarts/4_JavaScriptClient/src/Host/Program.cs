@@ -10,6 +10,9 @@
  copies or substantial portions of the Software.
 */
 
+
+using System.Diagnostics.CodeAnalysis;
+
 ConfigureLogger();
 
 Console.Title = "Identity Server";
@@ -26,12 +29,14 @@ try
     services.AddControllersWithViews();
 
     services
+        .AddSingleton<ISignInHelper, HttpContextSignInHelper>()
         .AddIdentityServer()
         .AddInMemoryIdentityResources(Config.IdentityResources)
         .AddInMemoryApiScopes(Config.ApiScopes)
         .AddInMemoryClients(Config.Clients)
         .AddTestUsers(TestUsers.Users)
         .AddDeveloperSigningCredential();
+
 
     services.AddAuthentication()
         .AddGoogle("Google", options =>
@@ -104,3 +109,6 @@ void ConfigureLogger() => Log.Logger = new LoggerConfiguration()
     //    flushToDiskInterval: TimeSpan.FromSeconds(1))
     .WriteTo.Console(outputTemplate: "[{Timestamp:HH:mm:ss} {Level}] {SourceContext}{NewLine}{Message:lj}{NewLine}{Exception}{NewLine}", theme: AnsiConsoleTheme.Code)
     .CreateLogger();
+
+[ExcludeFromCodeCoverage]
+public partial class Program { }

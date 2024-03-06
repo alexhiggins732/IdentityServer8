@@ -10,11 +10,16 @@
  copies or substantial portions of the Software.
 */
 
+using System.Diagnostics.CodeAnalysis;
+
 namespace IdentityServer8.Security;
 
 public interface IRedirectService
 {
     bool IsRedirectAllowed(string redirectUrl);
+    List<RedirectRule> GetRedirectRules();
+    bool IsMatch(string url, RedirectRule rule);
+    bool IsRuleMatch(Uri uri, RedirectRule rule);
 }
 
 
@@ -22,7 +27,7 @@ public class RuleMatcher
 {
     public bool IsMatch(string url, RedirectRule rule)
     {
-        throw new NotImplementedException();
+        return Ioc.RedirectService.IsMatch(url, rule);
     }
 }
 public class RedirectRule
@@ -49,20 +54,17 @@ public class RedirectRule
 
 public class Scheme
 {
-    public Scheme(string name) { Name = name; }
+    public Scheme(string name) { Name = (name ?? "").Trim().ToLower(); }
     public string Name { get; }
-
+    public bool IsAny => Name == "";
     public static readonly Scheme Http = new Scheme("http");
     public static readonly Scheme Https = new Scheme("https");
-    public static readonly Scheme Any = new Scheme("*");
+    public static readonly Scheme Any = new Scheme("");
 
     public static Scheme Parse(string schemeName)
     {
-        if (string.IsNullOrWhiteSpace(schemeName))
-        {
-            throw new ArgumentException("Scheme name cannot be null or empty");
-        }
-        else if (schemeName.Equals("http", StringComparison.OrdinalIgnoreCase))
+        schemeName = (schemeName ?? "").Trim().ToLower();
+        if (schemeName.Equals("http", StringComparison.OrdinalIgnoreCase))
         {
             return Http;
         }
@@ -70,7 +72,7 @@ public class Scheme
         {
             return Https;
         }
-        else if (schemeName.Equals("*", StringComparison.OrdinalIgnoreCase))
+        else if (schemeName == "" || schemeName.Equals("*", StringComparison.OrdinalIgnoreCase))
         {
             return Any;
         }
@@ -91,7 +93,7 @@ public class Host
 {
     public Host(string value)
     {
-        Value = ((value ?? "").ToLower().Trim() ?? "");
+        Value = (value ?? "").ToLower().Trim();
         var domainParts = Value.Split('.');
         domainParts = domainParts.Where(x => !string.IsNullOrEmpty(x)).ToArray();
         HostParts = new List<string>(domainParts);
@@ -108,47 +110,48 @@ public class Host
     public bool IsAny => Value == "*";
     public bool IsLocalhost => Value.Equals("localhost", StringComparison.OrdinalIgnoreCase) || Value.Equals("127.0.0.1");
     public bool IsIpAddress => Uri.CheckHostName(Value) == UriHostNameType.IPv4 || Uri.CheckHostName(Value) == UriHostNameType.IPv6;
-    public bool IsLocalNetwork => IsLocalhost || IsIpAddress;
-    public bool IsFullQualifiedDomainName => !IsLocalNetwork && !HasWildcard && !IsAny && Value.IndexOf('.') > -1;
+    public bool IsLocalOrIpNetwork => IsLocalhost || IsIpAddress;
+    public bool IsFullQualifiedDomainName => !IsLocalOrIpNetwork && !HasWildcard && !IsAny && Value.IndexOf('.') > -1;
 
 }
 
 public class Port
 {
-    public Port(int value) { Value = value; }
-    public int Value { get; }
+    public Port(ushort value) { Value = value; }
+    public ushort Value { get; }
 
-    public static readonly Port Any = new Port(-1); // Assuming -1 signifies any port
+    public bool IsAny => Value == 0;
+    public static readonly Port Any = new Port(0); // Assuming -1 signifies any port
 
-    public static Port Create(int portNumber) => new Port(portNumber);
+    public static Port Create(ushort portNumber) => new Port(portNumber);
 }
 
 public class Path
 {
-    public Path(string value) { Value = value; }
+    public Path(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
-    public static readonly Path Any = new Path("*");
+    public bool IsAny => Value == "";
+    public static readonly Path Any = new Path("");
 
     public static Path Create(string path) => new Path(path);
 }
 
 public class Query
 {
-    public Query(string value) { Value = value; }
+    public Query(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
-    public static readonly Query Any = new Query("*");
+    public bool IsAny => Value == "";
+    public static readonly Query Any = new Query("");
 
     public static Query Create(string query) => new Query(query);
 }
 
 public class Fragment
 {
-    public Fragment(string value) { Value = value; }
+    public Fragment(string value) { Value = (value ?? "").Trim(); }
     public string Value { get; }
-
-    public static readonly Fragment Any = new Fragment("*");
+    public bool IsAny => Value == "";
+    public static readonly Fragment Any = new Fragment("");
 
     public static Fragment Create(string fragment) => new Fragment(fragment);
 }
@@ -188,6 +191,24 @@ public class AllowAnyRedirectService : RedirectService
     }
 }
 
+
+[ExcludeFromCodeCoverage(Justification = "Class is currently unused")]
+public class UrlValidator
+{
+    public static bool IsInvalidUri(Uri uri)
+    {
+        try
+        {
+            var path = uri.AbsolutePath;
+            var valid = string.IsNullOrWhiteSpace(path) || path.Length > 0;
+            return !valid;
+        }
+        catch (Exception)
+        {
+            return true;
+        }
+    }
+}
 public class RedirectService : IRedirectService
 {
     public RedirectService(ILogger<RedirectService> logger, ISanitizer sanitizer)
@@ -199,6 +220,10 @@ public class RedirectService : IRedirectService
     private readonly ILogger<RedirectService> _logger;
     private readonly ISanitizer _sanitizer;
 
+    public List<RedirectRule> GetRedirectRules()
+    {
+        return _rules;
+    }
     public IRedirectService AddRedirectRule(RedirectRule rule)
     {
         _rules.Add(rule);
@@ -235,6 +260,7 @@ public class RedirectService : IRedirectService
         return this;
     }
 
+
     public virtual bool IsRedirectAllowed(string redirectUrl)
     {
         if (!Uri.TryCreate(redirectUrl, UriKind.RelativeOrAbsolute, out var uri))
@@ -263,6 +289,7 @@ public class RedirectService : IRedirectService
         return false;
     }
 
+
     public bool HandleRelativeUrl(Uri uri)
     {
         // Implement logic for handling relative URLs on local server.
@@ -272,9 +299,14 @@ public class RedirectService : IRedirectService
     }
 
 
+    public bool IsMatch(string url, RedirectRule rule)
+    {
+        return Uri.TryCreate(url, UriKind.RelativeOrAbsolute, out var uri)
+            && IsRuleMatch(uri, rule);
+    }
     public bool IsRuleMatch(Uri uri, RedirectRule rule)
     {
-        return IsSchemeMatch(uri, rule.AllowedScheme) &&
+        return IsSchemeMatch(uri.Scheme.ToString(), rule.AllowedScheme) &&
                IsHostMatch(uri, rule.AllowedHost) &&
                IsPortMatch(uri, rule.AllowedPort) &&
                IsPathMatch(uri, rule.AllowedPath) &&
@@ -282,23 +314,22 @@ public class RedirectService : IRedirectService
                IsFragmentMatch(uri, rule.AllowedFragment);
     }
 
-    public bool IsSchemeMatch(Uri uri, Scheme allowedScheme)
+    public bool IsSchemeMatch(string scheme, Scheme allowedScheme)
     {
-        return allowedScheme == Scheme.Any || uri.Scheme.Equals(allowedScheme.Name, StringComparison.OrdinalIgnoreCase);
+        return allowedScheme.IsAny || scheme.Equals(allowedScheme.Name, StringComparison.OrdinalIgnoreCase);
     }
 
     public bool IsHostMatch(string url, Host allowedHost)
     {
-        if (string.IsNullOrWhiteSpace(url))
-        {
-            return false;
-        }
-
         if (allowedHost == Host.Any)
         {
             return true;
         }
 
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return false;
+        }
         // Check if URL already has a valid scheme; if not, prepend "http://" as a default
         if (!url.StartsWith("http://", StringComparison.OrdinalIgnoreCase) &&
             !url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -376,6 +407,7 @@ public class RedirectService : IRedirectService
 }
 
 
+[ExcludeFromCodeCoverage( Justification ="Class is currently unused")]
 public class RedirectUrlValidator
 {
     private readonly IRedirectService _redirectService;

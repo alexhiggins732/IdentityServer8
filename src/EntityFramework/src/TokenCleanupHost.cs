@@ -10,7 +10,10 @@
  copies or substantial portions of the Software.
 */
 
+using System.Runtime.CompilerServices;
+
 namespace Microsoft.Extensions.DependencyInjection;
+
 
 /// <summary>
 /// Helper to cleanup expired persisted grants.
@@ -41,7 +44,7 @@ public class TokenCleanupHost : IHostedService
     /// <summary>
     /// Starts the token cleanup polling.
     /// </summary>
-    public Task StartAsync(CancellationToken cancellationToken)
+    public virtual Task StartAsync(CancellationToken cancellationToken)
     {
         if (_options.EnableTokenCleanup)
         {
@@ -60,7 +63,7 @@ public class TokenCleanupHost : IHostedService
     /// <summary>
     /// Stops the token cleanup polling.
     /// </summary>
-    public Task StopAsync(CancellationToken cancellationToken)
+    public virtual Task StopAsync(CancellationToken cancellationToken)
     {
         if (_options.EnableTokenCleanup)
         {
@@ -75,7 +78,7 @@ public class TokenCleanupHost : IHostedService
         return Task.CompletedTask;
     }
 
-    private async Task StartInternalAsync(CancellationToken cancellationToken)
+    public virtual async Task StartInternalAsync(CancellationToken cancellationToken)
     {
         while (true)
         {
@@ -110,13 +113,13 @@ public class TokenCleanupHost : IHostedService
         }
     }
 
-    async Task RemoveExpiredGrantsAsync()
+    public async Task RemoveExpiredGrantsAsync()
     {
         try
         {
-            using (var serviceScope = _serviceProvider.GetRequiredService<IServiceScopeFactory>().CreateScope())
+            using (var serviceScope = _serviceProvider.CreateScope())
             {
-                var tokenCleanupService = serviceScope.ServiceProvider.GetRequiredService<TokenCleanupService>();
+                var tokenCleanupService = serviceScope.ServiceProvider.GetRequiredService<ITokenCleanupService>();
                 await tokenCleanupService.RemoveExpiredGrantsAsync();
             }
         }

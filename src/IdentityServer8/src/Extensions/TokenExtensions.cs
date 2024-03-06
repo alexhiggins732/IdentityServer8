@@ -10,6 +10,7 @@
  copies or substantial portions of the Software.
 */
 
+
 namespace IdentityServer8.Extensions;
 
 /// <summary>
@@ -44,7 +45,7 @@ public static class TokenExtensions
         var amrClaims = token.Claims.Where(x => x.Type == JwtClaimTypes.AuthenticationMethod).ToArray();
         var scopeClaims = token.Claims.Where(x => x.Type == JwtClaimTypes.Scope).ToArray();
         var jsonClaims = token.Claims.Where(x => x.ValueType == IdentityServerConstants.ClaimValueTypes.Json).ToList();
-        
+
         // add confirmation claim if present (it's JSON valued)
         if (token.Confirmation.IsPresent())
         {
@@ -79,15 +80,25 @@ public static class TokenExtensions
             var amrValues = amrClaims.Select(x => x.Value).Distinct().ToArray();
             payload.Add(JwtClaimTypes.AuthenticationMethod, amrValues);
         }
-        
+
         // deal with json types
         // calling ToArray() to trigger JSON parsing once and so later 
         // collection identity comparisons work for the anonymous type
+
+
+        // return ParseJsonClaimsWithNewtonsoft(logger, payload, jsonClaims);
+        return ParseJsonClaimsWithSystemTextJson(logger, payload, jsonClaims);
+
+
+    }
+
+    private static JwtPayload ParseJsonClaimsWithSystemTextJson(ILogger logger, JwtPayload payload, List<Claim> jsonClaims)
+    {
         try
         {
-            var jsonTokens = jsonClaims.Select(x => new { x.Type, JsonValue = JRaw.Parse(x.Value) }).ToArray();
+            var jsonTokens = jsonClaims.Select(x => new { x.Type, JsonValue = JsonDocument.Parse(x.Value).RootElement }).ToArray();
 
-            var jsonObjects = jsonTokens.Where(x => x.JsonValue.Type == JTokenType.Object).ToArray();
+            var jsonObjects = jsonTokens.Where(x => x.JsonValue.ValueKind == JsonValueKind.Object).ToArray();
             var jsonObjectGroups = jsonObjects.GroupBy(x => x.Type).ToArray();
             foreach (var group in jsonObjectGroups)
             {
@@ -95,6 +106,11 @@ public static class TokenExtensions
                 {
                     throw new Exception($"Can't add two claims where one is a JSON object and the other is not a JSON object ({group.Key})");
                 }
+
+
+                // NewtonSoft serializes a single element as an array, so we need to do the same here
+                // otherwise, system.text.json will serialize as a single object 
+                //payload.Add(group.Key, group.Select(x => x.JsonValue).ToArray());
 
                 if (group.Skip(1).Any())
                 {
@@ -104,11 +120,15 @@ public static class TokenExtensions
                 else
                 {
                     // add just one
-                    payload.Add(group.Key, group.First().JsonValue);
+                    //payload.Add(group.Key, group.First().JsonValue);
+                    payload.Add(group.Key, group.Select(x => x.JsonValue).ToArray());
+                    ////JsonElement singleArrayElement = JsonDocument.Parse(JsonSerializer.Serialize(new[] { JsonDocument.Parse(group.First().JsonValue.GetRawText()).RootElement })).RootElement;
+                    ////payload.Add(group.Key, singleArrayElement);
                 }
+
             }
 
-            var jsonArrays = jsonTokens.Where(x => x.JsonValue.Type == JTokenType.Array).ToArray();
+            var jsonArrays = jsonTokens.Where(x => x.JsonValue.ValueKind == JsonValueKind.Array).ToArray();
             var jsonArrayGroups = jsonArrays.GroupBy(x => x.Type).ToArray();
             foreach (var group in jsonArrayGroups)
             {
@@ -117,24 +137,23 @@ public static class TokenExtensions
                     throw new Exception(
                         $"Can't add two claims where one is a JSON array and the other is not a JSON array ({group.Key})");
                 }
-
-                var newArr = new List<JToken>();
+                var newArr = new List<JsonElement>();
                 foreach (var arrays in group)
                 {
-                    var arr = (JArray)arrays.JsonValue;
-                    newArr.AddRange(arr);
+                    var arr = arrays.JsonValue.EnumerateArray();
+                    newArr.AddRange(arr.ToArray());
                 }
 
                 // add just one array for the group/key/claim type
                 payload.Add(group.Key, newArr.ToArray());
             }
 
-            var unsupportedJsonTokens = jsonTokens.Except(jsonObjects).Except(jsonArrays).ToArray();
+            var unsupportedJsonTokens = jsonTokens.Where(x => x.JsonValue.ValueKind != JsonValueKind.Object && x.JsonValue.ValueKind != JsonValueKind.Array).ToArray();
             var unsupportedJsonClaimTypes = unsupportedJsonTokens.Select(x => x.Type).Distinct().ToArray();
             if (unsupportedJsonClaimTypes.Any())
             {
                 throw new Exception(
-                    $"Unsupported JSON type for claim types: {unsupportedJsonClaimTypes.Aggregate((x, y) => x + ", " + y)}");
+                    $"Unsupported JSON type for claim types: {string.Join(", ", unsupportedJsonClaimTypes)}");
             }
 
             return payload;
@@ -145,4 +164,5 @@ public static class TokenExtensions
             throw;
         }
     }
+
 }
