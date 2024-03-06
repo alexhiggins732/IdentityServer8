@@ -11,6 +11,8 @@
 */
 
 using System;
+using System.Security.Cryptography;
+using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
@@ -185,6 +187,137 @@ namespace IdentityServer.UnitTests.Validation.Secrets
 
         [Fact]
         [Trait("Category", Category)]
+        public async Task Thumb_invalid_secret_should_not_match()
+        {
+            ISecretValidator validator = new X509ThumbprintSecretValidator(new Logger<X509ThumbprintSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = TestCert.Load(),
+                Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+            var result = await validator.ValidateAsync(client.ClientSecrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+
+        [Fact]
+        [Trait("Category", Category)]
+        public async Task Name_invalid_secret_with_no_type_should_not_match()
+        {
+            ISecretValidator validator = new X509NameSecretValidator(new Logger<X509NameSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = TestCert.Load(),
+                //Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+            var result = await validator.ValidateAsync(client.ClientSecrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
+        public async Task Thumb_invalid_secret_with_no_type_should_not_match()
+        {
+            ISecretValidator validator = new X509ThumbprintSecretValidator(new Logger<X509ThumbprintSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = TestCert.Load(),
+                //Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+            var result = await validator.ValidateAsync(client.ClientSecrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
+        public async Task Name_invalid_secret_with_no_subject_should_not_match()
+        {
+            ISecretValidator validator = new X509NameSecretValidator(new Logger<X509NameSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+            var cert = GenerateCertificateWithNoName();
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = cert,
+                Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+            var result = await validator.ValidateAsync(client.ClientSecrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
+        public async Task Name_without_cert_secret_should_not_match()
+        {
+            ISecretValidator validator = new X509NameSecretValidator(new Logger<X509NameSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = TestCert.Load(),
+                Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+
+            var secrets = client.ClientSecrets.Take(0);
+            var result = await validator.ValidateAsync(secrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
+        public async Task Thumbpint_without_cert_secret_should_not_match()
+        {
+            ISecretValidator validator = new X509ThumbprintSecretValidator(new Logger<X509ThumbprintSecretValidator>(new LoggerFactory()));
+
+            var clientId = "mtls_client_invalid";
+            var client = await _clients.FindEnabledClientByIdAsync(clientId);
+
+            var secret = new ParsedSecret
+            {
+                Id = clientId,
+                Credential = TestCert.Load(),
+                Type = IdentityServerConstants.ParsedSecretTypes.X509Certificate
+            };
+
+
+            var secrets = client.ClientSecrets.Take(0);
+            var result = await validator.ValidateAsync(secrets, secret);
+
+            result.Success.Should().BeFalse();
+        }
+
+        [Fact]
+        [Trait("Category", Category)]
         public async Task Name_valid_secret_should_match()
         {
             ISecretValidator validator = new X509NameSecretValidator(new Logger<X509NameSecretValidator>(new LoggerFactory()));
@@ -202,6 +335,28 @@ namespace IdentityServer.UnitTests.Validation.Secrets
             var result = await validator.ValidateAsync(client.ClientSecrets, secret);
 
             result.Success.Should().BeTrue();
+        }
+
+
+
+
+
+        private X509Certificate2 GenerateCertificateWithNoName()
+        {
+            using (var rsa = RSA.Create(2048))
+            {
+               // string? subjectName = null;
+                var request = new CertificateRequest("", rsa, HashAlgorithmName.SHA256, RSASignaturePadding.Pkcs1);
+
+                // Note: Setting the subject name to "CN=placeholder" or similar minimal detail.
+                // Adjust as needed to minimize certificate details.
+
+                var certificate = request.CreateSelfSigned(DateTimeOffset.Now, DateTimeOffset.Now.AddYears(5));
+
+                // Export and re-import the certificate to detach it from the private key (if not needed)
+                var exported = certificate.Export(X509ContentType.Pfx, "password");
+                return new X509Certificate2(exported, "password", X509KeyStorageFlags.Exportable);
+            }
         }
     }
 }
