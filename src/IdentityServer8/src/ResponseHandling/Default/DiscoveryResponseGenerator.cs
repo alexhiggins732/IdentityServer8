@@ -331,7 +331,7 @@ public class DiscoveryResponseGenerator : IDiscoveryResponseGenerator
         }
 
         // custom entries
-        if (!Options.Discovery.CustomEntries.IsNullOrEmpty())
+        if (!Options.Discovery.CustomEntries.Any())
         {
             foreach ((string key, object value) in Options.Discovery.CustomEntries)
             {
