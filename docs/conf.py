@@ -256,7 +256,7 @@ html_static_path = ['_static']
 # html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'IdentityServer8doc'
+htmlhelp_basename = 'IdentityServerdoc'
 
 # -- Options for LaTeX output ---------------------------------------------
 

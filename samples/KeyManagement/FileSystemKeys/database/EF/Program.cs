@@ -58,7 +58,7 @@ services.AddIdentityServer()
              options.KeyRetirement = options.KeyActivationDelay * 3;
 
              // You can get your own license from:
-             // https://www.identityserver8.com/products/KeyManagement
+             // https://www.identityserver.com/products/KeyManagement
              options.Licensee = "your licensee";
              options.License = "your license key";
          })

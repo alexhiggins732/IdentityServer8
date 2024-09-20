@@ -53,7 +53,7 @@ try
             options.SignOutScheme = IdentityServerConstants.SignoutScheme;
             options.SaveTokens = true;
 
-            options.Authority = "https://demo.identityserver8.io/";
+            options.Authority = "https://demo.identityserver.io/";
             options.ClientId = "interactive.confidential";
             options.ClientSecret = "secret";
             options.ResponseType = "code";

@@ -39,7 +39,7 @@ public static class ClientsWeb
             {
                 ClientId = "js_oidc",
                 ClientName = "JavaScript OIDC Client",
-                ClientUri = "http://identityserver8.io",
+                ClientUri = "http://identityserver.io",
                 
                 AllowedGrantTypes = GrantTypes.Code,
                 RequireClientSecret = false,
@@ -91,7 +91,7 @@ public static class ClientsWeb
             {
                 ClientId = "mvc.code",
                 ClientName = "MVC Code Flow",
-                ClientUri = "http://identityserver8.io",
+                ClientUri = "http://identityserver.io",
 
                 ClientSecrets =
                 {
@@ -117,7 +117,7 @@ public static class ClientsWeb
             {
                 ClientId = "mvc.hybrid.backchannel",
                 ClientName = "MVC Hybrid (with BackChannel logout)",
-                ClientUri = "http://identityserver8.io",
+                ClientUri = "http://identityserver.io",
 
                 ClientSecrets =
                 {
