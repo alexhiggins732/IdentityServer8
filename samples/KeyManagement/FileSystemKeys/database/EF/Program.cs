@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-Console.Title = "IdentityServer8";
+Console.Title = "IdentityServer";
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Host.UseSerilog((context, configuration) =>

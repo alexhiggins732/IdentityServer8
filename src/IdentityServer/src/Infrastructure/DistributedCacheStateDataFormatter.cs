@@ -12,7 +12,7 @@
 
 using Microsoft.AspNetCore.DataProtection;
 
-namespace IdentityServer8.Infrastructure;
+namespace IdentityServer.Infrastructure;
 
 /// <summary>
 /// State formatter using IDistributedCache

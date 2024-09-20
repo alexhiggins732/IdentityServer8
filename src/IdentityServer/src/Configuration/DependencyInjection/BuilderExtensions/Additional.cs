@@ -448,7 +448,7 @@ public static class IdentityServerBuilderExtensionsAdditional
         where T : class, IUserSession
     {
         // This is added as scoped due to the note regarding the AuthenticateAsync
-        // method in the IdentityServer8.Services.DefaultUserSession implementation.
+        // method in the IdentityServer.Services.DefaultUserSession implementation.
         builder.Services.AddScoped<IUserSession, T>();
 
         return builder;

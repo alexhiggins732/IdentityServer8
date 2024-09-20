@@ -13,8 +13,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Validation;
+using IdentityServer.Models;
+using IdentityServer.Validation;
 using Newtonsoft.Json;
 
 namespace IdentityServer.IntegrationTests.Clients.Setup;

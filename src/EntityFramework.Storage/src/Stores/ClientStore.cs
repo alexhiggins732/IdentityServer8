@@ -10,14 +10,14 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Models;
+using IdentityServer.Models;
 
-namespace IdentityServer8.EntityFramework.Stores
+namespace IdentityServer.EntityFramework.Stores
 {
     /// <summary>
     /// Implementation of IClientStore thats uses EF.
     /// </summary>
-    /// <seealso cref="IdentityServer8.Stores.IClientStore" />
+    /// <seealso cref="IdentityServer.Stores.IClientStore" />
     public class ClientStore : IClientStore
     {
         /// <summary>

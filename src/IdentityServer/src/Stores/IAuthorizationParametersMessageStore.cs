@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Interface for authorization request messages that are sent from the authorization endpoint to the login and consent UI.

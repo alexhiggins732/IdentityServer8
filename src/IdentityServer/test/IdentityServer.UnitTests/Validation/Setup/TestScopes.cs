@@ -11,7 +11,7 @@
 */
 
 using System.Collections.Generic;
-using IdentityServer8.Models;
+using IdentityServer.Models;
 
 namespace IdentityServer.UnitTests.Validation.Setup
 {

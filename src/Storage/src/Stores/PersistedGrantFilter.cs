@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Represents a filter used when accessing the persisted grants store. 

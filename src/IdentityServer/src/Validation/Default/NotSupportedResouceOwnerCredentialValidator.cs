@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Default resource owner password validator (no implementation == not supported)
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.IResourceOwnerPasswordValidator" />
+/// <seealso cref="IdentityServer.Validation.IResourceOwnerPasswordValidator" />
 public class NotSupportedResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
 {
     private readonly ILogger _logger;

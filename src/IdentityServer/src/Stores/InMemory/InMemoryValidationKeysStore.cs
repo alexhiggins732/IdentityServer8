@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// The default validation key store
 /// </summary>
-/// <seealso cref="IdentityServer8.Stores.IValidationKeysStore" />
+/// <seealso cref="IdentityServer.Stores.IValidationKeysStore" />
 public class InMemoryValidationKeysStore : IValidationKeysStore
 {
     private readonly IEnumerable<SecurityKeyInfo> _keys;

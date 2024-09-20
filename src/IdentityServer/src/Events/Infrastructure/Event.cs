@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// Models base class for events raised from IdentityServer.

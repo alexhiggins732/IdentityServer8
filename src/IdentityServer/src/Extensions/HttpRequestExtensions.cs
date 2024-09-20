@@ -15,7 +15,7 @@
 
 using System.Net.Http.Headers;
 
-namespace IdentityServer8.Extensions;
+namespace IdentityServer.Extensions;
 
 public static class HttpRequestExtensions
 {

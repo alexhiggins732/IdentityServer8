@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework
+namespace IdentityServer.EntityFramework
 {
     /// <summary>
     /// Helper to cleanup stale persisted grants and device codes.

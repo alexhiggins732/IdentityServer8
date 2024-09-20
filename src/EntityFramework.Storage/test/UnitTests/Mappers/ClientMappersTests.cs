@@ -13,11 +13,11 @@
 using System;
 using System.Linq;
 using FluentAssertions;
-using IdentityServer8.EntityFramework.Mappers;
+using IdentityServer.EntityFramework.Mappers;
 using Xunit;
-using Client = IdentityServer8.Models.Client;
+using Client = IdentityServer.Models.Client;
 
-namespace IdentityServer8.EntityFramework.UnitTests.Mappers;
+namespace IdentityServer.EntityFramework.UnitTests.Mappers;
 
 public class ClientMappersTests
 {
@@ -75,7 +75,7 @@ public class ClientMappersTests
     [Fact]
     public void duplicates_properties_in_db_map()
     {
-        var entity = new IdentityServer8.EntityFramework.Entities.Client
+        var entity = new IdentityServer.EntityFramework.Entities.Client
         {
             Properties = new System.Collections.Generic.List<Entities.ClientProperty>()
             {
@@ -91,7 +91,7 @@ public class ClientMappersTests
     [Fact]
     public void missing_values_should_use_defaults()
     {
-        var entity = new IdentityServer8.EntityFramework.Entities.Client
+        var entity = new IdentityServer.EntityFramework.Entities.Client
         {
             ClientSecrets = new System.Collections.Generic.List<Entities.ClientSecret>
             {

@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Models;
+namespace IdentityServer.Models;
 
 /// <summary>
 /// Convenience class that defines standard identity resources.
@@ -20,7 +20,7 @@ public static class IdentityResources
     /// <summary>
     /// Models the standard openid scope
     /// </summary>
-    /// <seealso cref="IdentityServer8.Models.IdentityResource" />
+    /// <seealso cref="IdentityServer.Models.IdentityResource" />
     public class OpenId : IdentityResource
     {
         /// <summary>
@@ -38,7 +38,7 @@ public static class IdentityResources
     /// <summary>
     /// Models the standard profile scope
     /// </summary>
-    /// <seealso cref="IdentityServer8.Models.IdentityResource" />
+    /// <seealso cref="IdentityServer.Models.IdentityResource" />
     public class Profile : IdentityResource
     {
         /// <summary>
@@ -57,7 +57,7 @@ public static class IdentityResources
     /// <summary>
     /// Models the standard email scope
     /// </summary>
-    /// <seealso cref="IdentityServer8.Models.IdentityResource" />
+    /// <seealso cref="IdentityServer.Models.IdentityResource" />
     public class Email : IdentityResource
     {
         /// <summary>
@@ -75,7 +75,7 @@ public static class IdentityResources
     /// <summary>
     /// Models the standard phone scope
     /// </summary>
-    /// <seealso cref="IdentityServer8.Models.IdentityResource" />
+    /// <seealso cref="IdentityServer.Models.IdentityResource" />
     public class Phone : IdentityResource
     {
         /// <summary>
@@ -93,7 +93,7 @@ public static class IdentityResources
     /// <summary>
     /// Models the standard address scope
     /// </summary>
-    /// <seealso cref="IdentityServer8.Models.IdentityResource" />
+    /// <seealso cref="IdentityServer.Models.IdentityResource" />
     public class Address : IdentityResource
     {
         /// <summary>

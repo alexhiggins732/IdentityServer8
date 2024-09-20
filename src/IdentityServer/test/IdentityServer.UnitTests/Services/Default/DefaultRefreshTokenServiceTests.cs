@@ -12,11 +12,11 @@
 
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Stores.Serialization;
+using IdentityServer;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Stores;
+using IdentityServer.Stores.Serialization;
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;

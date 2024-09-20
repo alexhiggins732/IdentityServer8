@@ -10,10 +10,10 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8;
+namespace IdentityServer;
 
 internal static class Constants
 {
-    public const string IdentityServerName               = "IdentityServer8";
+    public const string IdentityServerName               = "IdentityServer";
     public const string IdentityServerAuthenticationType = IdentityServerName;
 }

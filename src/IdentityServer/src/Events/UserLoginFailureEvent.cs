@@ -10,16 +10,16 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// Event for failed user authentication
 /// </summary>
-/// <seealso cref="IdentityServer8.Events.Event" />
+/// <seealso cref="IdentityServer.Events.Event" />
 public class UserLoginFailureEvent : Event
 {
     /// <summary>
-    /// Initializes a new instance of the <see cref="T:IdentityServer8.Events.UserLoginFailureEvent" /> class.
+    /// Initializes a new instance of the <see cref="T:IdentityServer.Events.UserLoginFailureEvent" /> class.
     /// </summary>
     /// <param name="username">The username.</param>
     /// <param name="error">The error.</param>

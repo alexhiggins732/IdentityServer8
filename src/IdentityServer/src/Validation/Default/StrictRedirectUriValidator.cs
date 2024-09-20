@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Default implementation of redirect URI validator. Validates the URIs against

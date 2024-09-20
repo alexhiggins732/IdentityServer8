@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-Console.Title = "IdentityServer8";
+Console.Title = "IdentityServer";
 
 var app = CreateWebHostBuilder(args);
 await app.RunAsync();

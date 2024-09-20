@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Models the request to validate scopes and resource indicators for a client.

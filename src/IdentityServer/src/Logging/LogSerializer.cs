@@ -12,7 +12,7 @@
 
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace IdentityServer8.Logging;
+namespace IdentityServer.Logging;
 
 /// <summary>
 /// Helper to JSON serialize object data for logging.

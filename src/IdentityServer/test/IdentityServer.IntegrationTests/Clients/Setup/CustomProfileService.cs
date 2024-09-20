@@ -11,8 +11,8 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityServer.IntegrationTests.Clients.Setup;

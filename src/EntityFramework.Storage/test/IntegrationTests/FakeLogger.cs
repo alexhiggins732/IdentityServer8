@@ -12,7 +12,7 @@
 
 using Microsoft.Extensions.Logging;
 
-namespace IdentityServer8.EntityFramework.IntegrationTests;
+namespace IdentityServer.EntityFramework.IntegrationTests;
 
 public class FakeLogger<T> : FakeLogger, ILogger<T>
 {

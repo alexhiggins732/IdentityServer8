@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// Event for denied consent.
 /// </summary>
-/// <seealso cref="IdentityServer8.Events.Event" />
+/// <seealso cref="IdentityServer.Events.Event" />
 public class ConsentDeniedEvent : Event
 {
     /// <summary>

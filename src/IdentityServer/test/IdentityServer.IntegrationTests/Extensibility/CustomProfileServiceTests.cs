@@ -17,8 +17,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
+using IdentityServer.Models;
+using IdentityServer.Services;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json.Linq;
 using Xunit;
@@ -50,7 +50,7 @@ public class CustomProfileServiceTests
         _mockPipeline.IdentityScopes.Add(new IdentityResources.OpenId());
         _mockPipeline.IdentityScopes.Add(new IdentityResource("custom_identity", new string[] { "foo" }));
 
-        _mockPipeline.Users.Add(new IdentityServer8.Test.TestUser
+        _mockPipeline.Users.Add(new IdentityServer.Test.TestUser
         {
             SubjectId = "bob",
             Username = "bob",

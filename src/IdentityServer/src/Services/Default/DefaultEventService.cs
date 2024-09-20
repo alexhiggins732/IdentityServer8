@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// The default event service
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IEventService" />
+/// <seealso cref="IdentityServer.Services.IEventService" />
 public class DefaultEventService : IEventService
 {
     /// <summary>

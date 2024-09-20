@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Endpoints;
+namespace IdentityServer.Endpoints;
 
 /// <summary>
 /// Introspection endpoint
 /// </summary>
-/// <seealso cref="IdentityServer8.Hosting.IEndpointHandler" />
+/// <seealso cref="IdentityServer.Hosting.IEndpointHandler" />
 internal class IntrospectionEndpoint : IEndpointHandler
 {
     private readonly IIntrospectionResponseGenerator _responseGenerator;

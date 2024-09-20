@@ -12,7 +12,7 @@
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 public static class ValidatedAuthorizeRequestExtensions
 {

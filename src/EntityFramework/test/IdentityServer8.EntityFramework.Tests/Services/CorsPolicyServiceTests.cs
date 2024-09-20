@@ -10,18 +10,18 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.EntityFramework.DbContexts;
-using IdentityServer8.EntityFramework.Interfaces;
-using IdentityServer8.EntityFramework.Mappers;
-using IdentityServer8.EntityFramework.Options;
-using IdentityServer8.EntityFramework.Services;
-using IdentityServer8.Models;
+using IdentityServer.EntityFramework.DbContexts;
+using IdentityServer.EntityFramework.Interfaces;
+using IdentityServer.EntityFramework.Mappers;
+using IdentityServer.EntityFramework.Options;
+using IdentityServer.EntityFramework.Services;
+using IdentityServer.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
-namespace IdentityServer8.EntityFramework.IntegrationTests.Services;
+namespace IdentityServer.EntityFramework.IntegrationTests.Services;
 
 public class CorsPolicyServiceTests : IntegrationTest<CorsPolicyServiceTests, ConfigurationDbContext, ConfigurationStoreOptions>
 {

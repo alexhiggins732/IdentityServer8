@@ -14,9 +14,9 @@ using System;
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Models;
-using static IdentityServer8.IdentityServerConstants;
+using IdentityServer;
+using IdentityServer.Models;
+using static IdentityServer.IdentityServerConstants;
 
 namespace IdentityServer.UnitTests.Validation.Setup
 {

@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Models;
+namespace IdentityServer.Models;
 
 /// <summary>
 /// Represents the permissions (in terms of scopes) granted to a client by a subject

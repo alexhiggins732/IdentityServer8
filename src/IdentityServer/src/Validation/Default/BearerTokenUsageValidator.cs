@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Validates a request that uses a bearer token for authentication

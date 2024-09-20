@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Hosting;
+namespace IdentityServer.Hosting;
 
 /// <summary>
 /// Endpoint result

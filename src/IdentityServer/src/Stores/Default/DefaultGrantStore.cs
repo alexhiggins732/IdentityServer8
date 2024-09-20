@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Base class for persisting grants using the IPersistedGrantStore.

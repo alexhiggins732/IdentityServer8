@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityServer8.Services;
+using IdentityServer.Services;
 using Microsoft.AspNetCore.Authentication;
 
 namespace IdentityServer.UnitTests.Common

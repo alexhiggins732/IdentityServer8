@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// Event for failed token introspection
 /// </summary>
-/// <seealso cref="IdentityServer8.Events.Event" />
+/// <seealso cref="IdentityServer.Events.Event" />
 public class TokenIntrospectionFailureEvent : Event
 {
     /// <summary>

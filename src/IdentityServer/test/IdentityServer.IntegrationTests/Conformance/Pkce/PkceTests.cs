@@ -19,9 +19,9 @@ using FluentAssertions;
 using IdentityModel;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Conformance.Pkce;

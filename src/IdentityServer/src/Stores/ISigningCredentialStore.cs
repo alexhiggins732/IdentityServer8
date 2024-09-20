@@ -12,7 +12,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Interface for a signing credential store

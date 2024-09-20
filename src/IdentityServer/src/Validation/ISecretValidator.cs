@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Service for validating a received secret against a stored secret

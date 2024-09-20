@@ -14,10 +14,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer8.Configuration;
-using IdentityServer8.Endpoints.Results;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
+using IdentityServer.Configuration;
+using IdentityServer.Endpoints.Results;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
 using Microsoft.AspNetCore.Http;
 using Xunit;
 

@@ -12,7 +12,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Configuration;
+namespace IdentityServer.Configuration;
 
 /// <summary>
 /// Crypto helper

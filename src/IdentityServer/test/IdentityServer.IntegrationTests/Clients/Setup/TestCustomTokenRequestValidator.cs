@@ -12,7 +12,7 @@
 
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IdentityServer8.Validation;
+using IdentityServer.Validation;
 
 namespace IdentityServer.IntegrationTests.Clients.Setup;
 

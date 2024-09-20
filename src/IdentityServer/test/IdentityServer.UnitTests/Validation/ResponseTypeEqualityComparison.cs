@@ -11,7 +11,7 @@
 */
 
 using FluentAssertions;
-using IdentityServer8.Validation;
+using IdentityServer.Validation;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Validation

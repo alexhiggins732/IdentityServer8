@@ -12,7 +12,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 internal class TokenValidator : ITokenValidator
 {

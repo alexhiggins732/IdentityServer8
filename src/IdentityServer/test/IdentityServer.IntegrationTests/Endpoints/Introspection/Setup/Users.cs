@@ -11,7 +11,7 @@
 */
 
 using System.Collections.Generic;
-using IdentityServer8.Test;
+using IdentityServer.Test;
 
 namespace IdentityServer.IntegrationTests.Endpoints.Introspection.Setup;
 

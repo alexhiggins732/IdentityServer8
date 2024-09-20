@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Hosting.LocalApiAuthentication;
+namespace IdentityServer.Hosting.LocalApiAuthentication;
 
 /// <summary>
 /// Events for local API authentication

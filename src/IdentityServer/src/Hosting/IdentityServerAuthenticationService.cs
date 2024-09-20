@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Hosting;
+namespace IdentityServer.Hosting;
 
 // this decorates the real authentication service to detect when the 
 // user is being signed in. this allows us to ensure the user has

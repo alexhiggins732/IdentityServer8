@@ -10,9 +10,9 @@
  copies or substantial portions of the Software.
 */
 
-using Endpoint = IdentityServer8.Hosting.Endpoint;
+using Endpoint = IdentityServer.Hosting.Endpoint;
 
-namespace IdentityServer8.Extensions;
+namespace IdentityServer.Extensions;
 
 internal static class EndpointOptionsExtensions
 {

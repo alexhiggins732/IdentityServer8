@@ -11,7 +11,7 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Services;
+using IdentityServer.Services;
 
 namespace IdentityServer.UnitTests.Cors
 {

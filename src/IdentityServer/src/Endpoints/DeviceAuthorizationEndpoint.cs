@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Endpoints;
+namespace IdentityServer.Endpoints;
 
 /// <summary>
 /// The device authorization endpoint
 /// </summary>
-/// <seealso cref="IdentityServer8.Hosting.IEndpointHandler" />
+/// <seealso cref="IdentityServer.Hosting.IEndpointHandler" />
 internal class DeviceAuthorizationEndpoint : IEndpointHandler
 {
     private readonly IClientSecretValidator _clientValidator;

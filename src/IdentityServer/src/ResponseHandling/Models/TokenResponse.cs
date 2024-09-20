@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// Models a token response

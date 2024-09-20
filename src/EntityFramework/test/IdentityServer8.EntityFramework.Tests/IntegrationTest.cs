@@ -15,7 +15,7 @@ using Microsoft.Extensions.Configuration;
 using System.Runtime.InteropServices;
 using Xunit;
 
-namespace IdentityServer8.EntityFramework.IntegrationTests;
+namespace IdentityServer.EntityFramework.IntegrationTests;
 
 /// <summary>
 /// Base class for integration tests, responsible for initializing test database providers & an xUnit class fixture

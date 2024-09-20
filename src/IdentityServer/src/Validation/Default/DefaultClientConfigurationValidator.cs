@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Default client configuration validator
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.IClientConfigurationValidator" />
+/// <seealso cref="IdentityServer.Validation.IClientConfigurationValidator" />
 public class DefaultClientConfigurationValidator : IClientConfigurationValidator
 {
     private readonly IdentityServerOptions _options;

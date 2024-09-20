@@ -12,7 +12,7 @@
 
 using Microsoft.AspNetCore.DataProtection;
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// IMessageStore implementation that uses data protection to protect message.
@@ -20,7 +20,7 @@ namespace IdentityServer8.Stores;
 /// <typeparam name="TModel"></typeparam>
 public class ProtectedDataMessageStore<TModel> : IMessageStore<TModel>
 {
-    private const string Purpose = "IdentityServer8.Stores.ProtectedDataMessageStore";
+    private const string Purpose = "IdentityServer.Stores.ProtectedDataMessageStore";
 
     /// <summary>
     /// The data protector.

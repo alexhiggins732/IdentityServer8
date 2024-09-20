@@ -12,7 +12,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Validates a secret based on RS256 signed JWT token

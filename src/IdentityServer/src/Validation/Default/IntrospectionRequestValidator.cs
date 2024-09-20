@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// The introspection request validator
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.IIntrospectionRequestValidator" />
+/// <seealso cref="IdentityServer.Validation.IIntrospectionRequestValidator" />
 internal class IntrospectionRequestValidator : IIntrospectionRequestValidator
 {
     private readonly ILogger _logger;

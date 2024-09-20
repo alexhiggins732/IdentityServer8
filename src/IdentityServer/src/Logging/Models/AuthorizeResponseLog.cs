@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Logging.Models;
+namespace IdentityServer.Logging.Models;
 
 internal class AuthorizeResponseLog
 {

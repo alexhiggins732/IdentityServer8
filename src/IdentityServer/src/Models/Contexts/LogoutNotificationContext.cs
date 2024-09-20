@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Models;
+namespace IdentityServer.Models;
 
 /// <summary>
 /// Provides the context necessary to construct a logout notificaiton.

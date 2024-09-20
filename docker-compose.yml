@@ -18,20 +18,20 @@ services:
           - admin.higginssoft.local
           - admin-api.higginssoft.local
     restart: always
-  IdentityServer8.Admin:
+  IdentityServer.Admin:
     image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-admin'
     build:
       context: .
-      dockerfile: src/IdentityServer8.Admin/Dockerfile
+      dockerfile: src/IdentityServer.Admin/Dockerfile
     container_name: higginssoft-identityserver4-admin
     environment:
       - VIRTUAL_HOST=admin.higginssoft.local
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.higginssoft.local'
       - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.higginssoft.local/signin-oidc'
       - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.higginssoft.local'
@@ -42,10 +42,10 @@ services:
       - 'IdentityServerData__Clients__0__PostLogoutRedirectUris__0=https://admin.higginssoft.local/signout-callback-oidc'
       - 'IdentityServerData__Clients__0__AllowedCorsOrigins__0=https://admin.higginssoft.local'
       - 'IdentityServerData__Clients__1__RedirectUris__0=https://admin-api.higginssoft.local/swagger/oauth2-redirect.html'
-      - 'Serilog__WriteTo__1__Args__connectionString=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'Serilog__WriteTo__1__Args__connectionString=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - DockerConfiguration__UpdateCaCertificate=true
       - ASPNETCORE_ENVIRONMENT=Development
-    command: dotnet IdentityServer8.Admin.dll /seed
+    command: dotnet IdentityServer.Admin.dll /seed
     depends_on:
       - db
       - higginssoft.identityserver4.sts.identity
@@ -56,23 +56,23 @@ services:
       - './shared/nginx/certs/cacerts.crt:/usr/local/share/ca-certificates/cacerts.crt'
     networks:
       identityserverui: null
-  IdentityServer8.Admin.api:
+  IdentityServer.Admin.api:
     image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-admin-api'
     build:
       context: .
-      dockerfile: src/IdentityServer8.Admin.Api/Dockerfile
+      dockerfile: src/IdentityServer.Admin.Api/Dockerfile
     container_name: higginssoft-identityserver4-admin-api
     environment:
       - VIRTUAL_HOST=admin-api.higginssoft.local
       - AdminApiConfiguration__RequireHttpsMetadata=false
       - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.higginssoft.local'
       - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.higginssoft.local'
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - DockerConfiguration__UpdateCaCertificate=true
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
@@ -84,14 +84,14 @@ services:
     image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-sts-identity'
     build:
       context: .
-      dockerfile: src/IdentityServer8.STS.Identity/Dockerfile
+      dockerfile: src/IdentityServer.STS.Identity/Dockerfile
     container_name: higginssoft-identityserver4-sts-identity
     environment:
       - VIRTUAL_HOST=sts.higginssoft.local
-      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServer8Admin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
+      - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.higginssoft.local'
       - 'IdentityServerOptions__IssuerUri=https://sts.higginssoft.local'
       - IdentityServerOptions__Events__RaiseErrorEvents=true

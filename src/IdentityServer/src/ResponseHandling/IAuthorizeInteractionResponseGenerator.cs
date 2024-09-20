@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// Interface for determining if user must login or consent when making requests to the authorization endpoint.

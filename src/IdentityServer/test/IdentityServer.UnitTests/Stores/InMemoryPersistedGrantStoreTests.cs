@@ -10,8 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
+using IdentityServer.Models;
+using IdentityServer.Stores;
 using Xunit;
 using FluentAssertions;
 using System.Threading.Tasks;

@@ -16,7 +16,7 @@ using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
 using IdentityServer.UnitTests.Validation.Setup;
-using IdentityServer8.Configuration;
+using IdentityServer.Configuration;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Validation.AuthorizeRequest_Validation

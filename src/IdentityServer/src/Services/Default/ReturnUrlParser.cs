@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// Parses a return URL using all registered URL parsers

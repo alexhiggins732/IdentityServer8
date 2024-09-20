@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-global using IdentityServer8.Models;
+global using IdentityServer.Models;
 global using Serilog;
 global using Serilog.Events;
 global using Serilog.Sinks.SystemConsole.Themes;

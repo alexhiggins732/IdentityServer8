@@ -13,10 +13,10 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Validation.Setup;
-using IdentityServer8;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Models;
+using IdentityServer.Stores;
+using IdentityServer.Validation;
 using Microsoft.Extensions.Logging;
 using Xunit;
 

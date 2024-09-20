@@ -13,12 +13,12 @@
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.ResponseHandling;
-using IdentityServer8.Services;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.ResponseHandling;
+using IdentityServer.Services;
+using IdentityServer.Validation;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Logging;
 using Xunit;
@@ -26,9 +26,9 @@ using static IdentityModel.OidcConstants;
 
 namespace IdentityServer.UnitTests.ResponseHandling.AuthorizeInteractionResponseGenerator
 {
-    public class CustomAuthorizeInteractionResponseGenerator : IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator
+    public class CustomAuthorizeInteractionResponseGenerator : IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator
     {
-        public CustomAuthorizeInteractionResponseGenerator(ISystemClock clock, ILogger<IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator> logger, IConsentService consent, IProfileService profile) : base(clock, logger, consent, profile)
+        public CustomAuthorizeInteractionResponseGenerator(ISystemClock clock, ILogger<IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator> logger, IConsentService consent, IProfileService profile) : base(clock, logger, consent, profile)
         {
         }
 
@@ -65,7 +65,7 @@ namespace IdentityServer.UnitTests.ResponseHandling.AuthorizeInteractionResponse
         {
             _subject = new CustomAuthorizeInteractionResponseGenerator(
                 _clock,
-                TestLogger.Create<IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator>(),
+                TestLogger.Create<IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator>(),
                 _mockConsentService,
                 new MockProfileService());
         }

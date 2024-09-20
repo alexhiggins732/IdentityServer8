@@ -10,11 +10,11 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Hosting;
+using IdentityServer.Configuration;
+using IdentityServer.Extensions;
+using IdentityServer.Hosting;
 using Xunit;
-using static IdentityServer8.Constants;
+using static IdentityServer.Constants;
 
 namespace IdentityServer.UnitTests.Extensions
 {

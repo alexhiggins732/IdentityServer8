@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8;
+using IdentityServer;
 using IdentityServerHost.Quickstart.UI;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;

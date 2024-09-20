@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Configuration.DependencyInjection;
+namespace IdentityServer.Configuration.DependencyInjection;
 
 internal class Decorator<TService>
 {

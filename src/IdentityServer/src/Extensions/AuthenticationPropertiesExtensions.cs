@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Extensions;
+namespace IdentityServer.Extensions;
 
 /// <summary>
 /// Extensions for AuthenticationProperties

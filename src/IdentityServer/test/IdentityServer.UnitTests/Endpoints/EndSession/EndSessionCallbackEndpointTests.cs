@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Endpoints;
+using IdentityServer.Endpoints;
 using Microsoft.Extensions.Logging;
 
 namespace IdentityServer.UnitTests.Endpoints.EndSession

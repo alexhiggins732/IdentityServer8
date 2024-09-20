@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using Secret = IdentityServer8.Models.Secret;
+using Secret = IdentityServer.Models.Secret;
 
 ConfigureLogger();
 

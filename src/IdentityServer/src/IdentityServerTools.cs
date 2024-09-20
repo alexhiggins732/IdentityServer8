@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8;
+namespace IdentityServer;
 
 /// <summary>
 /// Class for useful helpers for interacting with IdentityServer

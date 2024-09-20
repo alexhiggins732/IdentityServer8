@@ -10,8 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Validation;
+using IdentityServer.Configuration;
+using IdentityServer.Validation;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 

@@ -11,7 +11,7 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Validation;
+using IdentityServer.Validation;
 
 namespace IdentityServer.UnitTests.Validation.Setup
 {

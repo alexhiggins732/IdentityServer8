@@ -251,13 +251,13 @@ tools/
 .vscode
 
 # IdentityServer temp files
-IdentityServer8_log.txt
+IdentityServer_log.txt
 tempkey.rsa
 samples/KeyManagement/FileSystem/dataprotectionkeys/
 samples/KeyManagement/FileSystem/signingkeys/
 workspace.xml
 
-src/IdentityServer8/host/identityserver.db
+src/IdentityServer/host/identityserver.db
 tempkey.jwk
 /nuget
 
@@ -281,16 +281,16 @@ __pycache__/
 
 # Cake - Uncomment if you are using it
 # tools/
-/src/IdentityServer8.Admin/appsettings.production.json
-/src/IdentityServer8.Admin/Scripts/Libs/
-/src/IdentityServer8.Admin/Data/Migrations/
+/src/IdentityServer.Admin/appsettings.production.json
+/src/IdentityServer.Admin/Scripts/Libs/
+/src/IdentityServer.Admin/Data/Migrations/
 
 # Don't ignore these log folders
-!/src/IdentityServer8.Admin.UI/Resources/Views/Log/
-!/src/IdentityServer8.Admin.BusinessLogic/Dtos/Log/
+!/src/IdentityServer.Admin.UI/Resources/Views/Log/
+!/src/IdentityServer.Admin.BusinessLogic/Dtos/Log/
 !**/Views/Log/
-!/src/IdentityServer8.Admin.BusinessLogic/Events/Log/
-/src/IdentityServer8.Admin.Api/appsettings.Production.json
+!/src/IdentityServer.Admin.BusinessLogic/Events/Log/
+/src/IdentityServer.Admin.Api/appsettings.Production.json
 
 
 

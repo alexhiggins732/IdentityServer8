@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// The authorize response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IAuthorizeResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IAuthorizeResponseGenerator" />
 public class AuthorizeResponseGenerator : IAuthorizeResponseGenerator
 {
     /// <summary>

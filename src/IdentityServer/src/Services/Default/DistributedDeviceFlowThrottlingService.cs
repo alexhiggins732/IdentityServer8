@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// The default device flow throttling service using IDistributedCache.
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IDeviceFlowThrottlingService" />
+/// <seealso cref="IdentityServer.Services.IDeviceFlowThrottlingService" />
 public class DistributedDeviceFlowThrottlingService : IDeviceFlowThrottlingService
 {
     private readonly IDistributedCache _cache;

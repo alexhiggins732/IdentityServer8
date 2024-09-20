@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework.Storage
+namespace IdentityServer.EntityFramework.Storage
 {
     /// <summary>
     /// Extension methods to add EF database support to IdentityServer.

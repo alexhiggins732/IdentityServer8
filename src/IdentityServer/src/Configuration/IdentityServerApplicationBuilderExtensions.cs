@@ -50,8 +50,8 @@ public static class IdentityServerApplicationBuilderExtensions
         var loggerFactory = app.ApplicationServices.GetService(typeof(ILoggerFactory)) as ILoggerFactory;
         if (loggerFactory == null) throw new ArgumentNullException(nameof(loggerFactory));
 
-        var logger = loggerFactory.CreateLogger("IdentityServer8.Startup");
-        logger.LogInformation("Starting IdentityServer8 version {version}", typeof(IdentityServer8.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion);
+        var logger = loggerFactory.CreateLogger("IdentityServer.Startup");
+        logger.LogInformation("Starting IdentityServer version {version}", typeof(IdentityServer.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>().InformationalVersion);
 
         var scopeFactory = app.ApplicationServices.GetService<IServiceScopeFactory>();
 

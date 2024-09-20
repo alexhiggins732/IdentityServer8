@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-global using IdentityServer8.Security;
+global using IdentityServer.Security;
 global using Microsoft.AspNetCore.Http;
 global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Logging;

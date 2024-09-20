@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// The introspection response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IIntrospectionResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IIntrospectionResponseGenerator" />
 public class IntrospectionResponseGenerator : IIntrospectionResponseGenerator
 {
     /// <summary>

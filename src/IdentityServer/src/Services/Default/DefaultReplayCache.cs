@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// Default implementation of the replay cache using IDistributedCache

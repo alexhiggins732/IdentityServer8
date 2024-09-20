@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// The default token response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.ITokenResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.ITokenResponseGenerator" />
 public class TokenResponseGenerator : ITokenResponseGenerator
 {
     /// <summary>

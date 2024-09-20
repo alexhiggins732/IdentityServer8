@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// Default revocation response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.ITokenRevocationResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.ITokenRevocationResponseGenerator" />
 public class TokenRevocationResponseGenerator : ITokenRevocationResponseGenerator
 {
     /// <summary>

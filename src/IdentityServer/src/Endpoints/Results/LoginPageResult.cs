@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Endpoints.Results;
+namespace IdentityServer.Endpoints.Results;
 
 /// <summary>
 /// Result for login page
 /// </summary>
-/// <seealso cref="IdentityServer8.Hosting.IEndpointResult" />
+/// <seealso cref="IdentityServer.Hosting.IEndpointResult" />
 public class LoginPageResult : IEndpointResult
 {
     private readonly ValidatedAuthorizeRequest _request;

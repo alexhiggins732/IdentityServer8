@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Extensions;
+using IdentityServer.Extensions;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Extensions

@@ -11,9 +11,9 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.ResponseHandling;
-using IdentityServer8.Validation;
+using IdentityServer.Models;
+using IdentityServer.ResponseHandling;
+using IdentityServer.Validation;
 
 namespace IdentityServer.UnitTests.Endpoints.Authorize
 {

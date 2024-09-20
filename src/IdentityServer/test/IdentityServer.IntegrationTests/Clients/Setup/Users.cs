@@ -13,8 +13,8 @@
 using System.Collections.Generic;
 using System.Security.Claims;
 using IdentityModel;
-using IdentityServer8;
-using IdentityServer8.Test;
+using IdentityServer;
+using IdentityServer.Test;
 
 namespace IdentityServer.IntegrationTests.Clients.Setup;
 

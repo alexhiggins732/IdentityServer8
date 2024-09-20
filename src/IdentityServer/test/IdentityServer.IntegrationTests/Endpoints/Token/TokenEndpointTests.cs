@@ -11,8 +11,8 @@
 */
 
 using FluentAssertions;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.Net;

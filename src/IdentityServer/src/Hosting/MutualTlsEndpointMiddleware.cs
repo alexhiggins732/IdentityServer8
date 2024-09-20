@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Hosting;
+namespace IdentityServer.Hosting;
 
 /// <summary>
 ///     Middleware for re-writing the MTLS enabled endpoints to the standard protocol endpoints

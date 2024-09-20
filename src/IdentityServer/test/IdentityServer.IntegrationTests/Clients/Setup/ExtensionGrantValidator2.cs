@@ -11,7 +11,7 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Validation;
+using IdentityServer.Validation;
 
 namespace IdentityServer.IntegrationTests.Clients.Setup;
 
@@ -29,7 +29,7 @@ public class ExtensionGrantValidator2 : IExtensionGrantValidator
         else
         {
             // custom error message
-            context.Result = new GrantValidationResult(IdentityServer8.Models.TokenRequestErrors.InvalidGrant, "invalid custom credential");
+            context.Result = new GrantValidationResult(IdentityServer.Models.TokenRequestErrors.InvalidGrant, "invalid custom credential");
         }
 
         return Task.CompletedTask;

@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Test;
+namespace IdentityServer.Test;
 
 /// <summary>
 /// Store for test users

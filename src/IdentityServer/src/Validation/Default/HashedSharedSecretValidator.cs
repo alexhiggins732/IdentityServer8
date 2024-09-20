@@ -10,10 +10,10 @@
  copies or substantial portions of the Software.
 */
 
-using Secret = IdentityServer8.Models.Secret;
+using Secret = IdentityServer.Models.Secret;
 
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Validates a shared secret stored in SHA256 or SHA512

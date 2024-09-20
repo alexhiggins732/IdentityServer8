@@ -12,7 +12,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Models;
+namespace IdentityServer.Models;
 
 /// <summary>
 /// Extension methods for client.

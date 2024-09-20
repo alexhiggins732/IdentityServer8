@@ -10,9 +10,9 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.EntityFramework.Entities;
+using IdentityServer.EntityFramework.Entities;
 
-namespace IdentityServer8.EntityFramework.Interfaces
+namespace IdentityServer.EntityFramework.Interfaces
 {
     /// <summary>
     /// Abstraction for the configuration context.

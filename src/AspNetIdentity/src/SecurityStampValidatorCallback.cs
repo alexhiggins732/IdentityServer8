@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.AspNetIdentity;
+namespace IdentityServer.AspNetIdentity;
 
 /// <summary>
 /// Implements callback for SecurityStampValidator's OnRefreshingPrincipal event.

@@ -11,8 +11,8 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
+using IdentityServer.Models;
+using IdentityServer.Services;
 
 namespace IdentityServer.UnitTests.Endpoints.EndSession
 {

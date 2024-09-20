@@ -12,7 +12,7 @@
 
 using Microsoft.Net.Http.Headers;
 
-namespace IdentityServer8.Endpoints.Results;
+namespace IdentityServer.Endpoints.Results;
 
 internal class ProtectedResourceErrorResult : IEndpointResult
 {

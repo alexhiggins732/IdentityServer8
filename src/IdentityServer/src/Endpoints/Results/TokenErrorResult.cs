@@ -13,7 +13,7 @@
 using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
 
 
-namespace IdentityServer8.Endpoints.Results;
+namespace IdentityServer.Endpoints.Results;
 
 internal class TokenErrorResult : IEndpointResult
 {

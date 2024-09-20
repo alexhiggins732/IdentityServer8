@@ -25,7 +25,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
             .HasAnnotation("Relational:MaxIdentifierLength", 128)
             .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResource", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResource", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -75,7 +75,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiResources");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -97,7 +97,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiResourceClaims");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceProperty", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -124,7 +124,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiResourceProperties");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceScope", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceScope", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -146,7 +146,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiResourceScopes");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceSecret", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceSecret", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -183,7 +183,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiResourceSecrets");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiScope", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiScope", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -223,7 +223,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiScopes");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiScopeClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiScopeClaim", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -245,7 +245,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiScopeClaims");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiScopeProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiScopeProperty", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -272,7 +272,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ApiScopeProperties");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.Client", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.Client", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -430,7 +430,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("Clients");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientClaim", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -457,7 +457,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientClaims");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientCorsOrigin", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientCorsOrigin", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -479,7 +479,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientCorsOrigins");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientGrantType", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientGrantType", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -501,7 +501,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientGrantTypes");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientIdPRestriction", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientIdPRestriction", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -523,7 +523,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientIdPRestrictions");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -545,7 +545,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientPostLogoutRedirectUris");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientProperty", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -572,7 +572,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientProperties");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientRedirectUri", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientRedirectUri", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -594,7 +594,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientRedirectUris");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientScope", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientScope", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -616,7 +616,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientScopes");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientSecret", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientSecret", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -653,7 +653,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("ClientSecrets");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.IdentityResource", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.IdentityResource", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -702,7 +702,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("IdentityResources");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.IdentityResourceClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.IdentityResourceClaim", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -724,7 +724,7 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("IdentityResourceClaims");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.IdentityResourceProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.IdentityResourceProperty", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -751,153 +751,153 @@ partial class ConfigurationDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("IdentityResourceProperties");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceClaim", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiResource", "ApiResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                     .WithMany("UserClaims")
                     .HasForeignKey("ApiResourceId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceProperty", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiResource", "ApiResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                     .WithMany("Properties")
                     .HasForeignKey("ApiResourceId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceScope", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceScope", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiResource", "ApiResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                     .WithMany("Scopes")
                     .HasForeignKey("ApiResourceId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiResourceSecret", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiResourceSecret", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiResource", "ApiResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiResource", "ApiResource")
                     .WithMany("Secrets")
                     .HasForeignKey("ApiResourceId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiScopeClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiScopeClaim", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiScope", "Scope")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiScope", "Scope")
                     .WithMany("UserClaims")
                     .HasForeignKey("ScopeId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ApiScopeProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ApiScopeProperty", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.ApiScope", "Scope")
+                b.HasOne("IdentityServer.EntityFramework.Entities.ApiScope", "Scope")
                     .WithMany("Properties")
                     .HasForeignKey("ScopeId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientClaim", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("Claims")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientCorsOrigin", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientCorsOrigin", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("AllowedCorsOrigins")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientGrantType", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientGrantType", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("AllowedGrantTypes")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientIdPRestriction", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientIdPRestriction", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("IdentityProviderRestrictions")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientPostLogoutRedirectUri", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("PostLogoutRedirectUris")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientProperty", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("Properties")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientRedirectUri", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientRedirectUri", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("RedirectUris")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientScope", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientScope", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("AllowedScopes")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.ClientSecret", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.ClientSecret", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.Client", "Client")
+                b.HasOne("IdentityServer.EntityFramework.Entities.Client", "Client")
                     .WithMany("ClientSecrets")
                     .HasForeignKey("ClientId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.IdentityResourceClaim", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.IdentityResourceClaim", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.IdentityResource", "IdentityResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.IdentityResource", "IdentityResource")
                     .WithMany("UserClaims")
                     .HasForeignKey("IdentityResourceId")
                     .OnDelete(DeleteBehavior.Cascade)
                     .IsRequired();
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.IdentityResourceProperty", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.IdentityResourceProperty", b =>
             {
-                b.HasOne("IdentityServer8.EntityFramework.Entities.IdentityResource", "IdentityResource")
+                b.HasOne("IdentityServer.EntityFramework.Entities.IdentityResource", "IdentityResource")
                     .WithMany("Properties")
                     .HasForeignKey("IdentityResourceId")
                     .OnDelete(DeleteBehavior.Cascade)

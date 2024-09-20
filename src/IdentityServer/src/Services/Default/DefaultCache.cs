@@ -10,13 +10,13 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// IMemoryCache-based implementation of the cache
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <seealso cref="IdentityServer8.Services.ICache{T}" />
+/// <seealso cref="IdentityServer.Services.ICache{T}" />
 public class DefaultCache<T> : ICache<T>
     where T : class
 {

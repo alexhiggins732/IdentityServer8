@@ -28,7 +28,7 @@ partial class KeyManagement
             .HasAnnotation("Relational:MaxIdentifierLength", 128)
             .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-        modelBuilder.Entity("IdentityServer8.KeyManagement.EntityFramework.DataProtectionKey", b =>
+        modelBuilder.Entity("IdentityServer.KeyManagement.EntityFramework.DataProtectionKey", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()
@@ -55,7 +55,7 @@ partial class KeyManagement
                 b.ToTable("DataProtectionKeys");
             });
 
-        modelBuilder.Entity("IdentityServer8.KeyManagement.EntityFramework.SigningKey", b =>
+        modelBuilder.Entity("IdentityServer.KeyManagement.EntityFramework.SigningKey", b =>
             {
                 b.Property<int>("Id")
                     .ValueGeneratedOnAdd()

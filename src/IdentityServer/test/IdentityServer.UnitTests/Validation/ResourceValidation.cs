@@ -15,9 +15,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Validation.Setup;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
+using IdentityServer.Stores;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Validation
@@ -140,7 +140,7 @@ namespace IdentityServer.UnitTests.Validation
 
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -157,7 +157,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid resource1".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -175,7 +175,7 @@ namespace IdentityServer.UnitTests.Validation
                 var scopes = "openid email resource1 unknown".ParseScopesString();
 
                 var validator = Factory.CreateResourceValidator(_store);
-                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
                 {
                     Client = _restrictedClient,
                     Scopes = scopes
@@ -189,7 +189,7 @@ namespace IdentityServer.UnitTests.Validation
                 var scopes = "openid resource1 resource2".ParseScopesString();
 
                 var validator = Factory.CreateResourceValidator(_store);
-                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
                 {
                     Client = _restrictedClient,
                     Scopes = scopes
@@ -202,7 +202,7 @@ namespace IdentityServer.UnitTests.Validation
                 var scopes = "openid email resource1".ParseScopesString();
 
                 var validator = Factory.CreateResourceValidator(_store);
-                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+                var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
                 {
                     Client = _restrictedClient,
                     Scopes = scopes
@@ -220,7 +220,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid resource1 disabled".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -237,7 +237,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid resource1".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -254,7 +254,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid email resource1 resource2".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -272,7 +272,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid resource1".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -290,7 +290,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "resource1".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -308,7 +308,7 @@ namespace IdentityServer.UnitTests.Validation
             var scopes = "openid".ParseScopesString();
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = _restrictedClient,
                 Scopes = scopes
@@ -330,7 +330,7 @@ namespace IdentityServer.UnitTests.Validation
             _scopes.Add(new ApiScope("resource"));
 
             var validator = Factory.CreateResourceValidator(_store);
-            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer8.Validation.ResourceValidationRequest
+            var result = await validator.ValidateRequestedResourcesAsync(new IdentityServer.Validation.ResourceValidationRequest
             {
                 Client = new Client { AllowedScopes = { "resource" } },
                 Scopes = new[] { "resource" }

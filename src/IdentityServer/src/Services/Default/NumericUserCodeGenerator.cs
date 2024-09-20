@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// User code generator using 9 digit number
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IUserCodeGenerator" />
+/// <seealso cref="IdentityServer.Services.IUserCodeGenerator" />
 public class NumericUserCodeGenerator : IUserCodeGenerator
 {
     /// <summary>

@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services.Default;
+namespace IdentityServer.Services.Default;
 
 /// <summary>
 /// Default wrapper service for IDeviceFlowStore, handling key hashing
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IDeviceFlowCodeService" />
+/// <seealso cref="IdentityServer.Services.IDeviceFlowCodeService" />
 public class DefaultDeviceFlowCodeService : IDeviceFlowCodeService
 {
     private readonly IDeviceFlowStore _store;

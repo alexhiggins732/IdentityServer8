@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// The device authorizaiton response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IDeviceAuthorizationResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IDeviceAuthorizationResponseGenerator" />
 public class DeviceAuthorizationResponseGenerator : IDeviceAuthorizationResponseGenerator
 {
     /// <summary>

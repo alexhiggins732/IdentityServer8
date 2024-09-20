@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Caching decorator for ICorsPolicyService
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.ICorsPolicyService" />
+/// <seealso cref="IdentityServer.Services.ICorsPolicyService" />
 public class CachingCorsPolicyService<T> : ICorsPolicyService
     where T : ICorsPolicyService
 {

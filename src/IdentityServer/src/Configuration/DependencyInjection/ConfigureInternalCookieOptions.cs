@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Configuration;
+namespace IdentityServer.Configuration;
 
 internal class ConfigureInternalCookieOptions : IConfigureNamedOptions<CookieAuthenticationOptions>
 {
@@ -47,7 +47,7 @@ internal class ConfigureInternalCookieOptions : IConfigureNamedOptions<CookieAut
         {
             options.Cookie.Name = IdentityServerConstants.ExternalCookieAuthenticationScheme;
             options.Cookie.IsEssential = true;
-            // https://github.com/alexhiggins732/IdentityServer8/issues/2595
+            // https://github.com/alexhiggins732/IdentityServer/issues/2595
             // need to set None because iOS 12 safari considers the POST back to the client from the 
             // IdP as not safe, so cookies issued from response (with lax) then should not be honored.
             // so we need to make those cookies issued without same-site, thus the browser will
@@ -86,7 +86,7 @@ internal class PostConfigureInternalCookieOptions : IPostConfigureOptions<Cookie
     {
         _idsrv = idsrv;
         _authOptions = authOptions;
-        _logger = loggerFactory.CreateLogger("IdentityServer8.Startup");
+        _logger = loggerFactory.CreateLogger("IdentityServer.Startup");
     }
 
     public void PostConfigure(string name, CookieAuthenticationOptions options)

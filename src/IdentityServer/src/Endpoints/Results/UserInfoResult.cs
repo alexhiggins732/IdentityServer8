@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Endpoints.Results;
+namespace IdentityServer.Endpoints.Results;
 
 internal class UserInfoResult : IEndpointResult
 {

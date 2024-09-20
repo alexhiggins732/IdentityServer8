@@ -11,9 +11,9 @@
 */
 
 using FluentAssertions;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Validation;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Validation;
 using System;
 using System.Threading.Tasks;
 using IdentityServer.UnitTests.Validation.Setup;

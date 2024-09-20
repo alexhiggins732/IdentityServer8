@@ -10,13 +10,13 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Cache decorator for IClientStore
 /// </summary>
 /// <typeparam name="T"></typeparam>
-/// <seealso cref="IdentityServer8.Stores.IClientStore" />
+/// <seealso cref="IdentityServer.Stores.IClientStore" />
 public class CachingClientStore<T> : IClientStore
     where T : IClientStore
 {

@@ -17,11 +17,11 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Validation;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Services.Default

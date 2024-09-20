@@ -17,8 +17,8 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Conformance.Basic;

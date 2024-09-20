@@ -12,7 +12,7 @@
 
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace IdentityServer8.Extensions;
+namespace IdentityServer.Extensions;
 
 /// <summary>
 /// Extensions methods for X509Certificate2

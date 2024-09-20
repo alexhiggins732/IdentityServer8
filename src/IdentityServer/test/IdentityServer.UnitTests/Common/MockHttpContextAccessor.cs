@@ -10,10 +10,10 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Stores;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;

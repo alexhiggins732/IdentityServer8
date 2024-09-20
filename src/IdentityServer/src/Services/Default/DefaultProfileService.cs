@@ -10,13 +10,13 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// Default profile service implementation.
 /// This implementation sources all claims from the current subject (e.g. the cookie).
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IProfileService" />
+/// <seealso cref="IdentityServer.Services.IProfileService" />
 public class DefaultProfileService : IProfileService
 {
     /// <summary>

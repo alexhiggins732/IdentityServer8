@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores.Serialization;
+namespace IdentityServer.Stores.Serialization;
 
 /// <summary>
 /// Interface for persisted grant serialization

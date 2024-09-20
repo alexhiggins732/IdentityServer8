@@ -10,13 +10,13 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.AspNetIdentity;
+namespace IdentityServer.AspNetIdentity;
 
 /// <summary>
 /// IProfileService to integrate with ASP.NET Identity.
 /// </summary>
 /// <typeparam name="TUser">The type of the user.</typeparam>
-/// <seealso cref="IdentityServer8.Services.IProfileService" />
+/// <seealso cref="IdentityServer.Services.IProfileService" />
 public class ProfileService<TUser> : IProfileService
     where TUser : class
 {

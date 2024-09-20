@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Validation result for end session requests
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.ValidationResult" />
+/// <seealso cref="IdentityServer.Validation.ValidationResult" />
 public class EndSessionValidationResult : ValidationResult
 {
     /// <summary>

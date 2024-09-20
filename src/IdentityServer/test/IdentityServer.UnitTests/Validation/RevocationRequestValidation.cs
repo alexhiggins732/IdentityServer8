@@ -16,9 +16,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Models;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Models;
+using IdentityServer.Validation;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Validation

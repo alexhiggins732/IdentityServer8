@@ -10,8 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8;
-using IdentityServer8.Configuration;
+using IdentityServer;
+using IdentityServer.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using System;

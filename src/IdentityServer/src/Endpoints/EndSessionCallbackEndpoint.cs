@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Endpoints;
+namespace IdentityServer.Endpoints;
 
 internal class EndSessionCallbackEndpoint : IEndpointHandler
 {

@@ -23,7 +23,7 @@ try
     services.AddControllersWithViews();
 
     var migrationsAssembly = typeof(Program).GetTypeInfo().Assembly.GetName().Name;
-    const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer8.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
+    const string connectionString = @"Data Source=(LocalDb)\MSSQLLocalDB;database=IdentityServer.Quickstart.EntityFramework-4.0.0;trusted_connection=yes;";
 
     services.AddIdentityServer()
         .AddTestUsers(TestUsers.Users)

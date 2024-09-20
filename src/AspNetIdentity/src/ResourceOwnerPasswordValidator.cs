@@ -10,13 +10,13 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.AspNetIdentity;
+namespace IdentityServer.AspNetIdentity;
 
 /// <summary>
 /// IResourceOwnerPasswordValidator that integrates with ASP.NET Identity.
 /// </summary>
 /// <typeparam name="TUser">The type of the user.</typeparam>
-/// <seealso cref="IdentityServer8.Validation.IResourceOwnerPasswordValidator" />
+/// <seealso cref="IdentityServer.Validation.IResourceOwnerPasswordValidator" />
 public class ResourceOwnerPasswordValidator<TUser> : IResourceOwnerPasswordValidator
     where TUser : class
 {

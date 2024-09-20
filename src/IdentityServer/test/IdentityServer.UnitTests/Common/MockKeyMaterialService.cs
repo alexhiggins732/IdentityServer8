@@ -10,8 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Models;
-using IdentityServer8.Services;
+using IdentityServer.Models;
+using IdentityServer.Services;
 using Microsoft.IdentityModel.Tokens;
 using System.Collections.Generic;
 using System.Linq;

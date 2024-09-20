@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 /// <summary>
 /// Event for successful API authentication
 /// </summary>
-/// <seealso cref="IdentityServer8.Events.Event" />
+/// <seealso cref="IdentityServer.Events.Event" />
 public class ApiAuthenticationSuccessEvent : Event
 {
     /// <summary>

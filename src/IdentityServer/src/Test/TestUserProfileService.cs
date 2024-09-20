@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Test;
+namespace IdentityServer.Test;
 
 /// <summary>
 /// Profile service for test users
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IProfileService" />
+/// <seealso cref="IdentityServer.Services.IProfileService" />
 public class TestUserProfileService : IProfileService
 {
     /// <summary>

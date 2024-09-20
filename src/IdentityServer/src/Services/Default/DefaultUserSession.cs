@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// Cookie-based session implementation
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IUserSession" />
+/// <seealso cref="IdentityServer.Services.IUserSession" />
 public class DefaultUserSession : IUserSession
 {
     /// <summary>

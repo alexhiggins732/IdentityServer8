@@ -11,10 +11,10 @@
 */
 
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Stores;
-using IdentityServer8.Stores.Serialization;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Stores;
+using IdentityServer.Stores.Serialization;
 
 namespace IdentityServer.UnitTests.Common
 {

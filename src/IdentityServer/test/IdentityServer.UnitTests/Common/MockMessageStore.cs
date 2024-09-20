@@ -13,8 +13,8 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
+using IdentityServer.Models;
+using IdentityServer.Stores;
 
 namespace IdentityServer.UnitTests.Common
 {

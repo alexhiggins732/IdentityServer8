@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores.Default;
+namespace IdentityServer.Stores.Default;
 
 /// <summary>
 /// Implementation of IAuthorizationParametersMessageStore that uses the IDistributedCache.

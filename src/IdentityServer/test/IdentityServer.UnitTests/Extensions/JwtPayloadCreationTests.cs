@@ -17,9 +17,9 @@ using System.Security.Claims;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8.Configuration;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
+using IdentityServer.Configuration;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
 using Microsoft.AspNetCore.Authentication;
 using Xunit;
 

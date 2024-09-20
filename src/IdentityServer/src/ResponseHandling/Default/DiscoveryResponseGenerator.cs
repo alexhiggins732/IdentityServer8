@@ -13,12 +13,12 @@
 using Microsoft.IdentityModel.Tokens;
 using JsonWebKey = Microsoft.IdentityModel.Tokens.JsonWebKey;
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// Default implementation of the discovery endpoint response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IDiscoveryResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IDiscoveryResponseGenerator" />
 public class DiscoveryResponseGenerator : IDiscoveryResponseGenerator
 {
     /// <summary>

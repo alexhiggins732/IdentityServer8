@@ -15,11 +15,11 @@ using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Validation;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Services.Default

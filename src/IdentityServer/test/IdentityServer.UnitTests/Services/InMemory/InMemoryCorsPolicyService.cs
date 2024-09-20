@@ -14,8 +14,8 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
+using IdentityServer.Models;
+using IdentityServer.Services;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Services.InMemory

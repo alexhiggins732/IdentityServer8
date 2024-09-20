@@ -16,8 +16,8 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Pipeline;

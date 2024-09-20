@@ -17,11 +17,11 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using IdentityServer8.Stores.Serialization;
+using IdentityServer;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
+using IdentityServer.Stores;
+using IdentityServer.Stores.Serialization;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Stores.Default

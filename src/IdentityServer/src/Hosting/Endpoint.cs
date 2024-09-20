@@ -13,7 +13,7 @@
 #pragma warning disable 1591
 
 
-namespace IdentityServer8.Hosting;
+namespace IdentityServer.Hosting;
 
 public class Endpoint
 {

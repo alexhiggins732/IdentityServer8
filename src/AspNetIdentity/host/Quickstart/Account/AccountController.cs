@@ -216,7 +216,7 @@ public class AccountController : Controller
         var context = await _interaction.GetAuthorizationContextAsync(returnUrl);
         if (context?.IdP != null && await _schemeProvider.GetSchemeAsync(context.IdP) != null)
         {
-            var local = context.IdP == IdentityServer8.IdentityServerConstants.LocalIdentityProvider;
+            var local = context.IdP == IdentityServer.IdentityServerConstants.LocalIdentityProvider;
 
             // this is meant to short circuit the UI and only trigger the one external IdP
             var vm = new LoginViewModel
@@ -318,7 +318,7 @@ public class AccountController : Controller
         if (User?.Identity.IsAuthenticated == true)
         {
             var idp = User.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
-            if (idp != null && idp != IdentityServer8.IdentityServerConstants.LocalIdentityProvider)
+            if (idp != null && idp != IdentityServer.IdentityServerConstants.LocalIdentityProvider)
             {
                 var providerSupportsSignout = await HttpContext.GetSchemeSupportsSignOutAsync(idp);
                 if (providerSupportsSignout)

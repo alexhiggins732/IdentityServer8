@@ -25,7 +25,7 @@ partial class PersistedGrantDbContextModelSnapshot : ModelSnapshot
             .HasAnnotation("Relational:MaxIdentifierLength", 128)
             .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.DeviceFlowCodes", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.DeviceFlowCodes", b =>
             {
                 b.Property<string>("UserCode")
                     .HasColumnType("nvarchar(200)")
@@ -75,7 +75,7 @@ partial class PersistedGrantDbContextModelSnapshot : ModelSnapshot
                 b.ToTable("DeviceCodes");
             });
 
-        modelBuilder.Entity("IdentityServer8.EntityFramework.Entities.PersistedGrant", b =>
+        modelBuilder.Entity("IdentityServer.EntityFramework.Entities.PersistedGrant", b =>
             {
                 b.Property<string>("Key")
                     .HasColumnType("nvarchar(200)")

@@ -14,7 +14,7 @@
 
 using System.Collections.Generic;
 
-namespace IdentityServer8.EntityFramework.Entities
+namespace IdentityServer.EntityFramework.Entities
 {
     public class ApiScope
     {

@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework.Services;
+namespace IdentityServer.EntityFramework.Services;
 
 /// <summary>
 /// Implementation of ICorsPolicyService that consults the client configuration in the database for allowed CORS origins.
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.ICorsPolicyService" />
+/// <seealso cref="IdentityServer.Services.ICorsPolicyService" />
 public class CorsPolicyService : ICorsPolicyService
 {
     private readonly IHttpContextAccessor _context;

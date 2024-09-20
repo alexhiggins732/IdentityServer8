@@ -20,9 +20,9 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Xunit;
 
 namespace IdentityServer.IntegrationTests.Conformance.Basic;

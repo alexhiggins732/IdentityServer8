@@ -11,7 +11,7 @@
 */
 
 using FluentAssertions;
-using IdentityServer8.Extensions;
+using IdentityServer.Extensions;
 using Microsoft.AspNetCore.Http;
 using Xunit;
 

@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Configuration;
+namespace IdentityServer.Configuration;
 
 /// <summary>
 /// The ValidationOptions contains settings that affect some of the default validation behavior.

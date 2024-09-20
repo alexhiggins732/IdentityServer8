@@ -16,7 +16,7 @@ public class Program
 {
     public static int Main(string[] args)
     {
-        Console.Title = "IdentityServer8";
+        Console.Title = "IdentityServer";
         Activity.DefaultIdFormat = ActivityIdFormat.W3C;
 
         Log.Logger = new LoggerConfiguration()

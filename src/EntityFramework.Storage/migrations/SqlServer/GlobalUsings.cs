@@ -10,8 +10,8 @@
  copies or substantial portions of the Software.
 */
 
-global using IdentityServer8.EntityFramework.DbContexts;
-global using IdentityServer8.EntityFramework.Storage;
+global using IdentityServer.EntityFramework.DbContexts;
+global using IdentityServer.EntityFramework.Storage;
 global using Microsoft.AspNetCore;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.EntityFrameworkCore.Infrastructure;

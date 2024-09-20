@@ -16,7 +16,7 @@ using System.Diagnostics;
 using System.Text.Json;
 using Xunit;
 
-namespace IdentityServer8.Security.Tests;
+namespace IdentityServer.Security.Tests;
 
 
 public class SanitizerTests

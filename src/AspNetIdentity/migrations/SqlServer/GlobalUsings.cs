@@ -11,7 +11,7 @@
 */
 
 global using IdentityModel;
-global using IdentityServer8.Models;
+global using IdentityServer.Models;
 global using IdentityServerHost;
 global using IdentityServerHost.Data;
 global using Microsoft.AspNetCore;

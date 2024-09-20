@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// Implementation of strict redirect URI validator that allows a random port if 127.0.0.1 is used.
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.StrictRedirectUriValidator" />
+/// <seealso cref="IdentityServer.Validation.StrictRedirectUriValidator" />
 public class StrictRedirectUriValidatorAppAuth : StrictRedirectUriValidator
 {
     private readonly ILogger _logger;

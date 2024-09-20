@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework.Entities
+namespace IdentityServer.EntityFramework.Entities
 {
     /// <summary>
     /// Entity for device flow codes

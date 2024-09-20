@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// The token revocation request validator
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.ITokenRevocationRequestValidator" />
+/// <seealso cref="IdentityServer.Validation.ITokenRevocationRequestValidator" />
 internal class TokenRevocationRequestValidator : ITokenRevocationRequestValidator
 {
     private readonly ILogger _logger;

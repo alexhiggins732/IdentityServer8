@@ -12,7 +12,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityServer8.EntityFramework.IntegrationTests;
+namespace IdentityServer.EntityFramework.IntegrationTests;
 
 /// <summary>
 /// xUnit ClassFixture for creating and deleting integration test databases.

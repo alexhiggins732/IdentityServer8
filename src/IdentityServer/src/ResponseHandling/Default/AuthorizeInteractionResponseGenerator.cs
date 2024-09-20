@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// Default logic for determining if user must login or consent when making requests to the authorization endpoint.
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IAuthorizeInteractionResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IAuthorizeInteractionResponseGenerator" />
 public class AuthorizeInteractionResponseGenerator : IAuthorizeInteractionResponseGenerator
 {
     /// <summary>

@@ -17,9 +17,9 @@ using System.Threading;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Services;
 using Microsoft.Extensions.Caching.Distributed;
 using Xunit;
 

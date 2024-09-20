@@ -14,7 +14,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using FluentAssertions;
-using IdentityServer8.Models;
+using IdentityServer.Models;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Extensions

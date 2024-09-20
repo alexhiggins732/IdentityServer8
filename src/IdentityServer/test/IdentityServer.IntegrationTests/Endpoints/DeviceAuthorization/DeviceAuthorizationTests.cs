@@ -20,7 +20,7 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
+using IdentityServer.Models;
 using Newtonsoft.Json;
 using Xunit;
 

@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Logging;
+namespace IdentityServer.Logging;
 
 internal class DeviceAuthorizationRequestValidationLog
 {

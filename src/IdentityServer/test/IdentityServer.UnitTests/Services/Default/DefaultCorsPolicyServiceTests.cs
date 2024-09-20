@@ -14,7 +14,7 @@ using System;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8.Services;
+using IdentityServer.Services;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Services.Default

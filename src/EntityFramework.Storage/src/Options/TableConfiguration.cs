@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework.Options
+namespace IdentityServer.EntityFramework.Options
 {
     /// <summary>
     /// Class to control a table's name and schema.

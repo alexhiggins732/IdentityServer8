@@ -13,9 +13,9 @@
 using FluentAssertions;
 using IdentityModel.Client;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
+using IdentityServer;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Linq;

@@ -12,7 +12,7 @@
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Events;
+namespace IdentityServer.Events;
 
 public static class EventIds
 {

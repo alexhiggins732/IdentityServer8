@@ -14,7 +14,7 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8;
+namespace IdentityServer;
 
 public static class IdentityServerConstants
 {

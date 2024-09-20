@@ -12,7 +12,7 @@
 
 using Microsoft.EntityFrameworkCore;
 
-namespace IdentityServer8.EntityFramework.IntegrationTests;
+namespace IdentityServer.EntityFramework.IntegrationTests;
 
 /// <summary>
 /// Helper methods to initialize DbContextOptions for the specified database provider and context.
@@ -29,7 +29,7 @@ public class DatabaseProviderBuilder
     public static DbContextOptions<T> BuildSqlite<T>(string name) where T : DbContext
     {
         var builder = new DbContextOptionsBuilder<T>();
-        builder.UseSqlite($"Filename=./Test.IdentityServer8.EntityFramework-3.1.0.{name}.db");
+        builder.UseSqlite($"Filename=./Test.IdentityServer.EntityFramework-3.1.0.{name}.db");
         return builder.Options;
     }
 
@@ -37,14 +37,14 @@ public class DatabaseProviderBuilder
     {
         var builder = new DbContextOptionsBuilder<T>();
         builder.UseSqlServer(
-            $@"Data Source=(LocalDb)\MSSQLLocalDB;database=Test.IdentityServer8.EntityFramework-3.1.0.{name};trusted_connection=yes;");
+            $@"Data Source=(LocalDb)\MSSQLLocalDB;database=Test.IdentityServer.EntityFramework-3.1.0.{name};trusted_connection=yes;");
         return builder.Options;
     }
 
     public static DbContextOptions<T> BuildAppVeyorSqlServer2016<T>(string name) where T : DbContext
     {
         var builder = new DbContextOptionsBuilder<T>();
-        builder.UseSqlServer($@"Server=(local)\SQL2016;Database=Test.IdentityServer8.EntityFramework-3.1.0.{name};User ID=sa;Password=Password12!");
+        builder.UseSqlServer($@"Server=(local)\SQL2016;Database=Test.IdentityServer.EntityFramework-3.1.0.{name};User ID=sa;Password=Password12!");
         return builder.Options;
     }
 }

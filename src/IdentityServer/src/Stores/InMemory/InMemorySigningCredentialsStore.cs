@@ -12,12 +12,12 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 /// <summary>
 /// Default signing credentials store
 /// </summary>
-/// <seealso cref="IdentityServer8.Stores.ISigningCredentialStore" />
+/// <seealso cref="IdentityServer.Stores.ISigningCredentialStore" />
 public class InMemorySigningCredentialsStore : ISigningCredentialStore
 {
     private readonly SigningCredentials _credential;

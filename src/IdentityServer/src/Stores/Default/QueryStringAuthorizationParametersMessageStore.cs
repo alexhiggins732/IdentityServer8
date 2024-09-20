@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Stores;
+namespace IdentityServer.Stores;
 
 // internal just for testing
 internal class QueryStringAuthorizationParametersMessageStore : IAuthorizationParametersMessageStore

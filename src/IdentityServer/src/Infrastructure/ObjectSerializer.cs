@@ -12,7 +12,7 @@
 
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace IdentityServer8;
+namespace IdentityServer;
 
 internal static class ObjectSerializer
 {

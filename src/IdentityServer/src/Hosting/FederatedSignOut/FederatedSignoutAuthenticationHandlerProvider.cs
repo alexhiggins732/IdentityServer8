@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Hosting.FederatedSignOut;
+namespace IdentityServer.Hosting.FederatedSignOut;
 
 // this intercepts IAuthenticationRequestHandler authentication handlers
 // to detect when they are handling federated signout. when they are invoked,

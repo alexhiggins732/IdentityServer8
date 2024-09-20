@@ -13,7 +13,7 @@
 using JsonExtensionDataAttribute = System.Text.Json.Serialization.JsonExtensionDataAttribute;
 using JsonSerializer = System.Text.Json.JsonSerializer;
 
-namespace IdentityServer8.Endpoints.Results;
+namespace IdentityServer.Endpoints.Results;
 
 internal class TokenResult : IEndpointResult
 {

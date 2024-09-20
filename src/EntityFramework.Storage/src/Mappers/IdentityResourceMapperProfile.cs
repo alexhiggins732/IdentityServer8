@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.EntityFramework.Mappers
+namespace IdentityServer.EntityFramework.Mappers
 {
     /// <summary>
     /// Defines entity/model mapping for identity resources.

@@ -13,8 +13,8 @@
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Validation.Setup;
-using IdentityServer8.Stores;
-using IdentityServer8.Validation;
+using IdentityServer.Stores;
+using IdentityServer.Validation;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;

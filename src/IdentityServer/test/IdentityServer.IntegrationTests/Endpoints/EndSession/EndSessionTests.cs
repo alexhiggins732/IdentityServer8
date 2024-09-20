@@ -22,12 +22,12 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Test;
 using Microsoft.AspNetCore.WebUtilities;
 using Newtonsoft.Json.Linq;
 using Xunit;
-using static IdentityServer8.IdentityServerConstants;
+using static IdentityServer.IdentityServerConstants;
 
 namespace IdentityServer.IntegrationTests.Endpoints.EndSession;
 

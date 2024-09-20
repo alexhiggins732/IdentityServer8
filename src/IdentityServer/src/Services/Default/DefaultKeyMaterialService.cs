@@ -12,12 +12,12 @@
 
 using Microsoft.IdentityModel.Tokens;
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// The default key material service
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IKeyMaterialService" />
+/// <seealso cref="IdentityServer.Services.IKeyMaterialService" />
 public class DefaultKeyMaterialService : IKeyMaterialService
 {
     private readonly IEnumerable<ISigningCredentialStore> _signingCredentialStores;

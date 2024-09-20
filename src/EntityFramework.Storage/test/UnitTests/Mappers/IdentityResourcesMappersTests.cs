@@ -10,11 +10,11 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.EntityFramework.Mappers;
-using IdentityServer8.Models;
+using IdentityServer.EntityFramework.Mappers;
+using IdentityServer.Models;
 using Xunit;
 
-namespace IdentityServer8.EntityFramework.UnitTests.Mappers;
+namespace IdentityServer.EntityFramework.UnitTests.Mappers;
 
 public class IdentityResourcesMappersTests
 {

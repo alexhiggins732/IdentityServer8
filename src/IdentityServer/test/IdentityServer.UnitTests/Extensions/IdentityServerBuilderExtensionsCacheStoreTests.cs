@@ -14,9 +14,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Stores;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

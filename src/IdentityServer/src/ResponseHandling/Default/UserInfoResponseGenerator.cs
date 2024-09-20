@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.ResponseHandling;
+namespace IdentityServer.ResponseHandling;
 
 /// <summary>
 /// The userinfo response generator
 /// </summary>
-/// <seealso cref="IdentityServer8.ResponseHandling.IUserInfoResponseGenerator" />
+/// <seealso cref="IdentityServer.ResponseHandling.IUserInfoResponseGenerator" />
 public class UserInfoResponseGenerator : IUserInfoResponseGenerator
 {
     /// <summary>

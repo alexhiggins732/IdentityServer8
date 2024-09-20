@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-using IdentityServer8.Configuration;
+using IdentityServer.Configuration;
 
 namespace IdentityServer.UnitTests.Common
 {

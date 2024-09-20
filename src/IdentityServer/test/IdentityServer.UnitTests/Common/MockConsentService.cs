@@ -14,9 +14,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using IdentityServer8.Models;
-using IdentityServer8.Services;
-using IdentityServer8.Validation;
+using IdentityServer.Models;
+using IdentityServer.Services;
+using IdentityServer.Validation;
 
 namespace IdentityServer.UnitTests.Common
 {

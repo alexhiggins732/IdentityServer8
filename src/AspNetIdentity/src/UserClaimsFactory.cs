@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.AspNetIdentity;
+namespace IdentityServer.AspNetIdentity;
 
 internal class UserClaimsFactory<TUser> : IUserClaimsPrincipalFactory<TUser>
     where TUser : class

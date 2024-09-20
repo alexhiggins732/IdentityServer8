@@ -14,7 +14,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 
-namespace IdentityServer8.Security.Tests;
+namespace IdentityServer.Security.Tests;
 
 public class DependencyInjection
 {

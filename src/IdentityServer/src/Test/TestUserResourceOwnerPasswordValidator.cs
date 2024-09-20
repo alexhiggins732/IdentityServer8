@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Test;
+namespace IdentityServer.Test;
 
 /// <summary>
 /// Resource owner password validator for test users
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.IResourceOwnerPasswordValidator" />
+/// <seealso cref="IdentityServer.Validation.IResourceOwnerPasswordValidator" />
 public class TestUserResourceOwnerPasswordValidator : IResourceOwnerPasswordValidator
 {
     private readonly TestUserStore _users;

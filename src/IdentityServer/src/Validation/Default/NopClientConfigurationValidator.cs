@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Validation;
+namespace IdentityServer.Validation;
 
 /// <summary>
 /// No-op client configuration validator (for backwards-compatibility).
 /// </summary>
-/// <seealso cref="IdentityServer8.Validation.IClientConfigurationValidator" />
+/// <seealso cref="IdentityServer.Validation.IClientConfigurationValidator" />
 public class NopClientConfigurationValidator : IClientConfigurationValidator
 {
     /// <summary>

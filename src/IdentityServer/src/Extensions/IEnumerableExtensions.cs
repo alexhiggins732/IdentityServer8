@@ -12,7 +12,7 @@
 
 #pragma warning disable 1591
 
-namespace IdentityServer8.Extensions;
+namespace IdentityServer.Extensions;
 
 public static class IEnumerableExtensions
 {

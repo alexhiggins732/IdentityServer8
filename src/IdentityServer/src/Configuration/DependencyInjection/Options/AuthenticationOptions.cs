@@ -10,7 +10,7 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Configuration;
+namespace IdentityServer.Configuration;
 
 /// <summary>
 /// Configures the login and logout views and behavior.

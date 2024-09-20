@@ -17,12 +17,12 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8.Configuration;
-using IdentityServer8.Endpoints.Results;
-using IdentityServer8.Extensions;
-using IdentityServer8.Models;
-using IdentityServer8.ResponseHandling;
-using IdentityServer8.Validation;
+using IdentityServer.Configuration;
+using IdentityServer.Endpoints.Results;
+using IdentityServer.Extensions;
+using IdentityServer.Models;
+using IdentityServer.ResponseHandling;
+using IdentityServer.Validation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.WebUtilities;
 using Xunit;
@@ -36,7 +36,7 @@ namespace IdentityServer.UnitTests.Endpoints.Results
         private AuthorizeResponse _response = new AuthorizeResponse();
         private IdentityServerOptions _options = new IdentityServerOptions();
         private MockUserSession _mockUserSession = new MockUserSession();
-        private MockMessageStore<IdentityServer8.Models.ErrorMessage> _mockErrorMessageStore = new MockMessageStore<IdentityServer8.Models.ErrorMessage>();
+        private MockMessageStore<IdentityServer.Models.ErrorMessage> _mockErrorMessageStore = new MockMessageStore<IdentityServer.Models.ErrorMessage>();
 
         private DefaultHttpContext _context = new DefaultHttpContext();
 

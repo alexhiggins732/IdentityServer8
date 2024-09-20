@@ -89,7 +89,7 @@ public static class IdentityServerBuilderExtensionsCore
         where T : class, IEndpointHandler
     {
         builder.Services.AddTransient<T>();
-        builder.Services.AddSingleton(new IdentityServer8.Hosting.Endpoint(name, path, typeof(T)));
+        builder.Services.AddSingleton(new IdentityServer.Hosting.Endpoint(name, path, typeof(T)));
 
         return builder;
     }

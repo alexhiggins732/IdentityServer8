@@ -17,10 +17,10 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityServer.IntegrationTests.Common;
-using IdentityServer8.Models;
-using IdentityServer8.Stores;
-using IdentityServer8.Stores.Default;
-using IdentityServer8.Test;
+using IdentityServer.Models;
+using IdentityServer.Stores;
+using IdentityServer.Stores.Default;
+using IdentityServer.Test;
 using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 

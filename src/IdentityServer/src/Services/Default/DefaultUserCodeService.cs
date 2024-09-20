@@ -10,12 +10,12 @@
  copies or substantial portions of the Software.
 */
 
-namespace IdentityServer8.Services;
+namespace IdentityServer.Services;
 
 /// <summary>
 /// Default user code service implementation.
 /// </summary>
-/// <seealso cref="IdentityServer8.Services.IUserCodeService" />
+/// <seealso cref="IdentityServer.Services.IUserCodeService" />
 public class DefaultUserCodeService : IUserCodeService
 {
     private readonly IEnumerable<IUserCodeGenerator> _generators;

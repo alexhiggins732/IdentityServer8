@@ -17,10 +17,10 @@ using System.Threading.Tasks;
 using FluentAssertions;
 using IdentityModel;
 using IdentityServer.UnitTests.Common;
-using IdentityServer8;
-using IdentityServer8.Configuration;
-using IdentityServer8.Models;
-using IdentityServer8.Validation;
+using IdentityServer;
+using IdentityServer.Configuration;
+using IdentityServer.Models;
+using IdentityServer.Validation;
 using Xunit;
 
 namespace IdentityServer.UnitTests.ResponseHandling.AuthorizeInteractionResponseGenerator
@@ -28,15 +28,15 @@ namespace IdentityServer.UnitTests.ResponseHandling.AuthorizeInteractionResponse
     public class AuthorizeInteractionResponseGeneratorTests_Login
     {
         private IdentityServerOptions _options = new IdentityServerOptions();
-        private IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator _subject;
+        private IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator _subject;
         private MockConsentService _mockConsentService = new MockConsentService();
         private StubClock _clock = new StubClock();
 
         public AuthorizeInteractionResponseGeneratorTests_Login()
         {
-            _subject = new IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator(
+            _subject = new IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator(
                 _clock,
-                TestLogger.Create<IdentityServer8.ResponseHandling.AuthorizeInteractionResponseGenerator>(),
+                TestLogger.Create<IdentityServer.ResponseHandling.AuthorizeInteractionResponseGenerator>(),
                 _mockConsentService,
                 new MockProfileService());
         }

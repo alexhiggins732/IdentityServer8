@@ -15,8 +15,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using FluentAssertions;
-using IdentityServer8.Events;
-using IdentityServer8.Services;
+using IdentityServer.Events;
+using IdentityServer.Services;
 
 namespace IdentityServer.UnitTests.Common
 {
