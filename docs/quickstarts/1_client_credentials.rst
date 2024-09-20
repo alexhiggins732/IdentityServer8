@@ -5,7 +5,7 @@ Protecting an API using Client Credentials
 The following Identity Server 4 quickstart provides step by step instructions for various common IdentityServer scenarios. 
 These start with the absolute basics and become more complex as they progress. We recommend that you follow them in sequence.  
 
-To see the full list, please go to `IdentityServer Quickstarts Overview <https://IdentityServer.readthedocs.io/en/latest/quickstarts/0_overview.html>`_
+To see the full list, please go to `IdentityServer Quickstarts Overview <https://identity-server.readthedocs.io/en/latest/quickstarts/0_overview.html>`_
 
 This first quickstart is the most basic scenario for protecting APIs using IdentityServer. 
 In this quickstart you define an API and a Client with which to access it. 

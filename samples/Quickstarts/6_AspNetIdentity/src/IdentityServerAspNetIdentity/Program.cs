@@ -34,7 +34,7 @@ try
              options.Events.RaiseFailureEvents = true;
              options.Events.RaiseSuccessEvents = true;
 
-             // see https://IdentityServer.readthedocs.io/en/latest/topics/resources.html
+             // see https://identity-server.readthedocs.io/en/latest/topics/resources.html
              options.EmitStaticAudienceClaim = true;
          })
          .AddInMemoryIdentityResources(Config.IdentityResources)

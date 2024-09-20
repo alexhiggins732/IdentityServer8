@@ -5,8 +5,8 @@ The latest verion, 8.0.4, is now available on NuGet. It contains [hundreds of se
 
 It is recommend you update all previous version, 4 or 8, to the latest version to ensure you have the latest security updates. 
 
-- [Documentation](http://IdentityServer.readthedocs.io/)
-- [Support](https://IdentityServer.readthedocs.io/en/latest/into/support.html)
+- [Documentation](https://identity-server.readthedocs.io/)
+- [Support](https://identity-server.readthedocs.io/en/latest/into/support.html)
 - [Gitter Chat](https://app.gitter.im/#/room/#IdentityServer:gitter.im)
 
 [IdentityServer and Admin UI Nuget Packages](https://www.nuget.org/packages?q=IdentityServer) are available here for use in DotNet 8.
@@ -38,8 +38,8 @@ General speaking, the existing documentation for Identity Server 4 will be valid
 [![Master|CodeQL](https://github.com/mvput/IdentityServer/actions/workflows/codeql.yml/badge.svg?branch=develop)](https://github.com/mvput/IdentityServer/actions/workflows/codeql.yml?branch=develop)
 
 ## Documentation
-[![Documentation Status](https://readthedocs.org/projects/IdentityServer/badge/?version=latest)](https://IdentityServer.readthedocs.io/en/latest/?badge=latest)
-[Read the docs - IdentityServer.readthedocs.io ](http://IdentityServer.readthedocs.io/)
+[![Documentation Status](https://readthedocs.org/projects/IdentityServer/badge/?version=latest)](https://identity-server.readthedocs.io/en/latest/?badge=latest)
+[Read the docs - IdentityServer.readthedocs.io ](https://identity-server.readthedocs.io/)
 
 ## Nuget Packages
 
@@ -87,7 +87,7 @@ Founded and maintained by [Dominick Baier](https://twitter.com/leastprivilege) a
 IdentityServer is officially [certified](https://openid.net/certification/) by the [OpenID Foundation](https://openid.net) and thus spec-compliant and interoperable.
 It is part of the [.NET Foundation](https://www.dotnetfoundation.org/), and operates under their [code of conduct](https://www.dotnetfoundation.org/code-of-conduct). It is licensed under [Apache 2](https://opensource.org/licenses/Apache-2.0) (an OSI approved license).
 
-For project documentation, please visit [readthedocs](https://IdentityServer.readthedocs.io).
+For project documentation, please visit [readthedocs](https://identity-server.readthedocs.io).
 
 ## Branch structure
 Active development happens on the main branch. This always contains the latest version. Each (pre-) release is tagged with the corresponding version. The [aspnetcore1](https://github.com/mvput/IdentityServer/tree/aspnetcore1) and [aspnetcore2](https://github.com/mvput/IdentityServer/tree/aspnetcore2) branches contain the latest versions of the older ASP.NET Core based versions.
@@ -100,7 +100,7 @@ Active development happens on the main branch. This always contains the latest v
 * Run `dotnet build src/IdentityServer.slm` or `build.sh` in the root of the cloned repo.
 
 ## Documentation
-For project documentation, please visit [readthedocs](https://IdentityServer.readthedocs.io).
+For project documentation, please visit [readthedocs](https://identity-server.readthedocs.io).
 
 See [here](http://docs.IdentityServer.io/en/aspnetcore1/) for the 1.x docs, and [here](http://docs.IdentityServer.io/en/aspnetcore2/) for the 2.x docs.
 
@@ -109,7 +109,7 @@ Please use the [issue tracker](https://github.com/mvput/IdentityServer/issues) f
 
 ## Commercial and Community Support
 If you need help with implementing IdentityServer or your security architecture in general, there are both free and commercial support options.
-See [here](https://IdentityServer.readthedocs.io/en/latest/intro/support.html) for more details.
+See [here](https://identity-server.readthedocs.io/en/latest/intro/support.html) for more details.
 
 ## Sponsorship
 If you are a fan of the project or a company that relies on IdentityServer, you might want to consider sponsoring.
