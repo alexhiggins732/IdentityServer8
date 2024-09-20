@@ -5,7 +5,7 @@
         <!--always bump /version.json and /docs/conf.py to <Version>X.Y.Z</Version>to keep nuget, build and document versions in sync-->
         <Version>8.0.4</Version>
 		<IdentityServerVersion>8.0.4</IdentityServerVersion>
-        <PackageId>HigginsSoft.$(MSBuildProjectName)</PackageId>
+        <PackageId>$(MSBuildProjectName)</PackageId>
         <Title>$(MSBuildProjectName)</Title>
         <ImplicitUsings>enable</ImplicitUsings>
 
@@ -19,15 +19,15 @@
 
 
         <Description>OpenID Connect and OAuth 2.0 Framework for ASP.NET Core</Description>
-        <Copyright>Copyright 2024 HigginsSoft. Alexander Higgins</Copyright>
-        <Authors>HigginsSoft, Alexander Higgins, Brock Allen, Dominick Baier</Authors>
+        <Copyright>Copyright 2024 Martijn van Put</Copyright>
+        <Authors>Martijn van Put, HigginsSoft, Alexander Higgins, Brock Allen, Dominick Baier</Authors>
   
         <PackageTags>OAuth2 OAuth 2.0 OpenID Connect Security Identity IdentityServer Admin IdentityServer8 OpenIDConnect </PackageTags>
 
 
-        <PackageProjectUrl>https://github.com/alexhiggins732/IdentityServer8</PackageProjectUrl>
+        <PackageProjectUrl>https://github.com/mvput/IdentityServer</PackageProjectUrl>
         <RepositoryType>git</RepositoryType>
-        <PackageReleaseNotes>https://github.com/alexhiggins732/IdentityServer8/releases</PackageReleaseNotes>
+        <PackageReleaseNotes>https://github.com/mvput/IdentityServer/releases</PackageReleaseNotes>
 
         <!-- Declare that the Repository URL can be published to NuSpec -->
         <PublishRepositoryUrl>true</PublishRepositoryUrl>

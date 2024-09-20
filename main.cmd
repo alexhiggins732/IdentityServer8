@@ -1,1 +1,1 @@
-start ./src/IdentityServer8/IdentityServer8.sln
+start ./src/IdentityServer/IdentityServer.sln
