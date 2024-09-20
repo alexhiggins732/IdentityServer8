@@ -1,7 +1,7 @@
-# IdentityServer8.EntityFramework.Storage
+# IdentityServer.EntityFramework.Storage
 
-IdentityServer8.EntityFramework.Storage is a persistence layer for IdentityServer 4 configuration data that uses EntityFramework as its database abstraction.
+IdentityServer.EntityFramework.Storage is a persistence layer for IdentityServer 4 configuration data that uses EntityFramework as its database abstraction.
 
 ## Issues
 
-For issues, use the [consolidated IdentityServer8 issue tracker](https://github.com/alexhiggins732/IdentityServer8/issues).
+For issues, use the [consolidated IdentityServer issue tracker](https://github.com/mvput/IdentityServer/issues).

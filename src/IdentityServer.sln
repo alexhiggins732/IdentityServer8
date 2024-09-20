@@ -6,19 +6,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5461C61B-B06
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{45C22EDD-91B1-4AEF-8620-77F4E3E7C544}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8", "IdentityServer8\src\IdentityServer8.csproj", "{407C030E-60E6-41F7-AF43-0AC48EDCC17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "IdentityServer\src\IdentityServer.csproj", "{407C030E-60E6-41F7-AF43-0AC48EDCC17D}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "IdentityServer8\host\Host.csproj", "{784B3C88-30FA-415D-B99E-584063064508}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "IdentityServer\host\Host.csproj", "{784B3C88-30FA-415D-B99E-584063064508}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.UnitTests", "IdentityServer8\test\IdentityServer.UnitTests\IdentityServer.UnitTests.csproj", "{4291820C-735F-4776-8BC4-6527433BC683}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.UnitTests", "IdentityServer\test\IdentityServer.UnitTests\IdentityServer.UnitTests.csproj", "{4291820C-735F-4776-8BC4-6527433BC683}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.IntegrationTests", "IdentityServer8\test\IdentityServer.IntegrationTests\IdentityServer.IntegrationTests.csproj", "{94501373-478A-478D-8C17-6AC52E3438CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.IntegrationTests", "IdentityServer\test\IdentityServer.IntegrationTests\IdentityServer.IntegrationTests.csproj", "{94501373-478A-478D-8C17-6AC52E3438CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework.Storage", "EntityFramework.Storage\src\IdentityServer8.EntityFramework.Storage.csproj", "{5302DAB3-1662-4956-97AA-5EA5E85B10F6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.EntityFramework.Storage", "EntityFramework.Storage\src\IdentityServer.EntityFramework.Storage.csproj", "{5302DAB3-1662-4956-97AA-5EA5E85B10F6}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework.UnitTests", "EntityFramework.Storage\test\UnitTests\IdentityServer8.EntityFramework.UnitTests.csproj", "{8239FC82-46A3-4F21-8D05-1F0BE0B1B1FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.EntityFramework.UnitTests", "EntityFramework.Storage\test\UnitTests\IdentityServer.EntityFramework.UnitTests.csproj", "{8239FC82-46A3-4F21-8D05-1F0BE0B1B1FC}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework.IntegrationTests", "EntityFramework.Storage\test\IntegrationTests\IdentityServer8.EntityFramework.IntegrationTests.csproj", "{E90F7470-C7F8-464B-9C28-87C474085812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.EntityFramework.IntegrationTests", "EntityFramework.Storage\test\IntegrationTests\IdentityServer.EntityFramework.IntegrationTests.csproj", "{E90F7470-C7F8-464B-9C28-87C474085812}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "migrations", "migrations", "{E3EF31E0-6658-4899-8BDA-FF84355E2FDD}"
 EndProject
@@ -40,19 +40,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{19B1
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Storage", "Storage", "{6CB8A0D7-77D4-411B-953C-A4AB50F56205}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.Storage", "Storage\src\IdentityServer8.Storage.csproj", "{A5E2B0DD-9C88-42B5-BCEC-7ED701504FF7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Storage", "Storage\src\IdentityServer.Storage.csproj", "{A5E2B0DD-9C88-42B5-BCEC-7ED701504FF7}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.AspNetIdentity", "AspNetIdentity\src\IdentityServer8.AspNetIdentity.csproj", "{A2CDBE15-5898-4A04-94DC-133EE03A78B3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.AspNetIdentity", "AspNetIdentity\src\IdentityServer.AspNetIdentity.csproj", "{A2CDBE15-5898-4A04-94DC-133EE03A78B3}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "AspNetIdentity\host\Host.csproj", "{B7FBA07C-A462-4869-AF94-5E36DFC3742D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer", "AspNetIdentity\migrations\SqlServer\SqlServer.csproj", "{DD44B9E9-C32E-4F89-92C9-25444A709BBB}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework", "EntityFramework\src\IdentityServer8.EntityFramework.csproj", "{AB83F911-8B78-4973-A3A9-2A2D85581F25}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.EntityFramework", "EntityFramework\src\IdentityServer.EntityFramework.csproj", "{AB83F911-8B78-4973-A3A9-2A2D85581F25}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SqlServer", "EntityFramework\migrations\SqlServer\SqlServer.csproj", "{D9FABEC8-09DC-4B0D-80D7-86FA6C5D9C69}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.EntityFramework.Tests", "EntityFramework\test\IdentityServer8.EntityFramework.Tests\IdentityServer8.EntityFramework.Tests.csproj", "{E3685B06-F135-4318-B841-889C35479D5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.EntityFramework.Tests", "EntityFramework\test\IdentityServer.EntityFramework.Tests\IdentityServer.EntityFramework.Tests.csproj", "{E3685B06-F135-4318-B841-889C35479D5C}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution Files", "{29DC1E06-3EC5-4F52-9EC1-0363BD571369}"
 	ProjectSection(SolutionItems) = preProject
@@ -62,7 +62,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		Directory.BuildOld.targets = Directory.BuildOld.targets
 		..\Directory.Packages.props = ..\Directory.Packages.props
 		..\global.json = ..\global.json
-		..\IdentityServer8.DotNet.ruleset = ..\IdentityServer8.DotNet.ruleset
+		..\IdentityServer.DotNet.ruleset = ..\IdentityServer.DotNet.ruleset
 		..\LICENSE = ..\LICENSE
 		..\LicenseHeader.txt = ..\LicenseHeader.txt
 		..\NuGet.config = ..\NuGet.config
@@ -106,9 +106,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{9B
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Security", "Security", "{19B652D0-0AA1-415C-AA62-065EE8C77182}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.Security", "Security\IdentityServer8.Security\IdentityServer8.Security.csproj", "{284DF9E0-8007-4E84-949D-5B610D76B1CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Security", "Security\IdentityServer.Security\IdentityServer.Security.csproj", "{284DF9E0-8007-4E84-949D-5B610D76B1CF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8.Sanitizer.Tests", "Security\test\IdentityServer8.Santizer.Tests\IdentityServer8.Sanitizer.Tests.csproj", "{00BDF864-B06A-4A48-B8B4-85C219B33CD1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer.Sanitizer.Tests", "Security\test\IdentityServer.Santizer.Tests\IdentityServer.Sanitizer.Tests.csproj", "{00BDF864-B06A-4A48-B8B4-85C219B33CD1}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "EntityFramework\host\Host.csproj", "{C7939ADD-36C9-444F-A773-28EC81587831}"
 EndProject

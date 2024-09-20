@@ -1,12 +1,12 @@
 Training
 ========
-Here are some online, remote and classroom training options to learn more about ASP.NET Core identity & IdentityServer8.
+Here are some online, remote and classroom training options to learn more about ASP.NET Core identity & IdentityServer.
 
-Identity & Access Control for modern Applications (using ASP.NET Core 2 and IdentityServer8)
+Identity & Access Control for modern Applications (using ASP.NET Core 2 and IdentityServer)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 That's our own three day flagship course (including extensive hands-on labs) that we deliver as part of conferences, on-sites and remote.
 
-The agenda and dates for public training can be found `here <https://identityserver8.io/training>`_,
+The agenda and dates for public training can be found `here <https://identityserver.io/training>`_,
 `contact <mailto:identity@leastprivilege.com>`_ us for private workshops.
 
 PluralSight courses

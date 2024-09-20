@@ -12,14 +12,14 @@ Also read this first: `Being a good open source citizen <https://hackernoon.com/
 
 General feedback and discussions?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-Please start a discussion on the `core repo issue tracker <https://github.com/alexhiggins732/IdentityServer8/issues>`_.
+Please start a discussion on the `core repo issue tracker <https://github.com/mvput/IdentityServer/issues>`_.
 
 Bugs and feature requests?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 Please log a new issue in the appropriate GitHub repo:
 
-* `Core <https://github.com/alexhiggins732/IdentityServer8>`_
-* `AccessTokenValidation <https://github.com/alexhiggins732/IdentityServer8.AccessTokenValidation>`_
+* `Core <https://github.com/mvput/IdentityServer>`_
+* `AccessTokenValidation <https://github.com/mvput/IdentityServer.AccessTokenValidation>`_
 
 Contributing code and content
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,10 +35,10 @@ We generally don't want to take ownership of those contribution libraries, we ar
 
 **Naming conventions**
 
-As of October 2017, the IdentityServer8.* nuget namespace is reserved for our packages. Please use the following naming conventions:
+As of October 2017, the IdentityServer.* nuget namespace is reserved for our packages. Please use the following naming conventions:
 
-``YourProjectName.IdentityServer8``
+``YourProjectName.IdentityServer``
 
 or
 
-``IdentityServer8.Contrib.YourProjectName``
+``IdentityServer.Contrib.YourProjectName``

@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IdentityServer8.EntityFramework.Storage.csproj" />
+    <ProjectReference Include="..\..\src\IdentityServer.EntityFramework.Storage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

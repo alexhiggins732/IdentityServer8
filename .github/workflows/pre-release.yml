@@ -28,7 +28,7 @@ on:
     - "docker-compose.dcrpoj"
     - "**/*.sln"
     - "global.json"
-    - "IdentityServer8.DotNet.ruleset"
+    - "IdentityServer.DotNet.ruleset"
     - "LICENSCE"
     - "Nuget.config"
     - "SECURITY.md"
@@ -64,16 +64,16 @@ jobs:
 
 
     - name: Restore dependencies
-      run: dotnet restore src/IdentityServer8.sln
+      run: dotnet restore src/IdentityServer.sln
     - name: Build
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
+      run: dotnet build src/IdentityServer.sln --configuration Release --no-restore -p:Version=${{ steps.nbgv.outputs.SimpleVersion }}-ci.${{ steps.nbgv.outputs.VersionRevision }}
     - name: Test
-      run: dotnet test src/IdentityServer8.sln --configuration Release --no-build --verbosity normal /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
+      run: dotnet test src/IdentityServer.sln --configuration Release --no-build --verbosity normal /p:CollectCoverage=true --collect:"XPlat Code Coverage" -- DataCollectionRunSettings.DataCollectors.DataCollector.Configuration.Format=cobertura
 
     - name: Upload coverage reports to Codecov
       uses: codecov/codecov-action@v4.0.1
       env:
         token: ${{ secrets.CODECOV_TOKEN }}
-        slug: alexhiggins732/IdentityServer8
+        slug: alexhiggins732/IdentityServer
         CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
 

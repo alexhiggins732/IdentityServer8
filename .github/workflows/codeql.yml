@@ -33,7 +33,7 @@ on:
     - "docker-compose.dcrpoj"
     - "**/*.sln"
     - "global.json"
-    - "IdentityServer8.DotNet.ruleset"
+    - "IdentityServer.DotNet.ruleset"
     - "LICENSCE"
     - "version.json"
     - "Nuget.config"
@@ -105,10 +105,10 @@ jobs:
 
     - name: Restore dependencies
       if: ${{ (matrix.language == 'csharp') }} 
-      run: dotnet restore src/IdentityServer8.sln
+      run: dotnet restore src/IdentityServer.sln
     - name: Build
       if: ${{ (matrix.language == 'csharp') }} 
-      run: dotnet build src/IdentityServer8.sln --configuration Release --no-restore
+      run: dotnet build src/IdentityServer.sln --configuration Release --no-restore
 
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v3

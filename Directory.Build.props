@@ -22,7 +22,7 @@
         <Copyright>Copyright 2024 Martijn van Put</Copyright>
         <Authors>Martijn van Put, HigginsSoft, Alexander Higgins, Brock Allen, Dominick Baier</Authors>
   
-        <PackageTags>OAuth2 OAuth 2.0 OpenID Connect Security Identity IdentityServer Admin IdentityServer8 OpenIDConnect </PackageTags>
+        <PackageTags>OAuth2 OAuth 2.0 OpenID Connect Security Identity IdentityServer Admin IdentityServer OpenIDConnect </PackageTags>
 
 
         <PackageProjectUrl>https://github.com/mvput/IdentityServer</PackageProjectUrl>
@@ -41,8 +41,6 @@
 
 
         <GenerateBindingRedirectsOutputType>true</GenerateBindingRedirectsOutputType>
-
-        <!--<CodeAnalysisRuleset>$(MSBuildThisFileDirectory)IdentityServer8.DotNet.ruleset</CodeAnalysisRuleset>-->
 
         <IsTrimmable>false</IsTrimmable>
         <EnableAOTAnalyzer>false</EnableAOTAnalyzer>

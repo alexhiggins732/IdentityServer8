@@ -25,7 +25,7 @@ The way you store that data depends on your environment. In situations where con
 In highly dynamic environments (e.g. Saas) we recommend using a database or configuration service to load configuration dynamically.
 
 IdentityServer supports code configuration and configuration files (see `here <https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration>`_) out of the box.
-For databases we provide support for `Entity Framework Core <https://github.com/alexhiggins732/IdentityServer8.EntityFramework>`_ based databases.
+For databases we provide support for `Entity Framework Core <https://github.com/mvput/IdentityServer.EntityFramework>`_ based databases.
 
 You can also build your own configuration stores by implementing ``IResourceStore`` and ``IClientStore``.
 

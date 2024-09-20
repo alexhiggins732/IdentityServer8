@@ -1,13 +1,13 @@
 version: '3.4'
 
 services:
-  IdentityServer8.Admin:
+  IdentityServer.Admin:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
   
-  IdentityServer8.Admin.api:
+  IdentityServer.Admin.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:

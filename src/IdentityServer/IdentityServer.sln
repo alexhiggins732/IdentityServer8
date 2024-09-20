@@ -6,7 +6,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5461C61B-B06
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{45C22EDD-91B1-4AEF-8620-77F4E3E7C544}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer8", "src\IdentityServer8.csproj", "{407C030E-60E6-41F7-AF43-0AC48EDCC17D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityServer", "src\IdentityServer.csproj", "{407C030E-60E6-41F7-AF43-0AC48EDCC17D}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Host", "host\Host.csproj", "{784B3C88-30FA-415D-B99E-584063064508}"
 EndProject
@@ -23,7 +23,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Files", "Solution 
 		..\..\Directory.Build.targets = ..\..\Directory.Build.targets
 		..\..\Directory.Packages.props = ..\..\Directory.Packages.props
 		..\..\global.json = ..\..\global.json
-		..\..\IdentityServer8.DotNet.ruleset = ..\..\IdentityServer8.DotNet.ruleset
+		..\..\IdentityServer.DotNet.ruleset = ..\..\IdentityServer.DotNet.ruleset
 		..\..\LICENSE = ..\..\LICENSE
 		..\..\NuGet.config = ..\..\NuGet.config
 		..\..\README.md = ..\..\README.md

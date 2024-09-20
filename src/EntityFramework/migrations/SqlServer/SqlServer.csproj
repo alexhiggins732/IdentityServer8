@@ -3,7 +3,7 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IdentityServer8.EntityFramework.csproj" />
+    <ProjectReference Include="..\..\src\IdentityServer.EntityFramework.csproj" />
 
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" />
   </ItemGroup>

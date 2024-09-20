@@ -19,6 +19,6 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" PrivateAssets="All" />
     <PackageReference Include="System.Security.Principal.Windows" />
     
-    <ProjectReference Include="..\src\IdentityServer8.csproj" />
+    <ProjectReference Include="..\src\IdentityServer.csproj" />
   </ItemGroup>
 </Project>

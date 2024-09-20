@@ -42,7 +42,7 @@ Be sure to look at:
 IdentityServerAspNetIdentity.csproj
 -----------------------------------
 
-Notice the reference to `IdentityServer8.AspNetIdentity`. 
+Notice the reference to `IdentityServer.AspNetIdentity`. 
 This NuGet package contains the ASP.NET Core Identity integration components for IdentityServer.
 
 Startup.cs

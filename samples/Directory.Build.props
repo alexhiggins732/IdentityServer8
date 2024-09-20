@@ -14,10 +14,10 @@
 	<SignAssembly>false</SignAssembly>
   </PropertyGroup>
   <ItemGroup>
-    <PackageVersion Include="HigginsSoft.IdentityServer8" Version="$(IdentityServerVersion)" />
-	<PackageVersion Include="HigginsSoft.IdentityServer8.Security" Version="$(IdentityServerVersion)" />
-	<PackageVersion Include="HigginsSoft.IdentityServer8.AspNetIdentity" Version="$(IdentityServerVersion)" />
-    <PackageVersion Include="HigginsSoft.IdentityServer8.EntityFramework" Version="$(IdentityServerVersion)" />
+    <PackageVersion Include="HigginsSoft.IdentityServer" Version="$(IdentityServerVersion)" />
+	<PackageVersion Include="HigginsSoft.IdentityServer.Security" Version="$(IdentityServerVersion)" />
+	<PackageVersion Include="HigginsSoft.IdentityServer.AspNetIdentity" Version="$(IdentityServerVersion)" />
+    <PackageVersion Include="HigginsSoft.IdentityServer.EntityFramework" Version="$(IdentityServerVersion)" />
   </ItemGroup> 
   <ItemGroup>
     <PackageReference Include="IdentityModel.OidcClient" />

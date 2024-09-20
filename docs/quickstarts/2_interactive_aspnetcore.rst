@@ -18,7 +18,7 @@ You need to provide the necessary UI parts for login, logout, consent and error.
 While the look & feel as well as the exact workflows will probably always differ in every
 IdentityServer implementation, we provide an MVC-based sample UI that you can use as a starting point.
 
-This UI can be found in the `Quickstart UI repo <https://github.com/alexhiggins732/IdentityServer8.Quickstart.UI/tree/main>`_.
+This UI can be found in the `Quickstart UI repo <https://github.com/mvput/IdentityServer.Quickstart.UI/tree/main>`_.
 You can clone or download this repo and drop the controllers, views, models and CSS into your IdentityServer web application.
 
 Alternatively you can use the .NET CLI (run from within the ``src/IdentityServer`` folder)::
@@ -257,7 +257,7 @@ The IdentityServer will clear its cookies and then give the user a link to retur
 
 Getting claims from the UserInfo endpoint
 ^^^^^^^^^^^^^^^
-You might have noticed that even though we've configured the client to be allowed to retrieve the ``profile`` identity scope, the claims associated with that scope (such as ``name``, ``family_name``, ``website`` etc.) don't appear in the returned token. We need to tell the client to pull remaining claims from the `UserInfo <https://IdentityServer8.readthedocs.io/en/latest/endpoints/userinfo.html>`_ endpoint by specifying scopes that the client application needs to access and setting the ``GetClaimsFromUserInfoEndpoint`` option. In the following example we're requesting the ``profile`` scope, but it could be any scope (or scopes) that the client is authorized to access::
+You might have noticed that even though we've configured the client to be allowed to retrieve the ``profile`` identity scope, the claims associated with that scope (such as ``name``, ``family_name``, ``website`` etc.) don't appear in the returned token. We need to tell the client to pull remaining claims from the `UserInfo <https://IdentityServer.readthedocs.io/en/latest/endpoints/userinfo.html>`_ endpoint by specifying scopes that the client application needs to access and setting the ``GetClaimsFromUserInfoEndpoint`` option. In the following example we're requesting the ``profile`` scope, but it could be any scope (or scopes) that the client is authorized to access::
 
     .AddOpenIdConnect("oidc", options =>
     {
@@ -293,7 +293,7 @@ The process for defining an identity resource is as follows:
 
 It is also noteworthy, that the retrieval of claims for tokens is an extensibility point - ``IProfileService``.
 Since we are using ``AddTestUsers``, the ``TestUserProfileService`` is used by default.
-You can inspect the source code `here <https://github.com/alexhiggins732/IdentityServer8/blob/main/src/IdentityServer8/src/Test/TestUserProfileService.cs>`_
+You can inspect the source code `here <https://github.com/mvput/IdentityServer/blob/main/src/IdentityServer/src/Test/TestUserProfileService.cs>`_
 to see how it works.
 
 .. _refExternalAuthenticationQuickstart:
@@ -340,7 +340,7 @@ After authentication with the MVC client, you can see that the claims are now be
 Further experiments
 ^^^^^^^^^^^^^^^^^^^
 You can add an additional external provider.
-We have a `cloud-hosted demo <https://demo.identityserver8.io>`_ version of IdentityServer8 which you can integrate using OpenID Connect.
+We have a `cloud-hosted demo <https://demo.identityserver.io>`_ version of IdentityServer which you can integrate using OpenID Connect.
 
 Add the OpenId Connect handler to DI::
 
@@ -358,7 +358,7 @@ Add the OpenId Connect handler to DI::
             options.SignOutScheme = IdentityServerConstants.SignoutScheme;
             options.SaveTokens = true;
 
-            options.Authority = "https://demo.identityserver8.io/";
+            options.Authority = "https://demo.identityserver.io/";
             options.ClientId = "interactive.confidential";
             options.ClientSecret = "secret";
             options.ResponseType = "code";
@@ -372,4 +372,4 @@ Add the OpenId Connect handler to DI::
 
 And now a user should be able to use the cloud-hosted demo identity provider.
 
-.. note:: The quickstart UI auto-provisions external users. As an external user logs in for the first time, a new local user is created, and all the external claims are copied over and associated with the new user. The way you deal with such a situation is completely up to you though. Maybe you want to show some sort of registration UI first. The source code for the default quickstart can be found `here <https://github.com/alexhiggins732/IdentityServer8.Quickstart.UI>`_. The controller where auto-provisioning is executed can be found `here <https://github.com/alexhiggins732/IdentityServer8.Quickstart.UI/blob/main/Quickstart/Account/ExternalController.cs>`_.
+.. note:: The quickstart UI auto-provisions external users. As an external user logs in for the first time, a new local user is created, and all the external claims are copied over and associated with the new user. The way you deal with such a situation is completely up to you though. Maybe you want to show some sort of registration UI first. The source code for the default quickstart can be found `here <https://github.com/mvput/IdentityServer.Quickstart.UI>`_. The controller where auto-provisioning is executed can be found `here <https://github.com/mvput/IdentityServer.Quickstart.UI/blob/main/Quickstart/Account/ExternalController.cs>`_.

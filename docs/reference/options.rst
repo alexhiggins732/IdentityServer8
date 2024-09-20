@@ -110,7 +110,7 @@ IdentityServer supports CORS for some of its endpoints.
 The underlying CORS implementation is provided from ASP.NET Core, and as such it is automatically registered in the dependency injection system.
 
 * ``CorsPolicyName``
-    Name of the CORS policy that will be evaluated for CORS requests into IdentityServer (defaults to ``"IdentityServer8"``).
+    Name of the CORS policy that will be evaluated for CORS requests into IdentityServer (defaults to ``"IdentityServer"``).
     The policy provider that handles this is implemented in terms of the ``ICorsPolicyService`` registered in the dependency injection system.
     If you wish to customize the set of CORS origins allowed to connect, then it is recommended that you provide a custom implementation of ``ICorsPolicyService``.
 

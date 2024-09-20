@@ -17,7 +17,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\IdentityServer8.Security\IdentityServer8.Security.csproj" />
+    <ProjectReference Include="..\..\IdentityServer.Security\IdentityServer.Security.csproj" />
   </ItemGroup>
   
   

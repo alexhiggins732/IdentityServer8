@@ -2,13 +2,13 @@
 @using System.Reflection
 
 @{
-    var version = typeof(IdentityServer8.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+').First();
+    var version = typeof(IdentityServer.Hosting.IdentityServerMiddleware).Assembly.GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion.Split('+').First();
 }
 
 <div class="welcome-page">
     <h1>
         <img src="~/icon.jpg">
-        Welcome to IdentityServer8
+        Welcome to IdentityServer
         <small class="text-muted">(version @version)</small>
     </h1>
 
@@ -26,8 +26,8 @@
         </li>
         <li>
             Here are links to the
-            <a href="https://github.com/alexhiggins732/IdentityServer8">source code repository</a>,
-            and <a href="https://github.com/alexhiggins732/IdentityServer8/tree/main/samples">ready to use samples</a>.
+            <a href="https://github.com/mvput/IdentityServer">source code repository</a>,
+            and <a href="https://github.com/mvput/IdentityServer/tree/main/samples">ready to use samples</a>.
         </li>
     </ul>
 </div>

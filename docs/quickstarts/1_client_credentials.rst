@@ -5,7 +5,7 @@ Protecting an API using Client Credentials
 The following Identity Server 4 quickstart provides step by step instructions for various common IdentityServer scenarios. 
 These start with the absolute basics and become more complex as they progress. We recommend that you follow them in sequence.  
 
-To see the full list, please go to `IdentityServer8 Quickstarts Overview <https://IdentityServer8.readthedocs.io/en/latest/quickstarts/0_overview.html>`_
+To see the full list, please go to `IdentityServer Quickstarts Overview <https://IdentityServer.readthedocs.io/en/latest/quickstarts/0_overview.html>`_
 
 This first quickstart is the most basic scenario for protecting APIs using IdentityServer. 
 In this quickstart you define an API and a Client with which to access it. 
@@ -13,14 +13,14 @@ The client will request an access token from the Identity Server using its clien
 
 Source Code
 ^^^^^^^^^^^
-As with all of these quickstarts you can find the source code for it in the `IdentityServer8 <https://github.com/alexhiggins732/IdentityServer8/blob/main/samples>`_ repository. The project for this quickstart is `Quickstart #1: Securing an API using Client Credentials <https://github.com/alexhiggins732/IdentityServer8/tree/main/samples/Quickstarts/1_ClientCredentials>`_
+As with all of these quickstarts you can find the source code for it in the `IdentityServer <https://github.com/mvput/IdentityServer/blob/main/samples>`_ repository. The project for this quickstart is `Quickstart #1: Securing an API using Client Credentials <https://github.com/mvput/IdentityServer/tree/main/samples/Quickstarts/1_ClientCredentials>`_
 
 Preparation
 ^^^^^^^^^^^
 The IdentityServer templates for the dotnet CLI are a good starting point for the quickstarts.
 To install the templates open a console window and type the following command::
 
-    dotnet new -i IdentityServer8.Templates
+    dotnet new -i IdentityServer.Templates
 
 They will be used as a starting point for the various tutorials.
 
@@ -69,7 +69,7 @@ The Config.cs is already created for you. Open it, update the code to look like 
             };
     }
 
-(see the full file `here <https://github.com/alexhiggins732/IdentityServer8/blob/main/samples/Quickstarts/1_ClientCredentials/src/IdentityServer/Config.cs>`_).
+(see the full file `here <https://github.com/mvput/IdentityServer/blob/main/samples/Quickstarts/1_ClientCredentials/src/IdentityServer/Config.cs>`_).
 	
 .. note:: If you will be using this in production it is important to give your API a logical name. Developers will be using this to connect to your api though your Identity server.  It should describe your api in simple terms to both developers and users.
 
@@ -108,7 +108,7 @@ It identifies your application to the identity server so that it knows which app
 	
 Configuring IdentityServer
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Loading the resource and client definitions happens in `Startup.cs <https://github.com/alexhiggins732/IdentityServer8/blob/main/samples/Quickstarts/1_ClientCredentials/src/IdentityServer/Startup.cs>`_ - update the code to look like this::
+Loading the resource and client definitions happens in `Startup.cs <https://github.com/mvput/IdentityServer/blob/main/samples/Quickstarts/1_ClientCredentials/src/IdentityServer/Startup.cs>`_ - update the code to look like this::
 
     public void ConfigureServices(IServiceCollection services)
     {
@@ -142,7 +142,7 @@ Then add it to the solution by running the following commands::
     cd ..
     dotnet sln add .\src\Api\Api.csproj
 
-Configure the API application to run on ``https://localhost:6001`` only. You can do this by editing the `launchSettings.json <https://github.com/alexhiggins732/IdentityServer8/blob/main/samples/Quickstarts/1_ClientCredentials/src/Api/Properties/launchSettings.json>`_ file inside the Properties folder. Change the application URL setting to be::
+Configure the API application to run on ``https://localhost:6001`` only. You can do this by editing the `launchSettings.json <https://github.com/mvput/IdentityServer/blob/main/samples/Quickstarts/1_ClientCredentials/src/Api/Properties/launchSettings.json>`_ file inside the Properties folder. Change the application URL setting to be::
 
     "applicationUrl": "https://localhost:6001"
 
@@ -273,7 +273,7 @@ Next you can use the information from the discovery document to request a token 
 
     Console.WriteLine(tokenResponse.Json);
 
-(full file can be found `here <https://github.com/alexhiggins732/IdentityServer8/blob/main/samples/Quickstarts/1_ClientCredentials/src/Client/Program.cs>`_)
+(full file can be found `here <https://github.com/mvput/IdentityServer/blob/main/samples/Quickstarts/1_ClientCredentials/src/Client/Program.cs>`_)
 
 .. note:: Copy and paste the access token from the console to `jwt.ms <https://jwt.ms>`_ to inspect the raw token.
 

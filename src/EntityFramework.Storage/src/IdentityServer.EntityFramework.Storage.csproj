@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Description>EntityFramework persistence layer for IdentityServer8</Description>
+        <Description>EntityFramework persistence layer for IdentityServer</Description>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
@@ -12,7 +12,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\EntityFramework.Storage\src\IdentityServer8.EntityFramework.Storage.csproj" />
-        <ProjectReference Include="..\..\IdentityServer8\src\IdentityServer8.csproj" />
+        <PackageReference Include="AutoMapper" />
+        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
     </ItemGroup>
+
+    <ItemGroup>
+        <ProjectReference Include="..\..\Security\IdentityServer.Security\IdentityServer.Security.csproj" />
+        <ProjectReference Include="..\..\Storage\src\IdentityServer.Storage.csproj" />
+    </ItemGroup>
+
 </Project>

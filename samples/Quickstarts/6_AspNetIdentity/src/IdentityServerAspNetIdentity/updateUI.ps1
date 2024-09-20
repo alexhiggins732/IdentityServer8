@@ -1,4 +1,4 @@
-iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer8.Quickstart.UI.AspNetIdentity/main/getmain.ps1'))	
+iex ((New-Object System.Net.WebClient).DownloadString('https://raw.githubusercontent.com/IdentityServer/IdentityServer.Quickstart.UI.AspNetIdentity/main/getmain.ps1'))	
 # SIG # Begin signature block
 # MIIfnQYJKoZIhvcNAQcCoIIfjjCCH4oCAQExDzANBglghkgBZQMEAgEFADB5Bgor
 # BgEEAYI3AgEEoGswaTA0BgorBgEEAYI3AgEeMCYCAwEAAAQQH8w7YFlLCE63JNLG

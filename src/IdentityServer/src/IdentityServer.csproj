@@ -1,7 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <Description>EntityFramework persistence layer for IdentityServer8</Description>
         <IsPackable>true</IsPackable>
         <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     </PropertyGroup>
@@ -12,13 +11,13 @@
     </PropertyGroup>
 
     <ItemGroup>
-        <PackageReference Include="AutoMapper" />
-        <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" />
+        <PackageReference Include="IdentityModel" />
+        <PackageReference Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" />
+        <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" />
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\Security\IdentityServer8.Security\IdentityServer8.Security.csproj" />
-        <ProjectReference Include="..\..\Storage\src\IdentityServer8.Storage.csproj" />
+        <ProjectReference Include="..\..\Security\IdentityServer.Security\IdentityServer.Security.csproj" />
+        <ProjectReference Include="..\..\Storage\src\IdentityServer.Storage.csproj" />
     </ItemGroup>
-
 </Project>

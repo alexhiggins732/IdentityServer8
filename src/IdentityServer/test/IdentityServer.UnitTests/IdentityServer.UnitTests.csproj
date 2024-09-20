@@ -30,6 +30,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\IdentityServer8.csproj" />
+    <ProjectReference Include="..\..\src\IdentityServer.csproj" />
   </ItemGroup>
 </Project>

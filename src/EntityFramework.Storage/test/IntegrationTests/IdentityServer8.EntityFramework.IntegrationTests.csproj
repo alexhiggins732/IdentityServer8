@@ -9,9 +9,9 @@
 
 
   <ItemGroup>
-    <ProjectReference Include="..\..\..\IdentityServer8\src\IdentityServer8.csproj" />
-    <ProjectReference Include="..\..\..\Storage\src\IdentityServer8.Storage.csproj" />
-    <ProjectReference Include="..\..\src\IdentityServer8.EntityFramework.Storage.csproj" />
+    <ProjectReference Include="..\..\..\IdentityServer\src\IdentityServer.csproj" />
+    <ProjectReference Include="..\..\..\Storage\src\IdentityServer.Storage.csproj" />
+    <ProjectReference Include="..\..\src\IdentityServer.EntityFramework.Storage.csproj" />
   </ItemGroup>
 
   <ItemGroup>

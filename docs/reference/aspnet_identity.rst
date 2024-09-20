@@ -5,7 +5,7 @@ ASP.NET Identity Support
 An ASP.NET Identity-based implementation is provided for managing the identity database for users of IdentityServer.
 This implementation implements the extensibility points in IdentityServer needed to load identity data for your users to emit claims into tokens.
 
-The repo for this support is located `here <https://github.com/alexhiggins732/IdentityServer8.AspNetIdentity/>`_ and the NuGet package is `here <https://www.nuget.org/packages/HigginsSoft.IdentityServer8.AspNetIdentity>`_.
+The repo for this support is located `here <https://github.com/mvput/IdentityServer.AspNetIdentity/>`_ and the NuGet package is `here <https://www.nuget.org/packages/HigginsSoft.IdentityServer.AspNetIdentity>`_.
 
 To use this library, configure ASP.NET Identity normally. 
 Then use the ``AddAspNetIdentity`` extension method after the call to ``AddIdentityServer``::
