@@ -1,6 +1,8 @@
 extensions: designer.cs generated.cs
 extensions: .cs 
 /*
+ Copyright (c) 2024, Martijn van Put https://github.com/mvput/
+
  Copyright (c) 2024 HigginsSoft
  Written by Alexander Higgins https://github.com/alexhiggins732/ 
  

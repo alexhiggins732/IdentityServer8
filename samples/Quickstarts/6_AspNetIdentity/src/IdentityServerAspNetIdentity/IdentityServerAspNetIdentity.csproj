@@ -3,9 +3,9 @@
   <ItemGroup>
     <PackageReference Include="jQuery" />
     <PackageReference Include="jQuery.validation" />
-    <PackageReference Include="HigginsSoft.IdentityServer" />
-    <PackageReference Include="HigginsSoft.IdentityServer.AspnetIdentity" />
-     <PackageReference Include="HigginsSoft.IdentityServer.Security" />
+    <PackageReference Include="IdentityServer" />
+    <PackageReference Include="IdentityServer.AspnetIdentity" />
+     <PackageReference Include="IdentityServer.Security" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.Google" />
     <PackageReference Include="Microsoft.Web.LibraryManager.Build" />
 

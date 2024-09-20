@@ -11,9 +11,9 @@ Contains the core IdentityServer object model, services and middleware as well a
 
 nugets:
 
-* `HigginsSoft.IdentityServer <https://www.nuget.org/packages/HigginsSoft.IdentityServer/>`_
-* `HigginsSoft.IdentityServer.EntityFramework <https://www.nuget.org/packages/HigginsSoft.IdentityServer.EntityFramework>`_
-* `HigginsSoft.IdentityServer.AspNetIdentity <https://www.nuget.org/packages/HigginsSoft.IdentityServer.AspNetIdentity>`_
+* `IdentityServer <https://www.nuget.org/packages/IdentityServer/>`_
+* `IdentityServer.EntityFramework <https://www.nuget.org/packages/IdentityServer.EntityFramework>`_
+* `IdentityServer.AspNetIdentity <https://www.nuget.org/packages/IdentityServer.AspNetIdentity>`_
 
 Quickstart UI
 ^^^^^^^^^^^^^
@@ -23,13 +23,13 @@ Contains a simple starter UI including login, logout and consent pages.
 
 Access token validation handler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-`nuget <https://www.nuget.org/packages/HigginsSoft.IdentityServer.AccessTokenValidation>`_ | `github <https://github.com/mvput/IdentityServer.AccessTokenValidation>`_
+`nuget <https://www.nuget.org/packages/IdentityServer.AccessTokenValidation>`_ | `github <https://github.com/mvput/IdentityServer.AccessTokenValidation>`_
 
 ASP.NET Core authentication handler for validating tokens in APIs. The handler allows supporting both JWT and reference tokens in the same API.
 
 Templates
 ^^^^^^^^^
-`nuget <https://www.nuget.org/packages/HigginsSoft.IdentityServer.Templates>`_ | `github <https://github.com/mvput/IdentityServer.Templates>`_
+`nuget <https://www.nuget.org/packages/IdentityServer.Templates>`_ | `github <https://github.com/mvput/IdentityServer.Templates>`_
 
 Contains templates for the dotnet CLI.
 

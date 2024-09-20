@@ -14,41 +14,41 @@ services:
       proxy: null
       identityserverui:
         aliases:
-          - sts.higginssoft.local
-          - admin.higginssoft.local
-          - admin-api.higginssoft.local
+          - sts.identityserver.local
+          - admin.identityserver.local
+          - admin-api.identityserver.local
     restart: always
   IdentityServer.Admin:
-    image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-admin'
+    image: '${DOCKER_REGISTRY-}identityserver-admin'
     build:
       context: .
       dockerfile: src/IdentityServer.Admin/Dockerfile
-    container_name: higginssoft-identityserver4-admin
+    container_name: identityserver-admin
     environment:
-      - VIRTUAL_HOST=admin.higginssoft.local
+      - VIRTUAL_HOST=admin.identityserver.local
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__AdminLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__AdminAuditLogDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.higginssoft.local'
-      - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.higginssoft.local/signin-oidc'
-      - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.higginssoft.local'
+      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.identityserver.local'
+      - 'AdminConfiguration__IdentityAdminRedirectUri=https://admin.identityserver.local/signin-oidc'
+      - 'AdminConfiguration__IdentityServerBaseUrl=https://sts.identityserver.local'
       - AdminConfiguration__RequireHttpsMetadata=false
-      - 'IdentityServerData__Clients__0__ClientUri=https://admin.higginssoft.local'
-      - 'IdentityServerData__Clients__0__RedirectUris__0=https://admin.higginssoft.local/signin-oidc'
-      - 'IdentityServerData__Clients__0__FrontChannelLogoutUri=https://admin.higginssoft.local/signin-oidc'
-      - 'IdentityServerData__Clients__0__PostLogoutRedirectUris__0=https://admin.higginssoft.local/signout-callback-oidc'
-      - 'IdentityServerData__Clients__0__AllowedCorsOrigins__0=https://admin.higginssoft.local'
-      - 'IdentityServerData__Clients__1__RedirectUris__0=https://admin-api.higginssoft.local/swagger/oauth2-redirect.html'
+      - 'IdentityServerData__Clients__0__ClientUri=https://admin.identityserver.local'
+      - 'IdentityServerData__Clients__0__RedirectUris__0=https://admin.identityserver.local/signin-oidc'
+      - 'IdentityServerData__Clients__0__FrontChannelLogoutUri=https://admin.identityserver.local/signin-oidc'
+      - 'IdentityServerData__Clients__0__PostLogoutRedirectUris__0=https://admin.identityserver.local/signout-callback-oidc'
+      - 'IdentityServerData__Clients__0__AllowedCorsOrigins__0=https://admin.identityserver.local'
+      - 'IdentityServerData__Clients__1__RedirectUris__0=https://admin-api.identityserver.local/swagger/oauth2-redirect.html'
       - 'Serilog__WriteTo__1__Args__connectionString=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - DockerConfiguration__UpdateCaCertificate=true
       - ASPNETCORE_ENVIRONMENT=Development
     command: dotnet IdentityServer.Admin.dll /seed
     depends_on:
       - db
-      - higginssoft.identityserver4.sts.identity
+      - identityserver.sts.identity
     volumes:
       - './shared/serilog.json:/app/serilog.json'
       - './shared/identitydata.json:/app/identitydata.json'
@@ -57,16 +57,16 @@ services:
     networks:
       identityserverui: null
   IdentityServer.Admin.api:
-    image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-admin-api'
+    image: '${DOCKER_REGISTRY-}identityserver-admin-api'
     build:
       context: .
       dockerfile: src/IdentityServer.Admin.Api/Dockerfile
-    container_name: higginssoft-identityserver4-admin-api
+    container_name: identityserver-admin-api
     environment:
-      - VIRTUAL_HOST=admin-api.higginssoft.local
+      - VIRTUAL_HOST=admin-api.identityserver.local
       - AdminApiConfiguration__RequireHttpsMetadata=false
-      - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.higginssoft.local'
-      - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.higginssoft.local'
+      - 'AdminApiConfiguration__ApiBaseUrl=https://admin-api.identityserver.local'
+      - 'AdminApiConfiguration__IdentityServerBaseUrl=https://sts.identityserver.local'
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
@@ -80,20 +80,20 @@ services:
       - './shared/nginx/certs/cacerts.crt:/usr/local/share/ca-certificates/cacerts.crt'
     networks:
       identityserverui: null
-  higginssoft.identityserver4.sts.identity:
-    image: '${DOCKER_REGISTRY-}higginssoft-identityserver4-sts-identity'
+  identityserver.sts.identity:
+    image: '${DOCKER_REGISTRY-}identityserver-sts-identity'
     build:
       context: .
       dockerfile: src/IdentityServer.STS.Identity/Dockerfile
-    container_name: higginssoft-identityserver4-sts-identity
+    container_name: identityserver-sts-identity
     environment:
-      - VIRTUAL_HOST=sts.higginssoft.local
+      - VIRTUAL_HOST=sts.identityserver.local
       - 'ConnectionStrings__ConfigurationDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__PersistedGrantDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__IdentityDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
       - 'ConnectionStrings__DataProtectionDbConnection=Server=db;Database=IdentityServerAdmin;User Id=sa;Password=${DB_PASSWORD:-Password_123};MultipleActiveResultSets=true'
-      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.higginssoft.local'
-      - 'IdentityServerOptions__IssuerUri=https://sts.higginssoft.local'
+      - 'AdminConfiguration__IdentityAdminBaseUrl=https://admin.identityserver.local'
+      - 'IdentityServerOptions__IssuerUri=https://sts.identityserver.local'
       - IdentityServerOptions__Events__RaiseErrorEvents=true
       - IdentityServerOptions__Events__RaiseInformationEvents=true
       - IdentityServerOptions__Events__RaiseFailureEvents=true
@@ -108,12 +108,12 @@ services:
     networks:
       identityserverui:
         aliases:
-          - sts.higginssoft.local
+          - sts.identityserver.local
   db:
     image: 'mcr.microsoft.com/mssql/server:2017-CU20-ubuntu-16.04'
     ports:
       - '7900:1433'
-    container_name: higginssoft-identityserver4-db
+    container_name: identityserver-db
     environment:
       SA_PASSWORD: '${DB_PASSWORD:-Password_123}'
       ACCEPT_EULA: 'Y'

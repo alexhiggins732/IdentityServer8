@@ -13,7 +13,7 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro
 
-  higginssoft.identityserver4.sts.identity:
+  identityserver.sts.identity:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     volumes:
