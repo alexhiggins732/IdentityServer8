@@ -163,7 +163,7 @@ internal static class StringExtensions
             // url doesn't start with "//" or "/\"
             if (url[1] != '/' && url[1] != '\\')
             {
-                return true;
+                return !HasControlCharacter(url.AsSpan(1));
             }
 
             return false;
@@ -181,13 +181,26 @@ internal static class StringExtensions
             // url doesn't start with "~//" or "~/\"
             if (url[2] != '/' && url[2] != '\\')
             {
-                return true;
+                return !HasControlCharacter(url.AsSpan(2));
             }
 
             return false;
         }
 
         return false;
+
+        static bool HasControlCharacter(ReadOnlySpan<char> readOnlySpan)
+        {
+            // URLs may not contain ASCII control characters.
+            for (var i = 0; i < readOnlySpan.Length; i++)
+            {
+                if (char.IsControl(readOnlySpan[i]))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 
     [DebuggerStepThrough]
