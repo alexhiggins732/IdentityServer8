@@ -25,7 +25,7 @@ public class ScopeStoreTests : IntegrationTest<ScopeStoreTests, ConfigurationDbC
 {
     public ScopeStoreTests(DatabaseProviderFixture<ConfigurationDbContext> fixture) : base(fixture)
     {
-        foreach (var options in TestDatabaseProviders.SelectMany(x => x.Select(y => (DbContextOptions<ConfigurationDbContext>)y)).ToList())
+        foreach (var options in TestDatabaseProviders)
         {
             using (var context = new ConfigurationDbContext(options, StoreOptions))
                 context.Database.EnsureCreated();

@@ -21,6 +21,8 @@ using IdentityServer8.Configuration;
 using IdentityServer8.Validation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Logging;
+using Microsoft.IdentityModel.JsonWebTokens;
+using Microsoft.IdentityModel.Tokens;
 using Xunit;
 
 namespace IdentityServer.UnitTests.Validation.Secrets
@@ -53,8 +55,15 @@ namespace IdentityServer.UnitTests.Validation.Secrets
         {
             var context = new DefaultHttpContext();
 
-            var token = new JwtSecurityToken(issuer: "issuer", claims: new[] { new Claim("sub", "client") });
-            var tokenString = new JwtSecurityTokenHandler().WriteToken(token);
+            var tokenHandler = new JsonWebTokenHandler();            
+
+            var tokenDescriptor = new SecurityTokenDescriptor
+            {
+                Issuer = "issuer",
+                Claims = new Dictionary<string, object>{ ["sub"] = "client" },
+            };
+
+            var tokenString = tokenHandler.CreateToken(tokenDescriptor);
 
             var body = "client_assertion_type=urn:ietf:params:oauth:client-assertion-type:jwt-bearer&client_assertion=" + tokenString;
 

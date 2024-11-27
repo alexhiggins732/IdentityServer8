@@ -31,12 +31,7 @@ namespace IdentityServer.UnitTests.Validation
 
         private IClientStore _clients = Factory.CreateClientStore();
         private IdentityServerOptions _options = new IdentityServerOptions();
-        private StubClock _clock = new StubClock();
-
-        static AccessTokenValidation()
-        {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        }
+        private StubClock _clock = new StubClock();    
 
         private DateTime now;
         public DateTime UtcNow
@@ -196,7 +191,7 @@ namespace IdentityServer.UnitTests.Validation
             result.Jwt.Should().NotBeNullOrEmpty();
             result.Client.ClientId.Should().Be("roclient");
 
-            result.Claims.Count().Should().Be(8);
+            result.Claims.Count().Should().Be(9);
             var scopes = result.Claims.Where(c => c.Type == "scope").Select(c => c.Value).ToArray();
             scopes.Count().Should().Be(2);
             scopes[0].Should().Be("read");

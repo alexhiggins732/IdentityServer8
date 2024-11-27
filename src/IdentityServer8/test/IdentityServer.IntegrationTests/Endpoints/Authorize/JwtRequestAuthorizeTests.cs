@@ -26,6 +26,7 @@ using IdentityServer8;
 using IdentityServer8.Configuration;
 using IdentityServer8.Models;
 using IdentityServer8.Test;
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Xunit;
@@ -181,21 +182,24 @@ public class JwtRequestAuthorizeTests
 
     string CreateRequestJwt(string issuer, string audience, SigningCredentials credential, Claim[] claims, bool setJwtTyp = false)
     {
-        var handler = new JwtSecurityTokenHandler();
-        handler.OutboundClaimTypeMap.Clear();
-
-        var token = handler.CreateJwtSecurityToken(
-            issuer: issuer,
-            audience: audience,
-            signingCredentials: credential,
-            subject: Identity.Create("pwd", claims));
-
-        if (setJwtTyp)
+        var handler = new JsonWebTokenHandler();
+        
+        var claimsDictionary = claims.ToDictionary(c => c.Type, c => (object) c.Value);
+       
+        var descriptor = new SecurityTokenDescriptor
         {
-            token.Header["typ"] = JwtClaimTypes.JwtTypes.AuthorizationRequest;
-        }
+            Issuer = issuer,
+            Audience = audience,
+            SigningCredentials = credential,
+            Claims = claimsDictionary
+        };
+        if (setJwtTyp)
+            descriptor.TokenType = JwtClaimTypes.JwtTypes.AuthorizationRequest;
 
-        return handler.WriteToken(token);
+        var token = handler.CreateToken(descriptor);
+
+
+        return token;
     }
 
     [Fact]
@@ -539,16 +543,16 @@ public class JwtRequestAuthorizeTests
         var someObj2 = JsonSerializer.Deserialize(_mockPipeline.LoginRequest.Parameters["someObj"], someObj.GetType());
         someObj.Should().BeEquivalentTo(someObj2);
         _mockPipeline.LoginRequest.Parameters["someArr"].Should().NotBeNull();
-        var someArr2 =JsonSerializer.Deserialize<string[]>(_mockPipeline.LoginRequest.Parameters["someArr"]);
+        var someArr2 = JsonSerializer.Deserialize<string[]>(_mockPipeline.LoginRequest.Parameters["someArr"]);
         someArr2.Should().Contain(new[] { "a", "c", "b" });
         someArr2.Length.Should().Be(3);
 
         _mockPipeline.LoginRequest.RequestObjectValues.Count.Should().Be(13);
         _mockPipeline.LoginRequest.RequestObjectValues["someObj"].Should().NotBeNull();
-        someObj2 =JsonSerializer.Deserialize(_mockPipeline.LoginRequest.RequestObjectValues["someObj"], someObj.GetType());
+        someObj2 = JsonSerializer.Deserialize(_mockPipeline.LoginRequest.RequestObjectValues["someObj"], someObj.GetType());
         someObj.Should().BeEquivalentTo(someObj2);
         _mockPipeline.LoginRequest.RequestObjectValues["someArr"].Should().NotBeNull();
-        someArr2 =JsonSerializer.Deserialize<string[]>(_mockPipeline.LoginRequest.Parameters["someArr"]);
+        someArr2 = JsonSerializer.Deserialize<string[]>(_mockPipeline.LoginRequest.Parameters["someArr"]);
         someArr2.Should().Contain(new[] { "a", "c", "b" });
         someArr2.Length.Should().Be(3);
     }
