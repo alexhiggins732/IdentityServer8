@@ -2,11 +2,11 @@
   <PropertyGroup>
     <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
     <CentralPackageTransitivePinningEnabled>true</CentralPackageTransitivePinningEnabled>
-    <AspnetVersion>8.0.0</AspnetVersion>
-    <AspnetMinorVersion>8.0.1</AspnetMinorVersion>
-    <MicrosoftExtensionsVersion>8.0.0</MicrosoftExtensionsVersion>
-    <EfVersion>8.0.0</EfVersion>
-    <RuntimeVersion>8.0.0</RuntimeVersion>
+    <AspnetVersion>9.0.0</AspnetVersion>
+    <AspnetMinorVersion>9.0.0</AspnetMinorVersion>
+    <MicrosoftExtensionsVersion>9.0.0</MicrosoftExtensionsVersion>
+    <EfVersion>9.0.0</EfVersion>
+    <RuntimeVersion>9.0.0</RuntimeVersion>
     <AspireVersion>8.0.0-preview.2.23619.3</AspireVersion>
     <GrpcVersion>2.59.0</GrpcVersion>
     <SerilogVersion>8.0.0</SerilogVersion>
@@ -23,7 +23,7 @@
     <PackageVersion Include="AspNetCore.HealthChecks.UI.Client" Version="$(AspnetVersion)" />
     <PackageVersion Include="AutoMapper" Version="13.0.1 " />
     <PackageVersion Include="Azure.Extensions.AspNetCore.DataProtection.Keys" Version="1.1.0" />
-    <PackageVersion Include="Azure.Identity" Version="1.10.4" />
+    <PackageVersion Include="Azure.Identity" Version="1.11.4" />
     <PackageVersion Include="Azure.Security.KeyVault.Certificates" Version="4.2.0" />
     <PackageVersion Include="Bogus" Version="34.0.1" />
     <PackageVersion Include="bootstrap" Version="5.3.2" />
@@ -47,7 +47,7 @@
     <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
     <PackageVersion Include="HtmlAgilityPack" Version="1.11.40" />
     <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
-    <PackageVersion Include="IdentityModel" Version="6.2.0" />
+    <PackageVersion Include="IdentityModel" Version="7.0.0" />
     <PackageVersion Include="IdentityModel.OidcClient" Version="5.3.0-preview.1" />
     <PackageVersion Include="IdentityModel.AspNetCore" Version="4.3.0" />
     <PackageVersion Include="IdentityModel.AspNetCore.AccessTokenValidation" Version="1.0.0-preview.3" />
@@ -59,7 +59,7 @@
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.Google" Version="3.1.5" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Authentication.MicrosoftAccount" Version="$(AspnetMinorVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="9.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Components.Web" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.DataProtection.EntityFrameworkCore" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="$(AspnetVersion)" />
@@ -71,10 +71,10 @@
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.Mvc.Testing" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="$(AspnetVersion)" />
-    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="8.0.1" />
+    <PackageVersion Include="Microsoft.AspNetCore.TestHost" Version="9.0.0" />
     <PackageVersion Include="Microsoft.AspNetCore.Server.Kestrel" Version="2.2.0" />
-    <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.5" />
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.1">
+    <PackageVersion Include="Microsoft.Data.SqlClient" Version="5.1.6" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
@@ -95,22 +95,22 @@
     <PackageVersion Include="Microsoft.Extensions.Configuration.FileExtensions" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.Json" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Configuration.UserSecrets" Version="$(AspnetVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="8.0.0" />
-    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection" Version="9.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Diagnostics.HealthChecks.EntityFrameworkCore" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Http" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Http.Resilience" Version="$(MicrosoftExtensionsVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Hosting" Version="$(AspnetVersion)" />
     <PackageVersion Include="Microsoft.Extensions.Logging" Version="$(AspnetVersion)" />
-    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="8.0.0" />
+    <PackageVersion Include="Microsoft.Extensions.Logging.Abstractions" Version="9.0.0" />
     <PackageVersion Include="Microsoft.Extensions.Options" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery" Version="$(AspireVersion)" />
     <PackageVersion Include="Microsoft.Extensions.ServiceDiscovery.Yarp" Version="$(AspireVersion)" />
     <PackageVersion Include="Microsoft.Identity.Web" Version="1.22.1" />
     <PackageVersion Include="Microsoft.Identity.Web.UI" Version="1.16.0" />
-    <PackageVersion Include="Microsoft.IdentityModel.Logging" Version="7.3.1" />
-    <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="7.3.1" />
+    <PackageVersion Include="Microsoft.IdentityModel.Logging" Version="8.2.1" />
+    <PackageVersion Include="Microsoft.IdentityModel.Protocols.OpenIdConnect" Version="8.2.1" />
     <PackageVersion Include="Microsoft.jQuery.Unobtrusive.Validation" Version="4.0.0" />
     <PackageVersion Include="Microsoft.NET.Test.Sdk" Version="17.8.0" />
     <PackageVersion Include="Microsoft.OpenApi" Version="1.6.10" />
@@ -144,7 +144,7 @@
     <PackageVersion Include="Refit.Newtonsoft.Json" Version="7.0.0" />
     <PackageVersion Include="Sendgrid" Version="9.25.2" />
     <PackageVersion Include="Serilog" Version="3.1.1" />
-    <PackageVersion Include="Serilog.AspNetCore" Version="$(AspnetMinorVersion)" />
+    <PackageVersion Include="Serilog.AspNetCore" Version="8.0.1" />
     <PackageVersion Include="Serilog.Enrichers.Environment" Version="2.3.0" />
     <PackageVersion Include="Serilog.Enrichers.Thread" Version="3.1.0" />
     <PackageVersion Include="Serilog.Extensions.Hosting" Version="$(SerilogVersion)" />
@@ -160,7 +160,7 @@
     <PackageVersion Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
     <PackageVersion Include="Swashbuckle.AspNetCore.Annotations" Version="6.5.0" />
     <PackageVersion Include="System.Configuration.ConfigurationManager" Version="$(AspnetVersion)" />
-    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="7.3.1" />
+    <PackageVersion Include="System.IdentityModel.Tokens.Jwt" Version="8.2.1" />
     <PackageVersion Include="System.Reactive" Version="6.0.0" />
     <PackageVersion Include="System.Security.Principal.Windows" Version="5.0.0" />
     <PackageVersion Include="System.ServiceModel.Primitives" Version="$(AspnetVersion)" />
@@ -171,6 +171,6 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageVersion>
     <PackageVersion Include="Microsoft.CodeAnalysis.NetAnalyzers" Version="$(AspnetVersion)" PrivateAssets="All" />
-    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="$(AspnetVersion)" PrivateAssets="All" />
+    <PackageVersion Include="Microsoft.SourceLink.GitHub" Version="8.0.0" PrivateAssets="All" />
   </ItemGroup>
 </Project>
