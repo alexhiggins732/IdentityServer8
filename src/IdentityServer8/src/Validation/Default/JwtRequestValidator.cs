@@ -11,6 +11,8 @@
 */
 
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
 namespace IdentityServer8.Validation;
 

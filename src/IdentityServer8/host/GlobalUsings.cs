@@ -33,7 +33,6 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.Extensions.Options;
 global using Microsoft.IdentityModel.Logging;
 global using Microsoft.IdentityModel.Tokens;
-global using Newtonsoft.Json;
 global using Serilog;
 global using Serilog.Events;
 global using Serilog.Sinks.SystemConsole.Themes;
@@ -42,6 +41,10 @@ global using System.Diagnostics;
 global using System.Security.Claims;
 global using System.Security.Cryptography.X509Certificates;
 global using System.Text;
+global using System.Text.Json;
 global using static IdentityServer8.IdentityServerConstants;
 global using ILogger = Microsoft.Extensions.Logging.ILogger;
 global using ClaimValueTypes = System.Security.Claims.ClaimValueTypes;
+global using static IdentityModel.JwtClaimTypes;
+global using IdentityServerClaimValueTypes = IdentityServer8.IdentityServerConstants.ClaimValueTypes;
+

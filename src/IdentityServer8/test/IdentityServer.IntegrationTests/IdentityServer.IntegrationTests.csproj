@@ -33,6 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\host\Host.csproj" />
     <ProjectReference Include="..\..\src\IdentityServer8.csproj" />
   </ItemGroup>
 

@@ -40,12 +40,83 @@ public class SanitizerTests
         var service = Ioc.ServiceProvider.GetRequiredService<ISanitizerService>();
         Assert.NotNull(service);
     }
+
+
     [Fact]
     public void Sanitizer()
     {
         var sanitizer = Ioc.ServiceProvider.GetRequiredService<ISanitizer>();
         Assert.NotNull(sanitizer);
     }
+
+    [Fact]
+    public void Sanitizer_ReturnsNullWhenInputIsNul()
+    {
+        string s = null;
+    
+        var sanitizer = Ioc.ServiceProvider.GetRequiredService<ISanitizer>();
+        Assert.NotNull(sanitizer);
+        var result = s.SanitizeForLog();
+        result.Should().BeNull();
+    }
+
+    [Fact]
+    public void Sanitizer_ReturnsFullStringForModeDebug()
+    {
+        string s = "this is a log message";
+
+        var sanitizer = Ioc.ServiceProvider.GetRequiredService<ISanitizer>();
+        Assert.NotNull(sanitizer);
+        var result = s.SanitizeForLog(SanitizerMode.Debug);
+        result.Should().Be(s);
+    }
+
+    [Fact]
+    public void Sanitizer_ThrowsArgumentExceptionWithInvalidMode()
+    {
+        string s = "this is a log message";
+
+        var sanitizer = Ioc.ServiceProvider.GetRequiredService<ISanitizer>();
+        Assert.NotNull(sanitizer);
+
+        Assert.Throws<ArgumentException>(() => s.SanitizeForLog((SanitizerMode) (-1)));
+
+    }
+
+    [Fact]
+    public void SanitizerFactory_ThrowsArgumentExceptionWithInvalidSanitizerType()
+    {
+        string s = "this is a log message";
+
+        var factory = Ioc.ServiceProvider.GetRequiredService<ISanitizerFactory>();
+        Assert.NotNull(factory);
+
+        Assert.Throws<ArgumentException>(() => factory.Create((SanitizerType) (-1)));
+
+    }
+
+    [Fact]
+    public void Sanitizer_ResolvesAllSanitizerServices()
+    {
+     
+
+        var sanitizer = Ioc.ServiceProvider.GetRequiredService<ISanitizer>();
+        Assert.NotNull(sanitizer);
+
+        sanitizer.Html.Should().NotBeNull();
+        sanitizer.Xml.Should().NotBeNull();
+        sanitizer.Json.Should().NotBeNull();
+        sanitizer.Url.Should().NotBeNull();
+        sanitizer.Css.Should().NotBeNull();
+        sanitizer.Script.Should().NotBeNull();
+        sanitizer.Style.Should().NotBeNull();
+        sanitizer.Sql.Should().NotBeNull();
+        sanitizer.Log.Should().NotBeNull();
+
+
+
+    }
+
 
 
     [Fact]
@@ -111,12 +182,12 @@ public class SanitizerTests
     [Fact]
     public void ScriptSanitizer()
     {
-        var sanitizer = Ioc.ServiceProvider.GetRequiredService<IJsonSanitizer>();
+        var sanitizer = Ioc.ServiceProvider.GetRequiredService<IScriptSanitizer>();
         Assert.NotNull(sanitizer);
 
-        var input = JsonSerializer.Serialize(new { test = "test", value = "<div><script>alert('xss')</script></div>" });
+        var input = "<script>alert('xss')</script>";
         var output = sanitizer.Sanitize(input);
-        var expected = @"{\""test\"":\""test\"",\""value\"":\""\\u003Cdiv\\u003E\\u003Cscript\\u003Ealert(\\u0027xss\\u0027)\\u003C/script\\u003E\\u003C/div\\u003E\""}";
+        var expected = @"&lt;script&gt;alert('xss')&lt;/script&gt;";
 
 
         Validate(expected, output);
@@ -176,10 +247,10 @@ test
 
     void Validate(string expected, string output)
     {
-        Console.WriteLine("Expected: " + expected);
-        Console.WriteLine("Output: " + output);
-        Debug.WriteLine("Expected: " + expected);
-        Debug.WriteLine("Output: " + output);
+        //Console.WriteLine("Expected: " + expected);
+        //Console.WriteLine("Output: " + output);
+        //Debug.WriteLine("Expected: " + expected);
+        //Debug.WriteLine("Output: " + output);
         output.Should().Be(expected);
     }
 

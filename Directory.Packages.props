@@ -45,7 +45,7 @@
     <PackageVersion Include="Grpc.Net.Client" Version="$(GrpcVersion)" />
     <PackageVersion Include="Grpc.Net.ClientFactory" Version="$(GrpcVersion)" />
     <PackageVersion Include="Grpc.Tools" Version="$(GrpcVersion)" PrivateAssets="All" />
-    <PackageVersion Include="HtmlAgilityPack" Version="1.11.40" />
+    <PackageVersion Include="HtmlAgilityPack" Version="1.11.59" />
     <PackageVersion Include="Humanizer.Core" Version="2.14.1" />
     <PackageVersion Include="IdentityModel" Version="6.2.0" />
     <PackageVersion Include="IdentityModel.OidcClient" Version="5.3.0-preview.1" />
@@ -78,7 +78,7 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageVersion>
-    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="$(AspnetVersion)" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.InMemory" Version="8.0.0" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Relational" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Sqlite" Version="$(AspnetMinorVersion)" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="$(AspnetMinorVersion)" />

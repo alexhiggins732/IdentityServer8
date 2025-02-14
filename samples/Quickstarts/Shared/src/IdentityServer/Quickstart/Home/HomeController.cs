@@ -27,6 +27,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [HttpGet]
     public IActionResult Index()
     {
         if (_environment.IsDevelopment())
@@ -37,6 +38,7 @@ public class HomeController : Controller
 
         _logger.LogInformation("Homepage is disabled in production. Returning 404.");
         return NotFound();
+
     }
 
     /// <summary>

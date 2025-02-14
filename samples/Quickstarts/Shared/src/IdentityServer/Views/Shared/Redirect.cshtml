@@ -9,6 +9,6 @@
 
 <meta http-equiv="refresh" content="0;url=@Model.RedirectUrl" data-url="@Model.RedirectUrl">
 <script>
-    var url = '@Ioc.Sanitizer.Url.Sanitize(Model.RedirectUrl)';
+    var url = '@Model.RedirectUrl.SanitizeForUrl()';
     window.location.href = url;
 </script>
