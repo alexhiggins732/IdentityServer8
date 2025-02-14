@@ -203,7 +203,7 @@ public class UserInfoEndpointClient
         });
 
         //roles = ((JArray)userInfo.Json["role"]).Select(x => x.ToString()).ToArray();
-        roles = userInfo.Json.TryGetStringArray("role").ToArray();
+        roles = userInfo.Json.Value.TryGetStringArray("role").ToArray();
         roles.Length.Should().Be(2);
         roles.Should().Contain("Geek");
         roles.Should().Contain("Developer");

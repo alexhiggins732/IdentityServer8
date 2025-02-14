@@ -103,11 +103,6 @@ public class TestUserStore
             {
                 filtered.Add(new Claim(JwtClaimTypes.Name, claim.Value));
             }
-            // if the JWT handler has an outbound mapping to an OIDC claim use that
-            else if (JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap.ContainsKey(claim.Type))
-            {
-                filtered.Add(new Claim(JwtSecurityTokenHandler.DefaultOutboundClaimTypeMap[claim.Type], claim.Value));
-            }
             // copy the claim as-is
             else
             {

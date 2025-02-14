@@ -125,7 +125,7 @@ public class CustomTokenRequestValidatorClient
     }
     private void ValidateCustomFields(TokenResponse response)
     {
-        var fields = GetFields(response.Json);
+        var fields = GetFields(response.Json.Value);
         fields["custom"].ToString().Should().Be("custom");
 
     }

@@ -21,12 +21,7 @@ namespace IdentityServer.UnitTests.Validation
 {
     public class IdentityTokenValidation
     {
-        private const string Category = "Identity token validation";
-
-        static IdentityTokenValidation()
-        {
-            JwtSecurityTokenHandler.DefaultInboundClaimTypeMap.Clear();
-        }
+        private const string Category = "Identity token validation";        
 
         [Fact]
         [Trait("Category", Category)]

@@ -10,6 +10,7 @@
  copies or substantial portions of the Software.
 */
 
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
 
 namespace IdentityServer8.Services;
@@ -70,7 +71,7 @@ public class DefaultTokenCreationService : ITokenCreationService
         var header = await CreateHeaderAsync(token);
         var payload = await CreatePayloadAsync(token);
 
-        return await CreateJwtAsync(new JwtSecurityToken(header, payload));
+        return await CreateJwtAsync(header.Header, header.Credentials, payload);
     }
 
     /// <summary>
@@ -78,7 +79,7 @@ public class DefaultTokenCreationService : ITokenCreationService
     /// </summary>
     /// <param name="token">The token.</param>
     /// <returns>The JWT header</returns>
-    protected virtual async Task<JwtHeader> CreateHeaderAsync(Token token)
+    protected virtual async Task<(Dictionary<string, object> Header, SigningCredentials Credentials)> CreateHeaderAsync(Token token)
     {
         var credential = await Keys.GetSigningCredentialsAsync(token.AllowedSigningAlgorithms);
 
@@ -87,7 +88,11 @@ public class DefaultTokenCreationService : ITokenCreationService
             throw new InvalidOperationException("No signing credential is configured. Can't create JWT token");
         }
 
-        var header = new JwtHeader(credential);
+        var header = new Dictionary<string, object>
+        {
+            { "alg", credential.Algorithm },
+            { "kid", credential.Key.KeyId }
+        };
 
         // emit x5t claim for backwards compatibility with v4 of MS JWT library
         if (credential.Key is X509SecurityKey x509Key)
@@ -109,7 +114,7 @@ public class DefaultTokenCreationService : ITokenCreationService
             }
         }
 
-        return header;
+        return (header, credential);
     }
 
     /// <summary>
@@ -126,11 +131,29 @@ public class DefaultTokenCreationService : ITokenCreationService
     /// <summary>
     /// Applies the signature to the JWT
     /// </summary>
-    /// <param name="jwt">The JWT object.</param>
+    /// <param name="header">The JWT header.</param>
+    /// <param name="payload">The JWT payload.</param>
     /// <returns>The signed JWT</returns>
-    protected virtual Task<string> CreateJwtAsync(JwtSecurityToken jwt)
+    protected virtual Task<string> CreateJwtAsync(Dictionary<string, object> header, SigningCredentials signingCredentials, JwtPayload payload)
     {
-        var handler = new JwtSecurityTokenHandler();
-        return Task.FromResult(handler.WriteToken(jwt));
+        var handler = new JsonWebTokenHandler();
+        var descriptor = new SecurityTokenDescriptor
+        {
+            Claims = payload,            
+            Issuer = payload.TryGetValue("iss", out var issuer) ? issuer.ToString() : null,
+            Expires = payload.TryGetValue("exp", out var exp) ? DateTimeOffset.FromUnixTimeSeconds(Convert.ToInt64(exp)).UtcDateTime : null,
+            SigningCredentials = signingCredentials
+        };
+        if (header.TryGetValue("typ", out var typ))
+            descriptor.TokenType = typ.ToString();        
+
+        if (payload.TryGetValue("aud", out var audObj) && audObj is List<string> audiences)
+            audiences.ForEach(descriptor.Audiences.Add);
+
+        var jwt = handler.CreateToken(descriptor);
+
+        return Task.FromResult(jwt);
     }
+
+
 }

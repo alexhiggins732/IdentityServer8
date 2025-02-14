@@ -287,13 +287,13 @@ public class CustomTokenResponseClients
 
     private Dictionary<string, object> GetFieldsD(TokenResponse response)
     {
-        return response.Json.ToObject<Dictionary<string, object>>();
+        return response.Json?.Deserialize<Dictionary<string, object>>() ?? [];
     }
 
 
     private Dictionary<string, JsonElement> GetFields(TokenResponse response)
     {
-        return GetFields(response.Json);
+        return GetFields(response.Json.Value);
     }
 
     private Dictionary<string, JsonElement> GetFields(JsonElement json)

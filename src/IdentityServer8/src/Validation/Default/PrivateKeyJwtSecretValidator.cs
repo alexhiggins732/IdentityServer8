@@ -10,7 +10,9 @@
  copies or substantial portions of the Software.
 */
 
+using Microsoft.IdentityModel.JsonWebTokens;
 using Microsoft.IdentityModel.Tokens;
+using JwtRegisteredClaimNames = Microsoft.IdentityModel.JsonWebTokens.JwtRegisteredClaimNames;
 
 namespace IdentityServer8.Validation;
 
@@ -24,7 +26,7 @@ public class PrivateKeyJwtSecretValidator : ISecretValidator
     private readonly ILogger _logger;
 
     private const string Purpose = nameof(PrivateKeyJwtSecretValidator);
-    
+
     /// <summary>
     /// Instantiates an instance of private_key_jwt secret validator
     /// </summary>
@@ -86,7 +88,7 @@ public class PrivateKeyJwtSecretValidator : ISecretValidator
             string.Concat(_contextAccessor.HttpContext.GetIdentityServerIssuerUri().EnsureTrailingSlash(),
                 Constants.ProtocolRoutePaths.Token)
         };
-        
+
         var tokenValidationParameters = new TokenValidationParameters
         {
             IssuerSigningKeys = trustedKeys,
@@ -100,34 +102,43 @@ public class PrivateKeyJwtSecretValidator : ISecretValidator
 
             RequireSignedTokens = true,
             RequireExpirationTime = true,
-            
+
             ClockSkew = TimeSpan.FromMinutes(5)
         };
         try
         {
-            var handler = new JwtSecurityTokenHandler();
-            handler.ValidateToken(jwtTokenString, tokenValidationParameters, out var token);
+            var handler = new JsonWebTokenHandler();
+            var validateResult = await handler.ValidateTokenAsync(jwtTokenString, tokenValidationParameters);
 
-            var jwtToken = (JwtSecurityToken)token;
+            var jwtToken = (JsonWebToken) validateResult.SecurityToken;
             if (jwtToken.Subject != jwtToken.Issuer)
             {
                 _logger.LogError("Both 'sub' and 'iss' in the client assertion token must have a value of client_id.");
                 return fail;
             }
-            
-            var exp = jwtToken.Payload.Exp;
-            if (!exp.HasValue)
+
+            var expClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Exp);
+
+            if (expClaim == null)
             {
                 _logger.LogError("exp is missing.");
                 return fail;
             }
-            
-            var jti = jwtToken.Payload.Jti;
-            if (jti.IsMissing())
+
+            if (!long.TryParse(expClaim.Value, out var exp))
+            {
+                _logger.LogError("Invalid exp value.");
+                return fail;
+            }
+
+            var jtiClaim = jwtToken.Claims.FirstOrDefault(c => c.Type == JwtRegisteredClaimNames.Jti);
+
+            if (jtiClaim == null || string.IsNullOrEmpty(jtiClaim.Value))
             {
                 _logger.LogError("jti is missing.");
                 return fail;
             }
+            var jti = jtiClaim.Value;
 
             if (await _replayCache.ExistsAsync(Purpose, jti))
             {
@@ -136,7 +147,7 @@ public class PrivateKeyJwtSecretValidator : ISecretValidator
             }
             else
             {
-                await _replayCache.AddAsync(Purpose, jti, DateTimeOffset.FromUnixTimeSeconds(exp.Value).AddMinutes(5));
+                await _replayCache.AddAsync(Purpose, jti, DateTimeOffset.FromUnixTimeSeconds(exp).AddMinutes(5));
             }
 
             return success;

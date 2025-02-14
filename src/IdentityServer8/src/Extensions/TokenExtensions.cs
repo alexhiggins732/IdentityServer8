@@ -44,7 +44,7 @@ public static class TokenExtensions
         var amrClaims = token.Claims.Where(x => x.Type == JwtClaimTypes.AuthenticationMethod).ToArray();
         var scopeClaims = token.Claims.Where(x => x.Type == JwtClaimTypes.Scope).ToArray();
         var jsonClaims = token.Claims.Where(x => x.ValueType == IdentityServerConstants.ClaimValueTypes.Json).ToList();
-        
+
         // add confirmation claim if present (it's JSON valued)
         if (token.Confirmation.IsPresent())
         {
@@ -79,7 +79,7 @@ public static class TokenExtensions
             var amrValues = amrClaims.Select(x => x.Value).Distinct().ToArray();
             payload.Add(JwtClaimTypes.AuthenticationMethod, amrValues);
         }
-        
+
         // deal with json types
         // calling ToArray() to trigger JSON parsing once and so later 
         // collection identity comparisons work for the anonymous type
@@ -121,7 +121,7 @@ public static class TokenExtensions
                 var newArr = new List<JToken>();
                 foreach (var arrays in group)
                 {
-                    var arr = (JArray)arrays.JsonValue;
+                    var arr = (JArray) arrays.JsonValue;
                     newArr.AddRange(arr);
                 }
 

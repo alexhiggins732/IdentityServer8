@@ -101,7 +101,7 @@ public class ResponseTypeResponseModeTests
     // to follow the RFC to address open redirect in original OAuth RFC
     [Fact]
     [Trait("Category", Category)]
-    public async Task Request_missing_response_type_rejected()
+    public async Task Request_unsupported_response_type_rejected()
     {
         await _mockPipeline.LoginAsync("bob");
 
@@ -110,7 +110,7 @@ public class ResponseTypeResponseModeTests
 
         var url = _mockPipeline.CreateAuthorizeUrl(
             clientId: "code_client",
-            responseType: null, // missing
+            responseType: "__wrong__", //unsupported
             scope: "openid",
             redirectUri: "https://code_client/callback",
             state: state,

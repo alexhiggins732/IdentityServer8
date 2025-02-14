@@ -6,9 +6,13 @@ and this project adheres to [Semantic Versioning 2](http://semver.org/).
  
 ## [Unreleased] - 2024-02-17
 
+- NET 9.0 Support
+- Updated IdentityModel to 7 and updated OpenIdConnect to 8.1.2
+- Removed CollectionUtilities.IsNullOrEmpty dependecy because of obselence in new version of Microsoft.IdentityModel.Tokens
 - Current templates and quickstarts being added to seperate template and quickstart repositories to continue previous version functionality.
 - DotNet tool to install template currently under development.
-- 
+
+
 ## [8.0.4] - 2024-02-17
 
 Identity Server 8.0.4 is a security release that addresses hundreds of security vulnerabilities in the IdentityServer8 code base. We recommend that you update to this version.
